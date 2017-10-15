@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaGestionCEM", "Sistem
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaGestionCEM.Tests", "SistemaGestionCEM.Tests\SistemaGestionCEM.Tests.csproj", "{E11119C4-1141-4405-9639-FD086192BE36}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemeGestionCEM.Negocio", "SistemeGestionCEM.Negocio\SistemeGestionCEM.Negocio.csproj", "{B6BFF16A-2316-4A92-A649-47B4C1DEEC8A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaGestionCEM.Datos", "SistemaGestionCEM.Datos\SistemaGestionCEM.Datos.csproj", "{6E77FEDB-3793-466C-805B-BB1DFC5B4F36}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{E11119C4-1141-4405-9639-FD086192BE36}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E11119C4-1141-4405-9639-FD086192BE36}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E11119C4-1141-4405-9639-FD086192BE36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6BFF16A-2316-4A92-A649-47B4C1DEEC8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6BFF16A-2316-4A92-A649-47B4C1DEEC8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6BFF16A-2316-4A92-A649-47B4C1DEEC8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6BFF16A-2316-4A92-A649-47B4C1DEEC8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E77FEDB-3793-466C-805B-BB1DFC5B4F36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E77FEDB-3793-466C-805B-BB1DFC5B4F36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E77FEDB-3793-466C-805B-BB1DFC5B4F36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E77FEDB-3793-466C-805B-BB1DFC5B4F36}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
