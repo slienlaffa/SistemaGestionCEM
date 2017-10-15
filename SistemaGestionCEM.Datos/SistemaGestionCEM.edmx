@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Modelos.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Modelos.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ALUMNO">
           <Key>
             <PropertyRef Name="COD_ALUMNO" />
@@ -521,6 +521,333 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="ALUMNO_CRUD_ACTUALIZAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="ALUMNO_CRUD.ACTUALIZAR">
+          <Parameter Name="P_COD_ALUMNO" Type="number" Mode="In" />
+          <Parameter Name="P_FK_COD_PERSONA" Type="number" Mode="In" />
+          <Parameter Name="P_FECHA_NACIMIENTO" Type="date" Mode="In" />
+        </Function>
+        <Function Name="ALUMNO_CRUD_CREAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="ALUMNO_CRUD.CREAR">
+          <Parameter Name="P_COD_ALUMNO" Type="number" Mode="In" />
+          <Parameter Name="P_FK_COD_PERSONA" Type="number" Mode="In" />
+          <Parameter Name="P_FECHA_NACIMIENTO" Type="date" Mode="In" />
+        </Function>
+        <Function Name="ALUMNO_CRUD_ELIMINAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="ALUMNO_CRUD.ELIMINAR">
+          <Parameter Name="P_COD_ALUMNO" Type="number" Mode="In" />
+        </Function>
+        <Function Name="ANTECEDENTES_CRUD_ACTUALIZAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="ANTECEDENTES_CRUD.ACTUALIZAR">
+          <Parameter Name="P_FOTO3" Type="varchar2" Mode="In" />
+          <Parameter Name="P_FOTO2" Type="varchar2" Mode="In" />
+          <Parameter Name="P_FOTO1" Type="varchar2" Mode="In" />
+          <Parameter Name="P_CERT_LABORAL" Type="varchar2" Mode="In" />
+          <Parameter Name="P_COD_ANTECEDENTES" Type="number" Mode="In" />
+          <Parameter Name="P_CERT_RESIDENCIA" Type="varchar2" Mode="In" />
+          <Parameter Name="P_CERT_ANTECEDENTES" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="ANTECEDENTES_CRUD_CREAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="ANTECEDENTES_CRUD.CREAR">
+          <Parameter Name="P_FOTO3" Type="varchar2" Mode="In" />
+          <Parameter Name="P_FOTO2" Type="varchar2" Mode="In" />
+          <Parameter Name="P_FOTO1" Type="varchar2" Mode="In" />
+          <Parameter Name="P_CERT_LABORAL" Type="varchar2" Mode="In" />
+          <Parameter Name="P_COD_ANTECEDENTES" Type="number" Mode="In" />
+          <Parameter Name="P_CERT_RESIDENCIA" Type="varchar2" Mode="In" />
+          <Parameter Name="P_CERT_ANTECEDENTES" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="ANTECEDENTES_CRUD_ELIMINAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="ANTECEDENTES_CRUD.ELIMINAR">
+          <Parameter Name="P_COD_ANTECEDENTES" Type="number" Mode="In" />
+        </Function>
+        <Function Name="CENTRO_ESTUDIO_LOCAL_CRUD_ACTUALIZAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="CENTRO_ESTUDIO_LOCAL_CRUD.ACTUALIZAR">
+          <Parameter Name="P_DIRECCION" Type="varchar2" Mode="In" />
+          <Parameter Name="P_NOMBRE_CENTRO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_CORREO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_COD_CEL" Type="number" Mode="In" />
+          <Parameter Name="P_TELEFONO" Type="number" Mode="In" />
+          <Parameter Name="P_AREA_ESPECIALIZACION" Type="varchar2" Mode="In" />
+          <Parameter Name="P_DESCRIPCION" Type="varchar2" Mode="In" />
+          <Parameter Name="P_FK_COD_CIUDAD" Type="number" Mode="In" />
+          <Parameter Name="P_NOM_DIRECTOR" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="CENTRO_ESTUDIO_LOCAL_CRUD_CREAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="CENTRO_ESTUDIO_LOCAL_CRUD.CREAR">
+          <Parameter Name="P_DIRECCION" Type="varchar2" Mode="In" />
+          <Parameter Name="P_NOMBRE_CENTRO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_CORREO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_COD_CEL" Type="number" Mode="In" />
+          <Parameter Name="P_TELEFONO" Type="number" Mode="In" />
+          <Parameter Name="P_AREA_ESPECIALIZACION" Type="varchar2" Mode="In" />
+          <Parameter Name="P_DESCRIPCION" Type="varchar2" Mode="In" />
+          <Parameter Name="P_FK_COD_CIUDAD" Type="number" Mode="In" />
+          <Parameter Name="P_NOM_DIRECTOR" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="CENTRO_ESTUDIO_LOCAL_CRUD_ELIMINAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="CENTRO_ESTUDIO_LOCAL_CRUD.ELIMINAR">
+          <Parameter Name="P_COD_CEL" Type="number" Mode="In" />
+        </Function>
+        <Function Name="CIUDAD_CRUD_ACTUALIZAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="CIUDAD_CRUD.ACTUALIZAR">
+          <Parameter Name="P_COD_CIUDAD" Type="number" Mode="In" />
+          <Parameter Name="P_FK_COD_PAIS" Type="number" Mode="In" />
+          <Parameter Name="P_DESCRIPCION" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="CIUDAD_CRUD_CREAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="CIUDAD_CRUD.CREAR">
+          <Parameter Name="P_COD_CIUDAD" Type="number" Mode="In" />
+          <Parameter Name="P_FK_COD_PAIS" Type="number" Mode="In" />
+          <Parameter Name="P_DESCRIPCION" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="CIUDAD_CRUD_ELIMINAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="CIUDAD_CRUD.ELIMINAR">
+          <Parameter Name="P_COD_CIUDAD" Type="number" Mode="In" />
+        </Function>
+        <Function Name="DETALLE_ALUMNO_CRUD_ACTUALIZAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="DETALLE_ALUMNO_CRUD.ACTUALIZAR">
+          <Parameter Name="P_FK_COD_ALUMNO" Type="number" Mode="In" />
+          <Parameter Name="P_FK_COD_PROGRAMA" Type="number" Mode="In" />
+          <Parameter Name="P_ESTADO_ALUMNO" Type="char" Mode="In" />
+          <Parameter Name="P_COD_DETALUMNO" Type="number" Mode="In" />
+        </Function>
+        <Function Name="DETALLE_ALUMNO_CRUD_CREAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="DETALLE_ALUMNO_CRUD.CREAR">
+          <Parameter Name="P_FK_COD_ALUMNO" Type="number" Mode="In" />
+          <Parameter Name="P_FK_COD_PROGRAMA" Type="number" Mode="In" />
+          <Parameter Name="P_ESTADO_ALUMNO" Type="char" Mode="In" />
+          <Parameter Name="P_COD_DETALUMNO" Type="number" Mode="In" />
+        </Function>
+        <Function Name="DETALLE_ALUMNO_CRUD_ELIMINAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="DETALLE_ALUMNO_CRUD.ELIMINAR">
+          <Parameter Name="P_COD_DETALUMNO" Type="number" Mode="In" />
+        </Function>
+        <Function Name="DETALLE_NOTAS_CRUD_ACTUALIZAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="DETALLE_NOTAS_CRUD.ACTUALIZAR">
+          <Parameter Name="P_NOTA1" Type="number" Mode="In" />
+          <Parameter Name="P_COD_NOTAS" Type="number" Mode="In" />
+          <Parameter Name="P_NOTA2" Type="number" Mode="In" />
+          <Parameter Name="P_NOTA3" Type="number" Mode="In" />
+          <Parameter Name="P_NOTA4" Type="number" Mode="In" />
+          <Parameter Name="P_FK_COD_DETALUMNO" Type="number" Mode="In" />
+          <Parameter Name="P_PROMEDIO" Type="float" Mode="In" />
+        </Function>
+        <Function Name="DETALLE_NOTAS_CRUD_CREAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="DETALLE_NOTAS_CRUD.CREAR">
+          <Parameter Name="P_NOTA1" Type="number" Mode="In" />
+          <Parameter Name="P_COD_NOTAS" Type="number" Mode="In" />
+          <Parameter Name="P_NOTA2" Type="number" Mode="In" />
+          <Parameter Name="P_NOTA3" Type="number" Mode="In" />
+          <Parameter Name="P_NOTA4" Type="number" Mode="In" />
+          <Parameter Name="P_FK_COD_DETALUMNO" Type="number" Mode="In" />
+          <Parameter Name="P_PROMEDIO" Type="float" Mode="In" />
+        </Function>
+        <Function Name="DETALLE_NOTAS_CRUD_ELIMINAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="DETALLE_NOTAS_CRUD.ELIMINAR">
+          <Parameter Name="P_COD_NOTAS" Type="number" Mode="In" />
+        </Function>
+        <Function Name="ENCARGADO_CEL_CRUD_ACTUALIZAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="ENCARGADO_CEL_CRUD.ACTUALIZAR">
+          <Parameter Name="P_FK_COD_CEL" Type="number" Mode="In" />
+          <Parameter Name="P_FK_COD_PERSONA" Type="number" Mode="In" />
+          <Parameter Name="P_COD_ENCARGADOCEL" Type="number" Mode="In" />
+        </Function>
+        <Function Name="ENCARGADO_CEL_CRUD_CREAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="ENCARGADO_CEL_CRUD.CREAR">
+          <Parameter Name="P_FK_COD_CEL" Type="number" Mode="In" />
+          <Parameter Name="P_FK_COD_PERSONA" Type="number" Mode="In" />
+          <Parameter Name="P_COD_ENCARGADOCEL" Type="number" Mode="In" />
+        </Function>
+        <Function Name="ENCARGADO_CEL_CRUD_ELIMINAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="ENCARGADO_CEL_CRUD.ELIMINAR">
+          <Parameter Name="P_COD_ENCARGADOCEL" Type="number" Mode="In" />
+        </Function>
+        <Function Name="ENCARGADO_CEM_CRUD_ACTUALIZAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="ENCARGADO_CEM_CRUD.ACTUALIZAR">
+          <Parameter Name="P_FK_COD_PERSONA" Type="number" Mode="In" />
+          <Parameter Name="P_COD_ENCARGADOCEM" Type="number" Mode="In" />
+        </Function>
+        <Function Name="ENCARGADO_CEM_CRUD_CREAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="ENCARGADO_CEM_CRUD.CREAR">
+          <Parameter Name="P_FK_COD_PERSONA" Type="number" Mode="In" />
+          <Parameter Name="P_COD_ENCARGADOCEM" Type="number" Mode="In" />
+        </Function>
+        <Function Name="ENCARGADO_CEM_CRUD_ELIMINAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="ENCARGADO_CEM_CRUD.ELIMINAR">
+          <Parameter Name="P_COD_ENCARGADOCEM" Type="number" Mode="In" />
+        </Function>
+        <Function Name="ESTADO_POSTULACION_CRUD_ACTUALIZAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="ESTADO_POSTULACION_CRUD.ACTUALIZAR">
+          <Parameter Name="P_COD_ESTADO" Type="number" Mode="In" />
+          <Parameter Name="P_DESCRIPCION" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="ESTADO_POSTULACION_CRUD_CREAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="ESTADO_POSTULACION_CRUD.CREAR">
+          <Parameter Name="P_COD_ESTADO" Type="number" Mode="In" />
+          <Parameter Name="P_DESCRIPCION" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="ESTADO_POSTULACION_CRUD_ELIMINAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="ESTADO_POSTULACION_CRUD.ELIMINAR">
+          <Parameter Name="P_COD_ESTADO" Type="number" Mode="In" />
+        </Function>
+        <Function Name="FAMILIA_ANFITRIONA_CRUD_ACTUALIZAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="FAMILIA_ANFITRIONA_CRUD.ACTUALIZAR">
+          <Parameter Name="P_NUM_BANOS" Type="number" Mode="In" />
+          <Parameter Name="P_FK_COD_ANTECEDENTES" Type="number" Mode="In" />
+          <Parameter Name="P_COD_FAMILIA" Type="number" Mode="In" />
+          <Parameter Name="P_ANIO_INSCRIPCION" Type="number" Mode="In" />
+          <Parameter Name="P_NUM_HABITACIONES" Type="number" Mode="In" />
+          <Parameter Name="P_TIPO_VIVIENDA" Type="varchar2" Mode="In" />
+          <Parameter Name="P_NUM_INTEGRANTES" Type="number" Mode="In" />
+          <Parameter Name="P_FK_COD_PERSONA" Type="number" Mode="In" />
+          <Parameter Name="P_ESTACIONAMIENTO" Type="char" Mode="In" />
+          <Parameter Name="P_MASCOTA_DESCRIPCION" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="FAMILIA_ANFITRIONA_CRUD_CREAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="FAMILIA_ANFITRIONA_CRUD.CREAR">
+          <Parameter Name="P_NUM_BANOS" Type="number" Mode="In" />
+          <Parameter Name="P_FK_COD_ANTECEDENTES" Type="number" Mode="In" />
+          <Parameter Name="P_COD_FAMILIA" Type="number" Mode="In" />
+          <Parameter Name="P_ANIO_INSCRIPCION" Type="number" Mode="In" />
+          <Parameter Name="P_NUM_HABITACIONES" Type="number" Mode="In" />
+          <Parameter Name="P_TIPO_VIVIENDA" Type="varchar2" Mode="In" />
+          <Parameter Name="P_NUM_INTEGRANTES" Type="number" Mode="In" />
+          <Parameter Name="P_FK_COD_PERSONA" Type="number" Mode="In" />
+          <Parameter Name="P_ESTACIONAMIENTO" Type="char" Mode="In" />
+          <Parameter Name="P_MASCOTA_DESCRIPCION" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="FAMILIA_ANFITRIONA_CRUD_ELIMINAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="FAMILIA_ANFITRIONA_CRUD.ELIMINAR">
+          <Parameter Name="P_COD_FAMILIA" Type="number" Mode="In" />
+        </Function>
+        <Function Name="GENERO_CRUD_ACTUALIZAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="GENERO_CRUD.ACTUALIZAR">
+          <Parameter Name="P_COD_GENERO" Type="number" Mode="In" />
+          <Parameter Name="P_DESCRIPCION" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="GENERO_CRUD_CREAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="GENERO_CRUD.CREAR">
+          <Parameter Name="P_COD_GENERO" Type="number" Mode="In" />
+          <Parameter Name="P_DESCRIPCION" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="GENERO_CRUD_ELIMINAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="GENERO_CRUD.ELIMINAR">
+          <Parameter Name="P_COD_GENERO" Type="number" Mode="In" />
+        </Function>
+        <Function Name="PAIS_CRUD_ACTUALIZAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="PAIS_CRUD.ACTUALIZAR">
+          <Parameter Name="P_COD_PAIS" Type="number" Mode="In" />
+          <Parameter Name="P_DESCRIPCION" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="PAIS_CRUD_CREAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="PAIS_CRUD.CREAR">
+          <Parameter Name="P_COD_PAIS" Type="number" Mode="In" />
+          <Parameter Name="P_DESCRIPCION" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="PAIS_CRUD_ELIMINAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="PAIS_CRUD.ELIMINAR">
+          <Parameter Name="P_COD_PAIS" Type="number" Mode="In" />
+        </Function>
+        <Function Name="PERSONA_CRUD_ACTUALIZAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="PERSONA_CRUD.ACTUALIZAR">
+          <Parameter Name="P_APELLIDO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_CORREO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_COD_PERSONA" Type="number" Mode="In" />
+          <Parameter Name="P_TELEFONO" Type="number" Mode="In" />
+          <Parameter Name="P_FK_COD_USUARIO" Type="number" Mode="In" />
+          <Parameter Name="P_NACIONALIDAD" Type="varchar2" Mode="In" />
+          <Parameter Name="P_FK_COD_CIUDAD" Type="number" Mode="In" />
+          <Parameter Name="P_NOMBRE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_FK_COD_GENERO" Type="number" Mode="In" />
+        </Function>
+        <Function Name="PERSONA_CRUD_CREAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="PERSONA_CRUD.CREAR">
+          <Parameter Name="P_APELLIDO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_CORREO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_COD_PERSONA" Type="number" Mode="In" />
+          <Parameter Name="P_TELEFONO" Type="number" Mode="In" />
+          <Parameter Name="P_FK_COD_USUARIO" Type="number" Mode="In" />
+          <Parameter Name="P_NACIONALIDAD" Type="varchar2" Mode="In" />
+          <Parameter Name="P_FK_COD_CIUDAD" Type="number" Mode="In" />
+          <Parameter Name="P_NOMBRE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_FK_COD_GENERO" Type="number" Mode="In" />
+        </Function>
+        <Function Name="PERSONA_CRUD_ELIMINAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="PERSONA_CRUD.ELIMINAR">
+          <Parameter Name="P_COD_PERSONA" Type="number" Mode="In" />
+        </Function>
+        <Function Name="POSTULACION_ALUMNO_CRUD_ACTUALIZAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="POSTULACION_ALUMNO_CRUD.ACTUALIZAR">
+          <Parameter Name="P_DESC_PASAJE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_FK_COD_ALUMNO" Type="number" Mode="In" />
+          <Parameter Name="P_FK_COD_PROGRAMA" Type="number" Mode="In" />
+          <Parameter Name="P_FK_COD_ENCARGADOCEM" Type="number" Mode="In" />
+          <Parameter Name="P_FECHA" Type="date" Mode="In" />
+          <Parameter Name="P_FK_COD_FAMILIA" Type="number" Mode="In" />
+          <Parameter Name="P_COD_POSTULACION" Type="number" Mode="In" />
+          <Parameter Name="P_FK_COD_ESTADO" Type="number" Mode="In" />
+          <Parameter Name="P_SEGURO" Type="char" Mode="In" />
+        </Function>
+        <Function Name="POSTULACION_ALUMNO_CRUD_CREAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="POSTULACION_ALUMNO_CRUD.CREAR">
+          <Parameter Name="P_DESC_PASAJE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_FK_COD_ALUMNO" Type="number" Mode="In" />
+          <Parameter Name="P_FK_COD_PROGRAMA" Type="number" Mode="In" />
+          <Parameter Name="P_FK_COD_ENCARGADOCEM" Type="number" Mode="In" />
+          <Parameter Name="P_FECHA" Type="date" Mode="In" />
+          <Parameter Name="P_FK_COD_FAMILIA" Type="number" Mode="In" />
+          <Parameter Name="P_COD_POSTULACION" Type="number" Mode="In" />
+          <Parameter Name="P_FK_COD_ESTADO" Type="number" Mode="In" />
+          <Parameter Name="P_SEGURO" Type="char" Mode="In" />
+        </Function>
+        <Function Name="POSTULACION_ALUMNO_CRUD_ELIMINAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="POSTULACION_ALUMNO_CRUD.ELIMINAR">
+          <Parameter Name="P_COD_POSTULACION" Type="number" Mode="In" />
+        </Function>
+        <Function Name="POSTULACION_PROGRAMA_CRUD_ACTUALIZAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="POSTULACION_PROGRAMA_CRUD.ACTUALIZAR">
+          <Parameter Name="P_FK_COD_CEL" Type="number" Mode="In" />
+          <Parameter Name="P_FK_COD_PROGRAMA" Type="number" Mode="In" />
+          <Parameter Name="P_FK_COD_ENCARGADOCEM" Type="number" Mode="In" />
+          <Parameter Name="P_FECHA" Type="date" Mode="In" />
+          <Parameter Name="P_COD_POSTULACIONPROGRAMA" Type="number" Mode="In" />
+          <Parameter Name="P_FK_COD_ESTADO" Type="number" Mode="In" />
+        </Function>
+        <Function Name="POSTULACION_PROGRAMA_CRUD_CREAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="POSTULACION_PROGRAMA_CRUD.CREAR">
+          <Parameter Name="P_FK_COD_CEL" Type="number" Mode="In" />
+          <Parameter Name="P_FK_COD_PROGRAMA" Type="number" Mode="In" />
+          <Parameter Name="P_FK_COD_ENCARGADOCEM" Type="number" Mode="In" />
+          <Parameter Name="P_FECHA" Type="date" Mode="In" />
+          <Parameter Name="P_COD_POSTULACIONPROGRAMA" Type="number" Mode="In" />
+          <Parameter Name="P_FK_COD_ESTADO" Type="number" Mode="In" />
+        </Function>
+        <Function Name="POSTULACION_PROGRAMA_CRUD_ELIMINAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="POSTULACION_PROGRAMA_CRUD.ELIMINAR">
+          <Parameter Name="P_COD_POSTULACIONPROGRAMA" Type="number" Mode="In" />
+        </Function>
+        <Function Name="PROGRAMA_ESTUDIO_CRUD_ACTUALIZAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="PROGRAMA_ESTUDIO_CRUD.ACTUALIZAR">
+          <Parameter Name="P_FECHA_LIMITE_POSTULACION" Type="date" Mode="In" />
+          <Parameter Name="P_NUM_MIN_ALUMNO" Type="number" Mode="In" />
+          <Parameter Name="P_FK_COD_TIPOPROGRAMA" Type="number" Mode="In" />
+          <Parameter Name="P_FK_COD_ENCARGADOCEM" Type="number" Mode="In" />
+          <Parameter Name="P_COD_PROGRAMA" Type="number" Mode="In" />
+          <Parameter Name="P_DURACION" Type="varchar2" Mode="In" />
+          <Parameter Name="P_AREA_CONOCIMIENTO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_NUM_MAX_ALUMNO" Type="number" Mode="In" />
+          <Parameter Name="P_FK_COD_PAIS" Type="number" Mode="In" />
+          <Parameter Name="P_DESCRIPCION" Type="varchar2" Mode="In" />
+          <Parameter Name="P_NOMBRE_PROGRAMA" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="PROGRAMA_ESTUDIO_CRUD_CREAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="PROGRAMA_ESTUDIO_CRUD.CREAR">
+          <Parameter Name="P_FECHA_LIMITE_POSTULACION" Type="date" Mode="In" />
+          <Parameter Name="P_NUM_MIN_ALUMNO" Type="number" Mode="In" />
+          <Parameter Name="P_FK_COD_TIPOPROGRAMA" Type="number" Mode="In" />
+          <Parameter Name="P_FK_COD_ENCARGADOCEM" Type="number" Mode="In" />
+          <Parameter Name="P_COD_PROGRAMA" Type="number" Mode="In" />
+          <Parameter Name="P_DURACION" Type="varchar2" Mode="In" />
+          <Parameter Name="P_AREA_CONOCIMIENTO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_NUM_MAX_ALUMNO" Type="number" Mode="In" />
+          <Parameter Name="P_FK_COD_PAIS" Type="number" Mode="In" />
+          <Parameter Name="P_DESCRIPCION" Type="varchar2" Mode="In" />
+          <Parameter Name="P_NOMBRE_PROGRAMA" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="PROGRAMA_ESTUDIO_CRUD_ELIMINAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="PROGRAMA_ESTUDIO_CRUD.ELIMINAR">
+          <Parameter Name="P_COD_PROGRAMA" Type="number" Mode="In" />
+        </Function>
+        <Function Name="TIPO_PROGRAMA_CRUD_ACTUALIZAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="TIPO_PROGRAMA_CRUD.ACTUALIZAR">
+          <Parameter Name="P_COD_TIPOPROGRAMA" Type="number" Mode="In" />
+          <Parameter Name="P_DESCRIPCION" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="TIPO_PROGRAMA_CRUD_CREAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="TIPO_PROGRAMA_CRUD.CREAR">
+          <Parameter Name="P_COD_TIPOPROGRAMA" Type="number" Mode="In" />
+          <Parameter Name="P_DESCRIPCION" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="TIPO_PROGRAMA_CRUD_ELIMINAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="TIPO_PROGRAMA_CRUD.ELIMINAR">
+          <Parameter Name="P_COD_TIPOPROGRAMA" Type="number" Mode="In" />
+        </Function>
+        <Function Name="TIPO_USUARIO_CRUD_ACTUALIZAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="TIPO_USUARIO_CRUD.ACTUALIZAR">
+          <Parameter Name="P_DESCRIPCION" Type="varchar2" Mode="In" />
+          <Parameter Name="P_COD_TIPO" Type="number" Mode="In" />
+        </Function>
+        <Function Name="TIPO_USUARIO_CRUD_CREAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="TIPO_USUARIO_CRUD.CREAR">
+          <Parameter Name="P_DESCRIPCION" Type="varchar2" Mode="In" />
+          <Parameter Name="P_COD_TIPO" Type="number" Mode="In" />
+        </Function>
+        <Function Name="TIPO_USUARIO_CRUD_ELIMINAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="TIPO_USUARIO_CRUD.ELIMINAR">
+          <Parameter Name="P_COD_TIPO" Type="number" Mode="In" />
+        </Function>
+        <Function Name="USUARIO_CRUD_ACTUALIZAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="USUARIO_CRUD.ACTUALIZAR">
+          <Parameter Name="P_CONTRASENNA" Type="varchar2" Mode="In" />
+          <Parameter Name="P_COD_USUARIO" Type="number" Mode="In" />
+          <Parameter Name="P_NOMBRE_USUARIO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_FK_COD_TIPO" Type="number" Mode="In" />
+        </Function>
+        <Function Name="USUARIO_CRUD_CREAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="USUARIO_CRUD.CREAR">
+          <Parameter Name="P_CONTRASENNA" Type="varchar2" Mode="In" />
+          <Parameter Name="P_COD_USUARIO" Type="number" Mode="In" />
+          <Parameter Name="P_NOMBRE_USUARIO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_FK_COD_TIPO" Type="number" Mode="In" />
+        </Function>
+        <Function Name="USUARIO_CRUD_ELIMINAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GRUPO1" StoreFunctionName="USUARIO_CRUD.ELIMINAR">
+          <Parameter Name="P_COD_USUARIO" Type="number" Mode="In" />
+        </Function>
         <EntityContainer Name="ModelosStoreContainer">
           <EntitySet Name="ALUMNO" EntityType="Self.ALUMNO" Schema="GRUPO1" store:Type="Tables" />
           <EntitySet Name="ANTECEDENTES" EntityType="Self.ANTECEDENTES" Schema="GRUPO1" store:Type="Tables" />
@@ -650,8 +977,7 @@
             <End Role="USUARIO" EntitySet="USUARIO" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Modelos" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1381,6 +1707,31 @@
                 <ScalarProperty Name="CERT_LABORAL" ColumnName="CERT_LABORAL" />
               </MappingFragment>
             </EntityTypeMapping>
+            <EntityTypeMapping TypeName="Modelos.ANTECEDENTES">
+              <ModificationFunctionMapping>
+                <UpdateFunction FunctionName="Modelos.Store.ANTECEDENTES_CRUD_ACTUALIZAR" >
+                  <ScalarProperty Name="CERT_ANTECEDENTES" ParameterName="P_CERT_ANTECEDENTES" Version="Current" />
+                  <ScalarProperty Name="CERT_RESIDENCIA" ParameterName="P_CERT_RESIDENCIA" Version="Current" />
+                  <ScalarProperty Name="COD_ANTECEDENTES" ParameterName="P_COD_ANTECEDENTES" Version="Current" />
+                  <ScalarProperty Name="CERT_LABORAL" ParameterName="P_CERT_LABORAL" Version="Current" />
+                  <ScalarProperty Name="FOTO1" ParameterName="P_FOTO1" Version="Current" />
+                  <ScalarProperty Name="FOTO2" ParameterName="P_FOTO2" Version="Current" />
+                  <ScalarProperty Name="FOTO3" ParameterName="P_FOTO3" Version="Current" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="Modelos.Store.ANTECEDENTES_CRUD_ELIMINAR" >
+                  <ScalarProperty Name="COD_ANTECEDENTES" ParameterName="P_COD_ANTECEDENTES" />
+                </DeleteFunction>
+                <InsertFunction FunctionName="Modelos.Store.ANTECEDENTES_CRUD_CREAR" >
+                  <ScalarProperty Name="FOTO3" ParameterName="P_FOTO3" />
+                  <ScalarProperty Name="FOTO2" ParameterName="P_FOTO2" />
+                  <ScalarProperty Name="FOTO1" ParameterName="P_FOTO1" />
+                  <ScalarProperty Name="CERT_LABORAL" ParameterName="P_CERT_LABORAL" />
+                  <ScalarProperty Name="COD_ANTECEDENTES" ParameterName="P_COD_ANTECEDENTES" />
+                  <ScalarProperty Name="CERT_RESIDENCIA" ParameterName="P_CERT_RESIDENCIA" />
+                  <ScalarProperty Name="CERT_ANTECEDENTES" ParameterName="P_CERT_ANTECEDENTES" />
+                </InsertFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CENTRO_ESTUDIO_LOCAL">
             <EntityTypeMapping TypeName="Modelos.CENTRO_ESTUDIO_LOCAL">
@@ -1560,6 +1911,21 @@
                 <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
               </MappingFragment>
             </EntityTypeMapping>
+            <EntityTypeMapping TypeName="Modelos.TIPO_USUARIO">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="Modelos.Store.TIPO_USUARIO_CRUD_CREAR" >
+                  <ScalarProperty Name="COD_TIPO" ParameterName="P_COD_TIPO" />
+                  <ScalarProperty Name="DESCRIPCION" ParameterName="P_DESCRIPCION" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="Modelos.Store.TIPO_USUARIO_CRUD_ACTUALIZAR" >
+                  <ScalarProperty Name="COD_TIPO" ParameterName="P_COD_TIPO" Version="Current" />
+                  <ScalarProperty Name="DESCRIPCION" ParameterName="P_DESCRIPCION" Version="Current" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="Modelos.Store.TIPO_USUARIO_CRUD_ELIMINAR" >
+                  <ScalarProperty Name="COD_TIPO" ParameterName="P_COD_TIPO" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="USUARIO">
             <EntityTypeMapping TypeName="Modelos.USUARIO">
@@ -1569,6 +1935,25 @@
                 <ScalarProperty Name="CONTRASENNA" ColumnName="CONTRASENNA" />
                 <ScalarProperty Name="FK_COD_TIPO" ColumnName="FK_COD_TIPO" />
               </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="Modelos.USUARIO">
+              <ModificationFunctionMapping>
+                <UpdateFunction FunctionName="Modelos.Store.USUARIO_CRUD_ACTUALIZAR" >
+                  <ScalarProperty Name="FK_COD_TIPO" ParameterName="P_FK_COD_TIPO" Version="Current" />
+                  <ScalarProperty Name="NOMBRE_USUARIO" ParameterName="P_NOMBRE_USUARIO" Version="Current" />
+                  <ScalarProperty Name="COD_USUARIO" ParameterName="P_COD_USUARIO" Version="Current" />
+                  <ScalarProperty Name="CONTRASENNA" ParameterName="P_CONTRASENNA" Version="Current" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="Modelos.Store.USUARIO_CRUD_ELIMINAR" >
+                  <ScalarProperty Name="COD_USUARIO" ParameterName="P_COD_USUARIO" />
+                </DeleteFunction>
+                <InsertFunction FunctionName="Modelos.Store.USUARIO_CRUD_CREAR" >
+                  <ScalarProperty Name="FK_COD_TIPO" ParameterName="P_FK_COD_TIPO" />
+                  <ScalarProperty Name="NOMBRE_USUARIO" ParameterName="P_NOMBRE_USUARIO" />
+                  <ScalarProperty Name="COD_USUARIO" ParameterName="P_COD_USUARIO" />
+                  <ScalarProperty Name="CONTRASENNA" ParameterName="P_CONTRASENNA" />
+                </InsertFunction>
+              </ModificationFunctionMapping>
             </EntityTypeMapping>
           </EntitySetMapping>
         </EntityContainerMapping>

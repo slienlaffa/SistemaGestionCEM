@@ -286,9 +286,9 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SistemeGestionCEM.Negocio\SistemeGestionCEM.Negocio.csproj">
-      <Project>{b6bff16a-2316-4a92-a649-47b4c1deec8a}</Project>
-      <Name>SistemeGestionCEM.Negocio</Name>
+    <ProjectReference Include="..\SistemaGestionCEM.Datos\SistemaGestionCEM.Datos.csproj">
+      <Project>{6e77fedb-3793-466c-805b-bb1dfc5b4f36}</Project>
+      <Name>SistemaGestionCEM.Datos</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
