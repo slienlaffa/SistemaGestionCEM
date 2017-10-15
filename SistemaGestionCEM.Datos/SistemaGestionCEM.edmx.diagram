@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0710a7f19c5a4315b474c8e764f8bab2" Name="Diagram1">
+        <EntityTypeShape EntityType="Modelos.ALUMNO" Width="1.5" PointX="10.5" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Modelos.ANTECEDENTES" Width="1.5" PointX="13.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Modelos.CENTRO_ESTUDIO_LOCAL" Width="1.5" PointX="5.25" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Modelos.CIUDAD" Width="1.5" PointX="3" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="Modelos.DETALLE_ALUMNO" Width="1.5" PointX="12.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Modelos.DETALLE_NOTAS" Width="1.5" PointX="15" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Modelos.ENCARGADO_CEL" Width="1.5" PointX="7.5" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="Modelos.ENCARGADO_CEM" Width="1.5" PointX="10.5" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Modelos.ESTADO_POSTULACION" Width="1.5" PointX="10.5" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Modelos.FAMILIA_ANFITRIONA" Width="1.5" PointX="15.5" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Modelos.GENERO" Width="1.5" PointX="6" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Modelos.PAIS" Width="1.5" PointX="0.75" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Modelos.PERSONA" Width="1.5" PointX="8.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="Modelos.POSTULACION_ALUMNO" Width="1.5" PointX="12.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Modelos.POSTULACION_PROGRAMA" Width="1.5" PointX="10.5" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Modelos.PROGRAMA_ESTUDIO" Width="1.5" PointX="12.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Modelos.TIPO_PROGRAMA" Width="1.5" PointX="10.5" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="Modelos.TIPO_USUARIO" Width="1.5" PointX="3.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Modelos.USUARIO" Width="1.5" PointX="6" PointY="4.125" IsExpanded="true" />
+        <AssociationConnector Association="Modelos.ALUMNO_PERSONA_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Modelos.DETALUM_ALUMNO_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Modelos.POSTALUMNO_ALUMNO_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Modelos.FAMILIA__ANTECEDENTES_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Modelos.CEL_CIUDAD_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Modelos.ENCEL_CEL_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Modelos.POSTPROGRAMA_CEL_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Modelos.CIUDAD_PAIS_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Modelos.PERSONA_CIUDAD_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Modelos.DETALUM_PROGRAMA_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Modelos.NOTAS_DETALUMNO_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Modelos.ENCEL_PERSONA_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Modelos.ENCEM_PERSONA_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Modelos.POSTALUMNO_ENCEM_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Modelos.POSTPROGRAMA_ENCEM_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Modelos.PROGRAMA_ENCEM_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Modelos.POSTALUMNO_ESTADO_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Modelos.POSTPROGRAMA_ESTADO_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Modelos.FAMILIA_PERSONA_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Modelos.POSTUALUMNO_FAMILIA_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Modelos.PERSONA_GENERO_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Modelos.PROGRAMA_PAIS_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Modelos.PERSONA_USUARIO_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Modelos.POSTALUMNO_PROGRAMA_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Modelos.POSTPROGRAMA_PROGRAMA_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Modelos.PROGRAMA_TIPO_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Modelos.USUARIO_TIPO_FK" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
