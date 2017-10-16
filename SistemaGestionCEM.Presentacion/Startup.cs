@@ -9,7 +9,7 @@ namespace SistemaGestionCEM.Presentacion
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
-            // Cambio
+            // Cambio 2
         }
     }
 }
