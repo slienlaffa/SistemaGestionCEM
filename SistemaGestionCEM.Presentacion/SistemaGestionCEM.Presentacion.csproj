@@ -187,6 +187,11 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\WS_Alumno\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\WS_Autentificacion\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -215,9 +220,28 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <None Include="Service References\WS_Alumno\service.wsdl" />
+    <None Include="Service References\WS_Alumno\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WS_Alumno\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WS_Alumno\SistemaGestionCEM.Datos.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Service References\WS_Alumno\SistemaGestionCEM.Presentacion.WS_Alumno.PROGRAMA_ESTUDIO1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\WS_Autentificacion\configuration91.svcinfo" />
     <None Include="Service References\WS_Autentificacion\configuration.svcinfo" />
     <None Include="Service References\WS_Autentificacion\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\WS_Alumno\configuration91.svcinfo" />
+    <None Include="Service References\WS_Alumno\configuration.svcinfo" />
+    <None Include="Service References\WS_Alumno\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -284,6 +308,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\WS_Alumno\" />
     <WCFMetadataStorage Include="Service References\WS_Autentificacion\" />
   </ItemGroup>
   <ItemGroup>

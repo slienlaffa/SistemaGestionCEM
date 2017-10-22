@@ -14,6 +14,8 @@ namespace SistemaGestionCEM.Presentacion.Controllers
         {
             AutentificacionClient web_service = new AutentificacionClient();
             @ViewBag.Message = web_service.Login("gato", "perro");
+            WS_Alumno.AlumnoClient aa = new WS_Alumno.AlumnoClient();
+            aa.ListarProgramasPublicados();
             return View();
         }
 
