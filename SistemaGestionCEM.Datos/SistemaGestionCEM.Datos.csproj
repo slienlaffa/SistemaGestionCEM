@@ -71,7 +71,6 @@
     <Compile Include="CIUDAD.cs">
       <DependentUpon>SistemaGestionCEM.tt</DependentUpon>
     </Compile>
-    <Compile Include="Class1.cs" />
     <Compile Include="DETALLE_ALUMNO.cs">
       <DependentUpon>SistemaGestionCEM.tt</DependentUpon>
     </Compile>

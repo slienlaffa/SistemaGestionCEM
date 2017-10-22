@@ -1,0 +1,327 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/SistemaGestionCEM.Datos" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/SistemaGestionCEM.Datos" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="USUARIO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="COD_USUARIO" type="xs:decimal" />
+      <xs:element minOccurs="0" name="CONTRASENNA" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FK_COD_TIPO" type="xs:decimal" />
+      <xs:element minOccurs="0" name="NOMBRE_USUARIO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PERSONA" nillable="true" type="tns:ArrayOfPERSONA" />
+      <xs:element minOccurs="0" name="TIPO_USUARIO" nillable="true" type="tns:TIPO_USUARIO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="USUARIO" nillable="true" type="tns:USUARIO" />
+  <xs:complexType name="ArrayOfPERSONA">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PERSONA" nillable="true" type="tns:PERSONA" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPERSONA" nillable="true" type="tns:ArrayOfPERSONA" />
+  <xs:complexType name="PERSONA">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ALUMNO" nillable="true" type="tns:ArrayOfALUMNO" />
+      <xs:element minOccurs="0" name="APELLIDO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CIUDAD" nillable="true" type="tns:CIUDAD" />
+      <xs:element minOccurs="0" name="COD_PERSONA" type="xs:decimal" />
+      <xs:element minOccurs="0" name="CORREO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ENCARGADO_CEL" nillable="true" type="tns:ArrayOfENCARGADO_CEL" />
+      <xs:element minOccurs="0" name="ENCARGADO_CEM" nillable="true" type="tns:ArrayOfENCARGADO_CEM" />
+      <xs:element minOccurs="0" name="FAMILIA_ANFITRIONA" nillable="true" type="tns:ArrayOfFAMILIA_ANFITRIONA" />
+      <xs:element minOccurs="0" name="FK_COD_CIUDAD" type="xs:decimal" />
+      <xs:element minOccurs="0" name="FK_COD_GENERO" type="xs:decimal" />
+      <xs:element minOccurs="0" name="FK_COD_USUARIO" type="xs:decimal" />
+      <xs:element minOccurs="0" name="GENERO" nillable="true" type="tns:GENERO" />
+      <xs:element minOccurs="0" name="NACIONALIDAD" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NOMBRE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TELEFONO" type="xs:decimal" />
+      <xs:element minOccurs="0" name="USUARIO" nillable="true" type="tns:USUARIO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PERSONA" nillable="true" type="tns:PERSONA" />
+  <xs:complexType name="ArrayOfALUMNO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ALUMNO" nillable="true" type="tns:ALUMNO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfALUMNO" nillable="true" type="tns:ArrayOfALUMNO" />
+  <xs:complexType name="ALUMNO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="COD_ALUMNO" type="xs:decimal" />
+      <xs:element minOccurs="0" name="DETALLE_ALUMNO" nillable="true" type="tns:ArrayOfDETALLE_ALUMNO" />
+      <xs:element minOccurs="0" name="FECHA_NACIMIENTO" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FK_COD_PERSONA" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PERSONA" nillable="true" type="tns:PERSONA" />
+      <xs:element minOccurs="0" name="POSTULACION_ALUMNO" nillable="true" type="tns:ArrayOfPOSTULACION_ALUMNO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ALUMNO" nillable="true" type="tns:ALUMNO" />
+  <xs:complexType name="ArrayOfDETALLE_ALUMNO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DETALLE_ALUMNO" nillable="true" type="tns:DETALLE_ALUMNO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDETALLE_ALUMNO" nillable="true" type="tns:ArrayOfDETALLE_ALUMNO" />
+  <xs:complexType name="DETALLE_ALUMNO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ALUMNO" nillable="true" type="tns:ALUMNO" />
+      <xs:element minOccurs="0" name="COD_DETALUMNO" type="xs:decimal" />
+      <xs:element minOccurs="0" name="DETALLE_NOTAS" nillable="true" type="tns:ArrayOfDETALLE_NOTAS" />
+      <xs:element minOccurs="0" name="ESTADO_ALUMNO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FK_COD_ALUMNO" type="xs:decimal" />
+      <xs:element minOccurs="0" name="FK_COD_PROGRAMA" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PROGRAMA_ESTUDIO" nillable="true" type="tns:PROGRAMA_ESTUDIO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DETALLE_ALUMNO" nillable="true" type="tns:DETALLE_ALUMNO" />
+  <xs:complexType name="ArrayOfDETALLE_NOTAS">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DETALLE_NOTAS" nillable="true" type="tns:DETALLE_NOTAS" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDETALLE_NOTAS" nillable="true" type="tns:ArrayOfDETALLE_NOTAS" />
+  <xs:complexType name="DETALLE_NOTAS">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="COD_NOTAS" type="xs:decimal" />
+      <xs:element minOccurs="0" name="DETALLE_ALUMNO" nillable="true" type="tns:DETALLE_ALUMNO" />
+      <xs:element minOccurs="0" name="FK_COD_DETALUMNO" type="xs:decimal" />
+      <xs:element minOccurs="0" name="NOTA1" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="NOTA2" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="NOTA3" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="NOTA4" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PROMEDIO" nillable="true" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DETALLE_NOTAS" nillable="true" type="tns:DETALLE_NOTAS" />
+  <xs:complexType name="PROGRAMA_ESTUDIO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AREA_CONOCIMIENTO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="COD_PROGRAMA" type="xs:decimal" />
+      <xs:element minOccurs="0" name="DESCRIPCION" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DETALLE_ALUMNO" nillable="true" type="tns:ArrayOfDETALLE_ALUMNO" />
+      <xs:element minOccurs="0" name="DURACION" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ENCARGADO_CEM" nillable="true" type="tns:ENCARGADO_CEM" />
+      <xs:element minOccurs="0" name="FECHA_LIMITE_POSTULACION" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FK_COD_ENCARGADOCEM" type="xs:decimal" />
+      <xs:element minOccurs="0" name="FK_COD_PAIS" type="xs:decimal" />
+      <xs:element minOccurs="0" name="FK_COD_TIPOPROGRAMA" type="xs:decimal" />
+      <xs:element minOccurs="0" name="NOMBRE_PROGRAMA" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NUM_MAX_ALUMNO" type="xs:decimal" />
+      <xs:element minOccurs="0" name="NUM_MIN_ALUMNO" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PAIS" nillable="true" type="tns:PAIS" />
+      <xs:element minOccurs="0" name="POSTULACION_ALUMNO" nillable="true" type="tns:ArrayOfPOSTULACION_ALUMNO" />
+      <xs:element minOccurs="0" name="POSTULACION_PROGRAMA" nillable="true" type="tns:ArrayOfPOSTULACION_PROGRAMA" />
+      <xs:element minOccurs="0" name="TIPO_PROGRAMA" nillable="true" type="tns:TIPO_PROGRAMA" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PROGRAMA_ESTUDIO" nillable="true" type="tns:PROGRAMA_ESTUDIO" />
+  <xs:complexType name="ENCARGADO_CEM">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="COD_ENCARGADOCEM" type="xs:decimal" />
+      <xs:element minOccurs="0" name="FK_COD_PERSONA" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PERSONA" nillable="true" type="tns:PERSONA" />
+      <xs:element minOccurs="0" name="POSTULACION_ALUMNO" nillable="true" type="tns:ArrayOfPOSTULACION_ALUMNO" />
+      <xs:element minOccurs="0" name="POSTULACION_PROGRAMA" nillable="true" type="tns:ArrayOfPOSTULACION_PROGRAMA" />
+      <xs:element minOccurs="0" name="PROGRAMA_ESTUDIO" nillable="true" type="tns:ArrayOfPROGRAMA_ESTUDIO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ENCARGADO_CEM" nillable="true" type="tns:ENCARGADO_CEM" />
+  <xs:complexType name="ArrayOfPOSTULACION_ALUMNO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="POSTULACION_ALUMNO" nillable="true" type="tns:POSTULACION_ALUMNO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPOSTULACION_ALUMNO" nillable="true" type="tns:ArrayOfPOSTULACION_ALUMNO" />
+  <xs:complexType name="POSTULACION_ALUMNO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ALUMNO" nillable="true" type="tns:ALUMNO" />
+      <xs:element minOccurs="0" name="COD_POSTULACION" type="xs:decimal" />
+      <xs:element minOccurs="0" name="DESC_PASAJE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ENCARGADO_CEM" nillable="true" type="tns:ENCARGADO_CEM" />
+      <xs:element minOccurs="0" name="ESTADO_POSTULACION" nillable="true" type="tns:ESTADO_POSTULACION" />
+      <xs:element minOccurs="0" name="FAMILIA_ANFITRIONA" nillable="true" type="tns:FAMILIA_ANFITRIONA" />
+      <xs:element minOccurs="0" name="FECHA" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FK_COD_ALUMNO" type="xs:decimal" />
+      <xs:element minOccurs="0" name="FK_COD_ENCARGADOCEM" type="xs:decimal" />
+      <xs:element minOccurs="0" name="FK_COD_ESTADO" type="xs:decimal" />
+      <xs:element minOccurs="0" name="FK_COD_FAMILIA" type="xs:decimal" />
+      <xs:element minOccurs="0" name="FK_COD_PROGRAMA" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PROGRAMA_ESTUDIO" nillable="true" type="tns:PROGRAMA_ESTUDIO" />
+      <xs:element minOccurs="0" name="SEGURO" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="POSTULACION_ALUMNO" nillable="true" type="tns:POSTULACION_ALUMNO" />
+  <xs:complexType name="ESTADO_POSTULACION">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="COD_ESTADO" type="xs:decimal" />
+      <xs:element minOccurs="0" name="DESCRIPCION" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="POSTULACION_ALUMNO" nillable="true" type="tns:ArrayOfPOSTULACION_ALUMNO" />
+      <xs:element minOccurs="0" name="POSTULACION_PROGRAMA" nillable="true" type="tns:ArrayOfPOSTULACION_PROGRAMA" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ESTADO_POSTULACION" nillable="true" type="tns:ESTADO_POSTULACION" />
+  <xs:complexType name="ArrayOfPOSTULACION_PROGRAMA">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="POSTULACION_PROGRAMA" nillable="true" type="tns:POSTULACION_PROGRAMA" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPOSTULACION_PROGRAMA" nillable="true" type="tns:ArrayOfPOSTULACION_PROGRAMA" />
+  <xs:complexType name="POSTULACION_PROGRAMA">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CENTRO_ESTUDIO_LOCAL" nillable="true" type="tns:CENTRO_ESTUDIO_LOCAL" />
+      <xs:element minOccurs="0" name="COD_POSTULACIONPROGRAMA" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ENCARGADO_CEM" nillable="true" type="tns:ENCARGADO_CEM" />
+      <xs:element minOccurs="0" name="ESTADO_POSTULACION" nillable="true" type="tns:ESTADO_POSTULACION" />
+      <xs:element minOccurs="0" name="FECHA" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FK_COD_CEL" type="xs:decimal" />
+      <xs:element minOccurs="0" name="FK_COD_ENCARGADOCEM" type="xs:decimal" />
+      <xs:element minOccurs="0" name="FK_COD_ESTADO" type="xs:decimal" />
+      <xs:element minOccurs="0" name="FK_COD_PROGRAMA" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PROGRAMA_ESTUDIO" nillable="true" type="tns:PROGRAMA_ESTUDIO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="POSTULACION_PROGRAMA" nillable="true" type="tns:POSTULACION_PROGRAMA" />
+  <xs:complexType name="CENTRO_ESTUDIO_LOCAL">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AREA_ESPECIALIZACION" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CIUDAD" nillable="true" type="tns:CIUDAD" />
+      <xs:element minOccurs="0" name="COD_CEL" type="xs:decimal" />
+      <xs:element minOccurs="0" name="CORREO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DESCRIPCION" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DIRECCION" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ENCARGADO_CEL" nillable="true" type="tns:ArrayOfENCARGADO_CEL" />
+      <xs:element minOccurs="0" name="FK_COD_CIUDAD" type="xs:decimal" />
+      <xs:element minOccurs="0" name="NOMBRE_CENTRO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NOM_DIRECTOR" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="POSTULACION_PROGRAMA" nillable="true" type="tns:ArrayOfPOSTULACION_PROGRAMA" />
+      <xs:element minOccurs="0" name="TELEFONO" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CENTRO_ESTUDIO_LOCAL" nillable="true" type="tns:CENTRO_ESTUDIO_LOCAL" />
+  <xs:complexType name="CIUDAD">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CENTRO_ESTUDIO_LOCAL" nillable="true" type="tns:ArrayOfCENTRO_ESTUDIO_LOCAL" />
+      <xs:element minOccurs="0" name="COD_CIUDAD" type="xs:decimal" />
+      <xs:element minOccurs="0" name="DESCRIPCION" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FK_COD_PAIS" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PAIS" nillable="true" type="tns:PAIS" />
+      <xs:element minOccurs="0" name="PERSONA" nillable="true" type="tns:ArrayOfPERSONA" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CIUDAD" nillable="true" type="tns:CIUDAD" />
+  <xs:complexType name="ArrayOfCENTRO_ESTUDIO_LOCAL">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CENTRO_ESTUDIO_LOCAL" nillable="true" type="tns:CENTRO_ESTUDIO_LOCAL" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCENTRO_ESTUDIO_LOCAL" nillable="true" type="tns:ArrayOfCENTRO_ESTUDIO_LOCAL" />
+  <xs:complexType name="PAIS">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CIUDAD" nillable="true" type="tns:ArrayOfCIUDAD" />
+      <xs:element minOccurs="0" name="COD_PAIS" type="xs:decimal" />
+      <xs:element minOccurs="0" name="DESCRIPCION" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PROGRAMA_ESTUDIO" nillable="true" type="tns:ArrayOfPROGRAMA_ESTUDIO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PAIS" nillable="true" type="tns:PAIS" />
+  <xs:complexType name="ArrayOfCIUDAD">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CIUDAD" nillable="true" type="tns:CIUDAD" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCIUDAD" nillable="true" type="tns:ArrayOfCIUDAD" />
+  <xs:complexType name="ArrayOfPROGRAMA_ESTUDIO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PROGRAMA_ESTUDIO" nillable="true" type="tns:PROGRAMA_ESTUDIO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPROGRAMA_ESTUDIO" nillable="true" type="tns:ArrayOfPROGRAMA_ESTUDIO" />
+  <xs:complexType name="ArrayOfENCARGADO_CEL">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ENCARGADO_CEL" nillable="true" type="tns:ENCARGADO_CEL" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfENCARGADO_CEL" nillable="true" type="tns:ArrayOfENCARGADO_CEL" />
+  <xs:complexType name="ENCARGADO_CEL">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CENTRO_ESTUDIO_LOCAL" nillable="true" type="tns:CENTRO_ESTUDIO_LOCAL" />
+      <xs:element minOccurs="0" name="COD_ENCARGADOCEL" type="xs:decimal" />
+      <xs:element minOccurs="0" name="FK_COD_CEL" type="xs:decimal" />
+      <xs:element minOccurs="0" name="FK_COD_PERSONA" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PERSONA" nillable="true" type="tns:PERSONA" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ENCARGADO_CEL" nillable="true" type="tns:ENCARGADO_CEL" />
+  <xs:complexType name="FAMILIA_ANFITRIONA">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ANIO_INSCRIPCION" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ANTECEDENTES" nillable="true" type="tns:ANTECEDENTES" />
+      <xs:element minOccurs="0" name="COD_FAMILIA" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ESTACIONAMIENTO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FK_COD_ANTECEDENTES" type="xs:decimal" />
+      <xs:element minOccurs="0" name="FK_COD_PERSONA" type="xs:decimal" />
+      <xs:element minOccurs="0" name="MASCOTA_DESCRIPCION" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NUM_BANOS" type="xs:decimal" />
+      <xs:element minOccurs="0" name="NUM_HABITACIONES" type="xs:decimal" />
+      <xs:element minOccurs="0" name="NUM_INTEGRANTES" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PERSONA" nillable="true" type="tns:PERSONA" />
+      <xs:element minOccurs="0" name="POSTULACION_ALUMNO" nillable="true" type="tns:ArrayOfPOSTULACION_ALUMNO" />
+      <xs:element minOccurs="0" name="TIPO_VIVIENDA" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FAMILIA_ANFITRIONA" nillable="true" type="tns:FAMILIA_ANFITRIONA" />
+  <xs:complexType name="ANTECEDENTES">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CERT_ANTECEDENTES" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CERT_LABORAL" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CERT_RESIDENCIA" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="COD_ANTECEDENTES" type="xs:decimal" />
+      <xs:element minOccurs="0" name="FAMILIA_ANFITRIONA" nillable="true" type="tns:ArrayOfFAMILIA_ANFITRIONA" />
+      <xs:element minOccurs="0" name="FOTO1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FOTO2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FOTO3" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ANTECEDENTES" nillable="true" type="tns:ANTECEDENTES" />
+  <xs:complexType name="ArrayOfFAMILIA_ANFITRIONA">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FAMILIA_ANFITRIONA" nillable="true" type="tns:FAMILIA_ANFITRIONA" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFAMILIA_ANFITRIONA" nillable="true" type="tns:ArrayOfFAMILIA_ANFITRIONA" />
+  <xs:complexType name="TIPO_PROGRAMA">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="COD_TIPOPROGRAMA" type="xs:decimal" />
+      <xs:element minOccurs="0" name="DESCRIPCION" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PROGRAMA_ESTUDIO" nillable="true" type="tns:ArrayOfPROGRAMA_ESTUDIO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TIPO_PROGRAMA" nillable="true" type="tns:TIPO_PROGRAMA" />
+  <xs:complexType name="ArrayOfENCARGADO_CEM">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ENCARGADO_CEM" nillable="true" type="tns:ENCARGADO_CEM" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfENCARGADO_CEM" nillable="true" type="tns:ArrayOfENCARGADO_CEM" />
+  <xs:complexType name="GENERO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="COD_GENERO" type="xs:decimal" />
+      <xs:element minOccurs="0" name="DESCRIPCION" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PERSONA" nillable="true" type="tns:ArrayOfPERSONA" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GENERO" nillable="true" type="tns:GENERO" />
+  <xs:complexType name="TIPO_USUARIO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="COD_TIPO" type="xs:decimal" />
+      <xs:element minOccurs="0" name="DESCRIPCION" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="USUARIO" nillable="true" type="tns:ArrayOfUSUARIO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TIPO_USUARIO" nillable="true" type="tns:TIPO_USUARIO" />
+  <xs:complexType name="ArrayOfUSUARIO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="USUARIO" nillable="true" type="tns:USUARIO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUSUARIO" nillable="true" type="tns:ArrayOfUSUARIO" />
+</xs:schema>
