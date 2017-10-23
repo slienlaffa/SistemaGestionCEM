@@ -125,7 +125,7 @@
       <Name>SistemaGestionCEM.Datos</Name>
     </ProjectReference>
     <ProjectReference Include="..\SistemaGestionCEM.Negocio\SistemaGestionCEM.Negocio.csproj">
-      <Project>{cd338efd-4a10-4f6c-aedb-45a1cacc2294}</Project>
+      <Project>{c53514da-38d6-4116-b220-aeaa71dd1fde}</Project>
       <Name>SistemaGestionCEM.Negocio</Name>
     </ProjectReference>
   </ItemGroup>

@@ -11,9 +11,6 @@ namespace SistemaGestionCEM.Tests
         [TestMethod]
         public void LoginCorrecto()
         {
-            Autentificacion autentificacion = new Autentificacion();
-            String resultado = autentificacion.Login("prueba", "prueba");
-            Assert.IsNotNull(resultado);
         }
     }
 }

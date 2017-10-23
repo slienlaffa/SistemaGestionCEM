@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using SistemaGestionCEM.Presentacion.WS_Alumno;
-
-
+using SistemaGestionCEM.Negocio;
+using SistemaGestionCEM.Datos;
 
 namespace SistemaGestionCEM.Presentacion.Controllers
 {
@@ -13,9 +12,9 @@ namespace SistemaGestionCEM.Presentacion.Controllers
     {
         public ActionResult Index()
         {
-            AlumnoClient aa = new AlumnoClient();
+            Alumno aa = new Alumno();
             List<PROGRAMA_ESTUDIO> programas = aa.ListarProgramasPublicados().ToList();
-            String programa = programas.First().NOMBRE_PROGRAMA;
+            ViewBag.Message = programas.First().NOMBRE_PROGRAMA;
             return View();
         }
 
