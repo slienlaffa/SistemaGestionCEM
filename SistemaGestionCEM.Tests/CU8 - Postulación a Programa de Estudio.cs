@@ -21,5 +21,30 @@ namespace SistemaGestionCEM.Tests
             }
             Assert.IsNotNull(programas);
         }
+
+        [TestMethod]
+        public void BuscarPrograma()
+        {
+            Alumno a = new Alumno();
+            PROGRAMA_ESTUDIO programa = a.BuscarProgramaEstudio(2);
+            Console.WriteLine(programa.NOMBRE_PROGRAMA);
+            Assert.IsNotNull(programa);
+        }
+
+        [TestMethod]
+        public void BuscarProgramaInexistente()
+        {
+            Alumno a = new Alumno();
+            PROGRAMA_ESTUDIO programa = a.BuscarProgramaEstudio(44);
+            Assert.IsNull(programa);
+        }
+
+        [TestMethod]
+        public void PostulaProgramaCorrectamente()
+        {
+            Alumno a = new Alumno();
+            bool resultado = a.PostularPrograma(2, 1);
+            Assert.IsTrue(resultado);
+        }
     }
 }
