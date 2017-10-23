@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using SistemaGestionCEM.Presentacion.WS_Autentificacion;
+using SistemaGestionCEM.Presentacion.WS_Alumno;
+
 
 
 namespace SistemaGestionCEM.Presentacion.Controllers
@@ -12,10 +13,9 @@ namespace SistemaGestionCEM.Presentacion.Controllers
     {
         public ActionResult Index()
         {
-            AutentificacionClient web_service = new AutentificacionClient();
-            @ViewBag.Message = web_service.Login("gato", "perro");
-            WS_Alumno.AlumnoClient aa = new WS_Alumno.AlumnoClient();
-            aa.ListarProgramasPublicados();
+            AlumnoClient aa = new AlumnoClient();
+            List<PROGRAMA_ESTUDIO> programas = aa.ListarProgramasPublicados().ToList();
+            String programa = programas.First().NOMBRE_PROGRAMA;
             return View();
         }
 

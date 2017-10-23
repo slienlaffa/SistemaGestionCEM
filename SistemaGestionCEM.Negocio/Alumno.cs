@@ -13,7 +13,16 @@ namespace SistemaGestionCEM.Negocio
     {
         public List<PROGRAMA_ESTUDIO> ListarProgramasPublicados()
         {
-            return new List<PROGRAMA_ESTUDIO>();
+            String estado = "Publicado";
+            List<PROGRAMA_ESTUDIO> programasPublicados;
+            using (Entities db = new Entities())
+            {
+                programasPublicados = db.PROGRAMA_ESTUDIO
+                    .Where(r => r.POSTULACION_PROGRAMA
+                    .Any(e => e.ESTADO_POSTULACION.DESCRIPCION == estado))
+                    .ToList();
+            }
+            return programasPublicados;
         }
     }
 }
