@@ -47,14 +47,20 @@ namespace SistemaGestionCEM.Negocio
                 POSTULACION_ALUMNO postulacion = new POSTULACION_ALUMNO();
                 postulacion.FK_COD_ALUMNO = codigoAlumno;
                 postulacion.FK_COD_PROGRAMA = codigoPrograma;
+                postulacion.FK_COD_ESTADO = 1;
+                postulacion.FECHA = new DateTime();
                 using (Entities db = new Entities())
                 {
+                    postulacion.COD_POSTULACION = db.GetNextSequenceValuePostulacionAlumno();
+
+                    Console.WriteLine(postulacion.COD_POSTULACION);
                     db.POSTULACION_ALUMNO.Add(postulacion);
                 }
                 return true;
             }
             catch(Exception ex)
             {
+                Console.WriteLine(ex.InnerException);
                 return false;
             }
         }

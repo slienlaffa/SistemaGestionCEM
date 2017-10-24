@@ -1866,6 +1866,21 @@
                 <ScalarProperty Name="FK_COD_FAMILIA" ColumnName="FK_COD_FAMILIA" />
               </MappingFragment>
             </EntityTypeMapping>
+            <EntityTypeMapping TypeName="Modelos.POSTULACION_ALUMNO">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="Modelos.Store.POSTULACION_ALUMNO_CRUD_CREAR" >
+                  <ScalarProperty Name="SEGURO" ParameterName="P_SEGURO" />
+                  <ScalarProperty Name="FK_COD_ESTADO" ParameterName="P_FK_COD_ESTADO" />
+                  <ScalarProperty Name="COD_POSTULACION" ParameterName="P_COD_POSTULACION" />
+                  <ScalarProperty Name="FK_COD_FAMILIA" ParameterName="P_FK_COD_FAMILIA" />
+                  <ScalarProperty Name="FECHA" ParameterName="P_FECHA" />
+                  <ScalarProperty Name="FK_COD_ENCARGADOCEM" ParameterName="P_FK_COD_ENCARGADOCEM" />
+                  <ScalarProperty Name="FK_COD_PROGRAMA" ParameterName="P_FK_COD_PROGRAMA" />
+                  <ScalarProperty Name="FK_COD_ALUMNO" ParameterName="P_FK_COD_ALUMNO" />
+                  <ScalarProperty Name="DESC_PASAJE" ParameterName="P_DESC_PASAJE" />
+                </InsertFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="POSTULACION_PROGRAMA">
             <EntityTypeMapping TypeName="Modelos.POSTULACION_PROGRAMA">

@@ -44,5 +44,14 @@ namespace SistemaGestionCEM.Datos
         public virtual DbSet<TIPO_PROGRAMA> TIPO_PROGRAMA { get; set; }
         public virtual DbSet<TIPO_USUARIO> TIPO_USUARIO { get; set; }
         public virtual DbSet<USUARIO> USUARIO { get; set; }
+
+        public int GetNextSequenceValuePostulacionAlumno()
+        {
+            var rawQuery = Database.SqlQuery<int>("SELECT SEQ_POSALUMNO.NEXTVAL FROM dual");
+            var task = rawQuery.SingleAsync();
+            int nextVal = task.Result;
+
+            return nextVal;
+        }
     }
 }
