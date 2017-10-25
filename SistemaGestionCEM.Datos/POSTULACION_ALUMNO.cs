@@ -21,13 +21,13 @@ namespace SistemaGestionCEM.Datos
         public decimal FK_COD_PROGRAMA { get; set; }
         public decimal FK_COD_ALUMNO { get; set; }
         public decimal FK_COD_ESTADO { get; set; }
-        public decimal FK_COD_ENCARGADOCEM { get; set; }
-        public decimal FK_COD_FAMILIA { get; set; }
+        public Nullable<decimal> FK_COD_ENCARGADOCEM { get; set; }
+        public Nullable<decimal> FK_COD_FAMILIA { get; set; }
     
         public virtual ALUMNO ALUMNO { get; set; }
-        public virtual ENCARGADO_CEM ENCARGADO_CEM { get; set; }
         public virtual ESTADO_POSTULACION ESTADO_POSTULACION { get; set; }
         public virtual FAMILIA_ANFITRIONA FAMILIA_ANFITRIONA { get; set; }
         public virtual PROGRAMA_ESTUDIO PROGRAMA_ESTUDIO { get; set; }
+        public virtual ENCARGADO_CEM ENCARGADO_CEM { get; set; }
     }
 }

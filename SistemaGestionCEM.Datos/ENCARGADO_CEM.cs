@@ -17,9 +17,9 @@ namespace SistemaGestionCEM.Datos
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ENCARGADO_CEM()
         {
-            this.POSTULACION_ALUMNO = new HashSet<POSTULACION_ALUMNO>();
             this.POSTULACION_PROGRAMA = new HashSet<POSTULACION_PROGRAMA>();
             this.PROGRAMA_ESTUDIO = new HashSet<PROGRAMA_ESTUDIO>();
+            this.POSTULACION_ALUMNO = new HashSet<POSTULACION_ALUMNO>();
         }
     
         public decimal COD_ENCARGADOCEM { get; set; }
@@ -27,10 +27,10 @@ namespace SistemaGestionCEM.Datos
     
         public virtual PERSONA PERSONA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<POSTULACION_ALUMNO> POSTULACION_ALUMNO { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<POSTULACION_PROGRAMA> POSTULACION_PROGRAMA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PROGRAMA_ESTUDIO> PROGRAMA_ESTUDIO { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<POSTULACION_ALUMNO> POSTULACION_ALUMNO { get; set; }
     }
 }

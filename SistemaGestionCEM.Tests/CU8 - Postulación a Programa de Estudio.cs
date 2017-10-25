@@ -40,7 +40,7 @@ namespace SistemaGestionCEM.Tests
         }
 
         [TestMethod]
-        public void PostulaProgramaCorrectamente()
+        public void N53_PostulaProgramaCorrectamente()
         {
             Alumno a = new Alumno();
             bool resultado = a.PostularPrograma(2, 1);

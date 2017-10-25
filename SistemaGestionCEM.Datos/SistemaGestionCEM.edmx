@@ -103,7 +103,7 @@
           <Property Name="MASCOTA_DESCRIPCION" Type="varchar2" MaxLength="250" Nullable="false" />
           <Property Name="ANIO_INSCRIPCION" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="FK_COD_PERSONA" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="FK_COD_ANTECEDENTES" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FK_COD_ANTECEDENTES" Type="number" Precision="38" Scale="0" />
         </EntityType>
         <EntityType Name="GENERO">
           <Key>
@@ -139,13 +139,13 @@
           </Key>
           <Property Name="COD_POSTULACION" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="FECHA" Type="date" Nullable="false" />
-          <Property Name="SEGURO" Type="char" MaxLength="1" Nullable="false" />
-          <Property Name="DESC_PASAJE" Type="varchar2" MaxLength="200" Nullable="false" />
+          <Property Name="SEGURO" Type="char" MaxLength="1" />
+          <Property Name="DESC_PASAJE" Type="varchar2" MaxLength="200" />
           <Property Name="FK_COD_PROGRAMA" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="FK_COD_ALUMNO" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="FK_COD_ESTADO" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="FK_COD_ENCARGADOCEM" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="FK_COD_FAMILIA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FK_COD_FAMILIA" Type="number" Precision="38" Scale="0" />
+          <Property Name="FK_COD_ENCARGADOCEM" Type="number" Precision="38" Scale="0" />
         </EntityType>
         <EntityType Name="POSTULACION_PROGRAMA">
           <Key>
@@ -294,7 +294,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FAMILIA__ANTECEDENTES_FK">
-          <End Role="ANTECEDENTES" Type="Self.ANTECEDENTES" Multiplicity="1" />
+          <End Role="ANTECEDENTES" Type="Self.ANTECEDENTES" Multiplicity="0..1" />
           <End Role="FAMILIA_ANFITRIONA" Type="Self.FAMILIA_ANFITRIONA" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ANTECEDENTES">
@@ -378,7 +378,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="POSTALUMNO_ENCEM_FK">
-          <End Role="ENCARGADO_CEM" Type="Self.ENCARGADO_CEM" Multiplicity="1" />
+          <End Role="ENCARGADO_CEM" Type="Self.ENCARGADO_CEM" Multiplicity="0..1" />
           <End Role="POSTULACION_ALUMNO" Type="Self.POSTULACION_ALUMNO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ENCARGADO_CEM">
@@ -462,7 +462,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="POSTUALUMNO_FAMILIA_FK">
-          <End Role="FAMILIA_ANFITRIONA" Type="Self.FAMILIA_ANFITRIONA" Multiplicity="1" />
+          <End Role="FAMILIA_ANFITRIONA" Type="Self.FAMILIA_ANFITRIONA" Multiplicity="0..1" />
           <End Role="POSTULACION_ALUMNO" Type="Self.POSTULACION_ALUMNO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="FAMILIA_ANFITRIONA">
@@ -1075,9 +1075,9 @@
           <Property Name="COD_ENCARGADOCEM" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="FK_COD_PERSONA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <NavigationProperty Name="PERSONA" Relationship="Self.ENCEM_PERSONA_FK" FromRole="ENCARGADO_CEM" ToRole="PERSONA" />
-          <NavigationProperty Name="POSTULACION_ALUMNO" Relationship="Self.POSTALUMNO_ENCEM_FK" FromRole="ENCARGADO_CEM" ToRole="POSTULACION_ALUMNO" />
           <NavigationProperty Name="POSTULACION_PROGRAMA" Relationship="Self.POSTPROGRAMA_ENCEM_FK" FromRole="ENCARGADO_CEM" ToRole="POSTULACION_PROGRAMA" />
           <NavigationProperty Name="PROGRAMA_ESTUDIO" Relationship="Self.PROGRAMA_ENCEM_FK" FromRole="ENCARGADO_CEM" ToRole="PROGRAMA_ESTUDIO" />
+          <NavigationProperty Name="POSTULACION_ALUMNO" Relationship="Modelos.POSTALUMNO_ENCEM_FK" FromRole="ENCARGADO_CEM" ToRole="POSTULACION_ALUMNO" />
         </EntityType>
         <EntityType Name="ESTADO_POSTULACION">
           <Key>
@@ -1150,18 +1150,18 @@
           </Key>
           <Property Name="COD_POSTULACION" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="FECHA" Type="DateTime" Nullable="false" />
-          <Property Name="SEGURO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="DESC_PASAJE" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SEGURO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="true" />
+          <Property Name="DESC_PASAJE" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="true" />
           <Property Name="FK_COD_PROGRAMA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="FK_COD_ALUMNO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="FK_COD_ESTADO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="FK_COD_ENCARGADOCEM" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="FK_COD_FAMILIA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FK_COD_ENCARGADOCEM" Nullable="true" Precision="38" Scale="0" Type="Decimal" />
+          <Property Name="FK_COD_FAMILIA" Type="Decimal" Precision="38" Scale="0" Nullable="true" />
           <NavigationProperty Name="ALUMNO" Relationship="Self.POSTALUMNO_ALUMNO_FK" FromRole="POSTULACION_ALUMNO" ToRole="ALUMNO" />
-          <NavigationProperty Name="ENCARGADO_CEM" Relationship="Self.POSTALUMNO_ENCEM_FK" FromRole="POSTULACION_ALUMNO" ToRole="ENCARGADO_CEM" />
           <NavigationProperty Name="ESTADO_POSTULACION" Relationship="Self.POSTALUMNO_ESTADO_FK" FromRole="POSTULACION_ALUMNO" ToRole="ESTADO_POSTULACION" />
           <NavigationProperty Name="FAMILIA_ANFITRIONA" Relationship="Self.POSTUALUMNO_FAMILIA_FK" FromRole="POSTULACION_ALUMNO" ToRole="FAMILIA_ANFITRIONA" />
           <NavigationProperty Name="PROGRAMA_ESTUDIO" Relationship="Self.POSTALUMNO_PROGRAMA_FK" FromRole="POSTULACION_ALUMNO" ToRole="PROGRAMA_ESTUDIO" />
+          <NavigationProperty Name="ENCARGADO_CEM" Relationship="Modelos.POSTALUMNO_ENCEM_FK" FromRole="POSTULACION_ALUMNO" ToRole="ENCARGADO_CEM" />
         </EntityType>
         <EntityType Name="POSTULACION_PROGRAMA">
           <Key>
@@ -1383,18 +1383,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="POSTALUMNO_ENCEM_FK">
-          <End Role="ENCARGADO_CEM" Type="Self.ENCARGADO_CEM" Multiplicity="1" />
-          <End Role="POSTULACION_ALUMNO" Type="Self.POSTULACION_ALUMNO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ENCARGADO_CEM">
-              <PropertyRef Name="COD_ENCARGADOCEM" />
-            </Principal>
-            <Dependent Role="POSTULACION_ALUMNO">
-              <PropertyRef Name="FK_COD_ENCARGADOCEM" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="POSTPROGRAMA_ENCEM_FK">
           <End Role="ENCARGADO_CEM" Type="Self.ENCARGADO_CEM" Multiplicity="1" />
           <End Role="POSTULACION_PROGRAMA" Type="Self.POSTULACION_PROGRAMA" Multiplicity="*" />
@@ -1456,7 +1444,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="POSTUALUMNO_FAMILIA_FK">
-          <End Role="FAMILIA_ANFITRIONA" Type="Self.FAMILIA_ANFITRIONA" Multiplicity="1" />
+          <End Role="FAMILIA_ANFITRIONA" Type="Self.FAMILIA_ANFITRIONA" Multiplicity="0..1" />
           <End Role="POSTULACION_ALUMNO" Type="Self.POSTULACION_ALUMNO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="FAMILIA_ANFITRIONA">
@@ -1623,10 +1611,6 @@
             <End Role="PERSONA" EntitySet="PERSONA" />
             <End Role="ENCARGADO_CEM" EntitySet="ENCARGADO_CEM" />
           </AssociationSet>
-          <AssociationSet Name="POSTALUMNO_ENCEM_FK" Association="Self.POSTALUMNO_ENCEM_FK">
-            <End Role="ENCARGADO_CEM" EntitySet="ENCARGADO_CEM" />
-            <End Role="POSTULACION_ALUMNO" EntitySet="POSTULACION_ALUMNO" />
-          </AssociationSet>
           <AssociationSet Name="POSTPROGRAMA_ENCEM_FK" Association="Self.POSTPROGRAMA_ENCEM_FK">
             <End Role="ENCARGADO_CEM" EntitySet="ENCARGADO_CEM" />
             <End Role="POSTULACION_PROGRAMA" EntitySet="POSTULACION_PROGRAMA" />
@@ -1679,7 +1663,23 @@
             <End Role="TIPO_USUARIO" EntitySet="TIPO_USUARIO" />
             <End Role="USUARIO" EntitySet="USUARIO" />
           </AssociationSet>
+          <AssociationSet Name="POSTALUMNO_ENCEM_FK" Association="Modelos.POSTALUMNO_ENCEM_FK">
+            <End Role="ENCARGADO_CEM" EntitySet="ENCARGADO_CEM" />
+            <End Role="POSTULACION_ALUMNO" EntitySet="POSTULACION_ALUMNO" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="POSTALUMNO_ENCEM_FK">
+          <End Type="Modelos.ENCARGADO_CEM" Role="ENCARGADO_CEM" Multiplicity="0..1" />
+          <End Type="Modelos.POSTULACION_ALUMNO" Role="POSTULACION_ALUMNO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ENCARGADO_CEM">
+              <PropertyRef Name="COD_ENCARGADOCEM" />
+            </Principal>
+            <Dependent Role="POSTULACION_ALUMNO">
+              <PropertyRef Name="FK_COD_ENCARGADOCEM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1827,6 +1827,21 @@
                 <ScalarProperty Name="COD_GENERO" ColumnName="COD_GENERO" />
                 <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
               </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="Modelos.GENERO">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="Modelos.Store.GENERO_CRUD_CREAR" >
+                  <ScalarProperty Name="DESCRIPCION" ParameterName="P_DESCRIPCION" />
+                  <ScalarProperty Name="COD_GENERO" ParameterName="P_COD_GENERO" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="Modelos.Store.GENERO_CRUD_ACTUALIZAR" >
+                  <ScalarProperty Name="DESCRIPCION" ParameterName="P_DESCRIPCION" Version="Current" />
+                  <ScalarProperty Name="COD_GENERO" ParameterName="P_COD_GENERO" Version="Current" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="Modelos.Store.GENERO_CRUD_ELIMINAR" >
+                  <ScalarProperty Name="COD_GENERO" ParameterName="P_COD_GENERO" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PAIS">
