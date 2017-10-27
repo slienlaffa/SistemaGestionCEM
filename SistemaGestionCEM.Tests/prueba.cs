@@ -35,10 +35,10 @@ namespace SistemaGestionCEM.Tests
         public void CrearUsuario()
         {
             UsuarioNegocio u = new UsuarioNegocio();
-            if (u.Crear())
+       /*     if (u.Crear())
                 Console.Write("se creo");
             else
-                Console.Write("fallo");
+                Console.Write("fallo");*/
         }
         [TestMethod]
         public void CreAlumno()

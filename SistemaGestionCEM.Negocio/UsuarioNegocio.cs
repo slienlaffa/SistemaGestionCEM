@@ -11,7 +11,7 @@ namespace SistemaGestionCEM.Negocio
     {
         private Usuario usuario;
 
-        public Usuario Usuario { get => usuario; set => usuario = value; }
+        public Usuario Usuario { get; set; }
 
         public bool Crear(string contrasena,string nombreUsuario, int codTipo)
         {
