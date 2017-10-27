@@ -9,6 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaGestionCEM.Datos", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaGestionCEM.Presentacion", "SistemaGestionCEM.Presentacion\SistemaGestionCEM.Presentacion.csproj", "{9B4D18CB-98F9-4A49-AF48-6AD654FF272C}"
 EndProject
+
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaGestionCEM.Biblioteca", "SistemaGestionCEM.Biblioteca\SistemaGestionCEM.Biblioteca.csproj", "{0AF3E578-EE44-4C77-852A-B4F8FF36973A}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaGestionCEM.Negocio", "SistemaGestionCEM.Negocio\SistemaGestionCEM.Negocio.csproj", "{C53514DA-38D6-4116-B220-AEAA71DD1FDE}"
 EndProject
 Global
@@ -29,6 +32,11 @@ Global
 		{9B4D18CB-98F9-4A49-AF48-6AD654FF272C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B4D18CB-98F9-4A49-AF48-6AD654FF272C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B4D18CB-98F9-4A49-AF48-6AD654FF272C}.Release|Any CPU.Build.0 = Release|Any CPU
+
+		{0AF3E578-EE44-4C77-852A-B4F8FF36973A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AF3E578-EE44-4C77-852A-B4F8FF36973A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AF3E578-EE44-4C77-852A-B4F8FF36973A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AF3E578-EE44-4C77-852A-B4F8FF36973A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C53514DA-38D6-4116-B220-AEAA71DD1FDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C53514DA-38D6-4116-B220-AEAA71DD1FDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C53514DA-38D6-4116-B220-AEAA71DD1FDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -36,5 +44,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {37564DBE-C930-42DC-8C46-FFCFE3B74BDC}
 	EndGlobalSection
 EndGlobal
