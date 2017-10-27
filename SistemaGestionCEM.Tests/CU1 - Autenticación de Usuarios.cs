@@ -11,18 +11,6 @@ namespace SistemaGestionCEM.Tests
     public class prueba
     {
         [TestMethod]
-        public void ConexionTest()
-        {
-            prueba1 a = new prueba1();
-            a.ejemplo();
-        }
-        [TestMethod]
-        public void ConexionTest2()
-        {
-            Class1 b = new Class1();
-            b.ejemplo();
-        }
-        [TestMethod]
         public void Login()
         {
             UsuarioNegocio u = new UsuarioNegocio();

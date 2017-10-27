@@ -131,11 +131,6 @@
     <ProjectReference Include="..\SistemaGestionCEM.Negocio\SistemaGestionCEM.Negocio.csproj">
       <Project>{c53514da-38d6-4116-b220-aeaa71dd1fde}</Project>
       <Name>SistemaGestionCEM.Negocio</Name>
-
-    </ProjectReference>
-    <ProjectReference Include="..\SistemaGestionCEM\SistemaGestionCEM.csproj">
-      <Project>{FAAC7A4F-5844-46E5-A36D-B6A8B934AC82}</Project>
-      <Name>SistemaGestionCEM</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
