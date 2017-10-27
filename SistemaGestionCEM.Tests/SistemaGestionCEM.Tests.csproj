@@ -121,9 +121,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SistemaGestionCEM.Biblioteca\SistemaGestionCEM.Biblioteca.csproj">
+      <Project>{0af3e578-ee44-4c77-852a-b4f8ff36973a}</Project>
+      <Name>SistemaGestionCEM.Biblioteca</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SistemaGestionCEM.Datos\SistemaGestionCEM.Datos.csproj">
       <Project>{6e77fedb-3793-466c-805b-bb1dfc5b4f36}</Project>
       <Name>SistemaGestionCEM.Datos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SistemaGestionCEM.Negocio\SistemaGestionCEM.Negocio.csproj">
+      <Project>{79f2f6a2-9bac-4d19-9c0a-d468c9a73658}</Project>
+      <Name>SistemaGestionCEM.Negocio</Name>
     </ProjectReference>
     <ProjectReference Include="..\SistemaGestionCEM\SistemaGestionCEM.csproj">
       <Project>{FAAC7A4F-5844-46E5-A36D-B6A8B934AC82}</Project>

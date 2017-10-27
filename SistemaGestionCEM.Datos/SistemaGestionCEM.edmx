@@ -1679,6 +1679,204 @@
             <End Role="TIPO_USUARIO" EntitySet="TIPO_USUARIO" />
             <End Role="USUARIO" EntitySet="USUARIO" />
           </AssociationSet>
+          <FunctionImport Name="CrearUsuario">
+            <Parameter Name="P_CONTRASENNA" Mode="In" Type="String" />
+            <Parameter Name="P_COD_USUARIO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_NOMBRE_USUARIO" Mode="In" Type="String" />
+            <Parameter Name="P_FK_COD_TIPO" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="ActualizarUsuario">
+            <Parameter Name="P_CONTRASENNA" Mode="In" Type="String" />
+            <Parameter Name="P_COD_USUARIO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_NOMBRE_USUARIO" Mode="In" Type="String" />
+            <Parameter Name="P_FK_COD_TIPO" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="EliminarUsuario">
+            <Parameter Name="P_COD_USUARIO" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="CrearAlumno">
+            <Parameter Name="P_COD_ALUMNO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_FK_COD_PERSONA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_FECHA_NACIMIENTO" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="ActualizarAlumno">
+            <Parameter Name="P_COD_ALUMNO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_FK_COD_PERSONA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_FECHA_NACIMIENTO" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="EliminarAlumno">
+            <Parameter Name="P_COD_ALUMNO" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="CrearPersona">
+            <Parameter Name="P_APELLIDO" Mode="In" Type="String" />
+            <Parameter Name="P_CORREO" Mode="In" Type="String" />
+            <Parameter Name="P_COD_PERSONA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_TELEFONO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_FK_COD_USUARIO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_NACIONALIDAD" Mode="In" Type="String" />
+            <Parameter Name="P_FK_COD_CIUDAD" Mode="In" Type="Decimal" />
+            <Parameter Name="P_NOMBRE" Mode="In" Type="String" />
+            <Parameter Name="P_FK_COD_GENERO" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="ActualizarPersona">
+            <Parameter Name="P_APELLIDO" Mode="In" Type="String" />
+            <Parameter Name="P_CORREO" Mode="In" Type="String" />
+            <Parameter Name="P_COD_PERSONA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_TELEFONO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_FK_COD_USUARIO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_NACIONALIDAD" Mode="In" Type="String" />
+            <Parameter Name="P_FK_COD_CIUDAD" Mode="In" Type="Decimal" />
+            <Parameter Name="P_NOMBRE" Mode="In" Type="String" />
+            <Parameter Name="P_FK_COD_GENERO" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="EliminarPersona">
+            <Parameter Name="P_COD_PERSONA" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="CrearFamilia">
+            <Parameter Name="P_NUM_BANOS" Mode="In" Type="Decimal" />
+            <Parameter Name="P_FK_COD_ANTECEDENTES" Mode="In" Type="Decimal" />
+            <Parameter Name="P_COD_FAMILIA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ANIO_INSCRIPCION" Mode="In" Type="Decimal" />
+            <Parameter Name="P_NUM_HABITACIONES" Mode="In" Type="Decimal" />
+            <Parameter Name="P_TIPO_VIVIENDA" Mode="In" Type="String" />
+            <Parameter Name="P_NUM_INTEGRANTES" Mode="In" Type="Decimal" />
+            <Parameter Name="P_FK_COD_PERSONA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ESTACIONAMIENTO" Mode="In" Type="String" />
+            <Parameter Name="P_MASCOTA_DESCRIPCION" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ActualizarFamilia">
+            <Parameter Name="P_NUM_BANOS" Mode="In" Type="Decimal" />
+            <Parameter Name="P_FK_COD_ANTECEDENTES" Mode="In" Type="Decimal" />
+            <Parameter Name="P_COD_FAMILIA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ANIO_INSCRIPCION" Mode="In" Type="Decimal" />
+            <Parameter Name="P_NUM_HABITACIONES" Mode="In" Type="Decimal" />
+            <Parameter Name="P_TIPO_VIVIENDA" Mode="In" Type="String" />
+            <Parameter Name="P_NUM_INTEGRANTES" Mode="In" Type="Decimal" />
+            <Parameter Name="P_FK_COD_PERSONA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ESTACIONAMIENTO" Mode="In" Type="String" />
+            <Parameter Name="P_MASCOTA_DESCRIPCION" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="EliminarFamilia">
+            <Parameter Name="P_COD_FAMILIA" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="CrearAntecedentes">
+            <Parameter Name="P_FOTO3" Mode="In" Type="String" />
+            <Parameter Name="P_FOTO2" Mode="In" Type="String" />
+            <Parameter Name="P_FOTO1" Mode="In" Type="String" />
+            <Parameter Name="P_CERT_LABORAL" Mode="In" Type="String" />
+            <Parameter Name="P_COD_ANTECEDENTES" Mode="In" Type="Decimal" />
+            <Parameter Name="P_CERT_RESIDENCIA" Mode="In" Type="String" />
+            <Parameter Name="P_CERT_ANTECEDENTES" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ActualizarAntecedentes">
+            <Parameter Name="P_FOTO3" Mode="In" Type="String" />
+            <Parameter Name="P_FOTO2" Mode="In" Type="String" />
+            <Parameter Name="P_FOTO1" Mode="In" Type="String" />
+            <Parameter Name="P_CERT_LABORAL" Mode="In" Type="String" />
+            <Parameter Name="P_COD_ANTECEDENTES" Mode="In" Type="Decimal" />
+            <Parameter Name="P_CERT_RESIDENCIA" Mode="In" Type="String" />
+            <Parameter Name="P_CERT_ANTECEDENTES" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="EliminarAntecedentes">
+            <Parameter Name="P_COD_ALUMNO" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="CrearEncargadoCEL">
+            <Parameter Name="P_FK_COD_CEL" Mode="In" Type="Decimal" />
+            <Parameter Name="P_FK_COD_PERSONA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_COD_ENCARGADOCEL" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="ActualizarEncargadoCEL">
+            <Parameter Name="P_FK_COD_CEL" Mode="In" Type="Decimal" />
+            <Parameter Name="P_FK_COD_PERSONA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_COD_ENCARGADOCEL" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="EliminarEncargadoCEL">
+            <Parameter Name="P_COD_ENCARGADOCEL" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="CrearEncargadoCEM">
+            <Parameter Name="P_FK_COD_PERSONA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_COD_ENCARGADOCEM" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="ActualizarEncargadoCEM">
+            <Parameter Name="P_FK_COD_PERSONA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_COD_ENCARGADOCEM" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="EliminarEncargadoCEM">
+            <Parameter Name="P_COD_ENCARGADOCEM" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="CrearCEL">
+            <Parameter Name="P_DIRECCION" Mode="In" Type="String" />
+            <Parameter Name="P_NOMBRE_CENTRO" Mode="In" Type="String" />
+            <Parameter Name="P_CORREO" Mode="In" Type="String" />
+            <Parameter Name="P_COD_CEL" Mode="In" Type="Decimal" />
+            <Parameter Name="P_TELEFONO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_AREA_ESPECIALIZACION" Mode="In" Type="String" />
+            <Parameter Name="P_DESCRIPCION" Mode="In" Type="String" />
+            <Parameter Name="P_FK_COD_CIUDAD" Mode="In" Type="Decimal" />
+            <Parameter Name="P_NOM_DIRECTOR" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ActualizarCEL">
+            <Parameter Name="P_DIRECCION" Mode="In" Type="String" />
+            <Parameter Name="P_NOMBRE_CENTRO" Mode="In" Type="String" />
+            <Parameter Name="P_CORREO" Mode="In" Type="String" />
+            <Parameter Name="P_COD_CEL" Mode="In" Type="Decimal" />
+            <Parameter Name="P_TELEFONO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_AREA_ESPECIALIZACION" Mode="In" Type="String" />
+            <Parameter Name="P_DESCRIPCION" Mode="In" Type="String" />
+            <Parameter Name="P_FK_COD_CIUDAD" Mode="In" Type="Decimal" />
+            <Parameter Name="P_NOM_DIRECTOR" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="EliminarCEL">
+            <Parameter Name="P_COD_CEL" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="CrearProgramaEstudio">
+            <Parameter Name="P_FECHA_LIMITE_POSTULACION" Mode="In" Type="DateTime" />
+            <Parameter Name="P_NUM_MIN_ALUMNO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_FK_COD_TIPOPROGRAMA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_FK_COD_ENCARGADOCEM" Mode="In" Type="Decimal" />
+            <Parameter Name="P_COD_PROGRAMA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_DURACION" Mode="In" Type="String" />
+            <Parameter Name="P_AREA_CONOCIMIENTO" Mode="In" Type="String" />
+            <Parameter Name="P_NUM_MAX_ALUMNO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_FK_COD_PAIS" Mode="In" Type="Decimal" />
+            <Parameter Name="P_DESCRIPCION" Mode="In" Type="String" />
+            <Parameter Name="P_NOMBRE_PROGRAMA" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ActualizarProgramaEstudio">
+            <Parameter Name="P_FECHA_LIMITE_POSTULACION" Mode="In" Type="DateTime" />
+            <Parameter Name="P_NUM_MIN_ALUMNO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_FK_COD_TIPOPROGRAMA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_FK_COD_ENCARGADOCEM" Mode="In" Type="Decimal" />
+            <Parameter Name="P_COD_PROGRAMA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_DURACION" Mode="In" Type="String" />
+            <Parameter Name="P_AREA_CONOCIMIENTO" Mode="In" Type="String" />
+            <Parameter Name="P_NUM_MAX_ALUMNO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_FK_COD_PAIS" Mode="In" Type="Decimal" />
+            <Parameter Name="P_DESCRIPCION" Mode="In" Type="String" />
+            <Parameter Name="P_NOMBRE_PROGRAMA" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="EliminarProgramaEstudio">
+            <Parameter Name="P_COD_PROGRAMA" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="CrearPostulacionPrograma">
+            <Parameter Name="P_FK_COD_CEL" Mode="In" Type="Decimal" />
+            <Parameter Name="P_FK_COD_PROGRAMA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_FK_COD_ENCARGADOCEM" Mode="In" Type="Decimal" />
+            <Parameter Name="P_FECHA" Mode="In" Type="DateTime" />
+            <Parameter Name="P_COD_POSTULACIONPROGRAMA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_FK_COD_ESTADO" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="ActualizarPostulacionPrograma">
+            <Parameter Name="P_FK_COD_CEL" Mode="In" Type="Decimal" />
+            <Parameter Name="P_FK_COD_PROGRAMA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_FK_COD_ENCARGADOCEM" Mode="In" Type="Decimal" />
+            <Parameter Name="P_FECHA" Mode="In" Type="DateTime" />
+            <Parameter Name="P_COD_POSTULACIONPROGRAMA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_FK_COD_ESTADO" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="EliminarPostulacionPrograma">
+            <Parameter Name="P_COD_POSTULACIONPROGRAMA" Mode="In" Type="Decimal" />
+          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -1956,6 +2154,36 @@
               </ModificationFunctionMapping>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="CrearUsuario" FunctionName="Modelos.Store.USUARIO_CRUD_CREAR" />
+          <FunctionImportMapping FunctionImportName="ActualizarUsuario" FunctionName="Modelos.Store.USUARIO_CRUD_ACTUALIZAR" />
+          <FunctionImportMapping FunctionImportName="EliminarUsuario" FunctionName="Modelos.Store.USUARIO_CRUD_ELIMINAR" />
+          <FunctionImportMapping FunctionImportName="CrearAlumno" FunctionName="Modelos.Store.ALUMNO_CRUD_CREAR" />
+          <FunctionImportMapping FunctionImportName="ActualizarAlumno" FunctionName="Modelos.Store.ALUMNO_CRUD_ACTUALIZAR" />
+          <FunctionImportMapping FunctionImportName="EliminarAlumno" FunctionName="Modelos.Store.ALUMNO_CRUD_ELIMINAR" />
+          <FunctionImportMapping FunctionImportName="CrearPersona" FunctionName="Modelos.Store.PERSONA_CRUD_CREAR" />
+          <FunctionImportMapping FunctionImportName="ActualizarPersona" FunctionName="Modelos.Store.PERSONA_CRUD_ACTUALIZAR" />
+          <FunctionImportMapping FunctionImportName="EliminarPersona" FunctionName="Modelos.Store.PERSONA_CRUD_ELIMINAR" />
+          <FunctionImportMapping FunctionImportName="CrearFamilia" FunctionName="Modelos.Store.FAMILIA_ANFITRIONA_CRUD_CREAR" />
+          <FunctionImportMapping FunctionImportName="ActualizarFamilia" FunctionName="Modelos.Store.FAMILIA_ANFITRIONA_CRUD_ACTUALIZAR" />
+          <FunctionImportMapping FunctionImportName="EliminarFamilia" FunctionName="Modelos.Store.FAMILIA_ANFITRIONA_CRUD_ELIMINAR" />
+          <FunctionImportMapping FunctionImportName="CrearAntecedentes" FunctionName="Modelos.Store.ANTECEDENTES_CRUD_CREAR" />
+          <FunctionImportMapping FunctionImportName="ActualizarAntecedentes" FunctionName="Modelos.Store.ANTECEDENTES_CRUD_ACTUALIZAR" />
+          <FunctionImportMapping FunctionImportName="EliminarAntecedentes" FunctionName="Modelos.Store.ALUMNO_CRUD_ELIMINAR" />
+          <FunctionImportMapping FunctionImportName="CrearEncargadoCEL" FunctionName="Modelos.Store.ENCARGADO_CEL_CRUD_CREAR" />
+          <FunctionImportMapping FunctionImportName="ActualizarEncargadoCEL" FunctionName="Modelos.Store.ENCARGADO_CEL_CRUD_ACTUALIZAR" />
+          <FunctionImportMapping FunctionImportName="EliminarEncargadoCEL" FunctionName="Modelos.Store.ENCARGADO_CEL_CRUD_ELIMINAR" />
+          <FunctionImportMapping FunctionImportName="CrearEncargadoCEM" FunctionName="Modelos.Store.ENCARGADO_CEM_CRUD_CREAR" />
+          <FunctionImportMapping FunctionImportName="ActualizarEncargadoCEM" FunctionName="Modelos.Store.ENCARGADO_CEM_CRUD_ACTUALIZAR" />
+          <FunctionImportMapping FunctionImportName="EliminarEncargadoCEM" FunctionName="Modelos.Store.ENCARGADO_CEM_CRUD_ELIMINAR" />
+          <FunctionImportMapping FunctionImportName="CrearCEL" FunctionName="Modelos.Store.CENTRO_ESTUDIO_LOCAL_CRUD_CREAR" />
+          <FunctionImportMapping FunctionImportName="ActualizarCEL" FunctionName="Modelos.Store.CENTRO_ESTUDIO_LOCAL_CRUD_ACTUALIZAR" />
+          <FunctionImportMapping FunctionImportName="EliminarCEL" FunctionName="Modelos.Store.CENTRO_ESTUDIO_LOCAL_CRUD_ELIMINAR" />
+          <FunctionImportMapping FunctionImportName="CrearProgramaEstudio" FunctionName="Modelos.Store.PROGRAMA_ESTUDIO_CRUD_CREAR" />
+          <FunctionImportMapping FunctionImportName="ActualizarProgramaEstudio" FunctionName="Modelos.Store.PROGRAMA_ESTUDIO_CRUD_ACTUALIZAR" />
+          <FunctionImportMapping FunctionImportName="EliminarProgramaEstudio" FunctionName="Modelos.Store.PROGRAMA_ESTUDIO_CRUD_ELIMINAR" />
+          <FunctionImportMapping FunctionImportName="CrearPostulacionPrograma" FunctionName="Modelos.Store.POSTULACION_PROGRAMA_CRUD_CREAR" />
+          <FunctionImportMapping FunctionImportName="ActualizarPostulacionPrograma" FunctionName="Modelos.Store.POSTULACION_PROGRAMA_CRUD_ACTUALIZAR" />
+          <FunctionImportMapping FunctionImportName="EliminarPostulacionPrograma" FunctionName="Modelos.Store.POSTULACION_PROGRAMA_CRUD_ELIMINAR" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
