@@ -112,6 +112,7 @@
     <Compile Include="CU8 - Postulación a Programa de Estudio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CU1 - Autenticación de Usuarios.cs" />
+    <Compile Include="CU9 - Seleccionar Familia Anfitriona.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />

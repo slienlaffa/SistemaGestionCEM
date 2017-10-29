@@ -2092,6 +2092,20 @@
                   <ScalarProperty Name="FK_COD_ALUMNO" ParameterName="P_FK_COD_ALUMNO" />
                   <ScalarProperty Name="DESC_PASAJE" ParameterName="P_DESC_PASAJE" />
                 </InsertFunction>
+                <UpdateFunction FunctionName="Modelos.Store.POSTULACION_ALUMNO_CRUD_ACTUALIZAR" >
+                  <ScalarProperty Name="SEGURO" ParameterName="P_SEGURO" Version="Current" />
+                  <ScalarProperty Name="FK_COD_ESTADO" ParameterName="P_FK_COD_ESTADO" Version="Current" />
+                  <ScalarProperty Name="COD_POSTULACION" ParameterName="P_COD_POSTULACION" Version="Current" />
+                  <ScalarProperty Name="FK_COD_FAMILIA" ParameterName="P_FK_COD_FAMILIA" Version="Current" />
+                  <ScalarProperty Name="FECHA" ParameterName="P_FECHA" Version="Current" />
+                  <ScalarProperty Name="FK_COD_ENCARGADOCEM" ParameterName="P_FK_COD_ENCARGADOCEM" Version="Current" />
+                  <ScalarProperty Name="FK_COD_PROGRAMA" ParameterName="P_FK_COD_PROGRAMA" Version="Current" />
+                  <ScalarProperty Name="FK_COD_ALUMNO" ParameterName="P_FK_COD_ALUMNO" Version="Current" />
+                  <ScalarProperty Name="DESC_PASAJE" ParameterName="P_DESC_PASAJE" Version="Current" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="Modelos.Store.POSTULACION_ALUMNO_CRUD_ELIMINAR" >
+                  <ScalarProperty Name="COD_POSTULACION" ParameterName="P_COD_POSTULACION" />
+                </DeleteFunction>
               </ModificationFunctionMapping>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -13,7 +13,7 @@ namespace SistemaGestionCEM.Presentacion.Controllers
         public ActionResult Index()
         {
             AlumnoNegocio aa = new AlumnoNegocio();
-            List<PROGRAMA_ESTUDIO> programas = aa.ListarProgramasPublicados().ToList();
+            List<PROGRAMA_ESTUDIO> programas = aa.ProgramasPublicados().ToList();
             ViewBag.Message = programas.First().NOMBRE_PROGRAMA;
             return View();
         }

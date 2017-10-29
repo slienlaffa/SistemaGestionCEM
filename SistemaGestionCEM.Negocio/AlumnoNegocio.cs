@@ -10,7 +10,12 @@ namespace SistemaGestionCEM.Negocio
 {
     public class AlumnoNegocio
     {
-        public List<PROGRAMA_ESTUDIO> ListarProgramasPublicados()
+        const int APROBADO = 2;
+        const int RECHAZADO = 3;
+        const int FINALIZADO = 6;
+        const int CANCELADO = 7;
+
+        public List<PROGRAMA_ESTUDIO> ProgramasPublicados()
         {
             String estado = "Publicado";
             List<PROGRAMA_ESTUDIO> programasPublicados;
@@ -35,7 +40,7 @@ namespace SistemaGestionCEM.Negocio
                 }
                 return programa;
             }
-            catch (Exception ex)
+            catch
             {
                 return null;
             }
@@ -67,7 +72,7 @@ namespace SistemaGestionCEM.Negocio
                     return null;
                 }
             }
-            catch(Exception ex)
+            catch
             {
                 return null;
             }
@@ -77,16 +82,13 @@ namespace SistemaGestionCEM.Negocio
         {
             using (Entities db = new Entities())
             {
-                int rechazado = 3;
-                int finalizado = 6;
-                int cancelado = 7;
                 ALUMNO alumno = db.ALUMNO.Find(codigoAlumno);
                 // Si el alumno no tiene todas sus postulaciones rechazadas, finalizadas o canceladas 
                 // significa que tiene una activa en algun estado
                 if (alumno.POSTULACION_ALUMNO
-                    .Any(p => p.FK_COD_ESTADO != rechazado
-                    && p.FK_COD_ESTADO != finalizado
-                    && p.FK_COD_ESTADO != cancelado))
+                    .Any(p => p.FK_COD_ESTADO != RECHAZADO
+                    && p.FK_COD_ESTADO != FINALIZADO
+                    && p.FK_COD_ESTADO != CANCELADO))
                     return false;
             }
             return true;          
@@ -102,6 +104,69 @@ namespace SistemaGestionCEM.Negocio
                 return nextVal;
             }
         }
+
+        public List<FAMILIA_ANFITRIONA> FamiliasDisponibles()
+        {
+            List<FAMILIA_ANFITRIONA> familiasDisponibles;
+            using (Entities db = new Entities())
+            {
+                familiasDisponibles = db.FAMILIA_ANFITRIONA
+                    .Where(f => f.POSTULACION_ALUMNO
+                    .Any(p => p.FK_COD_ESTADO != RECHAZADO
+                    && p.FK_COD_ESTADO != FINALIZADO
+                    && p.FK_COD_ESTADO != CANCELADO))
+                    .ToList();
+            }
+            return familiasDisponibles;
+        }
+
+        public FAMILIA_ANFITRIONA RecuperarFamilia(int codigoFamilia)
+        {
+            FAMILIA_ANFITRIONA familiaDetalle;
+            using (Entities db = new Entities())
+            {
+                familiaDetalle = db.FAMILIA_ANFITRIONA.Find(codigoFamilia);
+            }
+            return familiaDetalle;
+        }
+
+        public bool SeleccionarFamilia(int codigoAlumno, int codigoFamilia)
+        {
+            try
+            {
+                if (EsAlumnoAprobado(codigoAlumno))
+                {
+                    POSTULACION_ALUMNO postulacionAlumno;
+                    using (Entities db = new Entities())
+                    {
+                        postulacionAlumno = db.ALUMNO.Find(codigoAlumno)
+                            .POSTULACION_ALUMNO.Last();
+                        postulacionAlumno.FK_COD_FAMILIA = codigoFamilia;
+                        db.SaveChanges();
+                    }
+                    return true;
+                }
+                else
+                    return false;
+            }catch
+            {
+                return false;
+            }
+        }
+
+        public bool EsAlumnoAprobado(int codigoAlumno)
+        {
+            using (Entities db = new Entities())
+            {
+                int estado = (int)db.ALUMNO.Find(codigoAlumno)
+                    .POSTULACION_ALUMNO.Last().FK_COD_ESTADO;
+                if (estado == APROBADO)
+                    return true;
+                else
+                    return false;                
+            }
+        }
+
         public bool Crear(int codPersona, DateTime fechaNacimiento)
         {
             try

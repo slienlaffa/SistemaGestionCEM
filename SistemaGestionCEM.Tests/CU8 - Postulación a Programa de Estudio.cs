@@ -14,7 +14,7 @@ namespace SistemaGestionCEM.Tests
         public void ListarProgramasPublicados()
         {
             AlumnoNegocio a = new AlumnoNegocio();
-            List<PROGRAMA_ESTUDIO> programas = a.ListarProgramasPublicados();
+            List<PROGRAMA_ESTUDIO> programas = a.ProgramasPublicados();
             foreach(PROGRAMA_ESTUDIO p in programas)
             {
                 Console.WriteLine(p.NOMBRE_PROGRAMA);
@@ -40,11 +40,19 @@ namespace SistemaGestionCEM.Tests
         }
 
         [TestMethod]
-        public void N53_PostulaProgramaCorrectamente()
+        public void PostulaProgramaCorrectamente()
         {
             AlumnoNegocio a = new AlumnoNegocio();
             POSTULACION_ALUMNO resultado = a.PostularPrograma(2, 2);
             Assert.IsNotNull(resultado);
+        }
+
+        [TestMethod]
+        public void PostulaConPostulacionPrevia()
+        {
+            AlumnoNegocio a = new AlumnoNegocio();
+            POSTULACION_ALUMNO resultado = a.PostularPrograma(2, 1);
+            Assert.IsNull(resultado);
         }
     }
 }
