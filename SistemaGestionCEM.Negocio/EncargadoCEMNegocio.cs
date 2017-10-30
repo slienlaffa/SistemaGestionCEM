@@ -2,11 +2,44 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using SistemaGestionCEM.Datos;
 
 namespace SistemaGestionCEM.Negocio
 {
     public class EncargadoCEMNegocio
     {
+        public List<PROGRAMA_ESTUDIO> ProgramasEnCursoFinalizados()
+        {
+            String enCurso = "En Curso";
+            String finalizado = "Finalizado";
+            List<PROGRAMA_ESTUDIO> programasPublicados;
+            using (Entities db = new Entities())
+            {
+                programasPublicados = db.PROGRAMA_ESTUDIO
+                    .Where(r => r.POSTULACION_PROGRAMA
+                    .Any(e => e.ESTADO_POSTULACION.DESCRIPCION == enCurso
+                    || e.ESTADO_POSTULACION.DESCRIPCION == finalizado))
+                    .ToList();
+            }
+            return programasPublicados;
+        }
+
+        public List<DETALLE_NOTAS> BuscarNotas(int codigoPrograma)
+        {
+            IQueryable<DETALLE_ALUMNO> alumnos;
+            List<DETALLE_NOTAS> notas = new List<DETALLE_NOTAS>();
+                using (Entities db = new Entities())
+                {
+                    alumnos = db.DETALLE_ALUMNO
+                     .Where(d => d.FK_COD_PROGRAMA == codigoPrograma);
+                    foreach(var a in alumnos)
+                    {
+                        notas.Add(a.DETALLE_NOTAS.Last());
+                    }
+                }
+                return notas;        
+        }
+
         public bool Crear()
         {
             try
