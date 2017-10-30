@@ -1,0 +1,44 @@
+﻿/* Remove the navbar's default margin-bottom and rounded borders */
+.navbar {
+    margin-bottom: 0;
+    height: 100px;
+    border-radius: 0;
+    background-color: #1abc9c;
+    font-family: Helvetica;
+    background: -webkit-linear-gradient(#3939ac, #5353c6, #3939ac); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#3939ac, #5353c6, #3939ac); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#3939ac, #5353c6, #3939ac); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#3939ac, #5353c6, #3939ac); /* Standard syntax */
+}
+
+#myNavbar a {
+    color: white;
+}
+
+    #myNavbar a:hover {
+        background-color: #000000;
+    }
+
+/* Add a gray background color and some padding to the footer */
+footer {
+    background: -webkit-linear-gradient(#3939ac, #5353c6, #3939ac); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#3939ac, #5353c6, #3939ac); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#3939ac, #5353c6, #3939ac); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#3939ac, #5353c6, #3939ac); /* Standard syntax */
+    padding: 25px;
+    font-family: mermaid;
+    color: white;
+}
+
+.carousel-inner img {
+    width: 100%; /* Set width to 100% */
+    margin: auto;
+    min-height: 200px;
+}
+
+/* Hide the carousel text when the screen is less than 600 pixels wide */
+@media (max-width: 600px) {
+    .carousel-caption {
+        display: none;
+    }
+}

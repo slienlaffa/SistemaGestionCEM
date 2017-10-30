@@ -22,8 +22,8 @@ namespace SistemaGestionCEM.Tests
         public void BuscarNotas()
         {
             EncargadoCEMNegocio cem = new EncargadoCEMNegocio();
-            var programas = cem.BuscarNotas(1);
-            Assert.IsNotNull(programas);
+            var notas = cem.BuscarNotas(1);
+            Assert.IsNotNull(notas);
         }
     }
 }

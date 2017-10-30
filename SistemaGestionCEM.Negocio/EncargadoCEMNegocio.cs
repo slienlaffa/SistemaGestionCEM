@@ -40,6 +40,26 @@ namespace SistemaGestionCEM.Negocio
                 return notas;        
         }
 
+        public bool RegistrarNotas(List<DETALLE_NOTAS> notas)
+        {
+            try
+            {
+                using (Entities db = new Entities())
+                {
+                    foreach (var nota in notas)
+                    {
+                        db.Entry(nota).State = System.Data.Entity.EntityState.Modified;
+                    }
+                    db.SaveChanges();
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public bool Crear()
         {
             try
