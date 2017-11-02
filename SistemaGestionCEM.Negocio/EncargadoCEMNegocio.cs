@@ -8,6 +8,69 @@ namespace SistemaGestionCEM.Negocio
 {
     public class EncargadoCEMNegocio
     {
+        const int PENDIENTE = 1;
+        const int APROBADO = 2;
+        const int RECHAZADO = 3;
+
+        public List<POSTULACION_ALUMNO> PostulacionesPendientes()
+        {
+            List<POSTULACION_ALUMNO> postulacionesPendientes;
+            using (Entities db = new Entities())
+            {
+                postulacionesPendientes = db.POSTULACION_ALUMNO
+                    .Where(p => p.FK_COD_ESTADO == PENDIENTE)
+                    .ToList();
+            }
+            return postulacionesPendientes;
+        }
+
+        public ws_estado_alumnos.alumno obtenerEstadoAlumno(int codigoAlumno)
+        {
+            ws_estado_alumnos.alumno estadoAlumno;
+            using (Entities db = new Entities())
+            {
+                ALUMNO alumno = db.ALUMNO.Find(codigoAlumno);
+                ws_estado_alumnos.WebServiceCEMClient estadoAlumnos = new ws_estado_alumnos.WebServiceCEMClient();
+                estadoAlumno = estadoAlumnos.obtenerEstadoAlumnos(alumno.PERSONA.NOMBRE, alumno.PERSONA.APELLIDO);
+                if(estadoAlumno != null)
+                    estadoAlumno.codigoAlumno = codigoAlumno;
+            }
+            return estadoAlumno;
+        }
+
+        public bool SeleccionarPostulante(int codigoAlumno, bool esSeleccionado)
+        {
+            try
+            {
+                using (Entities db = new Entities())
+                {
+                    POSTULACION_ALUMNO postulacion = db.POSTULACION_ALUMNO
+                        .Where(p => p.FK_COD_ALUMNO == codigoAlumno
+                        && p.FK_COD_ESTADO == PENDIENTE)
+                        .First();
+                    if (esSeleccionado)
+                        postulacion.FK_COD_ESTADO = APROBADO;
+                    else
+                        postulacion.FK_COD_ESTADO = RECHAZADO;
+                    db.SaveChanges();
+
+                    Email.ResultadoPostulacion(postulacion.ALUMNO.PERSONA.NOMBRE,
+                        "", 
+                        postulacion.PROGRAMA_ESTUDIO.NOMBRE_PROGRAMA,
+                        esSeleccionado);
+                    /*
+                     *   Email.ResultadoPostulacion(postulacion.ALUMNO.PERSONA.NOMBRE,
+                        postulacion.ALUMNO.PERSONA.CORREO, 
+                        postulacion.PROGRAMA_ESTUDIO.NOMBRE_PROGRAMA,
+                        esSeleccionado);*/
+                }
+                return true;
+            }
+            catch(Exception e) {
+                Console.WriteLine(e.Message);
+                return false; }
+        }
+
         public List<PROGRAMA_ESTUDIO> ProgramasEnCursoFinalizados()
         {
             String enCurso = "En Curso";

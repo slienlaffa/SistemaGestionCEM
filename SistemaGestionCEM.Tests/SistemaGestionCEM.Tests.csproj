@@ -53,6 +53,10 @@
       <HintPath>..\packages\Oracle.ManagedDataAccess.EntityFramework.12.2.1100\lib\net45\Oracle.ManagedDataAccess.EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.105.2.3\lib\net452\RestSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -110,6 +114,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CU10 - Consultar Calificaciones de Alumnos.cs" />
+    <Compile Include="CU12 - Selección de Postulante.cs" />
     <Compile Include="CU11 - Registrar Notas de Alumnos.cs" />
     <Compile Include="CU8 - Postulación a Programa de Estudio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
