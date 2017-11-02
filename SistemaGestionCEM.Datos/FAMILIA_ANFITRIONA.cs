@@ -11,7 +11,9 @@ namespace SistemaGestionCEM.Datos
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class FAMILIA_ANFITRIONA
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,6 +23,7 @@ namespace SistemaGestionCEM.Datos
         }
     
         public decimal COD_FAMILIA { get; set; }
+       
         public decimal NUM_INTEGRANTES { get; set; }
         public decimal NUM_HABITACIONES { get; set; }
         public decimal NUM_BANOS { get; set; }

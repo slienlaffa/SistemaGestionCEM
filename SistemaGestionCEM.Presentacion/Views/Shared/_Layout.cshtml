@@ -40,13 +40,14 @@
                         <li>@Html.ActionLink("Quienes somos", "About", "Home")</li>
                         <li>@Html.ActionLink("Contactanos", "Contact", "Home")</li>
                         <li>@Html.ActionLink("Programas de Intercambio", "Programas", "Home")</li>
+
                     </ul>
                     @if (!nombre.IsEmpty())
                     {
-                        <div id="logued" class="inner" style="width:160px; margin-left:10px;">
-                            <p>Bienvenido, @nombre </p>
-                            @Html.ActionLink("Cerrar sesion", "LogOut", "Home")
-                        </div>
+                        <ul class="nav navbar-nav navbar-right ">
+                           
+                            <li><span class="glyphicon glyphicon-log-in"></span>@Html.ActionLink("Cerrar sesion", "LogOut", "Home")</li>
+                        </ul>
                     }
                     else
                     {
@@ -59,7 +60,7 @@
         </nav>
 
     </header>
-    <div class="inner">
+    <div ALIGN="center" class="inner">
         @RenderSection("ContenidoCentral", false)
         @RenderBody()
     </div>

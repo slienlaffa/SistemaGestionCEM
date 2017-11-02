@@ -10,7 +10,7 @@ namespace SistemaGestionCEM.Presentacion.Controllers
 {
     public class AdminController : Controller
     {
-        private Entities db = new Entities();
+      
         // GET: Admin
         public ActionResult Index()
         {
