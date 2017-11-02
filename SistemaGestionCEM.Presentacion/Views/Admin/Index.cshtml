@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    string sesionActual = "";
+    string nombre = "";
+
+    if (Session["SesionActual"] != null)
+    {
+        sesionActual = Session["SesionActual"].ToString();
+    }
+
+    if (Session["Nombre"] != null)
+    {
+        nombre = Session["Nombre"].ToString();
+    }
+}
+
+@section ContenidoCentral
+{
+
+    <h2>Bienvenido a su panel administrativo, @nombre</h2>
+    <h3>Seleccione una opcion </h3>
+        
+
+    <div id="usuariosAdmin">
+        <h1>Administracion de Usuarios</h1>
+        @Html.ActionLink("Ingresar usuario", "IngresarUsuario", "Admin")
+        @Html.ActionLink("Mostrar usuarios", "MostrarUsuarios", "Admin")
+        @Html.ActionLink("Modificar usuarios", "ModificarUsuarios", "Admin")
+        @Html.ActionLink("Eliminar usuarios", "EliminarUsuarios", "Admin")
+    </div>
+
+    <hr />
+
+    <div id="centrosAdmin">
+        <h1>Administracion de Centros</h1>
+        @Html.ActionLink("Ingresar un Centro", "IngresarCentro", "Admin")
+        @Html.ActionLink("Mostrar Centros", "MostrarCentros", "Admin")
+        @Html.ActionLink("Modificar Centros", "ModificarCentros", "Admin")
+        @Html.ActionLink("Eliminar Centros", "EliminarCentros", "Admin")
+    </div>
+
+    <div id="programasAdmin">
+        <h1>Administracion de Programas</h1>
+        @Html.ActionLink("Crear un Programa de Estudio", "CrearPrograma", "Admin")
+        @Html.ActionLink("Publicar un Programa", "PublicarPrograma", "Admin") 
+    </div>
+}
+
+
+

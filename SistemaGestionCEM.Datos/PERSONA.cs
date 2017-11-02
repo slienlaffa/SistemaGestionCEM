@@ -11,7 +11,9 @@ namespace SistemaGestionCEM.Datos
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class PERSONA
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,12 +24,26 @@ namespace SistemaGestionCEM.Datos
             this.ENCARGADO_CEM = new HashSet<ENCARGADO_CEM>();
             this.FAMILIA_ANFITRIONA = new HashSet<FAMILIA_ANFITRIONA>();
         }
-    
+
         public decimal COD_PERSONA { get; set; }
+
+        [Required(ErrorMessage = "Ingrese su nombre", AllowEmptyStrings = false)]
+        [DisplayName("Nombre")]
         public string NOMBRE { get; set; }
+
+        [Required(ErrorMessage = "Ingrese su apellido", AllowEmptyStrings = false)]
+        [DisplayName("Apellido")]
         public string APELLIDO { get; set; }
+
+        [Required(ErrorMessage = "Ingrese un correo")]
+        [Display(Name = "Correo Electrónico", Description = "nombre@dominio.com")]
+        [EmailAddress(ErrorMessage = "Ingrese un correo válido")]
         public string CORREO { get; set; }
+
+       
         public decimal TELEFONO { get; set; }
+
+
         public string NACIONALIDAD { get; set; }
         public decimal FK_COD_CIUDAD { get; set; }
         public decimal FK_COD_GENERO { get; set; }

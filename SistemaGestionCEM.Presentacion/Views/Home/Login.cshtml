@@ -1,0 +1,69 @@
+﻿@model SistemaGestionCEM.Datos.USUARIO
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section ContenidoCentral
+{
+    
+    @if (ViewBag.Message != null)
+    {
+
+        <b><span style="color:red">@ViewBag.Message</span></b>
+    }
+    <br />
+
+    @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+    {
+        <br />
+        <h2>Por favor, inicie sesión</h2>
+        <br />
+            @Html.AntiForgeryToken();
+        @Html.ValidationSummary(true);
+        <table>
+
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.NOMBRE_USUARIO, new { @class = "control-label" })
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.NOMBRE_USUARIO, new { @class = "form-control" })
+                </td>
+                <td>
+                    <span style="color:red;">@Html.ValidationMessageFor(model => model.NOMBRE_USUARIO)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.CONTRASENNA, new { @class = "control-label" })
+
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.CONTRASENNA)
+                </td>
+                <td>
+                    <span style="color:red;">@Html.ValidationMessageFor(model => model.CONTRASENNA)</span>
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td>
+                    <br />
+                    <input class="btn btn-lg btn-primary " type="submit" name="name" value="Inicio" />
+                    <input class="btn btn-lg btn-danger " type="reset" name="name" value="Limpiar campos" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>No tienes una cuenta? registrate como alumno, o familia!</p>
+
+                    <p>@Html.ActionLink("Registrarme como Alumno", "AutoRegistroAlumno", "Home")</p>
+                    <p>@Html.ActionLink("Registrarme como Familia", "AutoRegistroFamilia", "Home")</p>
+                </td>
+            </tr>
+        </table>
+    }
+    
+}

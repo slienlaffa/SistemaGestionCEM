@@ -1,4 +1,18 @@
-﻿<!DOCTYPE html>
+﻿@{ 
+    string sesionActual = "";
+    string nombre = "";
+
+    if (Session["SesionActual"] != null)
+    {
+        sesionActual = Session["SesionActual"].ToString();
+    }
+
+    if (Session["Nombre"] != null)
+    {
+        nombre = Session["Nombre"].ToString();
+    }
+}
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <title>@ViewBag.Title - C.E.M.</title>
@@ -8,51 +22,53 @@
     <link rel="stylesheet" href="~/Scripts/CEMTemplate.css" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/main.js"></script>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
-    <style>
-       
-    </style>
 </head>
 <body>
-
-    <nav class="navbar navbar-inverse">
-        <a id="loguito" class="navbar-brand" style="color:black" href="#">Centro de Estudios Montreal</a>
-        <div class="container-fluid">
-            <div class="navbar-header">
-
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#"></a>
-            </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav">
-                    <li class="active">@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Quienes somos", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contactanos", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Programas de Intercambio", "nadaxd", "Home")</li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><span class="glyphicon glyphicon-log-in"></span>@Html.ActionLink("Iniciar sesión", "Login", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
+    <header>
+        <div>
+            <img src="~/imagenes/Logo-CEM.png" />
         </div>
-    </nav>
+        <nav  id="navegacion" class="menu">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Quienes somos", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contactanos", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("Programas de Intercambio", "Programas", "Home")</li>
+                    </ul>
+                    @if (!nombre.IsEmpty())
+                    {
+                        <div id="logued" class="inner" style="width:160px; margin-left:10px;">
+                            <p>Bienvenido, @nombre </p>
+                            @Html.ActionLink("Cerrar sesion", "LogOut", "Home")
+                        </div>
+                    }
+                    else
+                    {
+                        <ul class="nav navbar-nav navbar-right ">
+                            <li><a href="/Home/Login"><span class="glyphicon glyphicon-log-in"></span> Iniciar Sesion</a></li>
+                        </ul>
+                    }
+                </div>
+            </div>
+        </nav>
 
-    <div id="CenterContent">
-        @RenderSection("ContenidoCentral", false);
+    </header>
+    <div class="inner">
+        @RenderSection("ContenidoCentral", false)
         @RenderBody()
     </div>
 
     <footer class="container-fluid text-center">
         <div>
             <article>
-                <p><b>OFICINA MÁS CERCANA</b></p>
+                <br />
+                <p><b>DIRIGETE A LA OFICINA MÁS CERCANA</b></p>
                 <p>Antonio Varas 666, Quebec</p>
                 <p>1 819 821-7000</p>
             </article>
