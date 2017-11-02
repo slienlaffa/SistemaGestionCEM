@@ -14,9 +14,6 @@ namespace SistemaGestionCEM.Presentacion.Controllers
 
         public ActionResult Index()
         {
-            AlumnoNegocio aa = new AlumnoNegocio();
-            List<PROGRAMA_ESTUDIO> programas = aa.ProgramasPublicados().ToList();
-            ViewBag.Message = programas.First().NOMBRE_PROGRAMA;
             return View();
         }
 
@@ -161,7 +158,7 @@ namespace SistemaGestionCEM.Presentacion.Controllers
                 user2.COD_USUARIO = unegocio.nuevoCodigo();
                 user2.NOMBRE_USUARIO = newUser.USUARIO.NOMBRE_USUARIO;
                 user2.CONTRASENNA = newUser.USUARIO.CONTRASENNA;
-                user2.TIPO_USUARIO.COD_TIPO = 2; //Alumno
+                user2.FK_COD_TIPO = 2; //Alumno
                 persona2.USUARIO = user2;
 
                 db.PERSONA.Add(persona2);
