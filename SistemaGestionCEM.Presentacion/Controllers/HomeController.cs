@@ -59,33 +59,33 @@ namespace SistemaGestionCEM.Presentacion.Controllers
                             .Where(u => u.NOMBRE_USUARIO == user 
                             && u.CONTRASENNA == pass).FirstOrDefault();
 
-                        Session["NombreUsuario"] = usuario.NOMBRE_USUARIO;
+                        Session["Nombre"] = usuario.NOMBRE_USUARIO;
                         if (usuario.TIPO_USUARIO.COD_TIPO == 1)
                         {
-                            Session["TipoUsuario"] = "Administrador";
+                            Session["SesionActual"] = "Administrador";
                             return RedirectToAction("Index", "Admin");
                         }
                         if (usuario.TIPO_USUARIO.COD_TIPO == 2)
                         {
-                            Session["TipoUsuario"] = "Alumno";
+                            Session["SesionActual"] = "Alumno";
                             return RedirectToAction("Index", "Alumno");
                         }
                         if (usuario.TIPO_USUARIO.COD_TIPO == 3)
                         {
-                            Session["TipoUsuario"] = "Familia";
+                            Session["SesionActual"] = "Familia";
                             return RedirectToAction("Index", "Familia");
                         }
                         if (usuario.TIPO_USUARIO.COD_TIPO == 4)
                         {
-                            Session["TipoUsuario"] = "EncargadoCEM";
+                            Session["SesionActual"] = "EncargadoCEM";
                             return RedirectToAction("Index", "EncargadoCEM");
                         }
                         if (usuario.TIPO_USUARIO.COD_TIPO == 5)
                         {
-                            Session["TipoUsuario"] = "EncargadoCEL";
+                            Session["SesionActual"] = "EncargadoCEL";
                             return RedirectToAction("Index", "EncargadoCEL");
                         }
-                        return RedirectToAction("Index", "Login");
+                        return View();
                     }
                     ViewBag.Message = "Nombre de Usuario o Contraseña incorrectos";
                     return View();
@@ -106,72 +106,104 @@ namespace SistemaGestionCEM.Presentacion.Controllers
         [AllowAnonymous]
         public ActionResult AutoRegistroFamilia()
         {
+            CargarDropDownList();
             return View();
         }
 
         [HttpPost]
-        public ActionResult AutoRegistroFamilia(PERSONA persona)
+        public ActionResult AutoRegistroFamilia(FAMILIA_ANFITRIONA familia)
         {
-            
-                return View();
+           
+            return View();
         }
 
         public ActionResult AutoRegistroAlumno()
         {
+            CargarDropDownList();
             return View();
         }
 
         [HttpPost]
-        public ActionResult AutoRegistroAlumno(PERSONA newUser)
+        public ActionResult AutoRegistroAlumno(ALUMNO nuevoAlumno)
         {
-           
+            CargarDropDownList();
+
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            else
+            {
+
                 var persona = db.PERSONA
                     .Where(model => model.USUARIO.NOMBRE_USUARIO
-                    == newUser.USUARIO.NOMBRE_USUARIO)
+                    == nuevoAlumno.PERSONA.USUARIO.NOMBRE_USUARIO)
                     .FirstOrDefault();
-          
+
                 if (persona != null)
                 {
-                    ViewBag.Message = "El nombre de usuario '" + newUser.USUARIO.NOMBRE_USUARIO + 
+                    ViewBag.Message = "El nombre de usuario '" + nuevoAlumno.PERSONA.USUARIO.NOMBRE_USUARIO +
                         "' ya existe, por favor ingrese otro distinto!";
                     return View("Index");
                 }
-
+                // Cambiar por pn.Crear();
                 PersonaNegocio pn = new PersonaNegocio();
                 PERSONA persona2 = db.PERSONA.Create();
+        
                 persona2.COD_PERSONA = pn.nuevoCodigo();
-                persona2.NOMBRE = newUser.NOMBRE;
-                persona2.APELLIDO = newUser.APELLIDO;
-                persona2.CORREO = newUser.CORREO;
-                persona2.TELEFONO = newUser.TELEFONO;
-                persona2.NACIONALIDAD = newUser.NACIONALIDAD;
-                
+                persona2.NOMBRE = nuevoAlumno.PERSONA.NOMBRE;
+                persona2.APELLIDO = nuevoAlumno.PERSONA.APELLIDO;
+                persona2.CORREO = nuevoAlumno.PERSONA.CORREO;
+                persona2.TELEFONO = nuevoAlumno.PERSONA.TELEFONO;
+                persona2.NACIONALIDAD = nuevoAlumno.PERSONA.NACIONALIDAD;
 
+                PAIS p = db.PAIS.Create();
+                PaisNegocio pnegocio = new PaisNegocio();
+                p.COD_PAIS = pnegocio.nuevoCodigo();
+                p.DESCRIPCION = nuevoAlumno.PERSONA.CIUDAD.PAIS.DESCRIPCION;
+               
                 CIUDAD c = db.CIUDAD.Create();
-                c.DESCRIPCION = newUser.CIUDAD.DESCRIPCION;
-                c.PAIS = newUser.CIUDAD.PAIS;
+                CiudadNegocio cnegocio = new CiudadNegocio();
+                c.COD_CIUDAD = cnegocio.nuevoCodigo();
+                c.DESCRIPCION = nuevoAlumno.PERSONA.CIUDAD.DESCRIPCION;
+                c.PAIS = p;
                 persona2.CIUDAD = c;
 
                 GENERO g = db.GENERO.Create();
-                g.DESCRIPCION = newUser.GENERO.DESCRIPCION;
+                GeneroNegocio gnegocio = new GeneroNegocio();
+                g.COD_GENERO = gnegocio.nuevoCodigo();
+                g.DESCRIPCION = nuevoAlumno.PERSONA.GENERO.DESCRIPCION;
                 persona2.GENERO = g;
 
                 UsuarioNegocio unegocio = new UsuarioNegocio();
                 USUARIO user2 = db.USUARIO.Create();
                 user2.COD_USUARIO = unegocio.nuevoCodigo();
-                user2.NOMBRE_USUARIO = newUser.USUARIO.NOMBRE_USUARIO;
-                user2.CONTRASENNA = newUser.USUARIO.CONTRASENNA;
-                user2.TIPO_USUARIO.COD_TIPO = 2; //Alumno
+                user2.NOMBRE_USUARIO = nuevoAlumno.PERSONA.USUARIO.NOMBRE_USUARIO;
+                user2.CONTRASENNA = nuevoAlumno.PERSONA.USUARIO.CONTRASENNA;
+
+                TIPO_USUARIO tipo = db.TIPO_USUARIO.Create();
+                TipoUsuarioNegocio tipoUsuarioNegocio = new TipoUsuarioNegocio();
+                tipo.COD_TIPO = tipoUsuarioNegocio.nuevoCodigo();
+                tipo.DESCRIPCION = "Alumno";
+                user2.TIPO_USUARIO = tipo;
                 persona2.USUARIO = user2;
 
-                db.PERSONA.Add(persona2);
+                AlumnoNegocio anegocio = new AlumnoNegocio();
+                anegocio.Crear((int)persona2.COD_PERSONA, nuevoAlumno.FECHA_NACIMIENTO);
+
+
+               // db.PERSONA.Add(persona2);
                 db.SaveChanges();
                 return RedirectToAction("Index");
 
-                //Hasta aqui llegué, 00:00, 02-11, NReyes 
-                // no probé.
-            
-           
+                // Funcionando, guarda todo. pero el pais, ciudad y genero me lo guarda como el codigo y no como string XD
+            }
+        }
+        public void CargarDropDownList()
+        {
+            ViewBag.Generos = new SelectList(db.GENERO, "DESCRIPCION");
+            ViewBag.Paises = new SelectList(db.PAIS,"DESCRIPCION");
+            ViewBag.Ciudades = new SelectList(db.CIUDAD, "DESCRIPCION" );
         }
     }
 }
