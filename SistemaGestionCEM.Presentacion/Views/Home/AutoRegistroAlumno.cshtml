@@ -66,10 +66,10 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.PERSONA.GENERO.DESCRIPCION, "Genero", htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.PERSONA.FK_COD_GENERO, "Genero", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.DropDownListFor(model => model.PERSONA.FK_COD_GENERO, (SelectList)ViewBag.Generos, "Seleccione Genero", htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.PERSONA.GENERO.DESCRIPCION, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(model => model.PERSONA.FK_COD_GENERO, "", new { @class = "text-danger" })
                 </div>
             </div>
 
@@ -106,10 +106,10 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.PERSONA.CIUDAD.DESCRIPCION, "Ciudad", htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.PERSONA.FK_COD_CIUDAD, "Ciudad", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.DropDownListFor(model => model.PERSONA.FK_COD_CIUDAD, (SelectList)ViewBag.Ciudades, "Seleccione Ciudad", htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.PERSONA.CIUDAD.DESCRIPCION, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(model => model.PERSONA.FK_COD_CIUDAD, "", new { @class = "text-danger" })
                 </div>
             </div>
              
@@ -141,6 +141,13 @@
                 </div>
             </div>
         </div>
+        foreach (ModelState modelState in ViewData.ModelState.Values)
+        {
+            foreach (ModelError error in modelState.Errors)
+            {
+                @error.ErrorMessage;
+            }
+        }
     }
 
     <div>

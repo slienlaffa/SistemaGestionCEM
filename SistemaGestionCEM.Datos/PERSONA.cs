@@ -46,8 +46,10 @@ namespace SistemaGestionCEM.Datos
 
         [Required]
         public string NACIONALIDAD { get; set; }
-  
+
+        [DisplayName("Ciudad")]
         public decimal FK_COD_CIUDAD { get; set; }
+        [DisplayName("Genero")]
         public decimal FK_COD_GENERO { get; set; }
         public decimal FK_COD_USUARIO { get; set; }
     
@@ -61,7 +63,7 @@ namespace SistemaGestionCEM.Datos
         public virtual ICollection<ENCARGADO_CEM> ENCARGADO_CEM { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FAMILIA_ANFITRIONA> FAMILIA_ANFITRIONA { get; set; }
-        [Required]
+
         public virtual GENERO GENERO { get; set; }
         public virtual USUARIO USUARIO { get; set; }
     }
