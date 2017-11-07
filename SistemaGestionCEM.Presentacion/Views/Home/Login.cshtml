@@ -20,7 +20,7 @@
         <h2>Por favor, inicie sesión</h2>
         <br />
             @Html.AntiForgeryToken();
-        @Html.ValidationSummary(true);
+             @Html.ValidationSummary(true);
         <table>
 
             <tr>
@@ -51,16 +51,14 @@
                 <td></td>
                 <td>
                     <br />
-                    <input class="btn btn-lg btn-primary " type="submit" name="name" value="Inicio" />
-                    <input class="btn btn-lg btn-danger " type="reset" name="name" value="Limpiar campos" />
+                    <input class="btn btn-lg btn-default " type="submit" name="name" value="Inicio" />
+                    <input class="btn btn-lg btn-default " type="reset" name="name" value="Limpiar campos" />
                 </td>
             </tr>
             <tr>
                 <td>
-                    <p>No tienes una cuenta? registrate como alumno, o familia!</p>
-
-                    <p>@Html.ActionLink("Registrarme como Alumno", "AutoRegistroAlumno", "Home")</p>
-                    <p>@Html.ActionLink("Registrarme como Familia", "AutoRegistroFamilia", "Home")</p>
+                    <p><b>No tienes una cuenta? registrate como alumno, o familia!</b></p>
+                    <p>@Html.ActionLink("Registrarme como Alumno", "AutoRegistroAlumno", "Home") ó @Html.ActionLink("Registrarme como Familia", "AutoRegistroFamilia", "Home")</p>
                 </td>
             </tr>
         </table>

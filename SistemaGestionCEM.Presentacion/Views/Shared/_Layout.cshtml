@@ -17,24 +17,28 @@
 <head>
     <title>@ViewBag.Title - C.E.M.</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device−width, initial−scale=1.0" />
+    <meta name="viewport" content="width=device−width, user-scalable=no, initial−scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="~/Scripts/CEMTemplate.css" type="text/css">
+   
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="~/Scripts/CEMTemplate.css" type="text/css">
+  
     <script src="~/Scripts/main.js"></script>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
 
 </head>
 <body>
     <header>
-        <div>
-            <img src="~/imagenes/Logo-CEM.png" />
-        </div>
-        <nav  id="navegacion" class="menu">
+        <nav class="menu">
+            <h1 class="logoTitulo" ><span class="glyphicon glyphicon-book"></span>Centro de Estudios Montreal</h1>
             <div class="container-fluid">
                 <div class="collapse navbar-collapse" id="myNavbar">
+                    
                     <ul class="nav navbar-nav">
                         <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
                         <li>@Html.ActionLink("Quienes somos", "About", "Home")</li>
@@ -43,10 +47,10 @@
                     </ul>
                     @if (!nombre.IsEmpty())
                     {
-                        <div id="logued" class="inner" style="width:160px; margin-left:10px;">
-                            <p>Bienvenido, @nombre </p>
-                            @Html.ActionLink("Cerrar sesion", "LogOut", "Home")
-                        </div>
+                        
+                        <ul class="nav navbar-nav navbar-right ">
+                            <li><b>Bienvenido, @nombre</b> @Html.ActionLink("Cerrar sesion", "LogOut", "Home")
+                        </ul>
                     }
                     else
                     {
@@ -59,26 +63,32 @@
         </nav>
 
     </header>
-    <div class="inner">
+    <div align="center" class="inner">
         @RenderSection("ContenidoCentral", false)
         @RenderBody()
     </div>
 
     <footer class="container-fluid text-center">
-        <div>
-            <article>
+        <div class="right">
+       
                 <br />
                 <p><b>DIRIGETE A LA OFICINA MÁS CERCANA</b></p>
                 <p>Antonio Varas 666, Quebec</p>
                 <p>1 819 821-7000</p>
-            </article>
+          
+        </div>
+        <div class="left">
+          
+                <br />
+                <p><b>¿Tienes dudas, sugerencias o reclamos?</b></p>
+                <p>Escribenos a: contacto@cem.com</p>
+           
         </div>
         <hr>
         <p><i>Copyright © Centro de Estudios Montreal - @DateTime.Now.Year</i></p>
     </footer>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+   
+ 
     @RenderSection("scripts", required: false)
 </body>
 </html>

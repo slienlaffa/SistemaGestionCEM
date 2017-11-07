@@ -27,30 +27,33 @@ namespace SistemaGestionCEM.Datos
 
         public decimal COD_PERSONA { get; set; }
 
-        [Required(ErrorMessage = "Ingrese su nombre", AllowEmptyStrings = false)]
+        [Required(ErrorMessage = "El campo Nombre es obligatorio.", AllowEmptyStrings = false)]
         [DisplayName("Nombre")]
         public string NOMBRE { get; set; }
 
-        [Required(ErrorMessage = "Ingrese su apellido", AllowEmptyStrings = false)]
+        [Required(ErrorMessage = "El campo Apellido es obligatorio.", AllowEmptyStrings = false)]
         [DisplayName("Apellido")]
         public string APELLIDO { get; set; }
 
-        [Required(ErrorMessage = "Ingrese un correo")]
+        [Required(ErrorMessage = "Ingrese un correo", AllowEmptyStrings = false)]
         [Display(Name = "Correo Electrónico", Description = "nombre@dominio.com")]
         [EmailAddress(ErrorMessage = "Ingrese un correo válido")]
         public string CORREO { get; set; }
 
-       
+       [Required]
+       [DisplayName("Teléfono")]
         public decimal TELEFONO { get; set; }
 
-
+        [Required]
         public string NACIONALIDAD { get; set; }
+  
         public decimal FK_COD_CIUDAD { get; set; }
         public decimal FK_COD_GENERO { get; set; }
         public decimal FK_COD_USUARIO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ALUMNO> ALUMNO { get; set; }
+        [Required]
         public virtual CIUDAD CIUDAD { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ENCARGADO_CEL> ENCARGADO_CEL { get; set; }
@@ -58,6 +61,7 @@ namespace SistemaGestionCEM.Datos
         public virtual ICollection<ENCARGADO_CEM> ENCARGADO_CEM { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FAMILIA_ANFITRIONA> FAMILIA_ANFITRIONA { get; set; }
+        [Required]
         public virtual GENERO GENERO { get; set; }
         public virtual USUARIO USUARIO { get; set; }
     }
