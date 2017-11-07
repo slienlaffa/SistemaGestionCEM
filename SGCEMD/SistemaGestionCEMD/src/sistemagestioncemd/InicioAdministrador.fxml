@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistemagestioncemd.InicioAdministradorController">
+   <children>
+      <Label layoutX="157.0" layoutY="36.0" prefHeight="94.0" prefWidth="486.0" text="Centro de Estudios Montreal">
+         <font>
+            <Font size="38.0" />
+         </font>
+      </Label>
+      <Label layoutX="167.0" layoutY="194.0" text="Bienvenido, Administrador" />
+      <Label layoutX="395.0" layoutY="194.0" text="Seleccione una opción" />
+      <Label layoutX="338.0" layoutY="239.0" text="Administración de Usuarios" />
+      <Button fx:id="btnAgregarAlumno" layoutX="185.0" layoutY="271.0" mnemonicParsing="false" onAction="#handlerAgregarAlumnoAction" text="Agregar nuevo Alumno" />
+      <Button fx:id="btnAgregarFamilia" layoutX="185.0" layoutY="308.0" mnemonicParsing="false" onAction="#handlerAgregarFamiliaAction" prefHeight="25.0" prefWidth="139.0" text="Agregar nueva Familia" />
+      <Button fx:id="btnModificarUsuario" layoutX="341.0" layoutY="271.0" mnemonicParsing="false" onAction="#handlerModificarUsuarioAction" prefHeight="25.0" prefWidth="139.0" text="Modificar un Usuario" />
+      <Button fx:id="btnBuscarUsuario" layoutX="341.0" layoutY="308.0" mnemonicParsing="false" onAction="#handlerBuscarUsuarioAction" prefHeight="25.0" prefWidth="139.0" text="Buscar un Usuario" />
+      <Button fx:id="btnEliminarUsuario" layoutX="495.0" layoutY="271.0" mnemonicParsing="false" onAction="#handlerEliminarUsuarioAction" prefHeight="25.0" prefWidth="139.0" text="Eliminar un Usuario" />
+      <Label layoutX="340.0" layoutY="355.0" text="Administración de Centros" />
+      <Button fx:id="btnAgregarCentro" layoutX="185.0" layoutY="387.0" mnemonicParsing="false" onAction="#handlerAgregarCentroAction" prefHeight="25.0" prefWidth="139.0" text="Agregar nuevo Centro" />
+      <Button fx:id="btnModificarCentro" layoutX="341.0" layoutY="387.0" mnemonicParsing="false" onAction="#handlerModificarCentroAction" prefHeight="25.0" prefWidth="139.0" text="Modificar un Centro" />
+      <Button fx:id="btnEliminarCentro" layoutX="185.0" layoutY="424.0" mnemonicParsing="false" onAction="#handlerEliminarCentroAction" prefHeight="25.0" prefWidth="139.0" text="Eliminar un Centro" />
+      <Button fx:id="btnMostrarCentro" layoutX="341.0" layoutY="424.0" mnemonicParsing="false" onAction="#handlerMostrarCentroAction" prefHeight="25.0" prefWidth="139.0" text="Mostrar Centros" />
+   </children>
+</AnchorPane>

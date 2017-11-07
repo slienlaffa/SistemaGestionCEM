@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="SistemaGestionCEMD.jnlp">
+  <information>
+    <title>SistemaGestionCEMD</title>
+    <vendor>felipe</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="SistemaGestionCEMD.jar" size="21133" download="eager" />
+    <jar href="lib\aopalliance-repackaged-2.5.0-b42.jar" size="14768" download="eager" />
+    <jar href="lib\cdi-api-1.1.jar" size="70701" download="eager" />
+    <jar href="lib\el-api-2.2.jar" size="33936" download="eager" />
+    <jar href="lib\hk2-api-2.5.0-b42.jar" size="186763" download="eager" />
+    <jar href="lib\hk2-locator-2.5.0-b42.jar" size="189454" download="eager" />
+    <jar href="lib\hk2-utils-2.5.0-b42.jar" size="135317" download="eager" />
+    <jar href="lib\javassist-3.22.0-CR2.jar" size="737884" download="eager" />
+    <jar href="lib\javax.annotation-api-1.2.jar" size="26366" download="eager" />
+    <jar href="lib\javax.inject-1.jar" size="2497" download="eager" />
+    <jar href="lib\javax.inject-2.5.0-b42.jar" size="5951" download="eager" />
+    <jar href="lib\javax.json-1.1.jar" size="125521" download="eager" />
+    <jar href="lib\javax.json-api-1.1.jar" size="28540" download="eager" />
+    <jar href="lib\javax.json.bind-api-1.0.jar" size="23665" download="eager" />
+    <jar href="lib\javax.servlet-api-3.0.1.jar" size="85353" download="eager" />
+    <jar href="lib\javax.ws.rs-api-2.1.jar" size="127509" download="eager" />
+    <jar href="lib\jaxb-api-2.2.7.jar" size="100146" download="eager" />
+    <jar href="lib\jboss-interceptors-api_1.1_spec-1.0.0.Beta1.jar" size="5617" download="eager" />
+    <jar href="lib\jersey-client.jar" size="181496" download="eager" />
+    <jar href="lib\jersey-common.jar" size="1125788" download="eager" />
+    <jar href="lib\jersey-container-servlet-core.jar" size="59261" download="eager" />
+    <jar href="lib\jersey-container-servlet.jar" size="18015" download="eager" />
+    <jar href="lib\jersey-hk2.jar" size="62474" download="eager" />
+    <jar href="lib\jersey-media-jaxb.jar" size="71869" download="eager" />
+    <jar href="lib\jersey-media-json-binding.jar" size="11774" download="eager" />
+    <jar href="lib\jersey-media-sse.jar" size="63416" download="eager" />
+    <jar href="lib\jersey-server.jar" size="920152" download="eager" />
+    <jar href="lib\jsr250-api-1.0.jar" size="5848" download="eager" />
+    <jar href="lib\org.osgi.core-4.2.0.jar" size="246924" download="eager" />
+    <jar href="lib\osgi-resource-locator-1.0.1.jar" size="20235" download="eager" />
+    <jar href="lib\persistence-api-1.0.jar" size="52150" download="eager" />
+    <jar href="lib\validation-api-1.1.0.Final.jar" size="63777" download="eager" />
+    <jar href="lib\yasson-1.0.jar" size="297119" download="eager" />
+  </resources>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="SistemaGestionCEMD" >
+    <param name="requiredFXVersion" value="8.0+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="800" height="600" main-class="sistemagestioncemd.SistemaGestionCEMD"  name="SistemaGestionCEMD" />
+  <update check="always"/>
+</jnlp>
