@@ -33,63 +33,63 @@
 
 </head>
 <body>
-    <header>
-        <h1 class="logoTitulo"><span class="glyphicon glyphicon-book"></span>Centro de Estudios Montreal</h1>
-        <nav class="menu">
-            
-            <div class="container-fluid">
-                <div class="collapse navbar-collapse" id="myNavbar">
-                    
-                    <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                        <li>@Html.ActionLink("Quienes somos", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contactanos", "Contact", "Home")</li>
-                        <li>@Html.ActionLink("Programas de Intercambio", "Programas", "Home")</li>
-                    </ul>
-                    @if (!nombre.IsEmpty())
-                    {
-                        
-                        <ul class="nav navbar-nav navbar-right ">
-                            <li><b>Bienvenido, @nombre</b> @Html.ActionLink("Cerrar sesion", "LogOut", "Home")
+        <header>
+            <h1 class="logoTitulo"><span class="glyphicon glyphicon-book"></span>Centro de Estudios Montreal</h1>
+            <nav class="menu">
+
+                <div class="container">
+                    <div class="collapse navbar-collapse" id="myNavbar">
+
+                        <ul class="nav navbar-nav">
+                            <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Quienes somos", "About", "Home")</li>
+                            <li>@Html.ActionLink("Contactanos", "Contact", "Home")</li>
+                            <li>@Html.ActionLink("Programas de Intercambio", "Programas", "Home")</li>
                         </ul>
-                    }
-                    else
-                    {
-                        <ul class="nav navbar-nav navbar-right ">
-                            <li><a href="/Home/Login"><span class="glyphicon glyphicon-log-in"></span> Iniciar Sesion</a></li>
-                        </ul>
-                    }
+                        @if (!nombre.IsEmpty())
+                        {
+
+                            <ul class="nav navbar-nav navbar-right ">
+                                <li style="color:orangered"><b>Bienvenido, @nombre</b> @Html.ActionLink("Cerrar sesion", "LogOut", "Home")
+                            </ul>
+                        }
+                        else
+                        {
+                            <ul class="nav navbar-nav navbar-right ">
+                                <li><a href="/Home/Login"><span class="glyphicon glyphicon-log-in"></span> Iniciar Sesion</a></li>
+                            </ul>
+                        }
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
 
-    </header>
-    <div align="center" class="inner">
-        @RenderSection("ContenidoCentral", false)
-        @RenderBody()
-    </div>
+        </header>
+        <div align="center" class="inner">
+            @RenderSection("ContenidoCentral", false)
+            @RenderBody()
+        </div>
 
-    <footer class="container-fluid text-center">
-        <div class="right">
-       
+        <footer class="container-fluid text-center">
+            <div class="right">
+
                 <br />
                 <p><b>DIRIGETE A LA OFICINA MÁS CERCANA</b></p>
                 <p>Antonio Varas 666, Quebec</p>
                 <p>1 819 821-7000</p>
-          
-        </div>
-        <div class="left">
-          
+
+            </div>
+            <div class="left">
+
                 <br />
                 <p><b>¿Tienes dudas, sugerencias o reclamos?</b></p>
                 <p>Escribenos a: contacto@cem.com</p>
-           
-        </div>
-        <hr>
-        <p><i>Copyright © Centro de Estudios Montreal - @DateTime.Now.Year</i></p>
-    </footer>
-   
- 
-    @RenderSection("scripts", required: false)
+
+            </div>
+            <hr>
+            <p><i>Copyright © Centro de Estudios Montreal - @DateTime.Now.Year</i></p>
+        </footer>
+
+
+        @RenderSection("scripts", required: false)
 </body>
 </html>

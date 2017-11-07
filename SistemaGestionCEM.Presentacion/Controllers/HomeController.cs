@@ -42,8 +42,7 @@ namespace SistemaGestionCEM.Presentacion.Controllers
             if (ModelState.IsValid)
             {
                 using (SistemaGestionCEM.Datos.Entities db = new Entities())
-                {
-                    
+                {                   
 
                     UsuarioNegocio user2 = new UsuarioNegocio();
 
@@ -222,8 +221,6 @@ namespace SistemaGestionCEM.Presentacion.Controllers
             anegocio.Crear((int)nuevaPersona.COD_PERSONA, nuevoAlumno.FECHA_NACIMIENTO);
 
             return RedirectToAction("Index");
-
-            // Funcionando, guarda todo. pero el pais, ciudad y genero me lo guarda como el codigo y no como string XD
         }
         public void CargarDropDownList()
         {
