@@ -108,10 +108,44 @@ namespace SistemaGestionCEM.Presentacion.Controllers
         }
 
         [HttpPost]
-        public ActionResult AutoRegistroFamilia(FAMILIA_ANFITRIONA familia)
+        public ActionResult AutoRegistroFamilia(FAMILIA_ANFITRIONA nuevaFamilia)
         {
-           
-            return View();
+            CargarDropDownList();
+
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            else
+            {
+                var persona = db.PERSONA
+                    .Where(model => model.USUARIO.NOMBRE_USUARIO
+                    == nuevaFamilia.PERSONA.USUARIO.NOMBRE_USUARIO)
+                    .FirstOrDefault();
+
+                if (persona != null)
+                {
+                    ViewBag.Message = "El nombre de usuario '" + nuevaFamilia.PERSONA.USUARIO.NOMBRE_USUARIO +
+                        "' ya existe, por favor ingrese otro distinto!";
+                    return View();
+
+
+                }
+                UsuarioNegocio unegocio = new UsuarioNegocio();
+                unegocio.Crear(nuevaFamilia.PERSONA.USUARIO.CONTRASENNA, nuevaFamilia.PERSONA.USUARIO.NOMBRE_USUARIO, 3);
+
+                PersonaNegocio pn = new PersonaNegocio();
+                pn.Crear(nuevaFamilia.PERSONA.APELLIDO, nuevaFamilia.PERSONA.CORREO, (int)nuevaFamilia.PERSONA.TELEFONO, unegocio.nuevoCodigo(), nuevaFamilia.PERSONA.NACIONALIDAD,
+                   (int)nuevaFamilia.PERSONA.CIUDAD.COD_CIUDAD, nuevaFamilia.PERSONA.NOMBRE, (int)nuevaFamilia.PERSONA.GENERO.COD_GENERO);
+
+                FamiliaAnfitrionaNegocio anegocio = new FamiliaAnfitrionaNegocio();
+                anegocio.Crear((int)nuevaFamilia.NUM_BANOS, 0, DateTime.Now.Year, (int)nuevaFamilia.NUM_HABITACIONES, nuevaFamilia.TIPO_VIVIENDA, (int)nuevaFamilia.NUM_INTEGRANTES, pn.nuevoCodigo(),
+                    nuevaFamilia.ESTACIONAMIENTO, nuevaFamilia.MASCOTA_DESCRIPCION);
+
+
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
         }
 
         public ActionResult AutoRegistroAlumno()
