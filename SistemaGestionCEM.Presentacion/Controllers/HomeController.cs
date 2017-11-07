@@ -128,22 +128,39 @@ namespace SistemaGestionCEM.Presentacion.Controllers
                     ViewBag.Message = "El nombre de usuario '" + nuevaFamilia.PERSONA.USUARIO.NOMBRE_USUARIO +
                         "' ya existe, por favor ingrese otro distinto!";
                     return View();
-
-
                 }
-                UsuarioNegocio unegocio = new UsuarioNegocio();
-                unegocio.Crear(nuevaFamilia.PERSONA.USUARIO.CONTRASENNA, nuevaFamilia.PERSONA.USUARIO.NOMBRE_USUARIO, 3);
 
                 PersonaNegocio pn = new PersonaNegocio();
-                pn.Crear(nuevaFamilia.PERSONA.APELLIDO, nuevaFamilia.PERSONA.CORREO, (int)nuevaFamilia.PERSONA.TELEFONO, unegocio.nuevoCodigo(), nuevaFamilia.PERSONA.NACIONALIDAD,
-                   (int)nuevaFamilia.PERSONA.CIUDAD.COD_CIUDAD, nuevaFamilia.PERSONA.NOMBRE, (int)nuevaFamilia.PERSONA.GENERO.COD_GENERO);
+                PERSONA nuevaPersona = db.PERSONA.Create();
+
+                nuevaPersona.COD_PERSONA = pn.nuevoCodigo();
+                nuevaPersona.NOMBRE = nuevaFamilia.PERSONA.NOMBRE;
+                nuevaPersona.APELLIDO = nuevaFamilia.PERSONA.APELLIDO;
+                nuevaPersona.CORREO = nuevaFamilia.PERSONA.CORREO;
+                nuevaPersona.TELEFONO = nuevaFamilia.PERSONA.TELEFONO;
+                nuevaPersona.NACIONALIDAD = nuevaFamilia.PERSONA.NACIONALIDAD;
+                nuevaPersona.FK_COD_GENERO = nuevaFamilia.PERSONA.FK_COD_GENERO;
+                nuevaPersona.FK_COD_CIUDAD = nuevaFamilia.PERSONA.FK_COD_CIUDAD;
+
+                UsuarioNegocio unegocio = new UsuarioNegocio();
+                USUARIO usuario = db.USUARIO.Create();
+                usuario.COD_USUARIO = unegocio.nuevoCodigo();
+                usuario.NOMBRE_USUARIO = nuevaFamilia.PERSONA.USUARIO.NOMBRE_USUARIO;
+                usuario.CONTRASENNA = nuevaFamilia.PERSONA.USUARIO.CONTRASENNA;
+
+                usuario.FK_COD_TIPO = 3;
+                nuevaPersona.FK_COD_USUARIO = usuario.COD_USUARIO;
+
+
+                db.PERSONA.Add(nuevaPersona);
+                db.USUARIO.Add(usuario);
+                db.SaveChanges();
 
                 FamiliaAnfitrionaNegocio anegocio = new FamiliaAnfitrionaNegocio();
-                anegocio.Crear((int)nuevaFamilia.NUM_BANOS, 0, DateTime.Now.Year, (int)nuevaFamilia.NUM_HABITACIONES, nuevaFamilia.TIPO_VIVIENDA, (int)nuevaFamilia.NUM_INTEGRANTES, pn.nuevoCodigo(),
-                    nuevaFamilia.ESTACIONAMIENTO, nuevaFamilia.MASCOTA_DESCRIPCION);
+                anegocio.Crear((int)nuevaFamilia.NUM_BANOS, 0, DateTime.Now.Year, (int)nuevaFamilia.NUM_HABITACIONES, nuevaFamilia.TIPO_VIVIENDA, (int)nuevaFamilia.NUM_INTEGRANTES, 
+                    (int)nuevaPersona.COD_PERSONA, nuevaFamilia.ESTACIONAMIENTO, nuevaFamilia.MASCOTA_DESCRIPCION);
 
 
-                db.SaveChanges();
                 return RedirectToAction("Index");
             }
         }
