@@ -55,14 +55,9 @@ namespace SistemaGestionCEM.Negocio
                     db.SaveChanges();
 
                     Email.ResultadoPostulacion(postulacion.ALUMNO.PERSONA.NOMBRE,
-                        "", 
-                        postulacion.PROGRAMA_ESTUDIO.NOMBRE_PROGRAMA,
-                        esSeleccionado);
-                    /*
-                     *   Email.ResultadoPostulacion(postulacion.ALUMNO.PERSONA.NOMBRE,
                         postulacion.ALUMNO.PERSONA.CORREO, 
                         postulacion.PROGRAMA_ESTUDIO.NOMBRE_PROGRAMA,
-                        esSeleccionado);*/
+                        esSeleccionado);
                 }
                 return true;
             }

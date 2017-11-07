@@ -68,7 +68,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.PERSONA.GENERO.DESCRIPCION, "Genero", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownListFor(model => model.PERSONA.GENERO.DESCRIPCION, (SelectList)ViewBag.Generos, "Seleccione Genero", htmlAttributes: new { @class = "form-control" })
+                    @Html.DropDownListFor(model => model.PERSONA.FK_COD_GENERO, (SelectList)ViewBag.Generos, "Seleccione Genero", htmlAttributes: new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.PERSONA.GENERO.DESCRIPCION, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -100,7 +100,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.PERSONA.CIUDAD.PAIS.DESCRIPCION, "País", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownListFor(model=> model.PERSONA.CIUDAD.PAIS.DESCRIPCION, (SelectList)ViewBag.Paises, "Seleccione Pais", htmlAttributes: new { @class = "form-control" })
+                    @Html.DropDownListFor(model=> model.PERSONA.CIUDAD.PAIS.COD_PAIS, (SelectList)ViewBag.Paises, "Seleccione Pais", htmlAttributes: new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.PERSONA.CIUDAD.PAIS.DESCRIPCION, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -108,7 +108,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.PERSONA.CIUDAD.DESCRIPCION, "Ciudad", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownListFor(model => model.PERSONA.CIUDAD.DESCRIPCION, (SelectList)ViewBag.Ciudades, "Seleccione Ciudad", htmlAttributes: new { @class = "form-control" })
+                    @Html.DropDownListFor(model => model.PERSONA.FK_COD_CIUDAD, (SelectList)ViewBag.Ciudades, "Seleccione Ciudad", htmlAttributes: new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.PERSONA.CIUDAD.DESCRIPCION, "", new { @class = "text-danger" })
                 </div>
             </div>
