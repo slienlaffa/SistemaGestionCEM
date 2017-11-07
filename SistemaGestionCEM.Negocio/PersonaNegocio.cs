@@ -7,12 +7,13 @@ namespace SistemaGestionCEM.Negocio
 {
     public class PersonaNegocio
     {
-        public bool Crear()
+        public bool Crear(string apellido, string correo, int telefono, int codUsuario,
+            string nacionalidad, int codCiudad, string nombre, int codGenero)
         {
             try
             {
-                Conector.Entidades.CrearPersona("Sepulveda", "sepulved", nuevoCodigo(), 123456789, 8,
-                    "chilena", 4, "Josefa", 1);
+                Conector.Entidades.CrearPersona(apellido, correo, nuevoCodigo(), telefono, codUsuario,
+                    nacionalidad, codCiudad, nombre, codGenero);
                 return true;
             }
             catch
@@ -21,12 +22,13 @@ namespace SistemaGestionCEM.Negocio
             }
         }
 
-        public bool Actualizar()
+        public bool Actualizar(string apellido, string correo, int codPersona, int telefono, int codUsuario,
+            string nacionalidad, int codCiudad, string nombre, int codGenero)
         {
             try
             {
-                Conector.Entidades.ActualizarPersona("Sepulveda", "josef", 8, 123456789, 8,
-                    "chilena", 4, "Josefa", 1);
+                Conector.Entidades.ActualizarPersona(apellido, correo, codPersona, telefono, codUsuario,
+                    nacionalidad, codCiudad, nombre, codGenero);
                 return true;
             }
             catch
@@ -35,11 +37,11 @@ namespace SistemaGestionCEM.Negocio
             }
         }
 
-        public bool Eliminar()
+        public bool Eliminar(int codPersona)
         {
             try
             {
-                Conector.Entidades.EliminarPersona(8);
+                Conector.Entidades.EliminarPersona(codPersona);
                 return true;
             }
             catch

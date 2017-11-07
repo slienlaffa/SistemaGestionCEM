@@ -7,11 +7,15 @@ namespace SistemaGestionCEM.Negocio
 {
     public class FamiliaAnfitrionaNegocio
     {
-        public bool Crear()
+        public bool Crear(int numBanos, int codAntecedentes, int anioInscripcion, int numHabitaciones,
+             string tipoVivienda, int numIntegrantes, int codPersona, string estacionamiento,
+             string mascotaDescripcion)
         {
             try
             {
-                Conector.Entidades.CrearFamilia(2,2,nuevoCodigo(),2010,3,"Dpto",2,8,"1","Gato");
+                Conector.Entidades.CrearFamilia(numBanos, codAntecedentes, nuevoCodigo(), anioInscripcion,
+                    numHabitaciones, tipoVivienda, numIntegrantes, codPersona, estacionamiento,
+                    mascotaDescripcion);
                 return true;
             }
             catch
@@ -20,11 +24,15 @@ namespace SistemaGestionCEM.Negocio
             }
         }
 
-        public bool Actualizar()
+        public bool Actualizar(int numBanos, int codAntecedentes, int codFamilia, int anioInscripcion,
+            int numHabitaciones, string tipoVivienda, int numIntegrantes, int codPersona,
+            string estacionamiento, string mascotaDescripcion)
         {
             try
             {
-                Conector.Entidades.ActualizarFamilia(2, 2, nuevoCodigo(), 2011, 3, "Dpto", 2, 8, "1", "Gato");
+                Conector.Entidades.ActualizarFamilia(numBanos, codAntecedentes, codFamilia, anioInscripcion,
+                    numHabitaciones, tipoVivienda, numIntegrantes, codPersona, estacionamiento,
+                    mascotaDescripcion);
                 return true;
             }
             catch
@@ -33,11 +41,11 @@ namespace SistemaGestionCEM.Negocio
             }
         }
 
-        public bool Eliminar()
+        public bool Eliminar(int codFamilia)
         {
             try
             {
-                Conector.Entidades.EliminarFamilia(2);
+                Conector.Entidades.EliminarFamilia(codFamilia);
                 return true;
             }
             catch
