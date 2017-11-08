@@ -27,7 +27,8 @@ body {
     background: -o-linear-gradient(#3939ac, #5353c6, #3939ac); /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(#3939ac, #5353c6, #3939ac); /* For Firefox 3.6 to 15 */
     background: linear-gradient(#3939ac, #5353c6, #3939ac); /* Standard syntax */
-    transition:all 3s;
+    transition: all 3s;
+    width: 70%;
 }
 
 .fixed 

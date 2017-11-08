@@ -63,7 +63,7 @@
                         @if (!nombre.IsEmpty())
                         {
                             <ul class="nav navbar-nav navbar-right ">
-                                <li style="color:orangered"><b>Bienvenido, @nombre</b> @Html.ActionLink("Cerrar sesion", "LogOut", "Home")
+                                <li style="color:orangered"><b><span class="glyphicon-user"></span> Bienvenido, @nombre</b><span class="glyphicon glyphicon-log-out"></span> @Html.ActionLink("Cerrar sesion", "LogOut", "Home")
                             </ul>
                         }
                         else
@@ -101,8 +101,6 @@
             <hr>
             <p><i>Copyright © Centro de Estudios Montreal - @DateTime.Now.Year</i></p>
         </footer>
-
-
         @RenderSection("scripts", required: false)
 </body>
 </html>
