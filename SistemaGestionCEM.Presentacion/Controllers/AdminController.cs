@@ -11,6 +11,9 @@ namespace SistemaGestionCEM.Presentacion.Controllers
     public class AdminController : Controller
     {
         private Entities db = new Entities();
+        private AlumnoNegocio alumNegocio = new AlumnoNegocio();
+        private FamiliaAnfitrionaNegocio familiaNegocio = new FamiliaAnfitrionaNegocio();
+
         // GET: Admin
         public ActionResult Index()
         {
@@ -28,19 +31,20 @@ namespace SistemaGestionCEM.Presentacion.Controllers
         {
             return View();
         }
-        public ActionResult ModificarAlumno()
+        public ActionResult ModificarAlumno(int id)
         {
+            
             return View();
         }
 
-        public ActionResult EliminarAlumno()
+        public ActionResult EliminarAlumno(int id)
         {
+            alumNegocio.Eliminar(id);
             return View();
         }
+
         public ActionResult ListarAlumnos()
         {
-            AlumnoNegocio alumNegocio = new AlumnoNegocio();
-            
             return View(alumNegocio.Mostrar());
         }
 
@@ -56,7 +60,12 @@ namespace SistemaGestionCEM.Presentacion.Controllers
         {
             return View();
         }
-        public ActionResult ModificarFamilia(int id)
+        public ActionResult ModificarFamilia()
+        {
+            return View();
+        }
+
+        public ActionResult ListarFamilias()
         {
             return View();
         }
@@ -72,7 +81,6 @@ namespace SistemaGestionCEM.Presentacion.Controllers
             return View();
         }
 
-        [HttpPost]
         public ActionResult ModificarCEL()
         {
             return View();
