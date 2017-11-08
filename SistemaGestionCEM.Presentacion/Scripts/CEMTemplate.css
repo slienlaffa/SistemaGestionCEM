@@ -2,50 +2,67 @@
 * {
    
     box-sizing:border-box;
-    padding-top:0;
+    margin:auto;
 }
 body {
-  
+    margin-top:0;
+    padding-top:0;
     font-family: sans-serif;
-    padding-bottom:100em;
+    margin:auto;
+
 }
 .logoTitulo {
     
     background:#333;
     color:white;
-    padding:20px;
+    padding:5px;
     text-align:center;
+    height:100px;
 }
 
-
-.menu {
-    margin:0;
-    margin-top:0;
-    background-color: #1abc9c;
-    font-family: Helvetica;
+.btn btn-lg btn-default:hover {
+    color:white;
     background: -webkit-linear-gradient(#3939ac, #5353c6, #3939ac); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(#3939ac, #5353c6, #3939ac); /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(#3939ac, #5353c6, #3939ac); /* For Firefox 3.6 to 15 */
     background: linear-gradient(#3939ac, #5353c6, #3939ac); /* Standard syntax */
-    transition: all 3s;
+}
+
+.menu {
+   margin:auto;
+    background-color: #1abc9c;
+    font-family: sans-serif;
+    background: -webkit-linear-gradient(#3939ac, #5353c6, #3939ac); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#3939ac, #5353c6, #3939ac); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#3939ac, #5353c6, #3939ac); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#3939ac, #5353c6, #3939ac); /* Standard syntax */
     width: 70%;
+}
+.dropdown-menu
+{
+    background: -webkit-linear-gradient(#3939ac, #5353c6, #3939ac); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#3939ac, #5353c6, #3939ac); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#3939ac, #5353c6, #3939ac); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#3939ac, #5353c6, #3939ac); /* Standard syntax */
+}
+.contenidoCentral {
+    margin-top:0;
+    margin:auto;
+    height:70%;
+    width:70%;
+    max-height:1000px;
+    /*background: rgba(2,3,3,.1);*/
+ 
 }
 
 .fixed 
 {
     position:fixed;
     z-index:1000;
-    box-shadow: 0px, 4px, 3px, rgba(0,0,0,.5);
+    box-shadow: 1px 4px 3px rgba(0,0,0,.5);
     top:0;
     left:0;
     width:100%;
-}
-
-
-.inner {
-    height:80%;
-    margin:auto;
-    image-resolution:inherit;
 }
 
 #myNavbar a {
@@ -64,6 +81,8 @@ footer {
     background: linear-gradient(#3939ac, #5353c6, #3939ac); /* Standard syntax */
     font-family: 'Times New Roman', 'Times New Roman';
     color: white;
+    margin-top:20%;
+    padding:1px;
 }
 
 .carousel-inner img {

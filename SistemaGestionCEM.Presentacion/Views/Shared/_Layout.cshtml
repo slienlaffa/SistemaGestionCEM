@@ -1,4 +1,4 @@
-﻿@{ 
+﻿@{
     string sesionActual = "";
     string nombre = "";
 
@@ -19,12 +19,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device−width, user-scalable=no, initial−scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-   
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="~/Scripts/CEMTemplate.css" type="text/css">
-  
+
     <script src="~/Scripts/main.js"></script>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -33,74 +33,80 @@
 
 </head>
 <body>
-        <header>
-            <h1 class="logoTitulo"><span class="glyphicon glyphicon-book"></span>Centro de Estudios Montreal</h1>
-            <nav class="menu">
-
-                <div class="container">
-                    <div class="collapse navbar-collapse" id="myNavbar">
-
-                        <ul class="nav navbar-nav">
-                            <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                            <li>@Html.ActionLink("Quienes somos", "About", "Home")</li>
-                            <li>@Html.ActionLink("Contactanos", "Contact", "Home")</li>
-                            @{
-                                if ( Session["SesionActual"] != null ) {
-                                    var ruta = "~/Views/Shared/Partials/";
-                                    if (Session["SesionActual"].ToString() == "Administrador")
-                                    { @Html.Partial(ruta + "_admin.cshtml"); }
-                                    if (Session["SesionActual"].ToString() == "Alumno")
-                                    { @Html.Partial(ruta + "_alumno.cshtml"); }
-                                    if (Session["SesionActual"].ToString() == "Familia")
-                                    { @Html.Partial(ruta + "_familia.cshtml"); }
-                                    if (Session["SesionActual"].ToString() == "EncargadoCEM")
-                                    { @Html.Partial(ruta + "_encargadocem.cshtml"); }
-                                    if (Session["SesionActual"].ToString() == "EncargadoCEL")
-                                    { @Html.Partial(ruta + "_encargadocel.cshtml"); }
+    <header>
+        <h1 class="logoTitulo"><span class="glyphicon glyphicon-book"></span>Centro de Estudios Montreal</h1>
+        <nav class="menu">
+            <div class="container">
+                <div id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Quienes somos", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contactanos", "Contact", "Home")</li>
+                        @{
+                            if (Session["SesionActual"] != null)
+                            {
+                                var ruta = "~/Views/Shared/Partials/";
+                                if (Session["SesionActual"].ToString() == "Administrador")
+                                { @Html.Partial(ruta + "_admin.cshtml");
+                                }
+                                if (Session["SesionActual"].ToString() == "Alumno")
+                                { @Html.Partial(ruta + "_alumno.cshtml");
+                                }
+                                if (Session["SesionActual"].ToString() == "Familia")
+                                { @Html.Partial(ruta + "_familia.cshtml");
+                                }
+                                if (Session["SesionActual"].ToString() == "EncargadoCEM")
+                                { @Html.Partial(ruta + "_encargadocem.cshtml");
+                                }
+                                if (Session["SesionActual"].ToString() == "EncargadoCEL")
+                                { @Html.Partial(ruta + "_encargadocel.cshtml");
                                 }
                             }
+                        }
+                    </ul>
+                    @if (!nombre.IsEmpty())
+                    {
+                        <ul class="nav navbar-nav navbar-right ">
+                            <li style="color:orangered"><b> Bienvenido, @nombre</b><span class="glyphicon glyphicon-log-out"></span> @Html.ActionLink("Cerrar sesion", "LogOut", "Home")
                         </ul>
-                        @if (!nombre.IsEmpty())
-                        {
-                            <ul class="nav navbar-nav navbar-right ">
-                                <li style="color:orangered"><b><span class="glyphicon-user"></span> Bienvenido, @nombre</b><span class="glyphicon glyphicon-log-out"></span> @Html.ActionLink("Cerrar sesion", "LogOut", "Home")
-                            </ul>
-                        }
-                        else
-                        {
-                            <ul class="nav navbar-nav navbar-right ">
-                                <li><a href="/Home/Login"><span class="glyphicon glyphicon-log-in"></span> Iniciar Sesion</a></li>
-                            </ul>
-                        }
-                    </div>
+                    }
+                    else
+                    {
+                        <ul class="nav navbar-nav navbar-right ">
+                            <li><a href="/Home/Login"><span class="glyphicon glyphicon-log-in"></span>Iniciar Sesion</a></li>
+                        </ul>
+                    }
                 </div>
-            </nav>
+            </div>
+        </nav>
 
-        </header>
-        <div align="center" class="inner">
-            @RenderSection("ContenidoCentral", false)
-            @RenderBody()
+    </header>
+    <div align="center" class="contenidoCentral">
+        @RenderSection("ContenidoCentral", false)
+        @RenderBody()
+    </div>
+
+    <footer class="container-fluid text-center">
+        <div style="width:330px; margin:auto;">
+
+            <br />
+            <p><b>DIRIGETE A LA OFICINA MÁS CERCANA</b></p>
+            <p>Antonio Varas 666, Quebec</p>
+            <p>1 819 821-7000</p>
+
         </div>
 
-        <footer class="container-fluid text-center">
-            <div class="right">
+        <div style="width:330px;  margin:auto;">
 
-                <br />
-                <p><b>DIRIGETE A LA OFICINA MÁS CERCANA</b></p>
-                <p>Antonio Varas 666, Quebec</p>
-                <p>1 819 821-7000</p>
+            <br />
+            <p><b>¿Tienes dudas, sugerencias o reclamos?</b></p>
+            <p>Escribenos a: contacto@cem.com</p>
 
-            </div>
-            <div class="left">
+        </div>
 
-                <br />
-                <p><b>¿Tienes dudas, sugerencias o reclamos?</b></p>
-                <p>Escribenos a: contacto@cem.com</p>
-
-            </div>
-            <hr>
-            <p><i>Copyright © Centro de Estudios Montreal - @DateTime.Now.Year</i></p>
-        </footer>
-        @RenderSection("scripts", required: false)
+        <hr>
+        <p><i>Copyright © Centro de Estudios Montreal - @DateTime.Now.Year</i></p>
+    </footer>
+    @RenderSection("scripts", required: false)
 </body>
 </html>
