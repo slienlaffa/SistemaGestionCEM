@@ -44,11 +44,24 @@
                             <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
                             <li>@Html.ActionLink("Quienes somos", "About", "Home")</li>
                             <li>@Html.ActionLink("Contactanos", "Contact", "Home")</li>
-                            <li>@Html.ActionLink("Programas de Intercambio", "Programas", "Home")</li>
+                            @{
+                                if ( Session["SesionActual"] != null ) {
+                                    var ruta = "~/Views/Shared/Partials/";
+                                    if (Session["SesionActual"].ToString() == "Administrador")
+                                    { @Html.Partial(ruta + "_admin.cshtml"); }
+                                    if (Session["SesionActual"].ToString() == "Alumno")
+                                    { @Html.Partial(ruta + "_alumno.cshtml"); }
+                                    if (Session["SesionActual"].ToString() == "Familia")
+                                    { @Html.Partial(ruta + "_familia.cshtml"); }
+                                    if (Session["SesionActual"].ToString() == "EncargadoCEM")
+                                    { @Html.Partial(ruta + "_encargadocem.cshtml"); }
+                                    if (Session["SesionActual"].ToString() == "EncargadoCEL")
+                                    { @Html.Partial(ruta + "_encargadocel.cshtml"); }
+                                }
+                            }
                         </ul>
                         @if (!nombre.IsEmpty())
                         {
-
                             <ul class="nav navbar-nav navbar-right ">
                                 <li style="color:orangered"><b>Bienvenido, @nombre</b> @Html.ActionLink("Cerrar sesion", "LogOut", "Home")
                             </ul>

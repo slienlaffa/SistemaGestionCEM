@@ -285,6 +285,11 @@
     <Content Include="Views\EncargadoCEM\Index.cshtml" />
     <Content Include="Views\Familia\Index.cshtml" />
     <Content Include="Views\EncargadoCEL\Index.cshtml" />
+    <Content Include="Views\Shared\Partials\_admin.cshtml" />
+    <Content Include="Views\Shared\Partials\_alumno.cshtml" />
+    <Content Include="Views\Shared\Partials\_familia.cshtml" />
+    <Content Include="Views\Shared\Partials\_encargadocem.cshtml" />
+    <Content Include="Views\Shared\Partials\_encargadocel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
