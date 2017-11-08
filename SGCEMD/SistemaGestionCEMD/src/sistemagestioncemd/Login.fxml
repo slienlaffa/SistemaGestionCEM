@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistemagestioncemd.LoginController">
+    <children>
+        <Button fx:id="btnIniciar" layoutX="381.0" layoutY="318.0" onAction="#handleIniciarAction" prefHeight="25.0" prefWidth="174.0" text="Iniciar" />
+        <Label fx:id="lblContrasena" layoutX="245.0" layoutY="285.0" minHeight="16" minWidth="69" text="Contraseña">
+         <font>
+            <Font size="13.0" />
+         </font></Label>
+      <Label fx:id="lblUsuario" layoutX="245.0" layoutY="255.0" minHeight="16" minWidth="69" text="Usuario">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtUsuario" layoutX="381.0" layoutY="251.0" onAction="#handleIniciarAction" prefHeight="25.0" prefWidth="174.0" />
+      <Label layoutX="245.0" layoutY="208.0" text="Por favor, identificate con tus credenciales">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="txtContrasena" layoutX="381.0" layoutY="282.0" onAction="#handleIniciarAction" prefHeight="25.0" prefWidth="174.0" />
+      <Label layoutX="167.0" layoutY="46.0" prefHeight="94.0" prefWidth="486.0" text="Centro de Estudios Montreal">
+         <font>
+            <Font size="38.0" />
+         </font>
+      </Label>
+    </children>
+</AnchorPane>

@@ -184,6 +184,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AlumnoController.cs" />
+    <Compile Include="Controllers\EncargadoCELController.cs" />
+    <Compile Include="Controllers\EncargadoCEMController.cs" />
     <Compile Include="Controllers\FamiliaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -279,11 +281,13 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Home\AutoRegistroFamilia.cshtml" />
     <Content Include="Views\Home\AutoRegistroAlumno.cshtml" />
+    <Content Include="Views\Alumno\Index.cshtml" />
+    <Content Include="Views\EncargadoCEM\Index.cshtml" />
+    <Content Include="Views\Familia\Index.cshtml" />
+    <Content Include="Views\EncargadoCEL\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Alumno\" />
-    <Folder Include="Views\Familia\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

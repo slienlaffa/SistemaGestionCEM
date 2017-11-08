@@ -15,6 +15,7 @@ namespace SistemaGestionCEM.Tests
         {
             EncargadoCEMNegocio cem = new EncargadoCEMNegocio();
             var estadoAlumno = cem.obtenerEstadoAlumno(1);
+            Console.WriteLine(estadoAlumno.estadoAlumno);
             Assert.IsNotNull(estadoAlumno);
         }
 

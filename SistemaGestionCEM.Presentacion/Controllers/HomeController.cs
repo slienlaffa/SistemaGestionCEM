@@ -42,8 +42,7 @@ namespace SistemaGestionCEM.Presentacion.Controllers
             if (ModelState.IsValid)
             {
                 using (SistemaGestionCEM.Datos.Entities db = new Entities())
-                {
-                    
+                {                   
 
                     UsuarioNegocio user2 = new UsuarioNegocio();
 
@@ -52,44 +51,53 @@ namespace SistemaGestionCEM.Presentacion.Controllers
 
                     if (user2.valida(user, pass))
                     {
-                        usuario = db.USUARIO
-                            .Where(u => u.NOMBRE_USUARIO == user 
-                            && u.CONTRASENNA == pass).FirstOrDefault();
-
-                        Session["Nombre"] = usuario.NOMBRE_USUARIO;
-                        if (usuario.TIPO_USUARIO.COD_TIPO == 1)
-                        {
-                            Session["SesionActual"] = "Administrador";
-                            return RedirectToAction("Index", "Admin");
-                        }
-                        if (usuario.TIPO_USUARIO.COD_TIPO == 2)
-                        {
-                            Session["SesionActual"] = "Alumno";
-                            return RedirectToAction("Index", "Alumno");
-                        }
-                        if (usuario.TIPO_USUARIO.COD_TIPO == 3)
-                        {
-                            Session["SesionActual"] = "Familia";
-                            return RedirectToAction("Index", "Familia");
-                        }
-                        if (usuario.TIPO_USUARIO.COD_TIPO == 4)
-                        {
-                            Session["SesionActual"] = "EncargadoCEM";
-                            return RedirectToAction("Index", "EncargadoCEM");
-                        }
-                        if (usuario.TIPO_USUARIO.COD_TIPO == 5)
-                        {
-                            Session["SesionActual"] = "EncargadoCEL";
-                            return RedirectToAction("Index", "EncargadoCEL");
-                        }
+                        return CrearSesion(user);
+                    }
+                    else
+                    {
+                        ViewBag.Message = "Nombre de Usuario o Contraseña incorrectos";
                         return View();
                     }
-                    ViewBag.Message = "Nombre de Usuario o Contraseña incorrectos";
-                    return View();
 
                 }   
             }
             return View();
+        }
+
+        public ActionResult CrearSesion(string nombreUsuario)
+        {
+            using(Entities db =new Entities()){
+                var usuario = db.USUARIO
+                            .Where(u => u.NOMBRE_USUARIO == nombreUsuario).FirstOrDefault();
+
+                Session["Nombre"] = usuario.NOMBRE_USUARIO;
+                if (usuario.TIPO_USUARIO.COD_TIPO == 1)
+                {
+                    Session["SesionActual"] = "Administrador";
+                    return RedirectToAction("Index", "Admin");
+                }
+                if (usuario.TIPO_USUARIO.COD_TIPO == 2)
+                {
+                    Session["SesionActual"] = "Alumno";
+                    return RedirectToAction("Index", "Alumno");
+                }
+                if (usuario.TIPO_USUARIO.COD_TIPO == 3)
+                {
+                    Session["SesionActual"] = "Familia";
+                    return RedirectToAction("Index", "Familia");
+                }
+                if (usuario.TIPO_USUARIO.COD_TIPO == 4)
+                {
+                    Session["SesionActual"] = "EncargadoCEM";
+                    return RedirectToAction("Index", "EncargadoCEM");
+                }
+                if (usuario.TIPO_USUARIO.COD_TIPO == 5)
+                {
+                    Session["SesionActual"] = "EncargadoCEL";
+                    return RedirectToAction("Index", "EncargadoCEL");
+                }
+                return View();
+            }
         }
 
         public ActionResult LogOut()
@@ -160,8 +168,7 @@ namespace SistemaGestionCEM.Presentacion.Controllers
                 anegocio.Crear((int)nuevaFamilia.NUM_BANOS, 0, DateTime.Now.Year, (int)nuevaFamilia.NUM_HABITACIONES, nuevaFamilia.TIPO_VIVIENDA, (int)nuevaFamilia.NUM_INTEGRANTES, 
                     (int)nuevaPersona.COD_PERSONA, nuevaFamilia.ESTACIONAMIENTO, nuevaFamilia.MASCOTA_DESCRIPCION);
 
-
-                return RedirectToAction("Index");
+                return CrearSesion(usuario.NOMBRE_USUARIO);
             }
         }
 
@@ -221,9 +228,7 @@ namespace SistemaGestionCEM.Presentacion.Controllers
             AlumnoNegocio anegocio = new AlumnoNegocio();
             anegocio.Crear((int)nuevaPersona.COD_PERSONA, nuevoAlumno.FECHA_NACIMIENTO);
 
-            return RedirectToAction("Index");
-
-            // Funcionando, guarda todo. pero el pais, ciudad y genero me lo guarda como el codigo y no como string XD
+            return CrearSesion(usuario.NOMBRE_USUARIO);
         }
         public void CargarDropDownList()
         {
