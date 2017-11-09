@@ -11,9 +11,7 @@ namespace SistemaGestionCEM.Datos
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class PERSONA
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,38 +22,19 @@ namespace SistemaGestionCEM.Datos
             this.ENCARGADO_CEM = new HashSet<ENCARGADO_CEM>();
             this.FAMILIA_ANFITRIONA = new HashSet<FAMILIA_ANFITRIONA>();
         }
-
+    
         public decimal COD_PERSONA { get; set; }
-
-        [Required(ErrorMessage = "El campo Nombre es obligatorio.", AllowEmptyStrings = false)]
-        [DisplayName("Nombre")]
         public string NOMBRE { get; set; }
-
-        [Required(ErrorMessage = "El campo Apellido es obligatorio.", AllowEmptyStrings = false)]
-        [DisplayName("Apellido")]
         public string APELLIDO { get; set; }
-
-        [Required(ErrorMessage = "Ingrese un correo", AllowEmptyStrings = false)]
-        [Display(Name = "Correo Electrónico", Description = "nombre@dominio.com")]
-        [EmailAddress(ErrorMessage = "Ingrese un correo válido")]
         public string CORREO { get; set; }
-
-       [Required]
-       [DisplayName("Teléfono")]
         public decimal TELEFONO { get; set; }
-
-        [Required]
         public string NACIONALIDAD { get; set; }
-
-        [DisplayName("Ciudad")]
         public decimal FK_COD_CIUDAD { get; set; }
-        [DisplayName("Genero")]
         public decimal FK_COD_GENERO { get; set; }
         public decimal FK_COD_USUARIO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ALUMNO> ALUMNO { get; set; }
-        [Required]
         public virtual CIUDAD CIUDAD { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ENCARGADO_CEL> ENCARGADO_CEL { get; set; }
@@ -63,7 +42,6 @@ namespace SistemaGestionCEM.Datos
         public virtual ICollection<ENCARGADO_CEM> ENCARGADO_CEM { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FAMILIA_ANFITRIONA> FAMILIA_ANFITRIONA { get; set; }
-
         public virtual GENERO GENERO { get; set; }
         public virtual USUARIO USUARIO { get; set; }
     }

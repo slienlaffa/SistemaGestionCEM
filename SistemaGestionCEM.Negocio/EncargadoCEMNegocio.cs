@@ -12,6 +12,37 @@ namespace SistemaGestionCEM.Negocio
         const int APROBADO = 2;
         const int RECHAZADO = 3;
 
+        public bool CrearProgramaEstudio(PROGRAMA_ESTUDIO programaEstudio, string usuario)
+        {
+            try
+            {
+                using (Entities db = new Entities())
+                {
+                    decimal persona = db.USUARIO.Where(u => u.NOMBRE_USUARIO == usuario).FirstOrDefault().PERSONA.FirstOrDefault().COD_PERSONA;
+                    var cem = db.ENCARGADO_CEM.Where(e => e.FK_COD_PERSONA == persona).FirstOrDefault();
+                    if (cem != null)
+                        programaEstudio.FK_COD_ENCARGADOCEM = cem.COD_ENCARGADOCEM;
+
+                    programaEstudio.COD_PROGRAMA = new ProgramaEstudioNegocio().nuevoCodigo();
+
+                    POSTULACION_PROGRAMA postulacion = new POSTULACION_PROGRAMA();
+                    postulacion.COD_POSTULACIONPROGRAMA = new PostulacionProgramaNegocio().nuevoCodigo();
+                    postulacion.FK_COD_ENCARGADOCEM = programaEstudio.FK_COD_ENCARGADOCEM;
+                    postulacion.FK_COD_PROGRAMA = programaEstudio.COD_PROGRAMA;
+                    postulacion.FK_COD_ESTADO = 4; // No Publicado
+
+                    db.PROGRAMA_ESTUDIO.Add(programaEstudio);
+                    db.POSTULACION_PROGRAMA.Add(postulacion);
+                    db.SaveChanges();
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public List<POSTULACION_ALUMNO> PostulacionesPendientes()
         {
             List<POSTULACION_ALUMNO> postulacionesPendientes;

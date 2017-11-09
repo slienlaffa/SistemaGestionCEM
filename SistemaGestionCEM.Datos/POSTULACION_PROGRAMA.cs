@@ -16,10 +16,10 @@ namespace SistemaGestionCEM.Datos
     {
         public decimal COD_POSTULACIONPROGRAMA { get; set; }
         public System.DateTime FECHA { get; set; }
-        public decimal FK_COD_CEL { get; set; }
+        public Nullable<decimal> FK_COD_CEL { get; set; }
         public decimal FK_COD_PROGRAMA { get; set; }
         public decimal FK_COD_ESTADO { get; set; }
-        public decimal FK_COD_ENCARGADOCEM { get; set; }
+        public Nullable<decimal> FK_COD_ENCARGADOCEM { get; set; }
     
         public virtual CENTRO_ESTUDIO_LOCAL CENTRO_ESTUDIO_LOCAL { get; set; }
         public virtual ENCARGADO_CEM ENCARGADO_CEM { get; set; }
