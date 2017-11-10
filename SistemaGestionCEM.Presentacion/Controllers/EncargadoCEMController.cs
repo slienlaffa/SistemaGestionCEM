@@ -11,6 +11,7 @@ namespace SistemaGestionCEM.Presentacion.Controllers
     public class EncargadoCEMController : Controller
     {
         private Entities db = new Entities();
+        private EncargadoCEMNegocio cem = new EncargadoCEMNegocio();
 
         // GET: EncargadoCEM
         public ActionResult Index()
@@ -33,7 +34,6 @@ namespace SistemaGestionCEM.Presentacion.Controllers
             if (ModelState.IsValid)
             {
                 string usuario = Session["Nombre"].ToString();
-                EncargadoCEMNegocio cem = new EncargadoCEMNegocio();
                 cem.CrearProgramaEstudio(programaEstudio, usuario);
                 return RedirectToAction("Index");
             }
@@ -42,6 +42,32 @@ namespace SistemaGestionCEM.Presentacion.Controllers
             ViewBag.FK_COD_PAIS = new SelectList(db.PAIS, "COD_PAIS", "DESCRIPCION", programaEstudio.FK_COD_PAIS);
             ViewBag.FK_COD_TIPOPROGRAMA = new SelectList(db.TIPO_PROGRAMA, "COD_TIPOPROGRAMA", "DESCRIPCION", programaEstudio.FK_COD_TIPOPROGRAMA);
             return View(programaEstudio);
+        }
+
+        public ActionResult PublicarPrograma()
+        {
+            return View(cem.PostulacionesNoPublicadas());
+        }
+
+        public ActionResult Publicar(int id)
+        {
+            cem.PublicarPrograma(id);
+            return RedirectToAction("PublicarPrograma");
+        }
+
+        public ActionResult Cancelar(int id)
+        {
+            cem.CancelarPrograma(id);
+            return RedirectToAction("PublicarPrograma");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }

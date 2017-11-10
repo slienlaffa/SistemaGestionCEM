@@ -291,6 +291,7 @@
     <Content Include="Views\Shared\Partials\_encargadocem.cshtml" />
     <Content Include="Views\Shared\Partials\_encargadocel.cshtml" />
     <Content Include="Views\EncargadoCEM\CrearPrograma.cshtml" />
+    <Content Include="Views\EncargadoCEM\PublicarPrograma.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

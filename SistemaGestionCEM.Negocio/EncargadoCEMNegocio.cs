@@ -8,9 +8,13 @@ namespace SistemaGestionCEM.Negocio
 {
     public class EncargadoCEMNegocio
     {
+        private Entities db = new Entities();
         const int PENDIENTE = 1;
         const int APROBADO = 2;
         const int RECHAZADO = 3;
+        const int NO_PUBLICADO = 4;
+        const int PUBLICADO = 5;
+        const int CANCELADO = 7;
 
         public bool CrearProgramaEstudio(PROGRAMA_ESTUDIO programaEstudio, string usuario)
         {
@@ -40,6 +44,34 @@ namespace SistemaGestionCEM.Negocio
             catch
             {
                 return false;
+            }
+        }
+
+        public IQueryable<POSTULACION_PROGRAMA> PostulacionesNoPublicadas()
+        {            
+            IQueryable<POSTULACION_PROGRAMA> postulaciones = db.POSTULACION_PROGRAMA
+                .Where(p => p.FK_COD_ESTADO == NO_PUBLICADO);
+
+            return postulaciones;            
+        }
+
+        public void PublicarPrograma(int codPostulacionPrograma)
+        {
+            using (Entities db = new Entities())
+            {
+                var programa = db.POSTULACION_PROGRAMA.Find(codPostulacionPrograma);
+                programa.FK_COD_ESTADO = PUBLICADO;
+                db.SaveChanges();
+            }
+        }
+
+        public void CancelarPrograma(int codPostulacionPrograma)
+        {
+            using (Entities db = new Entities())
+            {
+                var programa = db.POSTULACION_PROGRAMA.Find(codPostulacionPrograma);
+                programa.FK_COD_ESTADO = CANCELADO;
+                db.SaveChanges();
             }
         }
 
