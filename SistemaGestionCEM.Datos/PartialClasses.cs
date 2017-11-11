@@ -32,4 +32,14 @@ namespace SistemaGestionCEM.Datos
     public partial class POSTULACION_PROGRAMA
     {
     }
+
+    [MetadataType(typeof(TipoUsuarioMetadata))]
+    public partial class TIPO_USUARIO
+    {
+    }
+
+    [MetadataType(typeof(PaisMetadata))]
+    public partial class PAIS
+    {
+    }
 }

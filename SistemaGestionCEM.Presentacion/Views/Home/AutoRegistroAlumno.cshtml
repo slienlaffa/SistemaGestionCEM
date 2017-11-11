@@ -22,12 +22,7 @@
 {
     
     <h2>Registrarme como Alumno</h2>
-    @if (ViewBag.Message != null)
-        {
-
-        <b><span style="color:red">@ViewBag.Message</span></b>
-    }
-    <br />
+  
 
     @using (Html.BeginForm("AutoRegistroAlumno", "Home", FormMethod.Post))
     {
@@ -101,7 +96,7 @@
                 @Html.LabelFor(model => model.PERSONA.CIUDAD.PAIS.DESCRIPCION, "País", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.DropDownListFor(model=> model.PERSONA.CIUDAD.PAIS.COD_PAIS, (SelectList)ViewBag.Paises, "Seleccione Pais", htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.PERSONA.CIUDAD.PAIS.DESCRIPCION, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(model => model.PERSONA.CIUDAD.PAIS.COD_PAIS, "", new { @class = "text-danger" })
                 </div>
             </div>
 
@@ -137,17 +132,18 @@
                 </div>
             </div>
         </div>
-        foreach (ModelState modelState in ViewData.ModelState.Values)
+
+        if (ViewBag.Message != null)
         {
-            foreach (ModelError error in modelState.Errors)
-            {
-                @error.ErrorMessage;
-            }
+
+            <b><span class="text-danger" >@ViewBag.Message</span></b>
         }
+        <br />
+      
     }
 
     <div>
-        @Html.ActionLink("Volver", "Index")
+        @Html.ActionLink("Volver al Inicio", "Index")
     </div>
 
 }

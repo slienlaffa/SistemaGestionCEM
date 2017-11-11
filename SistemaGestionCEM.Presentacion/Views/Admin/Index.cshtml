@@ -21,9 +21,9 @@
 {
 
     <h2>Bienvenido a su panel administrativo, @nombre</h2>
-    <hr />
+    <h3>Esta es una lista de todos los usuarios disponibles en la base de datos.</h3>
 
-    <table class="table-responsive">
+    <table class="table table-responsive">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.NOMBRE_USUARIO)
@@ -54,7 +54,7 @@
                 <td>
                     @Html.ActionLink("Modificar datos", "Edit", new { id = item.COD_USUARIO }) |
                     @Html.ActionLink("Ver Detalle", "DetalleAlumno", new { id = item.COD_USUARIO }) |
-                    @Html.ActionLink("Eliminar", "Delete", new { id = item.COD_USUARIO, @class = "delete"})
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.COD_USUARIO, @class = "delete" })
                 </td>
             </tr>
         }

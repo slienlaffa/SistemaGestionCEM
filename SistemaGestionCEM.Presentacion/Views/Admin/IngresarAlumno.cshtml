@@ -44,6 +44,8 @@
         </div>
 
 
+
+
         <div class="form-group">
             @Html.LabelFor(model => model.FECHA_NACIMIENTO, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -55,7 +57,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.PERSONA.FK_COD_GENERO, "Genero", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.PERSONA.FK_COD_GENERO, (SelectList)ViewBag.FK_COD_GENERO, "Seleccione Genero", htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownListFor(model => model.PERSONA.FK_COD_GENERO, (SelectList)ViewBag.Generos, "Seleccione Genero", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.PERSONA.FK_COD_GENERO, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -85,10 +87,18 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PERSONA.CIUDAD.PAIS.COD_PAIS, "País", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.PERSONA.CIUDAD.PAIS.DESCRIPCION, "País", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.PERSONA.CIUDAD.PAIS.COD_PAIS, (SelectList)ViewBag.FK_COD_CIUDAD, "Seleccione Pais", htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownListFor(model => model.PERSONA.CIUDAD.PAIS.COD_PAIS, (SelectList)ViewBag.Paises, "Seleccione Pais", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.PERSONA.CIUDAD.PAIS.COD_PAIS, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PERSONA.FK_COD_CIUDAD, "Ciudad", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.PERSONA.FK_COD_CIUDAD, (SelectList)ViewBag.Ciudades, "Seleccione Ciudad", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.PERSONA.FK_COD_CIUDAD, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -111,11 +121,25 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Guardar" class="btn btn-default" />
-                <input type="reset" value="Limpiar Campos" class="btn btn-default" />
+                <input type="submit" value="Ingresar" class="btn btn-default" />
+                <input type="reset" value="Limpiar campos" class="btn btn-default" />
             </div>
-        </div>
+
+            
+            <br />
+        </div>        
     </div>
+            if (ViewBag.Message != null)
+            {
+
+                <b><span class="text-danger">@ViewBag.Message</span></b>
+            }
+            <br />
+            if (ViewBag.RegistroExitoso != null)
+            {
+
+                <b><span class="alert-success">@ViewBag.RegistroExitoso</span></b>
+            }
 }
 
 <div>

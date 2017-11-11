@@ -16,7 +16,10 @@ namespace SistemaGestionCEM.Presentacion.Controllers
         // GET: EncargadoCEM
         public ActionResult Index()
         {
-            return View();
+            if (ValidarSesion()) 
+                return View();
+            
+            return RedirectToAction("DenegarAcceso");
         }
 
         public ActionResult CrearPrograma()
@@ -69,6 +72,24 @@ namespace SistemaGestionCEM.Presentacion.Controllers
                 cem.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public bool ValidarSesion()
+        {
+            if (Session["SesionActual"] != null)
+            {
+                string session = Session["SesionActual"].ToString();
+                if (session.Equals("EncargadoCEM"))
+                    return true;
+                else
+                    return false;
+            }
+            return false;
+        }
+
+        public ActionResult DenegarAcceso()
+        {
+            return View();
         }
     }
 }

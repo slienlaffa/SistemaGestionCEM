@@ -7,15 +7,16 @@
 body {
     margin-top:0;
     padding-top:0;
-    font-family: sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     margin:auto;
 
 }
 .logoTitulo {
-    
+
     background:#333;
     color:white;
     padding:5px;
+    margin-top:0px;
     text-align:center;
     height:100px;
 }
@@ -29,7 +30,7 @@ body {
 }
 
 .menu {
-   margin:auto;
+    margin:auto;
     background-color: #1abc9c;
     font-family: sans-serif;
     background: -webkit-linear-gradient(#3939ac, #5353c6, #3939ac); /* For Safari 5.1 to 6.0 */
@@ -81,7 +82,7 @@ footer {
     background: linear-gradient(#3939ac, #5353c6, #3939ac); /* Standard syntax */
     font-family: 'Times New Roman', 'Times New Roman';
     color: white;
-    margin-top:20%;
+    margin-top:10%;
     padding:1px;
 }
 

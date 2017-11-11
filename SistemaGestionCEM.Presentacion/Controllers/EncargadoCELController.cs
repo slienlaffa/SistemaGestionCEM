@@ -13,12 +13,19 @@ namespace SistemaGestionCEM.Presentacion.Controllers
         // GET: EncargadoCEL
         public ActionResult Index()
         {
-            return View();
+            if(ValidarSesion())
+                return View();
+            return RedirectToAction("DenegarAcceso");
         }
 
         public ActionResult AsignarsePrograma()
         {
-            return View(cel.PostulacionesPublicadas());
+            if (ValidarSesion())
+            {
+                return View(cel.PostulacionesPublicadas());
+            }
+            return RedirectToAction("DenegarAcceso");
+            
         }
 
         public ActionResult Asignarse(int id)
@@ -35,6 +42,24 @@ namespace SistemaGestionCEM.Presentacion.Controllers
                 cel.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public bool ValidarSesion()
+        {
+            if (Session["SesionActual"] != null)
+            {
+                string session = Session["SesionActual"].ToString();
+                if (session.Equals("EncargadoCEL"))
+                    return true;
+                else
+                    return false;
+            }
+            return false;
+        }
+
+        public ActionResult DenegarAcceso()
+        {
+            return View();
         }
     }
 }

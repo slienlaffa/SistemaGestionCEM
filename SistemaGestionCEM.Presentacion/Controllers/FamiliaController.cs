@@ -13,5 +13,18 @@ namespace SistemaGestionCEM.Presentacion.Controllers
         {
             return View();
         }
+
+        public bool ValidarSesion()
+        {
+            if (Session["SesionActual"] != null)
+            {
+                string session = Session["SesionActual"].ToString();
+                if (session.Equals("Familia"))
+                    return true;
+                else
+                    return false;
+            }
+            return false;
+        }
     }
 }

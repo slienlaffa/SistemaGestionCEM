@@ -8,14 +8,13 @@ namespace SistemaGestionCEM.Negocio
     public class FamiliaAnfitrionaNegocio
     {
         public bool Crear(int numBanos, int codAntecedentes, int anioInscripcion, int numHabitaciones,
-             string tipoVivienda, int numIntegrantes, int codPersona, string estacionamiento,
-             string mascotaDescripcion)
+             string tipoVivienda, int numIntegrantes,int codPersona, string estacionamiento, string mascotaDescripcion)
         {
             try
             {
-                Conector.Entidades.CrearFamilia(numBanos, codAntecedentes, nuevoCodigo(), anioInscripcion,
-                    numHabitaciones, tipoVivienda, numIntegrantes, codPersona, estacionamiento,
-                    mascotaDescripcion);
+                Conector.Entidades.CrearFamilia(numBanos, codAntecedentes, nuevoCodigo(), anioInscripcion, numHabitaciones,
+                    tipoVivienda, numIntegrantes, codPersona, estacionamiento, mascotaDescripcion);
+                    
                 return true;
             }
             catch
@@ -23,6 +22,24 @@ namespace SistemaGestionCEM.Negocio
                 return false;
             }
         }
+
+        /*
+         * 
+         *  public bool Crear(int codPersona, DateTime fechaNacimiento)
+        {
+            try
+            {
+                Conector.Entidades.CrearAlumno(nuevoCodigo(), codPersona, fechaNacimiento);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+         * 
+         * 
+         * */
 
         public bool Actualizar(int numBanos, int codAntecedentes, int codFamilia, int anioInscripcion,
             int numHabitaciones, string tipoVivienda, int numIntegrantes, int codPersona,

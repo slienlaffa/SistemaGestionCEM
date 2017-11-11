@@ -120,7 +120,7 @@ namespace SistemaGestionCEM.Presentacion.Controllers
         {
             CargarDropDownList();
 
-            if (!ModelState.IsValid)
+            if (! ModelState.IsValid)
             {
                 return View();
             }
@@ -164,9 +164,11 @@ namespace SistemaGestionCEM.Presentacion.Controllers
                 db.USUARIO.Add(usuario);
                 db.SaveChanges();
 
-                FamiliaAnfitrionaNegocio anegocio = new FamiliaAnfitrionaNegocio();
-                anegocio.Crear((int)nuevaFamilia.NUM_BANOS, 0, DateTime.Now.Year, (int)nuevaFamilia.NUM_HABITACIONES, nuevaFamilia.TIPO_VIVIENDA, (int)nuevaFamilia.NUM_INTEGRANTES, 
+                FamiliaAnfitrionaNegocio familiaNegocio = new FamiliaAnfitrionaNegocio();
+                familiaNegocio.Crear((int)nuevaFamilia.NUM_BANOS, 1, DateTime.Now.Year, (int)nuevaFamilia.NUM_HABITACIONES, nuevaFamilia.TIPO_VIVIENDA, (int)nuevaFamilia.NUM_INTEGRANTES, 
                     (int)nuevaPersona.COD_PERSONA, nuevaFamilia.ESTACIONAMIENTO, nuevaFamilia.MASCOTA_DESCRIPCION);
+
+
 
                 return CrearSesion(usuario.NOMBRE_USUARIO);
             }
@@ -195,7 +197,7 @@ namespace SistemaGestionCEM.Presentacion.Controllers
             {
                 ViewBag.Message = "El nombre de usuario '" + nuevoAlumno.PERSONA.USUARIO.NOMBRE_USUARIO +
                     "' ya existe, por favor ingrese otro distinto!";
-                return View("Index");
+                return View();
             }
 
             // Cambiar por pn.Crear();
@@ -229,6 +231,7 @@ namespace SistemaGestionCEM.Presentacion.Controllers
             anegocio.Crear((int)nuevaPersona.COD_PERSONA, nuevoAlumno.FECHA_NACIMIENTO);
 
             return CrearSesion(usuario.NOMBRE_USUARIO);
+
         }
         public void CargarDropDownList()
         {

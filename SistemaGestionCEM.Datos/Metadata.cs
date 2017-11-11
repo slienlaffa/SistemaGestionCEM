@@ -6,16 +6,16 @@ namespace SistemaGestionCEM.Datos
 {
     public class PersonaMetadata
     {
-        [Required(ErrorMessage = "El campo Nombre es obligatorio.", AllowEmptyStrings = false)]
+        [Required]
         [DisplayName("Nombre")]
         public string NOMBRE { get; set; }
 
-        [Required(ErrorMessage = "El campo Apellido es obligatorio.", AllowEmptyStrings = false)]
+        [Required]
         [DisplayName("Apellido")]
         public string APELLIDO { get; set; }
 
-        [Required(ErrorMessage = "Ingrese un correo", AllowEmptyStrings = false)]
-        [Display(Name = "Correo Electrónico", Description = "nombre@dominio.com")]
+        [Required]
+        [Display(Name = "Correo Electrónico")]
         [EmailAddress(ErrorMessage = "Ingrese un correo válido")]
         public string CORREO { get; set; }
 
@@ -24,12 +24,19 @@ namespace SistemaGestionCEM.Datos
         public decimal TELEFONO { get; set; }
 
         [Required]
+        [DisplayName("Nacionalidad")]
         public string NACIONALIDAD { get; set; }
 
         [DisplayName("Ciudad")]
         public decimal FK_COD_CIUDAD { get; set; }
         [DisplayName("Genero")]
         public decimal FK_COD_GENERO { get; set; }
+    }
+
+    public class PaisMetadata
+    {
+        [DisplayName("País")]
+        public  decimal COD_PAIS { get; set; }
     }
 
     public class FamiliaMetadata
@@ -86,6 +93,10 @@ namespace SistemaGestionCEM.Datos
 
         [Required(ErrorMessage = "Ingrese su contraseña", AllowEmptyStrings = false)]
         [DisplayName("Contraseña")]
+        /*
+        [RegularExpression(@"^ (?=\w *\d)(?=\w*[A-Z])(?=\w*[a - z])\S{8,16}$", 
+            ErrorMessage = "La contraseña debe contener al menos 8 caracteres, al menos 1 Mayuscula y 1 digito.")  ]
+            */
         [DataType(DataType.Password)]
         [MaxLength(20, ErrorMessage = "No exceda los 20 caracteres"),]
         public string CONTRASENNA { get; set; }
@@ -129,5 +140,13 @@ namespace SistemaGestionCEM.Datos
         [Required]
         [DisplayName("Fecha publicación")]
         public System.DateTime FECHA { get; set; }
+    }
+
+    public class TipoUsuarioMetadata
+    {
+        [DisplayName("Tipo de Usuario")]
+        public string COD_TIPO { get; set; }
+        [DisplayName("Tipo")]
+        public string DESCRIPCION { get; set; }
     }
 }

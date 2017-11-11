@@ -210,7 +210,6 @@
     <Content Include="imagenes\Alumnos-paises.jpg" />
     <Content Include="imagenes\Alumnos.jpg" />
     <Content Include="imagenes\Aula.jpg" />
-    <Content Include="imagenes\Logo-CEM.png" />
     <Content Include="imagenes\Montreal.jpg" />
     <Content Include="imagenes\Simbolo-Academico.jpg" />
     <Content Include="Scripts\bootstrap.js" />
@@ -294,6 +293,9 @@
     <Content Include="Views\Admin\DenegarAcceso.cshtml" />
     <Content Include="Views\Admin\IngresarAlumno.cshtml" />
     <Content Include="Views\EncargadoCEL\AsignarsePrograma.cshtml" />
+    <Content Include="Views\Alumno\DenegarAcceso.cshtml" />
+    <Content Include="Views\EncargadoCEL\DenegarAcceso.cshtml" />
+    <Content Include="Views\EncargadoCEM\DenegarAcceso.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
