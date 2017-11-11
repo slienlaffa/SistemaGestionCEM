@@ -1,6 +1,7 @@
 ﻿@{
     ViewBag.Title = "Administrador";
 }
+
 <li>
     @Html.ActionLink("Inicio", "Index", "Admin")
 </li>
@@ -9,7 +10,7 @@
         Administración de Usuarios
     </a>
     <ul class="dropdown-menu">
-        <li>@Html.ActionLink("Ingresar usuario", "IngresarUsuario", "Admin")</li>
+        <li>@Html.ActionLink("Ingresar usuario", "SeleccionarUsuario", "Admin")</li>
         <li>@Html.ActionLink("Mostrar usuarios", "MostrarUsuarios", "Admin")</li>
         <li>@Html.ActionLink("Modificar usuarios", "ModificarUsuarios", "Admin")</li>
         <li>@Html.ActionLink("Eliminar usuarios", "EliminarUsuarios", "Admin")</li>

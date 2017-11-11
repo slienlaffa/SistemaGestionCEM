@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<SistemaGestionCEM.Datos.USUARIO>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -19,13 +19,47 @@
 
 @section ContenidoCentral
 {
-    <h2>Bienvenido a su panel administrativo, @nombre</h2>
 
-    <div id="programasAdmin">
-        <h1>Administracion de Programas</h1>
-        @Html.ActionLink("Crear un Programa de Estudio", "CrearPrograma", "Admin")
-        @Html.ActionLink("Publicar un Programa", "PublicarPrograma", "Admin") 
-    </div>
+    <h2>Bienvenido a su panel administrativo, @nombre</h2>
+    <hr />
+
+    <table class="table-responsive">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NOMBRE_USUARIO)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CONTRASENNA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TIPO_USUARIO.DESCRIPCION)
+            </th>
+            <th>
+                Acción
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NOMBRE_USUARIO)
+                </td>
+                <td>
+                    **********
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TIPO_USUARIO.DESCRIPCION)
+                </td>
+                <td>
+                    @Html.ActionLink("Modificar datos", "Edit", new { id = item.COD_USUARIO }) |
+                    @Html.ActionLink("Ver Detalle", "DetalleAlumno", new { id = item.COD_USUARIO }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.COD_USUARIO, @class = "delete"})
+                </td>
+            </tr>
+        }
+        </table>
+
 }
 
 

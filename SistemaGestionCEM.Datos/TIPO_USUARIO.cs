@@ -11,6 +11,8 @@ namespace SistemaGestionCEM.Datos
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel;
     
     public partial class TIPO_USUARIO
     {
@@ -21,6 +23,7 @@ namespace SistemaGestionCEM.Datos
         }
     
         public decimal COD_TIPO { get; set; }
+        [DisplayName("Tipo de Usuario")]
         public string DESCRIPCION { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
