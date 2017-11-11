@@ -123,4 +123,11 @@ namespace SistemaGestionCEM.Datos
         [DisplayName("Pais")]
         public decimal FK_COD_PAIS { get; set; }
     }
+
+    public class PostulacionProgramaMetadata
+    {
+        [Required]
+        [DisplayName("Fecha publicación")]
+        public System.DateTime FECHA { get; set; }
+    }
 }

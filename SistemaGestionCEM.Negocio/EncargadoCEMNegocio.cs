@@ -6,16 +6,10 @@ using SistemaGestionCEM.Datos;
 
 namespace SistemaGestionCEM.Negocio
 {
-    public class EncargadoCEMNegocio
+    public class EncargadoCEMNegocio : Encargado, IDisposable
     {
         private Entities db = new Entities();
-        const int PENDIENTE = 1;
-        const int APROBADO = 2;
-        const int RECHAZADO = 3;
-        const int NO_PUBLICADO = 4;
-        const int PUBLICADO = 5;
-        const int CANCELADO = 7;
-
+        
         public bool CrearProgramaEstudio(PROGRAMA_ESTUDIO programaEstudio, string usuario)
         {
             try
@@ -57,22 +51,17 @@ namespace SistemaGestionCEM.Negocio
 
         public void PublicarPrograma(int codPostulacionPrograma)
         {
-            using (Entities db = new Entities())
-            {
-                var programa = db.POSTULACION_PROGRAMA.Find(codPostulacionPrograma);
-                programa.FK_COD_ESTADO = PUBLICADO;
-                db.SaveChanges();
-            }
+            var programa = db.POSTULACION_PROGRAMA.Find(codPostulacionPrograma);
+            programa.FK_COD_ESTADO = PUBLICADO;
+            programa.FECHA = DateTime.Now;
+            db.SaveChanges();
         }
 
         public void CancelarPrograma(int codPostulacionPrograma)
         {
-            using (Entities db = new Entities())
-            {
-                var programa = db.POSTULACION_PROGRAMA.Find(codPostulacionPrograma);
-                programa.FK_COD_ESTADO = CANCELADO;
-                db.SaveChanges();
-            }
+            var programa = db.POSTULACION_PROGRAMA.Find(codPostulacionPrograma);
+            programa.FK_COD_ESTADO = CANCELADO;
+            db.SaveChanges();
         }
 
         public List<POSTULACION_ALUMNO> PostulacionesPendientes()
@@ -131,17 +120,14 @@ namespace SistemaGestionCEM.Negocio
 
         public List<PROGRAMA_ESTUDIO> ProgramasEnCursoFinalizados()
         {
-            String enCurso = "En Curso";
-            String finalizado = "Finalizado";
             List<PROGRAMA_ESTUDIO> programasPublicados;
-            using (Entities db = new Entities())
-            {
-                programasPublicados = db.PROGRAMA_ESTUDIO
-                    .Where(r => r.POSTULACION_PROGRAMA
-                    .Any(e => e.ESTADO_POSTULACION.DESCRIPCION == enCurso
-                    || e.ESTADO_POSTULACION.DESCRIPCION == finalizado))
-                    .ToList();
-            }
+            
+            programasPublicados = db.PROGRAMA_ESTUDIO
+                .Where(r => r.POSTULACION_PROGRAMA
+                .Any(e => e.FK_COD_ESTADO == EN_CURSO
+                || e.FK_COD_ESTADO == FINALIZADO))
+                .ToList();
+
             return programasPublicados;
         }
 
@@ -224,6 +210,11 @@ namespace SistemaGestionCEM.Negocio
         {
             SistemaGestionCEM.Datos.ENCARGADO_CEM encargadoCEMBusca = Conector.Entidades.ENCARGADO_CEM.OrderByDescending(e => e.COD_ENCARGADOCEM).First();
             return (int)(encargadoCEMBusca.COD_ENCARGADOCEM + 1);
+        }
+
+        public void Dispose()
+        {
+            db.Dispose();
         }
     }
 }

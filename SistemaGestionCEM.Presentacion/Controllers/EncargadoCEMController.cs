@@ -66,6 +66,7 @@ namespace SistemaGestionCEM.Presentacion.Controllers
             if (disposing)
             {
                 db.Dispose();
+                cem.Dispose();
             }
             base.Dispose(disposing);
         }

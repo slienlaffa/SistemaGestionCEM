@@ -74,6 +74,7 @@
     <Compile Include="DetalleNotasNegocio.cs" />
     <Compile Include="DetalleSeleccionNegocio.cs" />
     <Compile Include="Email.cs" />
+    <Compile Include="Encargado.cs" />
     <Compile Include="EncargadoCELNegocio.cs" />
     <Compile Include="EncargadoCEMNegocio.cs" />
     <Compile Include="EstadoPostulacionNegocio.cs" />

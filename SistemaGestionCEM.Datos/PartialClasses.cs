@@ -27,4 +27,9 @@ namespace SistemaGestionCEM.Datos
     public partial class PROGRAMA_ESTUDIO
     {
     }
+
+    [MetadataType(typeof(PostulacionProgramaMetadata))]
+    public partial class POSTULACION_PROGRAMA
+    {
+    }
 }

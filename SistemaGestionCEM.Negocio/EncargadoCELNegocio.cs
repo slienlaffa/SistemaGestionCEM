@@ -1,12 +1,34 @@
-﻿using System;
+﻿using SistemaGestionCEM.Datos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace SistemaGestionCEM.Negocio
 {
-    public class EncargadoCELNegocio
+    public class EncargadoCELNegocio : Encargado, IDisposable
     {
+        private Entities db = new Entities();
+
+        public IQueryable<POSTULACION_PROGRAMA> PostulacionesPublicadas()
+        {
+            IQueryable<POSTULACION_PROGRAMA> postulaciones = db.POSTULACION_PROGRAMA
+                .Where(p => p.FK_COD_ESTADO == PUBLICADO);
+            
+            return postulaciones;
+        }
+
+        public void PostularPrograma(int codPostulacionPrograma, string usuario)
+        {
+            var programa = db.POSTULACION_PROGRAMA.Find(codPostulacionPrograma);
+            decimal persona = db.USUARIO.Where(u => u.NOMBRE_USUARIO == usuario).FirstOrDefault().PERSONA.FirstOrDefault().COD_PERSONA;
+            var cel = db.ENCARGADO_CEL.Where(e => e.FK_COD_PERSONA == persona).FirstOrDefault();
+            if (cel != null)
+                programa.FK_COD_CEL = cel.FK_COD_CEL;
+            programa.FK_COD_ESTADO = EN_CURSO;
+            db.SaveChanges();
+        }
+
         public bool Crear()
         {
             try
@@ -50,6 +72,11 @@ namespace SistemaGestionCEM.Negocio
         {
             SistemaGestionCEM.Datos.ENCARGADO_CEL encargadoCELBusca = Conector.Entidades.ENCARGADO_CEL.OrderByDescending(e => e.COD_ENCARGADOCEL).First();
             return (int)(encargadoCELBusca.COD_ENCARGADOCEL + 1);
+        }
+
+        public void Dispose()
+        {
+            db.Dispose();
         }
     }
 }
