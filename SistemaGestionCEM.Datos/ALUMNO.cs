@@ -11,9 +11,7 @@ namespace SistemaGestionCEM.Datos
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class ALUMNO
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,15 +22,9 @@ namespace SistemaGestionCEM.Datos
         }
     
         public decimal COD_ALUMNO { get; set; }
-
-        [DataType(DataType.Date)]
-        [Required(ErrorMessage ="La fecha de nacimiento es obligatoria", AllowEmptyStrings = false)]
-        [DisplayName("Fecha de Nacimiento")]
         public System.DateTime FECHA_NACIMIENTO { get; set; }
-
         public decimal FK_COD_PERSONA { get; set; }
-
-        [Required]
+    
         public virtual PERSONA PERSONA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DETALLE_ALUMNO> DETALLE_ALUMNO { get; set; }

@@ -8,9 +8,72 @@ namespace SistemaGestionCEM.Negocio
 {
     public class EncargadoCEMNegocio
     {
+        private Entities db = new Entities();
         const int PENDIENTE = 1;
         const int APROBADO = 2;
         const int RECHAZADO = 3;
+        const int NO_PUBLICADO = 4;
+        const int PUBLICADO = 5;
+        const int CANCELADO = 7;
+
+        public bool CrearProgramaEstudio(PROGRAMA_ESTUDIO programaEstudio, string usuario)
+        {
+            try
+            {
+                using (Entities db = new Entities())
+                {
+                    decimal persona = db.USUARIO.Where(u => u.NOMBRE_USUARIO == usuario).FirstOrDefault().PERSONA.FirstOrDefault().COD_PERSONA;
+                    var cem = db.ENCARGADO_CEM.Where(e => e.FK_COD_PERSONA == persona).FirstOrDefault();
+                    if (cem != null)
+                        programaEstudio.FK_COD_ENCARGADOCEM = cem.COD_ENCARGADOCEM;
+
+                    programaEstudio.COD_PROGRAMA = new ProgramaEstudioNegocio().nuevoCodigo();
+
+                    POSTULACION_PROGRAMA postulacion = new POSTULACION_PROGRAMA();
+                    postulacion.COD_POSTULACIONPROGRAMA = new PostulacionProgramaNegocio().nuevoCodigo();
+                    postulacion.FK_COD_ENCARGADOCEM = programaEstudio.FK_COD_ENCARGADOCEM;
+                    postulacion.FK_COD_PROGRAMA = programaEstudio.COD_PROGRAMA;
+                    postulacion.FK_COD_ESTADO = 4; // No Publicado
+
+                    db.PROGRAMA_ESTUDIO.Add(programaEstudio);
+                    db.POSTULACION_PROGRAMA.Add(postulacion);
+                    db.SaveChanges();
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public IQueryable<POSTULACION_PROGRAMA> PostulacionesNoPublicadas()
+        {            
+            IQueryable<POSTULACION_PROGRAMA> postulaciones = db.POSTULACION_PROGRAMA
+                .Where(p => p.FK_COD_ESTADO == NO_PUBLICADO);
+
+            return postulaciones;            
+        }
+
+        public void PublicarPrograma(int codPostulacionPrograma)
+        {
+            using (Entities db = new Entities())
+            {
+                var programa = db.POSTULACION_PROGRAMA.Find(codPostulacionPrograma);
+                programa.FK_COD_ESTADO = PUBLICADO;
+                db.SaveChanges();
+            }
+        }
+
+        public void CancelarPrograma(int codPostulacionPrograma)
+        {
+            using (Entities db = new Entities())
+            {
+                var programa = db.POSTULACION_PROGRAMA.Find(codPostulacionPrograma);
+                programa.FK_COD_ESTADO = CANCELADO;
+                db.SaveChanges();
+            }
+        }
 
         public List<POSTULACION_ALUMNO> PostulacionesPendientes()
         {
