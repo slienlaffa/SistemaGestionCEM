@@ -25,14 +25,13 @@ namespace SistemaGestionCEM.Negocio
         {
             try
             {
-                using (Entities db = new Entities())
+                foreach (var nota in notas)
                 {
-                    foreach (var nota in notas)
-                    {
-                        db.Entry(nota).State = System.Data.Entity.EntityState.Modified;
-                    }
-                    db.SaveChanges();
+                    db.Entry(nota).State = System.Data.Entity.EntityState.Modified;
+                   
                 }
+                db.SaveChanges();
+
                 return true;
             }
             catch

@@ -1,75 +1,84 @@
-﻿@model IEnumerable<SistemaGestionCEM.Datos.DETALLE_NOTAS>
+﻿@model List<SistemaGestionCEM.Datos.DETALLE_NOTAS>
 
 @{
     ViewBag.Title = "Editar Notas";
 }
 
 <h2>Editar Notas</h2>
-
+@using (Html.BeginForm())
+{
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.DETALLE_ALUMNO.ALUMNO.PERSONA.NOMBRE)
+            @Html.DisplayNameFor(model => model[0].DETALLE_ALUMNO.ALUMNO.PERSONA.NOMBRE)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DETALLE_ALUMNO.ALUMNO.PERSONA.APELLIDO)
+            @Html.DisplayNameFor(model => model[0].DETALLE_ALUMNO.ALUMNO.PERSONA.APELLIDO)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NOTA1)
+            @Html.DisplayNameFor(model => model[0].NOTA1)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NOTA2)
+            @Html.DisplayNameFor(model => model[0].NOTA2)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NOTA3)
+            @Html.DisplayNameFor(model => model[0].NOTA3)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NOTA4)
+            @Html.DisplayNameFor(model => model[0].NOTA4)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PROMEDIO)
+            @Html.DisplayNameFor(model => model[0].PROMEDIO)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DETALLE_ALUMNO.ESTADO_ALUMNO)
+            @Html.DisplayNameFor(model => model[0].DETALLE_ALUMNO.ESTADO_ALUMNO)
         </th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.DETALLE_ALUMNO.ALUMNO.PERSONA.NOMBRE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DETALLE_ALUMNO.ALUMNO.PERSONA.APELLIDO)
-        </td>
-        <td>
-            @Html.EditorFor(modelItem => item.NOTA1)
-        </td>
-        <td>
-            @Html.EditorFor(modelItem => item.NOTA2)
-        </td>
-        <td>
-            @Html.EditorFor(modelItem => item.NOTA3)
-        </td>
-        <td>
-            @Html.EditorFor(modelItem => item.NOTA4)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PROMEDIO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DETALLE_ALUMNO.ESTADO_ALUMNO)
-        </td>
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @for (int i = 0; i < Model.Count(); i++)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model[i].DETALLE_ALUMNO.ALUMNO.PERSONA.NOMBRE)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model[i].DETALLE_ALUMNO.ALUMNO.PERSONA.APELLIDO)
+            </td>
+            <td>
+                @Html.EditorFor(model => model[i].NOTA1)
+                @Html.ValidationMessageFor(model => model[i].NOTA1, "", new { @class = "text-danger" })
+            </td>
+            <td>
+                @Html.EditorFor(model => model[i].NOTA2)
+                @Html.ValidationMessageFor(model => model[i].NOTA2, "", new { @class = "text-danger" })
+            </td>
+            <td>
+                @Html.EditorFor(model => model[i].NOTA3)
+                @Html.ValidationMessageFor(model => model[i].NOTA3, "", new { @class = "text-danger" })
+            </td>
+            <td>
+                @Html.EditorFor(model => model[i].NOTA4)
+                @Html.ValidationMessageFor(model => model[i].NOTA4, "", new { @class = "text-danger" })
+            </td>
+            <td>
+                @Html.DisplayFor(model => model[i].PROMEDIO)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model[i].DETALLE_ALUMNO.ESTADO_ALUMNO)
+                @Html.HiddenFor(model => model[i].COD_NOTAS)
+                @Html.HiddenFor(model => model[i].FK_COD_DETALUMNO)
+            </td>
 
 
-    </tr>
-}
-
+        </tr>
+    }
 </table>
-
 
 <div class="form-group">
     <div class="col-md-offset-6 col-md-10">
         <input type="submit" value="Guardar Cambios" class="btn btn-info" />
     </div>
 </div>
+}

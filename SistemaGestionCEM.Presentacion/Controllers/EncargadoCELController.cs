@@ -37,13 +37,15 @@ namespace SistemaGestionCEM.Presentacion.Controllers
 
         public ActionResult EditarNotas(int id)
         {
-            return View(cel.BuscarNotas(id));
+            TempData["id"] = id;
+            return View(cel.BuscarNotas(id).ToList());
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditarNotas([Bind(Include = "Id,NOTA1,NOTA2,NOTA3,NOTA4")] List<DETALLE_NOTAS> notas)
+        public ActionResult EditarNotas([Bind(Include = "COD_NOTAS,FK_COD_DETALUMNO,NOTA1,NOTA2,NOTA3,NOTA4")] List<DETALLE_NOTAS> notas)
         {
+            int id = (int)TempData["id"];
             if (ModelState.IsValid)
             {
                 if (cel.RegistrarNotas(notas))
@@ -52,7 +54,9 @@ namespace SistemaGestionCEM.Presentacion.Controllers
                     TempData["error"] = "Error al modificar las notas";
                 return RedirectToAction("EditarNotas");
             }
-            return View(notas);
+            else
+                TempData["id"] = id;
+            return View(cel.BuscarNotas(id).ToList());
         }
 
         public ActionResult Asignarse(int id)
