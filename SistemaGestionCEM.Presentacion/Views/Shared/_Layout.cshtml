@@ -24,7 +24,7 @@
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="~/Scripts/CEMTemplate.css" type="text/css">
-
+    <link rel="stylesheet" href="~/Content/Site.css" type="text/css">
     <script src="~/Scripts/main.js"></script>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -81,6 +81,20 @@
                 </div>
             </div>
         </nav>
+        @if (TempData["success"] != null)
+        {
+            <div class="alert success">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                @Html.Encode(TempData["success"])
+            </div>
+        }
+        @if (TempData["error"] != null)
+        {
+            <div class="alert">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                @Html.Encode(TempData["error"])
+            </div>
+        }
 
     </header>
     <div align="center" class="contenidoCentral">

@@ -37,10 +37,16 @@ namespace SistemaGestionCEM.Presentacion.Controllers
         {
             string usuario = Session["Nombre"].ToString();
             var resultado = alumno.PostularPrograma(codPrograma, usuario);
-            if(resultado != null)
+            if (resultado != null)
+            {
+                TempData["success"] = "Postulacion realizada correctamente.";
                 return RedirectToAction("Index");
+            }
             else
-                return RedirectToAction("VerProgramas"); // Alumno tiene otras postulaciones activas
+            {
+                TempData["error"] = "Ya cuenta con una postulacion pendiente o un programa en curso.";
+                return RedirectToAction("VerProgramas");
+            }
         }
 
         public ActionResult Index()
