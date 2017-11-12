@@ -160,4 +160,22 @@ namespace SistemaGestionCEM.Datos
         [DisplayName("Tipo de Programa")]
         public string DESCRIPCION { get; set; }
     }
+
+    public class DetalleNotasMetadata
+    {
+        [DisplayName("Nota 1")]
+        [Range(0, 10, ErrorMessage = "Ingrese un numero entre 0 y 10")]
+        public Nullable<decimal> NOTA1 { get; set; }
+        [DisplayName("Nota 2")]
+        [Range(0, 10, ErrorMessage = "Ingrese un numero entre 0 y 10")]
+        public Nullable<decimal> NOTA2 { get; set; }
+        [DisplayName("Nota 3")]
+        [Range(0, 10, ErrorMessage = "Ingrese un numero entre 0 y 10")]
+        public Nullable<decimal> NOTA3 { get; set; }
+        [DisplayName("Nota 4")]
+        [Range(0, 10, ErrorMessage = "Ingrese un numero entre 0 y 10")]
+        public Nullable<decimal> NOTA4 { get; set; }
+        [DisplayName("Promedio")]
+        public Nullable<decimal> PROMEDIO { get; set; }
+    }
 }

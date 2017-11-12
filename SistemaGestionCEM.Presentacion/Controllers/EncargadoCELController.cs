@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SistemaGestionCEM.Negocio;
+using SistemaGestionCEM.Datos;
 
 namespace SistemaGestionCEM.Presentacion.Controllers
 {
@@ -26,6 +27,32 @@ namespace SistemaGestionCEM.Presentacion.Controllers
             }
             return RedirectToAction("DenegarAcceso");
             
+        }
+
+        public ActionResult RegistrarNotas()
+        {
+            string usuario = Session["Nombre"].ToString();
+            return View(cel.ProgramasEnCursoPorCEL(usuario));
+        }
+
+        public ActionResult EditarNotas(int id)
+        {
+            return View(cel.BuscarNotas(id));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditarNotas([Bind(Include = "Id,NOTA1,NOTA2,NOTA3,NOTA4")] List<DETALLE_NOTAS> notas)
+        {
+            if (ModelState.IsValid)
+            {
+                if (cel.RegistrarNotas(notas))
+                    TempData["success"] = "Notas modificadas correctamente.";
+                else
+                    TempData["error"] = "Error al modificar las notas";
+                return RedirectToAction("EditarNotas");
+            }
+            return View(notas);
         }
 
         public ActionResult Asignarse(int id)

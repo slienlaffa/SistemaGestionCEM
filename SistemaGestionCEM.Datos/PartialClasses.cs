@@ -47,4 +47,9 @@ namespace SistemaGestionCEM.Datos
     public partial class TIPO_PROGRAMA
     {
     }
+
+    [MetadataType(typeof(DetalleNotasMetadata))]
+    public partial class DETALLE_NOTAS
+    {
+    }
 }

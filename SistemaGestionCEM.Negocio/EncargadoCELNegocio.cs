@@ -6,9 +6,40 @@ using System.Text;
 
 namespace SistemaGestionCEM.Negocio
 {
-    public class EncargadoCELNegocio : Negocio, IDisposable
+    public class EncargadoCELNegocio : Negocio
     {
-        private Entities db = new Entities();
+
+        public IQueryable<PROGRAMA_ESTUDIO> ProgramasEnCursoPorCEL(string usuario)
+        {
+            int codCEL = (int)ObtenerCELPorUsuario(usuario).FK_COD_CEL;
+
+            var programasPublicados = db.PROGRAMA_ESTUDIO
+                .Where(r => r.POSTULACION_PROGRAMA
+                .Any(e => e.FK_COD_ESTADO == EN_CURSO
+                && e.FK_COD_CEL == codCEL));
+
+            return programasPublicados;
+        }
+
+        public bool RegistrarNotas(List<DETALLE_NOTAS> notas)
+        {
+            try
+            {
+                using (Entities db = new Entities())
+                {
+                    foreach (var nota in notas)
+                    {
+                        db.Entry(nota).State = System.Data.Entity.EntityState.Modified;
+                    }
+                    db.SaveChanges();
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
 
         public IQueryable<POSTULACION_PROGRAMA> PostulacionesPublicadas()
         {
@@ -22,11 +53,17 @@ namespace SistemaGestionCEM.Negocio
         public void PostularPrograma(int codPostulacionPrograma, string usuario)
         {
             var programa = db.POSTULACION_PROGRAMA.Find(codPostulacionPrograma);
-            decimal persona = db.USUARIO.Where(u => u.NOMBRE_USUARIO == usuario).FirstOrDefault().PERSONA.FirstOrDefault().COD_PERSONA;
-            var cel = db.ENCARGADO_CEL.Where(e => e.FK_COD_PERSONA == persona).FirstOrDefault();
+            var cel = ObtenerCELPorUsuario(usuario);
             if (cel != null)
                 programa.FK_COD_CEL = cel.FK_COD_CEL;
             db.SaveChanges();
+        }
+
+        private ENCARGADO_CEL ObtenerCELPorUsuario(string usuario)
+        {
+            decimal persona = db.USUARIO.Where(u => u.NOMBRE_USUARIO == usuario).FirstOrDefault().PERSONA.FirstOrDefault().COD_PERSONA;
+            var cel = db.ENCARGADO_CEL.Where(e => e.FK_COD_PERSONA == persona).FirstOrDefault();
+            return cel;
         }
 
         public bool Crear()
@@ -72,11 +109,6 @@ namespace SistemaGestionCEM.Negocio
         {
             SistemaGestionCEM.Datos.ENCARGADO_CEL encargadoCELBusca = Conector.Entidades.ENCARGADO_CEL.OrderByDescending(e => e.COD_ENCARGADOCEL).First();
             return (int)(encargadoCELBusca.COD_ENCARGADOCEL + 1);
-        }
-
-        public void Dispose()
-        {
-            db.Dispose();
         }
     }
 }

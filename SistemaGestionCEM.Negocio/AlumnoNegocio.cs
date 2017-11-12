@@ -8,9 +8,8 @@ using System.Data.Entity.Validation;
 
 namespace SistemaGestionCEM.Negocio
 {
-    public class AlumnoNegocio : Negocio, IDisposable
+    public class AlumnoNegocio : Negocio
     {
-        private Entities db = new Entities();
 
         public IQueryable<POSTULACION_PROGRAMA> ProgramasPublicados()
         {
@@ -209,11 +208,6 @@ namespace SistemaGestionCEM.Negocio
         {
             SistemaGestionCEM.Datos.ALUMNO alumnoBusca = Conector.Entidades.ALUMNO.OrderByDescending(e => e.COD_ALUMNO).First();
             return (int)(alumnoBusca.COD_ALUMNO + 1);
-        }
-
-        public void Dispose()
-        {
-            db.Dispose();
         }
     }
 }

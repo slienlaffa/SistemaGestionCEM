@@ -6,10 +6,9 @@ using SistemaGestionCEM.Datos;
 
 namespace SistemaGestionCEM.Negocio
 {
-    public class EncargadoCEMNegocio : Negocio, IDisposable
+    public class EncargadoCEMNegocio : Negocio
     {
-        private Entities db = new Entities();
-        
+
         public bool CrearProgramaEstudio(PROGRAMA_ESTUDIO programaEstudio, string usuario)
         {
             try
@@ -118,54 +117,16 @@ namespace SistemaGestionCEM.Negocio
                 return false; }
         }
 
-        public List<PROGRAMA_ESTUDIO> ProgramasEnCursoFinalizados()
+        public IQueryable<PROGRAMA_ESTUDIO> ProgramasEnCursoFinalizados()
         {
-            List<PROGRAMA_ESTUDIO> programasPublicados;
-            
-            programasPublicados = db.PROGRAMA_ESTUDIO
+            var programasPublicados = db.PROGRAMA_ESTUDIO
                 .Where(r => r.POSTULACION_PROGRAMA
                 .Any(e => e.FK_COD_ESTADO == EN_CURSO
-                || e.FK_COD_ESTADO == FINALIZADO))
-                .ToList();
+                || e.FK_COD_ESTADO == FINALIZADO));
 
             return programasPublicados;
-        }
-
-        public List<DETALLE_NOTAS> BuscarNotas(int codigoPrograma)
-        {
-            IQueryable<DETALLE_ALUMNO> alumnos;
-            List<DETALLE_NOTAS> notas = new List<DETALLE_NOTAS>();
-                using (Entities db = new Entities())
-                {
-                    alumnos = db.DETALLE_ALUMNO
-                     .Where(d => d.FK_COD_PROGRAMA == codigoPrograma);
-                    foreach(var a in alumnos)
-                    {
-                        notas.Add(a.DETALLE_NOTAS.Last());
-                    }
-                }
-                return notas;        
-        }
-
-        public bool RegistrarNotas(List<DETALLE_NOTAS> notas)
-        {
-            try
-            {
-                using (Entities db = new Entities())
-                {
-                    foreach (var nota in notas)
-                    {
-                        db.Entry(nota).State = System.Data.Entity.EntityState.Modified;
-                    }
-                    db.SaveChanges();
-                }
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
+        }       
+        
 
         public bool Crear()
         {
@@ -210,11 +171,6 @@ namespace SistemaGestionCEM.Negocio
         {
             SistemaGestionCEM.Datos.ENCARGADO_CEM encargadoCEMBusca = Conector.Entidades.ENCARGADO_CEM.OrderByDescending(e => e.COD_ENCARGADOCEM).First();
             return (int)(encargadoCEMBusca.COD_ENCARGADOCEM + 1);
-        }
-
-        public void Dispose()
-        {
-            db.Dispose();
         }
     }
 }
