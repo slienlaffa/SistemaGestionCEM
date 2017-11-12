@@ -6,14 +6,15 @@ using System.Text;
 
 namespace SistemaGestionCEM.Negocio
 {
-    public class EncargadoCELNegocio : Encargado, IDisposable
+    public class EncargadoCELNegocio : Negocio, IDisposable
     {
         private Entities db = new Entities();
 
         public IQueryable<POSTULACION_PROGRAMA> PostulacionesPublicadas()
         {
-            IQueryable<POSTULACION_PROGRAMA> postulaciones = db.POSTULACION_PROGRAMA
-                .Where(p => p.FK_COD_ESTADO == PUBLICADO);
+            var postulaciones = db.POSTULACION_PROGRAMA
+                .Where(p => p.FK_COD_ESTADO == PUBLICADO
+                && p.FK_COD_CEL == null);
             
             return postulaciones;
         }
@@ -25,7 +26,6 @@ namespace SistemaGestionCEM.Negocio
             var cel = db.ENCARGADO_CEL.Where(e => e.FK_COD_PERSONA == persona).FirstOrDefault();
             if (cel != null)
                 programa.FK_COD_CEL = cel.FK_COD_CEL;
-            programa.FK_COD_ESTADO = EN_CURSO;
             db.SaveChanges();
         }
 

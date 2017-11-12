@@ -42,4 +42,9 @@ namespace SistemaGestionCEM.Datos
     public partial class PAIS
     {
     }
+
+    [MetadataType(typeof(TipoProgramaMetadata))]
+    public partial class TIPO_PROGRAMA
+    {
+    }
 }

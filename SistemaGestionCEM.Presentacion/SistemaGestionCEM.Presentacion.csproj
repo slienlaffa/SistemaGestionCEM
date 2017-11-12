@@ -296,6 +296,8 @@
     <Content Include="Views\Alumno\DenegarAcceso.cshtml" />
     <Content Include="Views\EncargadoCEL\DenegarAcceso.cshtml" />
     <Content Include="Views\EncargadoCEM\DenegarAcceso.cshtml" />
+    <Content Include="Views\Alumno\VerProgramas.cshtml" />
+    <Content Include="Views\Alumno\DetallesPrograma.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

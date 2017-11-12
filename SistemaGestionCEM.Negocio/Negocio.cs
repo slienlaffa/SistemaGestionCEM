@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SistemaGestionCEM.Negocio
 {
-    public class Encargado
+    public class Negocio
     {
         protected const int PENDIENTE = 1;
         protected const int APROBADO = 2;

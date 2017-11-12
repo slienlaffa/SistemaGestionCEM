@@ -37,6 +37,8 @@ namespace SistemaGestionCEM.Datos
     {
         [DisplayName("País")]
         public  decimal COD_PAIS { get; set; }
+        [DisplayName("Pais")]
+        public string DESCRIPCION { get; set; }
     }
 
     public class FamiliaMetadata
@@ -112,6 +114,7 @@ namespace SistemaGestionCEM.Datos
         public string DESCRIPCION { get; set; }
         [Required(ErrorMessage = "La fecha limite de postulación es obligatoria", AllowEmptyStrings = false)]
         [DisplayName("Fecha limite de postulación")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public System.DateTime FECHA_LIMITE_POSTULACION { get; set; }
         [Required]
         [DisplayName("Area de conocimiento")]
@@ -122,10 +125,12 @@ namespace SistemaGestionCEM.Datos
         [Required]
         [Range(1, int.MaxValue, ErrorMessage = "Ingrese un numero mayor a 0")]
         [DisplayName("Numero maximo de alumnos")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:#}")]
         public decimal NUM_MAX_ALUMNO { get; set; }
         [Required]
         [Range(1, int.MaxValue, ErrorMessage = "Ingrese un numero mayor a 0")]
         [DisplayName("Numero minimo de alumnos")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:#}")]
         public decimal NUM_MIN_ALUMNO { get; set; }
         [Required]
         [DisplayName("Tipo de Programa")]
@@ -147,6 +152,12 @@ namespace SistemaGestionCEM.Datos
         [DisplayName("Tipo de Usuario")]
         public string COD_TIPO { get; set; }
         [DisplayName("Tipo")]
+        public string DESCRIPCION { get; set; }
+    }
+
+    public class TipoProgramaMetadata
+    {
+        [DisplayName("Tipo de Programa")]
         public string DESCRIPCION { get; set; }
     }
 }

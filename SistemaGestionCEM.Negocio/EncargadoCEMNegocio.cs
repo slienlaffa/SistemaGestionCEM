@@ -6,7 +6,7 @@ using SistemaGestionCEM.Datos;
 
 namespace SistemaGestionCEM.Negocio
 {
-    public class EncargadoCEMNegocio : Encargado, IDisposable
+    public class EncargadoCEMNegocio : Negocio, IDisposable
     {
         private Entities db = new Entities();
         

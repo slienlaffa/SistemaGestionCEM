@@ -8,25 +8,15 @@ using System.Data.Entity.Validation;
 
 namespace SistemaGestionCEM.Negocio
 {
-    public class AlumnoNegocio
+    public class AlumnoNegocio : Negocio, IDisposable
     {
-        const int APROBADO = 2;
-        const int RECHAZADO = 3;
-        const int FINALIZADO = 6;
-        const int CANCELADO = 7;
+        private Entities db = new Entities();
 
-        public List<PROGRAMA_ESTUDIO> ProgramasPublicados()
+        public IQueryable<POSTULACION_PROGRAMA> ProgramasPublicados()
         {
-            String estado = "Publicado";
-            List<PROGRAMA_ESTUDIO> programasPublicados;
-            using (Entities db = new Entities())
-            {
-                programasPublicados = db.PROGRAMA_ESTUDIO
-                    .Where(r => r.POSTULACION_PROGRAMA
-                    .Any(e => e.ESTADO_POSTULACION.DESCRIPCION == estado))
-                    .ToList();
-            }
-            return programasPublicados;
+            var programas = db.POSTULACION_PROGRAMA.Where(e => e.FK_COD_ESTADO == PUBLICADO
+                    && e.FK_COD_CEL != null);
+            return programas;
         }
 
         public PROGRAMA_ESTUDIO BuscarProgramaEstudio(int codigoPrograma)
@@ -46,11 +36,15 @@ namespace SistemaGestionCEM.Negocio
             }
         }
 
-        public POSTULACION_ALUMNO PostularPrograma(int codigoPrograma, int codigoAlumno)
+        public POSTULACION_ALUMNO PostularPrograma(int codigoPrograma, string usuario)
         {
 
             try
-            {                
+            {
+                decimal persona = db.USUARIO.Where(u => u.NOMBRE_USUARIO == usuario).FirstOrDefault().PERSONA.FirstOrDefault().COD_PERSONA;
+                var alumno = db.ALUMNO.Where(e => e.FK_COD_PERSONA == persona).FirstOrDefault();
+                int codigoAlumno = (int)alumno.COD_ALUMNO;
+
                 if (alumnoTieneOtrasPostulaciones(codigoAlumno))
                 {
                     POSTULACION_ALUMNO postulacion = new POSTULACION_ALUMNO();
@@ -59,12 +53,10 @@ namespace SistemaGestionCEM.Negocio
                     postulacion.FK_COD_ESTADO = 1;
                     postulacion.FECHA = DateTime.Now;
                     postulacion.SEGURO = null;
-                    using (Entities db = new Entities())
-                    {
-                        postulacion.COD_POSTULACION = GetNextSequenceValuePostulacionAlumno();
-                        db.POSTULACION_ALUMNO.Add(postulacion);
-                        db.SaveChanges();
-                    }
+                    postulacion.COD_POSTULACION = GetNextSequenceValuePostulacionAlumno();
+
+                    db.POSTULACION_ALUMNO.Add(postulacion);
+                    db.SaveChanges();
                     return postulacion;
                }
                 else
@@ -217,6 +209,11 @@ namespace SistemaGestionCEM.Negocio
         {
             SistemaGestionCEM.Datos.ALUMNO alumnoBusca = Conector.Entidades.ALUMNO.OrderByDescending(e => e.COD_ALUMNO).First();
             return (int)(alumnoBusca.COD_ALUMNO + 1);
+        }
+
+        public void Dispose()
+        {
+            db.Dispose();
         }
     }
 }

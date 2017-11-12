@@ -1,0 +1,97 @@
+﻿@model SistemaGestionCEM.Datos.POSTULACION_PROGRAMA
+
+@{
+    ViewBag.Title = "Detalles Programa";
+}
+
+<h2>Detalles Programa</h2>
+
+<div>
+    <h4>PROGRAMA ESTUDIO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CENTRO_ESTUDIO_LOCAL.NOMBRE_CENTRO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CENTRO_ESTUDIO_LOCAL.NOMBRE_CENTRO)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PROGRAMA_ESTUDIO.NOMBRE_PROGRAMA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROGRAMA_ESTUDIO.NOMBRE_PROGRAMA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PROGRAMA_ESTUDIO.DESCRIPCION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROGRAMA_ESTUDIO.DESCRIPCION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PROGRAMA_ESTUDIO.FECHA_LIMITE_POSTULACION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROGRAMA_ESTUDIO.FECHA_LIMITE_POSTULACION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PROGRAMA_ESTUDIO.AREA_CONOCIMIENTO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROGRAMA_ESTUDIO.AREA_CONOCIMIENTO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PROGRAMA_ESTUDIO.DURACION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROGRAMA_ESTUDIO.DURACION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PROGRAMA_ESTUDIO.NUM_MAX_ALUMNO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROGRAMA_ESTUDIO.NUM_MAX_ALUMNO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PROGRAMA_ESTUDIO.NUM_MIN_ALUMNO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROGRAMA_ESTUDIO.NUM_MIN_ALUMNO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PROGRAMA_ESTUDIO.PAIS.DESCRIPCION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROGRAMA_ESTUDIO.PAIS.DESCRIPCION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PROGRAMA_ESTUDIO.TIPO_PROGRAMA.DESCRIPCION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROGRAMA_ESTUDIO.TIPO_PROGRAMA.DESCRIPCION)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Ver Programas", "VerProgramas") | 
+    @Html.ActionLink("Postular", "Postular", new { codPrograma = Model.PROGRAMA_ESTUDIO.COD_PROGRAMA })
+</p>
