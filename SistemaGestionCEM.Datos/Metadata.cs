@@ -144,6 +144,7 @@ namespace SistemaGestionCEM.Datos
     {
         [Required]
         [DisplayName("Fecha publicación")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public System.DateTime FECHA { get; set; }
     }
 
@@ -177,5 +178,12 @@ namespace SistemaGestionCEM.Datos
         public Nullable<decimal> NOTA4 { get; set; }
         [DisplayName("Promedio")]
         public Nullable<decimal> PROMEDIO { get; set; }
+    }
+
+    public class PostulacionAlumnoMetadata
+    {
+        [DisplayName("Fecha de postulación")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        public System.DateTime FECHA { get; set; }
     }
 }

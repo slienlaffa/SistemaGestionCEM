@@ -302,6 +302,8 @@
     <Content Include="Views\EncargadoCEL\EditarNotas.cshtml" />
     <Content Include="Views\EncargadoCEM\CrearPrograma.cshtml" />
     <Content Include="Views\EncargadoCEM\PublicarPrograma.cshtml" />
+    <Content Include="Views\EncargadoCEM\PostulacionesPendientes.cshtml" />
+    <Content Include="Views\EncargadoCEM\MostrarEstado.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

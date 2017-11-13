@@ -63,30 +63,30 @@ namespace SistemaGestionCEM.Negocio
             db.SaveChanges();
         }
 
-        public List<POSTULACION_ALUMNO> PostulacionesPendientes()
+        public IQueryable<POSTULACION_ALUMNO> PostulacionesPendientes()
         {
-            List<POSTULACION_ALUMNO> postulacionesPendientes;
-            using (Entities db = new Entities())
-            {
-                postulacionesPendientes = db.POSTULACION_ALUMNO
-                    .Where(p => p.FK_COD_ESTADO == PENDIENTE)
-                    .ToList();
-            }
+            var postulacionesPendientes = db.POSTULACION_ALUMNO
+                    .Where(p => p.FK_COD_ESTADO == PENDIENTE);
+
             return postulacionesPendientes;
         }
 
         public ws_estado_alumnos.alumno obtenerEstadoAlumno(int codigoAlumno)
         {
-            ws_estado_alumnos.alumno estadoAlumno;
-            using (Entities db = new Entities())
+            try
             {
-                ALUMNO alumno = db.ALUMNO.Find(codigoAlumno);
-                ws_estado_alumnos.WebServiceCEMClient estadoAlumnos = new ws_estado_alumnos.WebServiceCEMClient();
-                estadoAlumno = estadoAlumnos.obtenerEstadoAlumnos(alumno.PERSONA.NOMBRE, alumno.PERSONA.APELLIDO);
-                if(estadoAlumno != null)
-                    estadoAlumno.codigoAlumno = codigoAlumno;
+                ws_estado_alumnos.alumno estadoAlumno;
+                using (Entities db = new Entities())
+                {
+                    ALUMNO alumno = db.ALUMNO.Find(codigoAlumno);
+                    ws_estado_alumnos.WebServiceCEMClient estadoAlumnos = new ws_estado_alumnos.WebServiceCEMClient();
+                    estadoAlumno = estadoAlumnos.obtenerEstadoAlumnos(alumno.PERSONA.NOMBRE, alumno.PERSONA.APELLIDO);
+                    if (estadoAlumno != null)
+                        estadoAlumno.codigoAlumno = codigoAlumno;
+                }
+                return estadoAlumno;
             }
-            return estadoAlumno;
+            catch { return null; }
         }
 
         public bool SeleccionarPostulante(int codigoAlumno, bool esSeleccionado)

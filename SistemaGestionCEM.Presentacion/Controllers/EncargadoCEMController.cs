@@ -64,6 +64,40 @@ namespace SistemaGestionCEM.Presentacion.Controllers
             return RedirectToAction("PublicarPrograma");
         }
 
+        public ActionResult PostulacionesPendientes()
+        {
+            return View(cem.PostulacionesPendientes());
+        }
+
+        public ActionResult MostrarEstado(int id)
+        {
+            var estado = cem.obtenerEstadoAlumno(id);
+            if(estado == null)
+            {
+                TempData["error"] = "No se puede encontrar el alumno en el sistema del CEM.";
+                return RedirectToAction("PostulacionesPendientes");
+            }
+            return View(estado);
+        }
+
+        public ActionResult PostulacionAprobar(int id)
+        {
+            if (cem.SeleccionarPostulante(id, true))
+                TempData["success"] = "Se ha aprobado correctamente al alumno.";
+            else
+                TempData["error"] = "Ha habido un error.";
+            return RedirectToAction("PostulacionesPendientes");
+        }
+
+        public ActionResult PostulacionRechazar(int id)
+        {
+            if(cem.SeleccionarPostulante(id, false))
+                TempData["success"] = "Se ha rechazado correctamente al alumno.";
+            else
+                TempData["error"] = "Ha habido un error.";
+            return RedirectToAction("PostulacionesPendientes");
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

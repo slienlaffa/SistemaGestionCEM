@@ -52,4 +52,9 @@ namespace SistemaGestionCEM.Datos
     public partial class DETALLE_NOTAS
     {
     }
+
+    [MetadataType(typeof(PostulacionAlumnoMetadata))]
+    public partial class POSTULACION_ALUMNO
+    {
+    }
 }

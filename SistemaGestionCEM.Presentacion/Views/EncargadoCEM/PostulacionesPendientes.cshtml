@@ -1,0 +1,46 @@
+﻿@model IEnumerable<SistemaGestionCEM.Datos.POSTULACION_ALUMNO>
+
+@{
+    ViewBag.Title = "Postulaciones Pendientes";
+}
+
+<h2>Postulaciones Pendientes</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FECHA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ALUMNO.PERSONA.NOMBRE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ALUMNO.PERSONA.APELLIDO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PROGRAMA_ESTUDIO.NOMBRE_PROGRAMA)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FECHA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ALUMNO.PERSONA.NOMBRE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ALUMNO.PERSONA.APELLIDO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PROGRAMA_ESTUDIO.NOMBRE_PROGRAMA)
+        </td>
+        <td>
+            @Html.ActionLink("Revisar Estado", "MostrarEstado", new { id=item.ALUMNO.COD_ALUMNO })
+        </td>
+    </tr>
+}
+
+</table>

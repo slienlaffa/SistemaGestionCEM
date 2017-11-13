@@ -1,0 +1,42 @@
+﻿@model SistemaGestionCEM.Negocio.ws_estado_alumnos.alumno
+
+@{
+    ViewBag.Title = "Mostrar Estado";
+}
+
+<h2>Mostrar Estado del Alumno</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Nombre")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombreAlumno)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Apellido")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.apellidoAlumno)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Estado del Alumno")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estadoAlumno)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Aprobar", "PostulacionAprobar", new { id = Model.codigoAlumno }) |
+    @Html.ActionLink("Rechazar", "PostulacionRechazar", new { id = Model.codigoAlumno }) |
+    @Html.ActionLink("Regresar a las postulaciones", "PostulacionesPendientes")
+</p>
