@@ -20,7 +20,7 @@ namespace SistemaGestionCEM.Datos
             this.CIUDAD = new HashSet<CIUDAD>();
             this.PROGRAMA_ESTUDIO = new HashSet<PROGRAMA_ESTUDIO>();
         }
-        
+    
         public decimal COD_PAIS { get; set; }
         public string DESCRIPCION { get; set; }
     

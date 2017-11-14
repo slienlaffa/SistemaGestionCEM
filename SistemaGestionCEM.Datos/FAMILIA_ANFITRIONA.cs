@@ -29,7 +29,7 @@ namespace SistemaGestionCEM.Datos
         public string MASCOTA_DESCRIPCION { get; set; }
         public decimal ANIO_INSCRIPCION { get; set; }
         public decimal FK_COD_PERSONA { get; set; }
-        public decimal FK_COD_ANTECEDENTES { get; set; }
+        public Nullable<decimal> FK_COD_ANTECEDENTES { get; set; }
     
         public virtual ANTECEDENTES ANTECEDENTES { get; set; }
         public virtual PERSONA PERSONA { get; set; }

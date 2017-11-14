@@ -1101,7 +1101,7 @@
           <Property Name="MASCOTA_DESCRIPCION" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ANIO_INSCRIPCION" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="FK_COD_PERSONA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="FK_COD_ANTECEDENTES" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FK_COD_ANTECEDENTES" Type="Decimal" Precision="38" Scale="0" Nullable="true" />
           <NavigationProperty Name="ANTECEDENTES" Relationship="Self.FAMILIA__ANTECEDENTES_FK" FromRole="FAMILIA_ANFITRIONA" ToRole="ANTECEDENTES" />
           <NavigationProperty Name="PERSONA" Relationship="Self.FAMILIA_PERSONA_FK" FromRole="FAMILIA_ANFITRIONA" ToRole="PERSONA" />
           <NavigationProperty Name="POSTULACION_ALUMNO" Relationship="Self.POSTUALUMNO_FAMILIA_FK" FromRole="FAMILIA_ANFITRIONA" ToRole="POSTULACION_ALUMNO" />
@@ -1264,7 +1264,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FAMILIA__ANTECEDENTES_FK">
-          <End Role="ANTECEDENTES" Type="Self.ANTECEDENTES" Multiplicity="1" />
+          <End Role="ANTECEDENTES" Type="Self.ANTECEDENTES" Multiplicity="0..1" />
           <End Role="FAMILIA_ANFITRIONA" Type="Self.FAMILIA_ANFITRIONA" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ANTECEDENTES">
