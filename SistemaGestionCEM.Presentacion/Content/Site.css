@@ -24,6 +24,7 @@ textarea {
 }
 
 .alert {
+    margin:auto;
     padding: 20px;
     background-color: #f44336;
     color: white;

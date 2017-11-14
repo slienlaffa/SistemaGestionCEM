@@ -65,11 +65,11 @@ namespace SistemaGestionCEM.Negocio
             return cel;
         }
 
-        public bool Crear()
+        public bool Crear(int codPersona, int codigoCentroCEL)
         {
             try
             {
-                Conector.Entidades.CrearEncargadoCEL(1,8,nuevoCodigo());
+                Conector.Entidades.CrearEncargadoCEL(codPersona,codigoCentroCEL,nuevoCodigo());
                 return true;
             }
             catch
@@ -91,11 +91,11 @@ namespace SistemaGestionCEM.Negocio
             }
         }
 
-        public bool Eliminar()
+        public bool Eliminar(int codigo)
         {
             try
             {
-                Conector.Entidades.EliminarEncargadoCEL(2);
+                Conector.Entidades.EliminarEncargadoCEL(codigo);
                 return true;
             }
             catch

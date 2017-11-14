@@ -128,11 +128,11 @@ namespace SistemaGestionCEM.Negocio
         }       
         
 
-        public bool Crear()
+        public bool Crear(int codPersona)
         {
             try
             {
-                Conector.Entidades.CrearEncargadoCEM(8,nuevoCodigo());
+                Conector.Entidades.CrearEncargadoCEM(codPersona,nuevoCodigo());
                 return true;
             }
             catch
@@ -154,11 +154,11 @@ namespace SistemaGestionCEM.Negocio
             }
         }
 
-        public bool Eliminar()
+        public bool Eliminar(int codigo)
         {
             try
             {
-                Conector.Entidades.EliminarEncargadoCEM(2);
+                Conector.Entidades.EliminarEncargadoCEM(codigo);
                 return true;
             }
             catch

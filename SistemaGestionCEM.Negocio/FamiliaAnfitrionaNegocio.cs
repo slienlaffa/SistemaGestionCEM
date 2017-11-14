@@ -22,24 +22,7 @@ namespace SistemaGestionCEM.Negocio
                 return false;
             }
         }
-
-        /*
-         * 
-         *  public bool Crear(int codPersona, DateTime fechaNacimiento)
-        {
-            try
-            {
-                Conector.Entidades.CrearAlumno(nuevoCodigo(), codPersona, fechaNacimiento);
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-         * 
-         * 
-         * */
+  
 
         public bool Actualizar(int numBanos, int codAntecedentes, int codFamilia, int anioInscripcion,
             int numHabitaciones, string tipoVivienda, int numIntegrantes, int codPersona,
@@ -60,6 +43,7 @@ namespace SistemaGestionCEM.Negocio
 
         public bool Eliminar(int codFamilia)
         {
+         
             try
             {
                 Conector.Entidades.EliminarFamilia(codFamilia);

@@ -1,0 +1,89 @@
+﻿@model SistemaGestionCEM.Datos.PERSONA
+
+@{
+    ViewBag.Title = "Eliminar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Eliminar un usuario</h2>
+
+<h3>¿Está seguro que desea eliminar el siguiente usuario?</h3>
+<div>
+    <h4>Detalles</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.APELLIDO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.APELLIDO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CORREO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CORREO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TELEFONO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TELEFONO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NACIONALIDAD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NACIONALIDAD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CIUDAD.FK_COD_PAIS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CIUDAD.DESCRIPCION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GENERO.COD_GENERO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GENERO.DESCRIPCION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.USUARIO.NOMBRE_USUARIO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USUARIO.NOMBRE_USUARIO)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm("Delete", "Admin", FormMethod.Post)) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Confirmar" class="btn btn-default" /> |
+            @Html.ActionLink("Volver a inicio", "Index")
+        </div>
+    }
+</div>

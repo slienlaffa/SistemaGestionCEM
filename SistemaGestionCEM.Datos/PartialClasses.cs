@@ -38,8 +38,8 @@ namespace SistemaGestionCEM.Datos
     {
     }
 
-    [MetadataType(typeof(PaisMetadata))]
-    public partial class PAIS
+    [MetadataType(typeof(CiudadMetadata))]
+    public partial class CIUDAD
     {
     }
 
@@ -57,4 +57,9 @@ namespace SistemaGestionCEM.Datos
     public partial class POSTULACION_ALUMNO
     {
     }
+    [MetadataType(typeof(EncargadoCELMetadata))]
+    public partial class ENCARGADO_CEL
+    {
+    }
+
 }

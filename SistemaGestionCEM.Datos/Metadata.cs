@@ -29,17 +29,35 @@ namespace SistemaGestionCEM.Datos
 
         [DisplayName("Ciudad")]
         public decimal FK_COD_CIUDAD { get; set; }
+
         [DisplayName("Genero")]
         public decimal FK_COD_GENERO { get; set; }
     }
 
-    public class PaisMetadata
+    public class CiudadMetadata
     {
-        [DisplayName("País")]
-        public  decimal COD_PAIS { get; set; }
-        [DisplayName("Pais")]
+        [DisplayName("Ciudad")]
+        public  decimal COD_CIUDAD { get; set; }
+        [DisplayName("Ciudad")]
         public string DESCRIPCION { get; set; }
+        [DisplayName("Pais")]
+        public decimal FK_COD_PAIS { get; set; }
     }
+
+    public class EncargadoCELMetadata
+    {
+
+        public decimal COD_ENCARGADOCEL { get; set; }
+        [DisplayName("Persona")]
+        public decimal FK_COD_PERSONA { get; set; }
+        [DisplayName("Centro de Estudio Local")]
+        public decimal FK_COD_CEL { get; set; }
+
+        public virtual CENTRO_ESTUDIO_LOCAL CENTRO_ESTUDIO_LOCAL { get; set; }
+        public virtual PERSONA PERSONA { get; set; }
+    }
+
+
 
     public class FamiliaMetadata
     {

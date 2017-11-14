@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SistemaGestionCEM.Datos.USUARIO>
+﻿@model IEnumerable<SistemaGestionCEM.Datos.PERSONA>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -23,43 +23,51 @@
     <h2>Bienvenido a su panel administrativo, @nombre</h2>
     <h3>Esta es una lista de todos los usuarios disponibles en la base de datos.</h3>
 
-    <table class="table table-responsive">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.NOMBRE_USUARIO)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CONTRASENNA)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TIPO_USUARIO.DESCRIPCION)
-            </th>
-            <th>
-                Acción
-            </th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
+ 
+        <table class="table table-responsive">
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NOMBRE_USUARIO)
-                </td>
-                <td>
-                    **********
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TIPO_USUARIO.DESCRIPCION)
-                </td>
-                <td>
-                    @Html.ActionLink("Modificar datos", "Edit", new { id = item.COD_USUARIO }) |
-                    @Html.ActionLink("Ver Detalle", "DetalleAlumno", new { id = item.COD_USUARIO }) |
-                    @Html.ActionLink("Eliminar", "Delete", new { id = item.COD_USUARIO, @class = "delete" })
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.COD_PERSONA)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NOMBRE)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.USUARIO.NOMBRE_USUARIO)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.USUARIO.TIPO_USUARIO.DESCRIPCION)
+                </th>
+                <th>
+                    Acción
+                </th>
             </tr>
-        }
-        </table>
 
+            @foreach (var item in Model)
+            {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.COD_PERSONA)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NOMBRE)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.USUARIO.NOMBRE_USUARIO)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.USUARIO.TIPO_USUARIO.DESCRIPCION)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Modificar datos", "Edit", new { id = item.COD_PERSONA }) |
+                            @Html.ActionLink("Ver Detalle", "DetalleAlumno", new { id = item.COD_PERSONA }) |
+                            @Html.ActionLink("Eliminar", "Delete", new { id = item.COD_PERSONA})
+                        </td>
+                    </tr>
+                }
+        </table>
+    
+   
 }
 
 
