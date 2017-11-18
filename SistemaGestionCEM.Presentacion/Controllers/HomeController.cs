@@ -173,8 +173,6 @@ namespace SistemaGestionCEM.Presentacion.Controllers
                 familiaNegocio.Crear((int)nuevaFamilia.NUM_BANOS, 1, DateTime.Now.Year, (int)nuevaFamilia.NUM_HABITACIONES, nuevaFamilia.TIPO_VIVIENDA, (int)nuevaFamilia.NUM_INTEGRANTES, 
                     (int)nuevaPersona.COD_PERSONA, nuevaFamilia.ESTACIONAMIENTO, nuevaFamilia.MASCOTA_DESCRIPCION);
 
-
-
                 return CrearSesion(usuario.NOMBRE_USUARIO);
             }
         }
@@ -205,7 +203,6 @@ namespace SistemaGestionCEM.Presentacion.Controllers
                 return View();
             }
 
-            // Cambiar por pn.Crear();
             PersonaNegocio pn = new PersonaNegocio();
             PERSONA nuevaPersona = db.PERSONA.Create();
         

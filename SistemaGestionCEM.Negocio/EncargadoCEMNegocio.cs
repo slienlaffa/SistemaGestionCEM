@@ -141,11 +141,11 @@ namespace SistemaGestionCEM.Negocio
             }
         }
 
-        public bool Actualizar()
+        public bool Actualizar(int codEncargadoCEM, int codPersona)
         {
             try
             {
-                Conector.Entidades.ActualizarEncargadoCEM(8, 2);
+                Conector.Entidades.ActualizarEncargadoCEM(codEncargadoCEM, codPersona);
                 return true;
             }
             catch

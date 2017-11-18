@@ -35,6 +35,43 @@ namespace SistemaGestionCEM.Presentacion.Controllers
 
         }
 
+        // es para el filtro.
+        [HttpPost]
+        public ActionResult Index(string listaTipos)
+        {
+            if (listaTipos != null)
+            {
+                if (listaTipos.Equals("1"))
+                {
+                    var admin = db.PERSONA.Include(p => p.USUARIO.TIPO_USUARIO).Where(x => x.USUARIO.FK_COD_TIPO == 1);
+                    return View(admin.ToList());
+                }
+                if (listaTipos.Equals("2"))
+                {
+                    var alum = db.PERSONA.Include(p => p.USUARIO.TIPO_USUARIO).Where(x => x.USUARIO.FK_COD_TIPO == 2);
+                    return View(alum.ToList());
+                }
+                if (listaTipos.Equals("3"))
+                {
+                    var familia = db.PERSONA.Include(p=> p.USUARIO.TIPO_USUARIO).Where(x=> x.USUARIO.FK_COD_TIPO == 3);
+                    return View(familia.ToList());
+                }
+                if (listaTipos.Equals("4"))
+                {
+                    var cem = db.PERSONA.Include(p => p.USUARIO.TIPO_USUARIO).Where(x => x.USUARIO.FK_COD_TIPO == 4);
+                    return View(cem.ToList());
+                }
+                if (listaTipos.Equals("5"))
+                {
+                    var cel = db.PERSONA.Include(p => p.USUARIO.TIPO_USUARIO).Where(x => x.USUARIO.FK_COD_TIPO == 5);
+                    return View(cel.ToList());
+                }
+
+                return View();
+            }
+            return View();
+        }
+
         // Sirve para seleccionar que tipo de usuario quiere crear.
         // Alumno, Familia, EncargadoCEL o EncargadoCEM
 
@@ -74,6 +111,7 @@ namespace SistemaGestionCEM.Presentacion.Controllers
                 return View();
             }
         }
+        #region Mantenedor Familia
 
         public ActionResult IngresarFamilia()
         {
@@ -86,7 +124,7 @@ namespace SistemaGestionCEM.Presentacion.Controllers
         }
 
         [HttpPost]
-        //Funcionando!
+        [ValidateAntiForgeryToken]
         public ActionResult IngresarFamilia(FAMILIA_ANFITRIONA nuevaFamilia)
         {
             CargarDropDownList();
@@ -137,11 +175,61 @@ namespace SistemaGestionCEM.Presentacion.Controllers
                 familiaNegocio.Crear((int)nuevaFamilia.NUM_BANOS, 1, DateTime.Now.Year, (int)nuevaFamilia.NUM_HABITACIONES, nuevaFamilia.TIPO_VIVIENDA, (int)nuevaFamilia.NUM_INTEGRANTES,
                     (int)nuevaPersona.COD_PERSONA, nuevaFamilia.ESTACIONAMIENTO, nuevaFamilia.MASCOTA_DESCRIPCION);
 
-                TempData["succes"] = "La nueva Familia Anfitriona se ha ingresado exitosamente"; //porobando xd
-                ViewBag.RegistroExitoso = "La nueva Familia Anfitriona se ha ingresado exitosamente";
+                TempData["success"] = "La nueva Familia Anfitriona se ha ingresado exitosamente"; //porobando xd
+               
                 return View();
             }
         }
+
+        public ActionResult EditarFamilia(decimal id) {
+            if (ValidarSesionAdministrador())
+            {
+                var familia = db.FAMILIA_ANFITRIONA.Where(a => a.FK_COD_PERSONA == id).FirstOrDefault();
+                CargarDropDownList();
+                return View("EditarFamilia", familia);
+            }
+            else
+            {
+                return RedirectToAction("DenegarAcceso");
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditarFamilia(FAMILIA_ANFITRIONA f)
+        {
+            if (ValidarSesionAdministrador())
+            {
+
+                personaNegocio.Actualizar(f.PERSONA.APELLIDO,
+                    f.PERSONA.CORREO, (int)f.PERSONA.COD_PERSONA, (int)f.PERSONA.TELEFONO, (int)f.PERSONA.USUARIO.COD_USUARIO, f.PERSONA.NACIONALIDAD, (int)f.PERSONA.FK_COD_CIUDAD
+                    , f.PERSONA.NOMBRE, (int)f.PERSONA.FK_COD_GENERO);
+
+                familiaNegocio.Actualizar(
+                    (int)f.NUM_BANOS,
+                    (int)f.ANTECEDENTES.COD_ANTECEDENTES,
+                    (int)f.COD_FAMILIA,
+                    (int)f.ANIO_INSCRIPCION,
+                    (int)f.NUM_HABITACIONES,
+                    f.TIPO_VIVIENDA,
+                    (int)f.NUM_INTEGRANTES,
+                    (int)f.PERSONA.COD_PERSONA,
+                    f.ESTACIONAMIENTO,
+                    f.MASCOTA_DESCRIPCION
+                    );
+                var persona = db.PERSONA.Include(p => p.CIUDAD).Include(p => p.GENERO).Include(p => p.USUARIO);
+                TempData["success"] = "Datos de familia actualizados correctamente!";
+                return View("Index", persona.ToList());
+            }
+            else
+            {
+                return RedirectToAction("DenegarAcceso");
+            }
+        }
+
+        #endregion
+
+        #region Mantenedor Alumno
 
         public ActionResult IngresarAlumno()
         {
@@ -172,7 +260,6 @@ namespace SistemaGestionCEM.Presentacion.Controllers
                 return View();
             }
 
-
             PERSONA nuevaPersona = db.PERSONA.Create();
 
             nuevaPersona.COD_PERSONA = personaNegocio.nuevoCodigo();
@@ -201,9 +288,53 @@ namespace SistemaGestionCEM.Presentacion.Controllers
 
             alumnoNegocio.Crear((int)nuevaPersona.COD_PERSONA, nuevoAlumno.FECHA_NACIMIENTO);
 
-            ViewBag.RegistroExitoso = "Alumno ingresado exitosamente";
+            TempData["success"] = "Alumno ingresado exitosamente";
             return View();
         }
+        // Funcionando 18-11
+        public ActionResult EditarAlumno(decimal id)
+        {
+            if (ValidarSesionAdministrador())
+            {
+                var alumno = db.ALUMNO.Where(a => a.FK_COD_PERSONA == id).FirstOrDefault();
+                CargarDropDownList();
+                return View("EditarAlumno", alumno);
+            }
+            else
+            {
+                return RedirectToAction("DenegarAcceso");
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditarAlumno(ALUMNO alumno)
+        { //poor editar
+
+            if (ValidarSesionAdministrador())
+            {
+
+                personaNegocio.Actualizar(alumno.PERSONA.APELLIDO,
+                    alumno.PERSONA.CORREO, (int)alumno.PERSONA.COD_PERSONA, (int)alumno.PERSONA.TELEFONO, (int)alumno.PERSONA.USUARIO.COD_USUARIO, alumno.PERSONA.NACIONALIDAD,
+                    (int)alumno.PERSONA.FK_COD_CIUDAD ,alumno.PERSONA.NOMBRE, (int)alumno.PERSONA.FK_COD_GENERO);
+
+                alumnoNegocio.Actualizar((int)alumno.COD_ALUMNO, (int)alumno.PERSONA.COD_PERSONA, alumno.FECHA_NACIMIENTO);
+
+                var persona = db.PERSONA.Include(p => p.CIUDAD).Include(p => p.GENERO).Include(p => p.USUARIO);
+
+                TempData["success"] = "Datos del Alumno actualizados correctamente!";
+                return View("Index", persona.ToList());
+            }
+            else
+            {
+                return RedirectToAction("DenegarAcceso");
+            }
+        }
+
+        #endregion
+
+        #region Mantenedor EncargadoCEL
+
         public ActionResult IngresarEncargadoCEL()
         {
             if (ValidarSesionAdministrador())
@@ -233,7 +364,6 @@ namespace SistemaGestionCEM.Presentacion.Controllers
                 return View();
             }
 
-
             PERSONA nuevaPersona = db.PERSONA.Create();
 
             nuevaPersona.COD_PERSONA = personaNegocio.nuevoCodigo();
@@ -251,7 +381,7 @@ namespace SistemaGestionCEM.Presentacion.Controllers
             usuario.NOMBRE_USUARIO = nuevoCEL.PERSONA.USUARIO.NOMBRE_USUARIO;
             usuario.CONTRASENNA = nuevoCEL.PERSONA.USUARIO.CONTRASENNA;
 
-            usuario.FK_COD_TIPO = 2;
+            usuario.FK_COD_TIPO = 5;
             nuevaPersona.FK_COD_USUARIO = usuario.COD_USUARIO;
 
 
@@ -265,6 +395,48 @@ namespace SistemaGestionCEM.Presentacion.Controllers
             return View();
         }
 
+        public ActionResult EditarEncargadoCEL(decimal id)
+        {
+            if (ValidarSesionAdministrador())
+            {
+                var cel = db.ENCARGADO_CEL.Where(a => a.FK_COD_PERSONA == id).FirstOrDefault();
+                CargarDropDownList();
+                return View("EditarEncargadoCEL", cel);
+            }
+            else
+            {
+                return RedirectToAction("DenegarAcceso");
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditarEncargadoCEL(ENCARGADO_CEL cel)
+        {
+            if (ValidarSesionAdministrador())
+            {
+                personaNegocio.Actualizar(cel.PERSONA.APELLIDO,
+                    cel.PERSONA.CORREO, (int)cel.PERSONA.COD_PERSONA, (int)cel.PERSONA.TELEFONO, (int)cel.PERSONA.USUARIO.COD_USUARIO, cel.PERSONA.NACIONALIDAD,
+                    (int)cel.PERSONA.FK_COD_CIUDAD, cel.PERSONA.NOMBRE, (int)cel.PERSONA.FK_COD_GENERO);
+
+                celNegocio.Actualizar((int)cel.COD_ENCARGADOCEL, (int)cel.PERSONA.COD_PERSONA, (int)cel.CENTRO_ESTUDIO_LOCAL.COD_CEL);
+
+                var persona = db.PERSONA.Include(p => p.CIUDAD).Include(p => p.GENERO).Include(p => p.USUARIO);
+
+                TempData["success"] = "Datos del encargado CEL actualizados correctamente!";
+                return View("Index", persona.ToList());
+            }
+            else
+            {
+                return RedirectToAction("DenegarAcceso");
+            }
+        }
+        
+
+        #endregion
+
+        #region Mantenedor Encargado CEM
+
         public ActionResult IngresarEncargadoCEM()
         {
             if (ValidarSesionAdministrador())
@@ -276,6 +448,94 @@ namespace SistemaGestionCEM.Presentacion.Controllers
             return RedirectToAction("DenegarAcceso");
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult IngresarEncargadoCEM(ENCARGADO_CEM nuevoCem)
+        {
+            CargarDropDownList();
+            if (!ModelState.IsValid)
+                return View();
+
+            var persona = db.PERSONA
+               .Where(model => model.USUARIO.NOMBRE_USUARIO
+               == nuevoCem.PERSONA.USUARIO.NOMBRE_USUARIO)
+               .FirstOrDefault();
+
+            if (persona != null)
+            {
+                ViewBag.Message = "El nombre de usuario '" + nuevoCem.PERSONA.USUARIO.NOMBRE_USUARIO +
+                    "' ya existe, por favor ingrese otro distinto!";
+                return View();
+            }
+
+            PERSONA nuevaPersona = db.PERSONA.Create();
+
+            nuevaPersona.COD_PERSONA = personaNegocio.nuevoCodigo();
+            nuevaPersona.NOMBRE = nuevoCem.PERSONA.NOMBRE;
+            nuevaPersona.APELLIDO = nuevoCem.PERSONA.APELLIDO;
+            nuevaPersona.CORREO = nuevoCem.PERSONA.CORREO;
+            nuevaPersona.TELEFONO = nuevoCem.PERSONA.TELEFONO;
+            nuevaPersona.NACIONALIDAD = nuevoCem.PERSONA.NACIONALIDAD;
+            nuevaPersona.FK_COD_GENERO = nuevoCem.PERSONA.FK_COD_GENERO;
+            nuevaPersona.FK_COD_CIUDAD = nuevoCem.PERSONA.FK_COD_CIUDAD;
+
+            USUARIO usuario = db.USUARIO.Create();
+            usuario.COD_USUARIO = unegocio.nuevoCodigo();
+            usuario.NOMBRE_USUARIO = nuevoCem.PERSONA.USUARIO.NOMBRE_USUARIO;
+            usuario.CONTRASENNA = nuevoCem.PERSONA.USUARIO.CONTRASENNA;
+
+            usuario.FK_COD_TIPO = 4;
+            nuevaPersona.FK_COD_USUARIO = usuario.COD_USUARIO;
+
+            db.PERSONA.Add(nuevaPersona);
+            db.USUARIO.Add(usuario);
+            db.SaveChanges();
+
+            cemNegocio.Crear((int)nuevaPersona.COD_PERSONA);
+
+            TempData["success"] = "Usuario Encargado CEM ingresado exitosamente!";
+            return View();
+        }
+
+        public ActionResult EditarEncargadoCEM(decimal id)
+        {
+            if (ValidarSesionAdministrador())
+            {
+                var cem = db.ENCARGADO_CEM.Where(a => a.FK_COD_PERSONA == id).FirstOrDefault();
+                CargarDropDownList();
+                return View("EditarEncargoCEM", cem);
+            }
+            else
+            {
+                return RedirectToAction("DenegarAcceso");
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditarEncargadoCEM(ENCARGADO_CEM cem)
+        {
+            if (ValidarSesionAdministrador())
+            {
+                personaNegocio.Actualizar(cem.PERSONA.APELLIDO,
+                    cem.PERSONA.CORREO, (int)cem.PERSONA.COD_PERSONA, (int)cem.PERSONA.TELEFONO, (int)cem.PERSONA.USUARIO.COD_USUARIO, cem.PERSONA.NACIONALIDAD,
+                    (int)cem.PERSONA.FK_COD_CIUDAD, cem.PERSONA.NOMBRE, (int)cem.PERSONA.FK_COD_GENERO);
+
+                cemNegocio.Actualizar((int)cem.COD_ENCARGADOCEM, (int)cem.PERSONA.COD_PERSONA);
+
+                var persona = db.PERSONA.Include(p => p.CIUDAD).Include(p => p.GENERO).Include(p => p.USUARIO);
+
+                TempData["success"] = "Datos del encargado CEM actualizados correctamente!";
+                return View("Index", persona.ToList());
+            }
+            else
+            {
+                return RedirectToAction("DenegarAcceso");
+            }
+        }
+
+        #endregion
+
         // GET: Admin/Details/5
         public ActionResult Details(decimal id)
         {
@@ -283,41 +543,12 @@ namespace SistemaGestionCEM.Presentacion.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PERSONA pERSONA = db.PERSONA.Find(id);
-            if (pERSONA == null)
+            PERSONA persona = db.PERSONA.Find(id);
+            if (persona == null)
             {
                 return HttpNotFound();
             }
-            return View(pERSONA);
-        }
-
-        // GET: Admin/Create
-        public ActionResult Create()
-        {
-            ViewBag.FK_COD_CIUDAD = new SelectList(db.CIUDAD, "COD_CIUDAD", "DESCRIPCION");
-            ViewBag.FK_COD_GENERO = new SelectList(db.GENERO, "COD_GENERO", "DESCRIPCION");
-            ViewBag.FK_COD_USUARIO = new SelectList(db.USUARIO, "COD_USUARIO", "NOMBRE_USUARIO");
-            return View();
-        }
-
-        // POST: Admin/Create
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
-        // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "COD_PERSONA,NOMBRE,APELLIDO,CORREO,TELEFONO,NACIONALIDAD,FK_COD_CIUDAD,FK_COD_GENERO,FK_COD_USUARIO")] PERSONA pERSONA)
-        {
-            if (ModelState.IsValid)
-            {
-                db.PERSONA.Add(pERSONA);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.FK_COD_CIUDAD = new SelectList(db.CIUDAD, "COD_CIUDAD", "DESCRIPCION", pERSONA.FK_COD_CIUDAD);
-            ViewBag.FK_COD_GENERO = new SelectList(db.GENERO, "COD_GENERO", "DESCRIPCION", pERSONA.FK_COD_GENERO);
-            ViewBag.FK_COD_USUARIO = new SelectList(db.USUARIO, "COD_USUARIO", "NOMBRE_USUARIO", pERSONA.FK_COD_USUARIO);
-            return View(pERSONA);
+            return View(persona);
         }
 
         // GET: Admin/Edit/5
@@ -327,37 +558,40 @@ namespace SistemaGestionCEM.Presentacion.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PERSONA pERSONA = db.PERSONA.Find(id);
-            if (pERSONA == null)
+            PERSONA persona = db.PERSONA.Find(id);
+            USUARIO usuario = db.USUARIO.Find(persona.FK_COD_USUARIO);
+
+            if (persona == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.FK_COD_CIUDAD = new SelectList(db.CIUDAD, "COD_CIUDAD", "DESCRIPCION", pERSONA.FK_COD_CIUDAD);
-            ViewBag.FK_COD_GENERO = new SelectList(db.GENERO, "COD_GENERO", "DESCRIPCION", pERSONA.FK_COD_GENERO);
-            ViewBag.FK_COD_USUARIO = new SelectList(db.USUARIO, "COD_USUARIO", "NOMBRE_USUARIO", pERSONA.FK_COD_USUARIO);
-            return View(pERSONA);
-        }
-
-        // POST: Admin/Edit/5
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
-        // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "COD_PERSONA,NOMBRE,APELLIDO,CORREO,TELEFONO,NACIONALIDAD,FK_COD_CIUDAD,FK_COD_GENERO,FK_COD_USUARIO")] PERSONA pERSONA)
-        {
-            if (ModelState.IsValid)
+            if (usuario.FK_COD_TIPO == 1)
             {
-                db.Entry(pERSONA).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                TempData["error"] = "Modifique datos solo de tipo Alumno, Encargado CEL, Encargado CEM o Familia";
             }
-            ViewBag.FK_COD_CIUDAD = new SelectList(db.CIUDAD, "COD_CIUDAD", "DESCRIPCION", pERSONA.FK_COD_CIUDAD);
-            ViewBag.FK_COD_GENERO = new SelectList(db.GENERO, "COD_GENERO", "DESCRIPCION", pERSONA.FK_COD_GENERO);
-            ViewBag.FK_COD_USUARIO = new SelectList(db.USUARIO, "COD_USUARIO", "NOMBRE_USUARIO", pERSONA.FK_COD_USUARIO);
-            return View(pERSONA);
-        }
+            if (usuario.FK_COD_TIPO == 2)
+            {
+                return EditarAlumno(id);
+            }
+            if (usuario.FK_COD_TIPO == 3)
+            {
+                return  EditarFamilia(id);
+            }
+            if (usuario.FK_COD_TIPO == 4)
+            {
+                return RedirectToAction("EditarEncargadoCEM");
+            }
+            if (usuario.FK_COD_TIPO == 5)
+            {
+                return RedirectToAction("EditarEncargadoCEL");
+            }
 
-        // GET: Admin/Delete/5
+            CargarDropDownList();     
+            return View(persona);
+        }
+  
+        #region Eliminar
+
         public ActionResult Delete(decimal id)
         {
             if (id == null)
@@ -372,10 +606,6 @@ namespace SistemaGestionCEM.Presentacion.Controllers
             return View(pERSONA);
         }
 
-
-
-        // aqui viene despues del "Delete"
-        // Funcionando
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(decimal id)
@@ -418,6 +648,8 @@ namespace SistemaGestionCEM.Presentacion.Controllers
             return View("Index");
         }
 
+        #endregion
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -439,15 +671,6 @@ namespace SistemaGestionCEM.Presentacion.Controllers
                     return false;
             }
             return false;
-        }
-
-
-        public ActionResult ComprobarSesion()
-        {
-            if (ValidarSesionAdministrador())
-                return View();
-            else
-                return RedirectToAction("DenegarAcceso");
         }
 
         public void CargarDropDownList()

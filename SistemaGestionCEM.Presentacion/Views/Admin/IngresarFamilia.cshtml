@@ -1,10 +1,9 @@
 ﻿@model SistemaGestionCEM.Datos.FAMILIA_ANFITRIONA
 
 @{
-    ViewBag.Title = "Registro Familias";
+    ViewBag.Title = "IngresarFamilia";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
-    // List items para nacionalidad.
     var nacionalidades = new List<SelectListItem>();
     var tipoVivienda = new List<SelectListItem>();
     var estacionamiento = new List<SelectListItem>();
@@ -46,20 +45,18 @@
         Text = "Departamento",
         Value = "Departamento"
     });
-
 }
 
-<h2>Registro de Nueva Familia</h2>
+<h2>IngresarFamilia</h2>
 
-@using (Html.BeginForm("AutoRegistroFamilia", "Home", FormMethod.Post)) 
+@using (Html.BeginForm("IngresarFamilia", "Admin", FormMethod.Post)) 
 {
     @Html.AntiForgeryToken()
-
+    
     <div class="form-horizontal">
-        <h4>Para asignarse como familia anfitriona, primero debe registrarse en el formulario mas abajo.</h4>
+        <h4>Ingreso de una nueva familia anfitriona</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
         <div class="form-group">
             @Html.LabelFor(model => model.NUM_INTEGRANTES, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -173,37 +170,29 @@
         <div class="form-group">
             @Html.LabelFor(model => model.PERSONA.USUARIO.NOMBRE_USUARIO, "Nombre de Usuario", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.PERSONA.USUARIO.NOMBRE_USUARIO, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.PERSONA.USUARIO.NOMBRE_USUARIO, new { htmlAttributes = new { @class = "form-control" } } )
                 @Html.ValidationMessageFor(model => model.PERSONA.USUARIO.NOMBRE_USUARIO, "", new { @class = "text-danger" })
-                
+
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.PERSONA.USUARIO.CONTRASENNA, "Contraseña", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.PERSONA.USUARIO.CONTRASENNA, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.PERSONA.USUARIO.CONTRASENNA, new { htmlAttributes = new { @class = "form-control" } } )
                 @Html.ValidationMessageFor(model => model.PERSONA.USUARIO.CONTRASENNA, "", new { @class = "text-danger" })
             </div>
         </div>
 
-      
-
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Ingresar" class="btn btn-default" />
-                <input type="reset" value="Limpiar campos" class="btn btn-default" />
+                <input type="submit" value="Limpiar Campos" class="btn btn-default" />
             </div>
         </div>
     </div>
-    if (ViewBag.Message != null)
-    {
-
-        <b><span class="text-danger">@ViewBag.Message</span></b>
-    }
-    <br />
 }
 
 <div>
-    @Html.ActionLink("Volver", "Index")
+    @Html.ActionLink("Volver a inicio", "Index")
 </div>

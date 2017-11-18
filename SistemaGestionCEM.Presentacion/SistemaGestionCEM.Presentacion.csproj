@@ -306,6 +306,12 @@
     <Content Include="Views\EncargadoCEM\MostrarEstado.cshtml" />
     <Content Include="Views\Admin\Delete.cshtml" />
     <Content Include="Views\Admin\IngresarEncargadoCEL.cshtml" />
+    <Content Include="Views\Admin\IngresarEncargadoCEM.cshtml" />
+    <Content Include="Views\Admin\EditarFamilia.cshtml" />
+    <Content Include="Views\Admin\IngresarFamilia.cshtml" />
+    <Content Include="Views\Admin\EditarAlumno.cshtml" />
+    <Content Include="Views\Admin\EditarEncargadoCEL.cshtml" />
+    <Content Include="Views\Admin\EditarEncargadoCEM.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

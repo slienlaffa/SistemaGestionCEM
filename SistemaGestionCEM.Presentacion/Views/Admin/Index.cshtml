@@ -15,6 +15,29 @@
     {
         nombre = Session["Nombre"].ToString();
     }
+
+    var tipos = new List<SelectListItem>();
+    tipos.Add(new SelectListItem
+    {
+        Text = "Alumno",
+        Value = "2"
+    });
+    tipos.Add(new SelectListItem
+    {
+        Text = "Familia",
+        Value = "3"
+    });
+    tipos.Add(new SelectListItem
+    {
+        Text = "Encargado CEM",
+        Value = "4"
+    });
+    tipos.Add(new SelectListItem
+    {
+        Text = "Encargado CEL",
+        Value = "5"
+    });
+
 }
 
 @section ContenidoCentral
@@ -25,10 +48,21 @@
 
  
         <table class="table table-responsive">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.COD_PERSONA)
-                </th>
+            @using (Html.BeginForm("Index", "Admin", FormMethod.Post))
+            {
+            
+                <tr>
+                    <td>
+                    <h2 class="success">Aplicar filtro</h2></td>
+                    <td>@Html.DropDownList("listaTipos", tipos, "Todos los usuarios", htmlAttributes: new { @class = "form-control", @id = "lista" })</td>
+                    <td>
+                        <input class="btn btn-success" type="submit" value="Aplicar Filtro" class="form-control"/>
+                       
+                    </td>
+                </tr>
+            }
+          
+            <tr>  
                 <th>
                     @Html.DisplayNameFor(model => model.NOMBRE)
                 </th>
@@ -45,10 +79,7 @@
 
             @foreach (var item in Model)
             {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.COD_PERSONA)
-                        </td>
+                    <tr> 
                         <td>
                             @Html.DisplayFor(modelItem => item.NOMBRE)
                         </td>
@@ -60,7 +91,7 @@
                         </td>
                         <td>
                             @Html.ActionLink("Modificar datos", "Edit", new { id = item.COD_PERSONA }) |
-                            @Html.ActionLink("Ver Detalle", "DetalleAlumno", new { id = item.COD_PERSONA }) |
+                            @Html.ActionLink("Ver Detalle", "Detalle", new { id = item.COD_PERSONA }) |
                             @Html.ActionLink("Eliminar", "Delete", new { id = item.COD_PERSONA})
                         </td>
                     </tr>

@@ -42,8 +42,8 @@
                 <div id="myNavbar">
                     <ul class="nav navbar-nav">
                         <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                        <li>@Html.ActionLink("Quienes somos", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contactanos", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("Quiénes somos", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contáctanos", "Contact", "Home")</li>
                         @{
                             if (Session["SesionActual"] != null)
                             {
@@ -75,7 +75,7 @@
                     else
                     {
                         <ul class="nav navbar-nav navbar-right ">
-                            <li><a href="/Home/Login"><span class="glyphicon glyphicon-log-in"></span>Iniciar Sesion</a></li>
+                            <li><a href="/Home/Login"><span class="glyphicon glyphicon-log-in"></span> Iniciar Sesion</a></li>
                         </ul>
                     }
                 </div>
