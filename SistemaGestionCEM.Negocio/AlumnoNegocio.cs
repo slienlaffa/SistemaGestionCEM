@@ -10,7 +10,6 @@ namespace SistemaGestionCEM.Negocio
 {
     public class AlumnoNegocio : Negocio
     {
-
         public IQueryable<POSTULACION_PROGRAMA> ProgramasPublicados()
         {
             var programas = db.POSTULACION_PROGRAMA.Where(e => e.FK_COD_ESTADO == PUBLICADO
@@ -96,18 +95,14 @@ namespace SistemaGestionCEM.Negocio
             }
         }
 
-        public List<FAMILIA_ANFITRIONA> FamiliasDisponibles()
+        public IQueryable<FAMILIA_ANFITRIONA> FamiliasDisponibles()
         {
-            List<FAMILIA_ANFITRIONA> familiasDisponibles;
-            using (Entities db = new Entities())
-            {
-                familiasDisponibles = db.FAMILIA_ANFITRIONA
+            var familiasDisponibles = db.FAMILIA_ANFITRIONA
                     .Where(f => f.POSTULACION_ALUMNO
                     .Any(p => p.FK_COD_ESTADO != RECHAZADO
                     && p.FK_COD_ESTADO != FINALIZADO
-                    && p.FK_COD_ESTADO != CANCELADO))
-                    .ToList();
-            }
+                    && p.FK_COD_ESTADO != CANCELADO));
+         
             return familiasDisponibles;
         }
 
