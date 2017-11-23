@@ -22,10 +22,7 @@ namespace SistemaGestionCEM.Negocio
             try
             {
                 PROGRAMA_ESTUDIO programa;
-                using (Entities db = new Entities())
-                {
-                    programa = db.PROGRAMA_ESTUDIO.Find(codigoPrograma);
-                }
+                programa = db.PROGRAMA_ESTUDIO.Find(codigoPrograma);
                 return programa;
             }
             catch
@@ -70,17 +67,15 @@ namespace SistemaGestionCEM.Negocio
 
         public bool alumnoTieneOtrasPostulaciones(int codigoAlumno)
         {
-            using (Entities db = new Entities())
-            {
-                ALUMNO alumno = db.ALUMNO.Find(codigoAlumno);
-                // Si el alumno no tiene todas sus postulaciones rechazadas, finalizadas o canceladas 
-                // significa que tiene una activa en algun estado
-                if (alumno.POSTULACION_ALUMNO
-                    .Any(p => p.FK_COD_ESTADO != RECHAZADO
-                    && p.FK_COD_ESTADO != FINALIZADO
-                    && p.FK_COD_ESTADO != CANCELADO))
-                    return false;
-            }
+            ALUMNO alumno = db.ALUMNO.Find(codigoAlumno);
+            // Si el alumno no tiene todas sus postulaciones rechazadas, finalizadas o canceladas 
+            // significa que tiene una activa en algun estado
+            if (alumno.POSTULACION_ALUMNO
+                .Any(p => p.FK_COD_ESTADO != RECHAZADO
+                && p.FK_COD_ESTADO != FINALIZADO
+                && p.FK_COD_ESTADO != CANCELADO))
+                return false;
+
             return true;          
         }
 
@@ -109,10 +104,7 @@ namespace SistemaGestionCEM.Negocio
         public FAMILIA_ANFITRIONA RecuperarFamilia(int codigoFamilia)
         {
             FAMILIA_ANFITRIONA familiaDetalle;
-            using (Entities db = new Entities())
-            {
-                familiaDetalle = db.FAMILIA_ANFITRIONA.Find(codigoFamilia);
-            }
+            familiaDetalle = db.FAMILIA_ANFITRIONA.Find(codigoFamilia);
             return familiaDetalle;
         }
 
@@ -142,15 +134,12 @@ namespace SistemaGestionCEM.Negocio
 
         public bool EsAlumnoAprobado(int codigoAlumno)
         {
-            using (Entities db = new Entities())
-            {
-                int estado = (int)db.ALUMNO.Find(codigoAlumno)
-                    .POSTULACION_ALUMNO.Last().FK_COD_ESTADO;
-                if (estado == APROBADO)
-                    return true;
-                else
-                    return false;                
-            }
+            int estado = (int)db.ALUMNO.Find(codigoAlumno)
+                .POSTULACION_ALUMNO.Last().FK_COD_ESTADO;
+            if (estado == APROBADO)
+                return true;
+            else
+                return false; 
         }
 
         public bool Crear(int codPersona, DateTime fechaNacimiento)

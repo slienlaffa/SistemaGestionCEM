@@ -13,25 +13,23 @@ namespace SistemaGestionCEM.Negocio
         {
             try
             {
-                using (Entities db = new Entities())
-                {
-                    decimal persona = db.USUARIO.Where(u => u.NOMBRE_USUARIO == usuario).FirstOrDefault().PERSONA.FirstOrDefault().COD_PERSONA;
-                    var cem = db.ENCARGADO_CEM.Where(e => e.FK_COD_PERSONA == persona).FirstOrDefault();
-                    if (cem != null)
-                        programaEstudio.FK_COD_ENCARGADOCEM = cem.COD_ENCARGADOCEM;
+                decimal persona = db.USUARIO.Where(u => u.NOMBRE_USUARIO == usuario).FirstOrDefault().PERSONA.FirstOrDefault().COD_PERSONA;
+                var cem = db.ENCARGADO_CEM.Where(e => e.FK_COD_PERSONA == persona).FirstOrDefault();
+                if (cem != null)
+                    programaEstudio.FK_COD_ENCARGADOCEM = cem.COD_ENCARGADOCEM;
 
-                    programaEstudio.COD_PROGRAMA = new ProgramaEstudioNegocio().nuevoCodigo();
+                programaEstudio.COD_PROGRAMA = new ProgramaEstudioNegocio().nuevoCodigo();
 
-                    POSTULACION_PROGRAMA postulacion = new POSTULACION_PROGRAMA();
-                    postulacion.COD_POSTULACIONPROGRAMA = new PostulacionProgramaNegocio().nuevoCodigo();
-                    postulacion.FK_COD_ENCARGADOCEM = programaEstudio.FK_COD_ENCARGADOCEM;
-                    postulacion.FK_COD_PROGRAMA = programaEstudio.COD_PROGRAMA;
-                    postulacion.FK_COD_ESTADO = 4; // No Publicado
+                POSTULACION_PROGRAMA postulacion = new POSTULACION_PROGRAMA();
+                postulacion.COD_POSTULACIONPROGRAMA = new PostulacionProgramaNegocio().nuevoCodigo();
+                postulacion.FK_COD_ENCARGADOCEM = programaEstudio.FK_COD_ENCARGADOCEM;
+                postulacion.FK_COD_PROGRAMA = programaEstudio.COD_PROGRAMA;
+                postulacion.FK_COD_ESTADO = 4; // No Publicado
 
-                    db.PROGRAMA_ESTUDIO.Add(programaEstudio);
-                    db.POSTULACION_PROGRAMA.Add(postulacion);
-                    db.SaveChanges();
-                }
+                db.PROGRAMA_ESTUDIO.Add(programaEstudio);
+                db.POSTULACION_PROGRAMA.Add(postulacion);
+                db.SaveChanges();
+
                 return true;
             }
             catch
@@ -76,14 +74,13 @@ namespace SistemaGestionCEM.Negocio
             try
             {
                 ws_estado_alumnos.alumno estadoAlumno;
-                using (Entities db = new Entities())
-                {
-                    ALUMNO alumno = db.ALUMNO.Find(codigoAlumno);
-                    ws_estado_alumnos.WebServiceCEMClient estadoAlumnos = new ws_estado_alumnos.WebServiceCEMClient();
-                    estadoAlumno = estadoAlumnos.obtenerEstadoAlumnos(alumno.PERSONA.NOMBRE, alumno.PERSONA.APELLIDO);
-                    if (estadoAlumno != null)
-                        estadoAlumno.codigoAlumno = codigoAlumno;
-                }
+                
+                ALUMNO alumno = db.ALUMNO.Find(codigoAlumno);
+                ws_estado_alumnos.WebServiceCEMClient estadoAlumnos = new ws_estado_alumnos.WebServiceCEMClient();
+                estadoAlumno = estadoAlumnos.obtenerEstadoAlumnos(alumno.PERSONA.NOMBRE, alumno.PERSONA.APELLIDO);
+                if (estadoAlumno != null)
+                    estadoAlumno.codigoAlumno = codigoAlumno;
+
                 return estadoAlumno;
             }
             catch { return null; }
@@ -93,23 +90,21 @@ namespace SistemaGestionCEM.Negocio
         {
             try
             {
-                using (Entities db = new Entities())
-                {
-                    POSTULACION_ALUMNO postulacion = db.POSTULACION_ALUMNO
-                        .Where(p => p.FK_COD_ALUMNO == codigoAlumno
-                        && p.FK_COD_ESTADO == PENDIENTE)
-                        .First();
-                    if (esSeleccionado)
-                        postulacion.FK_COD_ESTADO = APROBADO;
-                    else
-                        postulacion.FK_COD_ESTADO = RECHAZADO;
-                    db.SaveChanges();
+                POSTULACION_ALUMNO postulacion = db.POSTULACION_ALUMNO
+                    .Where(p => p.FK_COD_ALUMNO == codigoAlumno
+                    && p.FK_COD_ESTADO == PENDIENTE)
+                    .First();
+                if (esSeleccionado)
+                    postulacion.FK_COD_ESTADO = APROBADO;
+                else
+                    postulacion.FK_COD_ESTADO = RECHAZADO;
+                db.SaveChanges();
 
-                    Email.ResultadoPostulacion(postulacion.ALUMNO.PERSONA.NOMBRE,
-                        postulacion.ALUMNO.PERSONA.CORREO, 
-                        postulacion.PROGRAMA_ESTUDIO.NOMBRE_PROGRAMA,
-                        esSeleccionado);
-                }
+                Email.ResultadoPostulacion(postulacion.ALUMNO.PERSONA.NOMBRE,
+                    postulacion.ALUMNO.PERSONA.CORREO, 
+                    postulacion.PROGRAMA_ESTUDIO.NOMBRE_PROGRAMA,
+                    esSeleccionado);
+
                 return true;
             }
             catch(Exception e) {
