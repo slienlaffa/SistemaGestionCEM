@@ -17,19 +17,20 @@
     });
 }
 
-<h2>EditarEncargadoCEL</h2>
+<h2>Actualizar datos</h2>
 
 @using (Html.BeginForm("EditarEncargadoCEL", "Admin", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Modificar datos de Encargado CEL</h4>
+        <h4>De Encargado CEL</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.COD_ENCARGADOCEL)
         @Html.HiddenFor(model => model.PERSONA.COD_PERSONA)
         @Html.HiddenFor(model => model.PERSONA.USUARIO.COD_USUARIO)
+        @Html.HiddenFor(model => model.PERSONA.USUARIO.FK_COD_TIPO)
 
         <div class="form-group">
             @Html.LabelFor(model => model.PERSONA.NOMBRE, htmlAttributes: new { @class = "control-label col-md-2" })

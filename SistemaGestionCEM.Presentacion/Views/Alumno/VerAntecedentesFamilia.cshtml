@@ -1,0 +1,65 @@
+﻿@model SistemaGestionCEM.Datos.FAMILIA_ANFITRIONA
+
+@{
+    ViewBag.Title = "VerAntecedentesFamilia";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>VerAntecedentesFamilia</h2>
+
+<div class="table table-responsive">
+    <h4>Antecedentes de familia</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ANTECEDENTES.FOTO1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ANTECEDENTES.FOTO1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ANTECEDENTES.FOTO2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ANTECEDENTES.FOTO2)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ANTECEDENTES.FOTO3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ANTECEDENTES.FOTO3)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ANTECEDENTES.CERT_ANTECEDENTES)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ANTECEDENTES.CERT_ANTECEDENTES)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ANTECEDENTES.CERT_RESIDENCIA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ANTECEDENTES.CERT_RESIDENCIA)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ANTECEDENTES.CERT_LABORAL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ANTECEDENTES.CERT_LABORAL)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.COD_FAMILIA }) |
+    @Html.ActionLink("Volver a Familias", "FamiliasDisponibles")
+</p>

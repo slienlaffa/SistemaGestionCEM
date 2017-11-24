@@ -1,0 +1,69 @@
+﻿@model IEnumerable<SistemaGestionCEM.Datos.CENTRO_ESTUDIO_LOCAL>
+
+@{
+    ViewBag.Title = "Centros Ingresados";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lista de Centros de Estudio Local</h2>
+
+
+<table class="table table-responsive">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NOMBRE_CENTRO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NOM_DIRECTOR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AREA_ESPECIALIZACION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CORREO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TELEFONO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DESCRIPCION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CIUDAD.DESCRIPCION)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NOMBRE_CENTRO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NOM_DIRECTOR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AREA_ESPECIALIZACION)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.CORREO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TELEFONO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DESCRIPCION)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CIUDAD.DESCRIPCION)
+        </td>
+        <td>
+            @Html.ActionLink("Modificar datos", "EditarCentro", new { id=item.COD_CEL }) |
+            @Html.ActionLink("Ver Detalle", "DetalleCentro", new { id=item.COD_CEL }) |
+            @Html.ActionLink("Eliminar", "EliminarCentros", new { id=item.COD_CEL })
+        </td>
+    </tr>
+}
+
+</table>

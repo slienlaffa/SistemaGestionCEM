@@ -1,0 +1,47 @@
+﻿@model IEnumerable<SistemaGestionCEM.Datos.FAMILIA_ANFITRIONA>
+
+@{
+    ViewBag.Title = "FamiliasDisponibles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Familias anfitrionas disponibles</h2>
+<h3></h3>
+<h4>Aqui podrá ver una lista de las familias disponibles en el sistema.</h4>
+<h4>Seleccione <b>"Ver Detalle"</b> para ver más datos, y seleccionar una familia como anfitriona,</h4>
+<h4>la cual lo recibirán durante su estadía en el programa de intercambio.</h4>
+<table class="table table-responsive">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PERSONA.NOMBRE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NUM_INTEGRANTES)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.ANIO_INSCRIPCION)
+        </th>  
+        <th>Accion</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PERSONA.NOMBRE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NUM_INTEGRANTES)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ANIO_INSCRIPCION)
+        </td>
+     
+        <td> 
+            @Html.ActionLink("Ver Detalle", "VerDetalleFamilia", new { id = item.COD_FAMILIA })
+            
+        </td>
+    </tr>
+}
+
+</table>

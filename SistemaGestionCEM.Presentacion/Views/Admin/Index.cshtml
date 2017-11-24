@@ -44,7 +44,7 @@
 {
 
     <h2>Bienvenido a su panel administrativo, @nombre</h2>
-    <h3>Esta es una lista de todos los usuarios disponibles en la base de datos.</h3>
+    <h3>Esta es una lista de todos los usuarios disponibles en el sistema.</h3>
 
  
         <table class="table table-responsive">
@@ -53,10 +53,11 @@
             
                 <tr>
                     <td>
-                    <h2 class="success">Aplicar filtro</h2></td>
+                        <h4 class="success">Aplicar filtro</h4>
+                    </td>
                     <td>@Html.DropDownList("listaTipos", tipos, "Todos los usuarios", htmlAttributes: new { @class = "form-control", @id = "lista" })</td>
                     <td>
-                        <input class="btn btn-success" type="submit" value="Aplicar Filtro" class="form-control"/>
+                        <input class="btn btn-success" type="submit" value="Aplicar Filtro"/>
                        
                     </td>
                 </tr>

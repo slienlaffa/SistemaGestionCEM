@@ -7,12 +7,13 @@ namespace SistemaGestionCEM.Negocio
 {
     public class CelNegocio
     {
-        public bool Crear()
+        public bool Crear(string direccion, string nombreCentro, string correo, int telefono,
+            string areaEspecializacion, string descripcion, int codCiudad, string nomDirector)
         {
             try
             {
-                Conector.Entidades.CrearCEL("dir","History","a@a",nuevoCodigo(),123456789,
-                    "Historia","asdf",6,"Daniel Sira");
+                Conector.Entidades.CrearCEL(direccion, nombreCentro, correo, nuevoCodigo(), telefono,
+                    areaEspecializacion,descripcion,codCiudad, nomDirector);
                 return true;
             }
             catch
@@ -21,12 +22,13 @@ namespace SistemaGestionCEM.Negocio
             }
         }
 
-        public bool Actualizar()
+        public bool Actualizar(string direccion, string nombreCentro, string correo, int codCel, int telefono,
+            string areaEspecializacion, string descripcion, int codCiudad, string nomDirector)
         {
             try
             {
-                Conector.Entidades.ActualizarCEL("dir", "History", "a@a", nuevoCodigo(), 123456789,
-                    "Historia", "asdf", 6, "Daniel Sira");
+                Conector.Entidades.ActualizarCEL(direccion, nombreCentro, correo, codCel, telefono,
+                    areaEspecializacion, descripcion, codCiudad, nomDirector);
                 return true;
             }
             catch
@@ -34,12 +36,12 @@ namespace SistemaGestionCEM.Negocio
                 return false;
             }
         }
-
-        public bool Eliminar()
+      
+        public bool Eliminar(int id)
         {
             try
             {
-                Conector.Entidades.EliminarCEL(2);
+                Conector.Entidades.EliminarCEL(id);
                 return true;
             }
             catch

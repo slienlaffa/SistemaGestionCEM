@@ -1,0 +1,85 @@
+﻿@model SistemaGestionCEM.Datos.FAMILIA_ANFITRIONA
+
+@{
+    ViewBag.Title = "Detalle Familia Anfitriona";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalle de la familia anfitriona</h2>
+
+<div class="table table-responsive">
+
+    <h4></h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NUM_INTEGRANTES)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NUM_INTEGRANTES)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NUM_HABITACIONES)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NUM_HABITACIONES)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NUM_BANOS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NUM_BANOS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TIPO_VIVIENDA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TIPO_VIVIENDA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ESTACIONAMIENTO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ESTACIONAMIENTO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MASCOTA_DESCRIPCION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MASCOTA_DESCRIPCION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ANIO_INSCRIPCION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ANIO_INSCRIPCION)
+        </dd>
+  
+        <dt>
+            @Html.DisplayNameFor(model => model.PERSONA.NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PERSONA.NOMBRE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Seleccionar como anfitriona", "SeleccionarFamiliaAnfitriona", new { id = Model.COD_FAMILIA }, new { @class = "btn btn-default"}) |
+    @Html.ActionLink("Ver Antecedentes", "VerAntecedentesFamilia", new { id = Model.COD_FAMILIA }, new { @class = "btn btn-default" }) |
+    @Html.ActionLink("Volver a Lista de Familias", "FamiliasDisponibles")
+</p>

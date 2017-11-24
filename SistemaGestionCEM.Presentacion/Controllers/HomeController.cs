@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using SistemaGestionCEM.Negocio;
 using SistemaGestionCEM.Datos;
@@ -172,7 +170,7 @@ namespace SistemaGestionCEM.Presentacion.Controllers
               
                 familiaNegocio.Crear((int)nuevaFamilia.NUM_BANOS, 1, DateTime.Now.Year, (int)nuevaFamilia.NUM_HABITACIONES, nuevaFamilia.TIPO_VIVIENDA, (int)nuevaFamilia.NUM_INTEGRANTES, 
                     (int)nuevaPersona.COD_PERSONA, nuevaFamilia.ESTACIONAMIENTO, nuevaFamilia.MASCOTA_DESCRIPCION);
-
+                
                 return CrearSesion(usuario.NOMBRE_USUARIO);
             }
         }
@@ -231,7 +229,8 @@ namespace SistemaGestionCEM.Presentacion.Controllers
 
            
             alumnoNegocio.Crear((int)nuevaPersona.COD_PERSONA, nuevoAlumno.FECHA_NACIMIENTO);
-
+            //api
+            Negocio.Email.RegistroExitoso(nuevaPersona.NOMBRE,nuevaPersona.CORREO,nuevaPersona.USUARIO.NOMBRE_USUARIO);
             return CrearSesion(usuario.NOMBRE_USUARIO);
 
         }

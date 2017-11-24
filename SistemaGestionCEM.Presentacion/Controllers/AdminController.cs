@@ -20,7 +20,7 @@ namespace SistemaGestionCEM.Presentacion.Controllers
         UsuarioNegocio unegocio = new UsuarioNegocio();
         EncargadoCEMNegocio cemNegocio = new EncargadoCEMNegocio();
         EncargadoCELNegocio celNegocio = new EncargadoCELNegocio();
-
+      
         // GET: Admin
         public ActionResult Index()
         {
@@ -35,7 +35,7 @@ namespace SistemaGestionCEM.Presentacion.Controllers
 
         }
 
-        // es para el filtro.
+        // es para el filtro de usuarios que puse en el index...
         [HttpPost]
         public ActionResult Index(string listaTipos)
         {
@@ -423,7 +423,7 @@ namespace SistemaGestionCEM.Presentacion.Controllers
 
                 var persona = db.PERSONA.Include(p => p.CIUDAD).Include(p => p.GENERO).Include(p => p.USUARIO);
 
-                TempData["success"] = "Datos del encargado CEL actualizados correctamente!";
+                TempData["success"] = "Datos de encargado CEL actualizados correctamente!";
                 return View("Index", persona.ToList());
             }
             else
@@ -503,7 +503,7 @@ namespace SistemaGestionCEM.Presentacion.Controllers
             {
                 var cem = db.ENCARGADO_CEM.Where(a => a.FK_COD_PERSONA == id).FirstOrDefault();
                 CargarDropDownList();
-                return View("EditarEncargoCEM", cem);
+                return View("EditarEncargadoCEM", cem);
             }
             else
             {
@@ -532,6 +532,166 @@ namespace SistemaGestionCEM.Presentacion.Controllers
             {
                 return RedirectToAction("DenegarAcceso");
             }
+        }
+
+        #endregion
+
+        #region Mantenedor Centros
+
+        public ActionResult MostrarCentros()
+        {
+            if (ValidarSesionAdministrador())
+            {
+                var centros = db.CENTRO_ESTUDIO_LOCAL.Include(cel=>cel.CIUDAD);
+                return View(centros.ToList());
+            }
+            else
+            {
+                return RedirectToAction("DenegarAcceso");
+            }
+        }
+
+        public ActionResult IngresarCentro()
+        {
+            if (ValidarSesionAdministrador())
+            {
+                CargarDropDownList();
+                return View();
+            }
+            return RedirectToAction("DenegarAcceso");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult IngresarCentro(CENTRO_ESTUDIO_LOCAL cel)
+        {
+            if (!ModelState.IsValid)
+            {
+                CargarDropDownList();
+                return View();
+            }
+            var nomb = db.CENTRO_ESTUDIO_LOCAL.Where(m => m.NOMBRE_CENTRO.Equals(cel.NOMBRE_CENTRO));
+            if (nomb != null)
+            {
+                TempData["error"] = "El centro '" + cel.NOMBRE_CENTRO + "' ya ha sido ingresado, ingrese otro distinto.";
+                CargarDropDownList();
+                return View();
+            } 
+
+            CelNegocio negocio = new CelNegocio();
+            negocio.Crear(cel.DIRECCION, cel.NOMBRE_CENTRO, cel.CORREO, (int)cel.TELEFONO, cel.AREA_ESPECIALIZACION,
+                cel.DESCRIPCION, (int)cel.FK_COD_CIUDAD, cel.NOM_DIRECTOR);
+
+            TempData["success"] ="Centro de Estudio Local ingresado exitosamente!";
+            CargarDropDownList();
+            return View();
+            //Listo, funcionando.
+        }
+
+        // muestra informacion detallada de un centro en especifico.
+        public ActionResult DetalleCentro(decimal id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            CENTRO_ESTUDIO_LOCAL centro = db.CENTRO_ESTUDIO_LOCAL.Find(id);
+            
+            if (centro == null)
+            {
+                return HttpNotFound();
+            }
+            return View(centro);
+        }
+
+        public ActionResult EliminarCentros(decimal id)
+        {
+            if (ValidarSesionAdministrador())
+            {
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                CENTRO_ESTUDIO_LOCAL centro = db.CENTRO_ESTUDIO_LOCAL.Find(id);
+                if (centro == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(centro);
+            }
+            return RedirectToAction("DenegarAcceso");
+          
+        }
+
+        [HttpPost, ActionName("EliminarCentros")]
+        [ValidateAntiForgeryToken]
+        public ActionResult EliminarCentrosConfirmed(decimal id)
+        {
+            if (ValidarSesionAdministrador())
+            {
+                if (id <= 0)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                CelNegocio negocio = new CelNegocio();
+                negocio.Eliminar((int)id);
+
+                TempData["success"] = "Centro de Estudio Local eliminado con éxito";
+                var centros = db.CENTRO_ESTUDIO_LOCAL.Include(cel => cel.CIUDAD);
+                return View("MostrarCentros", centros.ToList());
+            }
+            return RedirectToAction("DenegarAcceso");
+        }
+
+        public ActionResult EditarCentro(decimal id)
+        {
+            if (ValidarSesionAdministrador())
+            {
+                if (id <= 0)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                CENTRO_ESTUDIO_LOCAL centro = db.CENTRO_ESTUDIO_LOCAL.Find(id);
+                if (centro == null)
+                {
+                    return HttpNotFound();
+                }
+                CargarDropDownList();
+                return View(centro);
+            }
+            else
+            {
+                return RedirectToAction("DenegarAcceso");
+            } 
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditarCentro(CENTRO_ESTUDIO_LOCAL centro)
+        {
+            if (!ModelState.IsValid)
+            {
+                CargarDropDownList();
+                return View();
+            }
+            CelNegocio negocio = new CelNegocio();
+            negocio.Actualizar
+            (
+                centro.DIRECCION,
+                centro.NOMBRE_CENTRO,
+                centro.CORREO, 
+                (int)centro.COD_CEL,
+                (int)centro.TELEFONO, 
+                centro.AREA_ESPECIALIZACION,
+                centro.DESCRIPCION, 
+                (int)centro.FK_COD_CIUDAD,
+                centro.NOM_DIRECTOR
+            );
+            
+                TempData["success"] = "Datos actualizados exitosamente!";
+                var centros = db.CENTRO_ESTUDIO_LOCAL.Include(a=> a.CIUDAD);
+                return View("MostrarCentros", centros);
+            // Funcionando 23-11
         }
 
         #endregion
@@ -579,11 +739,11 @@ namespace SistemaGestionCEM.Presentacion.Controllers
             }
             if (usuario.FK_COD_TIPO == 4)
             {
-                return RedirectToAction("EditarEncargadoCEM");
+                return EditarEncargadoCEM(id);
             }
             if (usuario.FK_COD_TIPO == 5)
             {
-                return RedirectToAction("EditarEncargadoCEL");
+                return EditarEncargadoCEL(id);
             }
 
             CargarDropDownList();     
@@ -646,7 +806,7 @@ namespace SistemaGestionCEM.Presentacion.Controllers
 
             TempData["success"] = "Usuario eliminado con éxito";
             return View("Index");
-        }
+        } 
 
         #endregion
 

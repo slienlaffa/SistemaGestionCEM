@@ -312,6 +312,14 @@
     <Content Include="Views\Admin\EditarAlumno.cshtml" />
     <Content Include="Views\Admin\EditarEncargadoCEL.cshtml" />
     <Content Include="Views\Admin\EditarEncargadoCEM.cshtml" />
+    <Content Include="Views\Admin\MostrarCentros.cshtml" />
+    <Content Include="Views\Admin\IngresarCentro.cshtml" />
+    <Content Include="Views\Admin\DetalleCentro.cshtml" />
+    <Content Include="Views\Admin\EditarCentro.cshtml" />
+    <Content Include="Views\Admin\EliminarCentros.cshtml" />
+    <Content Include="Views\Alumno\FamiliasDisponibles.cshtml" />
+    <Content Include="Views\Alumno\VerDetalleFamilia.cshtml" />
+    <Content Include="Views\Alumno\VerAntecedentesFamilia.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

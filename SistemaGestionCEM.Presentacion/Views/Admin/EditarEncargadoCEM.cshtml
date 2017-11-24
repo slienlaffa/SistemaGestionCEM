@@ -19,7 +19,7 @@
 
 <h2>Modificar datos </h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("EditarEncargadoCEM", "Admin", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     
@@ -30,6 +30,7 @@
         @Html.HiddenFor(model => model.COD_ENCARGADOCEM)
         @Html.HiddenFor(model => model.PERSONA.COD_PERSONA)
         @Html.HiddenFor(model => model.PERSONA.USUARIO.COD_USUARIO)
+        @Html.HiddenFor(model => model.PERSONA.USUARIO.FK_COD_TIPO)
 
         <div class="form-group">
             @Html.LabelFor(model => model.PERSONA.NOMBRE, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -117,12 +118,12 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Actualizar" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Volver a inicio", "Index")
 </div>

@@ -28,6 +28,33 @@ namespace SistemaGestionCEM.Negocio
             return client.Execute(request);
         }
 
+        public static IRestResponse RegistroExitoso(string nombre, string correo, string nombreUsuario)
+        {
+            RestClient client = new RestClient();
+            client.BaseUrl = new Uri("https://api.mailgun.net/v3");
+            client.Authenticator =
+            new HttpBasicAuthenticator("api",
+                                      "key-a9b5613a0fd5517306f676e1df16dc8d");
+            RestRequest request = new RestRequest();
+            request.AddParameter("domain", "sandbox5367e4a26b134714a84f093f668279ad.mailgun.org", ParameterType.UrlSegment);
+            request.Resource = "{domain}/messages";
+            request.AddParameter("from", "Centro de Estudios Montreal <auto-respuesta@bot.cem.org>");
+            request.AddParameter("to", nombre + " <" + correo + ">");
+            request.AddParameter("subject", "Registro de su nueva cuenta");
+            request.AddParameter("text", MensajeRegistroExitoso(nombreUsuario));
+            request.Method = Method.POST;
+            return client.Execute(request);
+        }
+
+        private static string MensajeRegistroExitoso(string nombreUsuario)
+        {
+            string message = "Su nueva cuenta ha sido creada! '"+
+                    "Su nombre de usuario es: "+ nombreUsuario + "' ";
+           
+            return message;
+
+        }
+
         private static string mensajeRespuesta(string nombrePrograma, bool resultado)
         {
             string mensaje;

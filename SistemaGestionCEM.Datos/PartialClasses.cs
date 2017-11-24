@@ -62,4 +62,8 @@ namespace SistemaGestionCEM.Datos
     {
     }
 
+    [MetadataType(typeof(CentroEstudioLocalMetadata))]
+    public partial class CENTRO_ESTUDIO_LOCAL
+    {
+    }
 }

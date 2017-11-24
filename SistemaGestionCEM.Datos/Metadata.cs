@@ -27,9 +27,11 @@ namespace SistemaGestionCEM.Datos
         [DisplayName("Nacionalidad")]
         public string NACIONALIDAD { get; set; }
 
+        [Required]
         [DisplayName("Ciudad")]
         public decimal FK_COD_CIUDAD { get; set; }
 
+        [Required]
         [DisplayName("Genero")]
         public decimal FK_COD_GENERO { get; set; }
     }
@@ -57,20 +59,24 @@ namespace SistemaGestionCEM.Datos
         public virtual PERSONA PERSONA { get; set; }
     }
 
-
-
     public class FamiliaMetadata
     {
         [Required]
         [DisplayName("Cantidad de Integrantes")]
+        [Range(1, int.MaxValue, ErrorMessage = "Ingrese un numero mayor a 0")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{00}")]
         public decimal NUM_INTEGRANTES { get; set; }
 
         [Required]
         [DisplayName("Cantidad de Habitaciones")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{00}")]
+        [Range(1, int.MaxValue, ErrorMessage = "Ingrese un numero mayor a 0")]
         public decimal NUM_HABITACIONES { get; set; }
 
         [Required]
         [DisplayName("Cantidad de Baños")]
+        [Range(1, int.MaxValue, ErrorMessage = "Ingrese un numero mayor a 0")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{00}")]
         public decimal NUM_BANOS { get; set; }
 
         [Required]
@@ -85,6 +91,7 @@ namespace SistemaGestionCEM.Datos
         [DisplayName("¿Posee Mascotas? Sí la respuesta es si, especifique.")]
         public string MASCOTA_DESCRIPCION { get; set; }
 
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0000}")]
         public decimal ANIO_INSCRIPCION { get; set; }
 
 
@@ -101,6 +108,7 @@ namespace SistemaGestionCEM.Datos
         [DataType(DataType.Date)]
         [Required(ErrorMessage = "La fecha de nacimiento es obligatoria", AllowEmptyStrings = false)]
         [DisplayName("Fecha de Nacimiento")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public System.DateTime FECHA_NACIMIENTO { get; set; }
     }
 
@@ -115,8 +123,7 @@ namespace SistemaGestionCEM.Datos
         [DisplayName("Contraseña")]
         /*
         [RegularExpression(@"^ (?=\w *\d)(?=\w*[A-Z])(?=\w*[a - z])\S{8,16}$", 
-            ErrorMessage = "La contraseña debe contener al menos 8 caracteres, al menos 1 Mayuscula y 1 digito.")  ]
-            */
+            ErrorMessage = "La contraseña debe contener al menos 8 caracteres, al menos 1 Mayuscula y 1 digito.")  ]*/
         [DataType(DataType.Password)]
         [MaxLength(20, ErrorMessage = "No exceda los 20 caracteres"),]
         public string CONTRASENNA { get; set; }
@@ -196,6 +203,38 @@ namespace SistemaGestionCEM.Datos
         public Nullable<decimal> NOTA4 { get; set; }
         [DisplayName("Promedio")]
         public Nullable<decimal> PROMEDIO { get; set; }
+    }
+    public class CentroEstudioLocalMetadata
+    {
+
+        public decimal COD_CEL { get; set; }
+        [Required]
+        [DisplayName("Nombre centro")]
+        public string NOMBRE_CENTRO { get; set; }
+        [Required]
+        [DisplayName("Nombre director")]
+        public string NOM_DIRECTOR { get; set; }
+        [Required]
+        [DisplayName("Área de Especialización")]
+        public string AREA_ESPECIALIZACION { get; set; }
+        [Required]
+        [DisplayName("Dirección")]
+        [MaxLength(100, ErrorMessage = "No exceda los 100 caracteres")]
+        public string DIRECCION { get; set; }
+        [Required]
+        [DisplayName("Correo")]
+        [EmailAddress(ErrorMessage ="Debe ingresar un correo válido! (nombre@dominio.com)")]
+        public string CORREO { get; set; }
+        [Required]
+        [DisplayName("Teléfono")] //Agregar rango
+        public decimal TELEFONO { get; set; }
+        [Required]
+        [DisplayName("Descripcion del centro")]
+        [MaxLength(100, ErrorMessage = "No exceda los 100 caracteres")]
+        public string DESCRIPCION { get; set; }
+        [Required]
+        [DisplayName("Ciudad")]
+        public decimal FK_COD_CIUDAD { get; set; }
     }
 
     public class PostulacionAlumnoMetadata
