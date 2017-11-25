@@ -88,10 +88,11 @@ namespace SistemaGestionCEM.Datos
         public string ESTACIONAMIENTO { get; set; }
 
         [Required]
-        [DisplayName("¿Posee Mascotas? Sí la respuesta es si, especifique.")]
+        [DisplayName("¿Posee Mascotas?")]
         public string MASCOTA_DESCRIPCION { get; set; }
 
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0000}")]
+        [DisplayName("Año de inscripción")]
         public decimal ANIO_INSCRIPCION { get; set; }
 
 

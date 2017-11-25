@@ -12,13 +12,13 @@
         <li data-target="#myCarousel" data-slide-to="1"></li>
         <li data-target="#myCarousel" data-slide-to="2"></li>
     </ol>
-       @ViewBag.Message
+
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
         <div class="item active">
             <img class="img-responsive" src="~/imagenes/Montreal.jpg"  alt="Aula">
             <div class="carousel-caption">
-                <h1>Amplía tus horizontes</h1>
+                <h1><b>Amplía tus horizontes</b></h1>
                 <p>Amplía tus conocimientos</p>
             </div>
         </div>
@@ -52,16 +52,29 @@
     </div>
 
     <div class="container text-center">
-        <h3>Mira la lista de Programas publicados!</h3><br>
+        <h1>Ofrecemos extraordinarias oportunidades de aprendizaje intercultural</h1>
+        <h2>Muchos paises para elegir !</h2>
+        <br>
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <img  src="~/imagenes/Simbolo-Academico.jpg" class="img-responsive" style="width:100%" alt="Image">
                 <p>blablabla</p>
-            </div>
-            <div class="col-sm-4">
+            </div >
+            <div class="col-sm-3">
                 <img src="~/imagenes/Alumnos-paises.jpg" class="img-responsive" style="width:100%" alt="Image">
                 <p>Project 2</p>
             </div>
+            <div class="col-sm-3">
+                <img src="~/imagenes/Alumnos-paises.jpg" class="img-responsive" style="width:100%" alt="Image">
+                <p>Project 2</p>
+            </div>
+        </div>
+
+       
+        <div class="container">
+            <h1>Conviértete en Familia Anfitriona</h1>
+            <h2>Acoge a un alumno en tu hogar</h2>
+            <h1>@Html.ActionLink("Registrarme como Familia!", "AutoRegistroFamilia", "Home", new { @class = "btn btn-success" })</h1>
         </div>
     </div>
 }

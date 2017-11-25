@@ -83,14 +83,14 @@
         </nav>
         @if (TempData["success"] != null)
         {
-            <div class="alert success">
+            <div class="alert success" align="center">
                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                 @Html.Encode(TempData["success"])
             </div>
         }
         @if (TempData["error"] != null)
         {
-            <div class="alert">
+            <div class="alert" align="center">
                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                 @Html.Encode(TempData["error"])
             </div>
@@ -98,30 +98,32 @@
 
     </header>
     <div align="center" class="contenidoCentral">
-        @RenderSection("ContenidoCentral", false)
         @RenderBody()
+        @RenderSection("ContenidoCentral", false)
+       
     </div>
 
     <footer class="text-center">
-        <div style="width:330px; margin:auto;">
+        <div class="row">
+            <div  style="width:330px; margin:auto;">
+                <br />
+                <p><b>DIRIGETE A LA OFICINA MÁS CERCANA</b></p>
+                <p>Antonio Varas 666, Quebec</p>
+                <p>1 819 821-7000</p>
+            </div>
 
-            <br />
-            <p><b>DIRIGETE A LA OFICINA MÁS CERCANA</b></p>
-            <p>Antonio Varas 666, Quebec</p>
-            <p>1 819 821-7000</p>
+            <div style="width:330px; margin:auto;">
+                <br />
+                <p><b>¿Tienes dudas, sugerencias o reclamos?</b></p>
+                <p>Escribenos a: contacto@cem.com</p>
 
+            </div>
+
+            <hr>
+            <div style="width:330px; margin:auto;">
+                <p><i>Copyright © Centro de Estudios Montreal - @DateTime.Now.Year</i></p>
+            </div>
         </div>
-
-        <div style="width:330px;  margin:auto;">
-
-            <br />
-            <p><b>¿Tienes dudas, sugerencias o reclamos?</b></p>
-            <p>Escribenos a: contacto@cem.com</p>
-
-        </div>
-
-        <hr>
-        <p><i>Copyright © Centro de Estudios Montreal - @DateTime.Now.Year</i></p>
     </footer>
     @RenderSection("scripts", required: false)
 </body>
