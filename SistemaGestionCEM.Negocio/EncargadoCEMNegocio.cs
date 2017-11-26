@@ -8,6 +8,25 @@ namespace SistemaGestionCEM.Negocio
 {
     public class EncargadoCEMNegocio : Negocio
     {
+        public Dictionary<string, int> GenerarResumenPorEstado()
+        {
+            Dictionary<string, int> dictionary =
+                new Dictionary<string, int>();
+
+            dictionary.Add("Terminados", ContarPorEstado(FINALIZADO));
+            dictionary.Add("En curso", ContarPorEstado(EN_CURSO));
+            dictionary.Add("Publicados", ContarPorEstado(PUBLICADO));
+            dictionary.Add("No publicados", ContarPorEstado(NO_PUBLICADO));
+            dictionary.Add("Cancelados", ContarPorEstado(CANCELADO));
+            dictionary.Add("Pendientes", ContarPorEstado(PENDIENTE));
+            dictionary.Add("Total", db.POSTULACION_PROGRAMA.Count());
+            return dictionary;
+        }
+
+        private int ContarPorEstado(int estado)
+        {
+            return db.POSTULACION_PROGRAMA.Count(p => p.FK_COD_ESTADO == estado);
+        }
 
         public bool CrearProgramaEstudio(PROGRAMA_ESTUDIO programaEstudio, string usuario)
         {

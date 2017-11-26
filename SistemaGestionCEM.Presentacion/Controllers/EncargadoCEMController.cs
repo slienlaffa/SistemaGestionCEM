@@ -98,6 +98,12 @@ namespace SistemaGestionCEM.Presentacion.Controllers
             return RedirectToAction("PostulacionesPendientes");
         }
 
+        public ActionResult GenerarResumenProgramas()
+        {
+            ViewData["resumen"] = cem.GenerarResumenPorEstado();
+            return View(db.POSTULACION_PROGRAMA.ToList());
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

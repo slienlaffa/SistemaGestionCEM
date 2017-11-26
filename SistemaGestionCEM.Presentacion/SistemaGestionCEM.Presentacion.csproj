@@ -323,6 +323,7 @@
     <Content Include="Views\Alumno\VerDetalleFamilia.cshtml" />
     <Content Include="Views\Alumno\VerAntecedentesFamilia.cshtml" />
     <Content Include="Views\Familia\SubirAntecedentes.cshtml" />
+    <Content Include="Views\EncargadoCEM\GenerarResumenProgramas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AntecedentesFamilia\" />
