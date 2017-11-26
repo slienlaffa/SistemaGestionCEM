@@ -98,7 +98,7 @@ namespace SistemaGestionCEM.Presentacion.Controllers
             return RedirectToAction("DenegarAcceso");
         }
 
-        public ActionResult VerAntecedentesFamilia(decimal id)
+        public ActionResult VerAntecedentesFamilia(decimal? id)
         {
             if (id == null)
             {

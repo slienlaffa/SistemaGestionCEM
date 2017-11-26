@@ -38,14 +38,13 @@
 </head>
 <body>
     <header>
-        <h1 class="logoTitulo"><img alt="Logo CEM" src="~/imagenes/logo-cem.png" height="60" width="60" /> Centro de Estudios Montreal</h1>
+        <a href="/">
+            <h1 class="logoTitulo"><img alt="Logo CEM" src="~/imagenes/logo-cem.png" height="60" width="60" /> Centro de Estudios Montreal</h1>
+        </a>
         <nav class="menu">
             <div class="container">
                 <div id="myNavbar">
                     <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                        <li>@Html.ActionLink("Quiénes somos", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contáctanos", "Contact", "Home")</li>
                         @{
                             if (Session["SesionActual"] != null)
                             {
