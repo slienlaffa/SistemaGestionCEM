@@ -320,8 +320,10 @@
     <Content Include="Views\Alumno\FamiliasDisponibles.cshtml" />
     <Content Include="Views\Alumno\VerDetalleFamilia.cshtml" />
     <Content Include="Views\Alumno\VerAntecedentesFamilia.cshtml" />
+    <Content Include="Views\Familia\SubirAntecedentes.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="AntecedentesFamilia\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>

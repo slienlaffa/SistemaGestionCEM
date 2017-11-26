@@ -244,4 +244,20 @@ namespace SistemaGestionCEM.Datos
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public System.DateTime FECHA { get; set; }
     }
+    public class AntecedentesMetadata
+    {
+        [DisplayName("Foto 1")]
+        public string FOTO1 { get; set; }
+        [DisplayName("Foto 2")]
+        public string FOTO2 { get; set; }
+        [DisplayName("Foto 3")]
+        public string FOTO3 { get; set; }
+        [DisplayName("Certificado residencia")]
+        public string CERT_RESIDENCIA { get; set; }
+        [DisplayName("Certificado antecedentes")]
+        public string CERT_ANTECEDENTES { get; set; }
+        [DisplayName("Certificado laboral")]
+        public string CERT_LABORAL { get; set; }
+
+    }
 }

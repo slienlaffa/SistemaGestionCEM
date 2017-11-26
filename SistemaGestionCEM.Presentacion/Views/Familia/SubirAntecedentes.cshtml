@@ -1,0 +1,75 @@
+﻿@model SistemaGestionCEM.Datos.ANTECEDENTES
+
+@{
+    ViewBag.Title = "Subir Antecedentes";
+}
+
+<h2>Subir Antecedentes</h2>
+
+@using (Html.BeginForm("SubirAntecedentes", "Familia", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>ANTECEDENTES</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FOTO1, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBox("foto1", "", new { type = "file", accept = ".jpg, .jpeg, .png" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FOTO2, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBox("foto2", "", new { type = "file", accept = ".jpg, .jpeg, .png" })
+                @Html.ValidationMessageFor(model => model.FOTO2, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FOTO3, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBox("foto3", "", new { type = "file", accept = ".jpg, .jpeg, .png" })
+                @Html.ValidationMessageFor(model => model.FOTO3, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CERT_RESIDENCIA, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBox("CERT_RESIDENCIA", "", new { type = "file", accept = ".jpg, .jpeg, .png, .pdf" })
+                @Html.ValidationMessageFor(model => model.CERT_RESIDENCIA, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CERT_ANTECEDENTES, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBox("CERT_ANTECEDENTES", "", new { type = "file", accept = ".jpg, .jpeg, .png, .pdf" })
+                @Html.ValidationMessageFor(model => model.CERT_ANTECEDENTES, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CERT_LABORAL, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBox("CERT_LABORAL", "", new { type = "file", accept = ".jpg, .jpeg, .png, .pdf" })
+                @Html.ValidationMessageFor(model => model.CERT_LABORAL, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Subir" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Inicio", "Index")
+</div>

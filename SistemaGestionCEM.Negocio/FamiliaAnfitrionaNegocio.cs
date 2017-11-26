@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Web;
 
 namespace SistemaGestionCEM.Negocio
 {
-    public class FamiliaAnfitrionaNegocio
+    public class FamiliaAnfitrionaNegocio : Negocio
     {
         public bool Crear(int numBanos, int codAntecedentes, int anioInscripcion, int numHabitaciones,
              string tipoVivienda, int numIntegrantes,int codPersona, string estacionamiento, string mascotaDescripcion)

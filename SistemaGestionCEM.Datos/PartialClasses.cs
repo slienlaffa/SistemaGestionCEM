@@ -66,4 +66,9 @@ namespace SistemaGestionCEM.Datos
     public partial class CENTRO_ESTUDIO_LOCAL
     {
     }
+
+    [MetadataType(typeof(AntecedentesMetadata))]
+    public partial class ANTECEDENTES
+    {
+    }
 }
