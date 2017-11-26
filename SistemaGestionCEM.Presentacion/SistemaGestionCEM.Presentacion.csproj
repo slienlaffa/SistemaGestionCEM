@@ -210,6 +210,8 @@
     <Content Include="imagenes\Alumnos-paises.jpg" />
     <Content Include="imagenes\Alumnos.jpg" />
     <Content Include="imagenes\Aula.jpg" />
+    <Content Include="imagenes\favicon.ico" />
+    <Content Include="imagenes\logo-cem.png" />
     <Content Include="imagenes\Montreal.jpg" />
     <Content Include="imagenes\Simbolo-Academico.jpg" />
     <Content Include="Scripts\bootstrap.js" />
