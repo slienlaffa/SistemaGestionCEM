@@ -1,4 +1,4 @@
-﻿@model SistemaGestionCEM.Datos.DETALLE_ALUMNO
+﻿@model IEnumerable<SistemaGestionCEM.Datos.DETALLE_ALUMNO>
 
 @{
     ViewBag.Title = "GenerarCertificadoAprobacion";
@@ -7,37 +7,40 @@
 
 <h2>GenerarCertificadoAprobacion</h2>
 
-<div>
-    <h4>DETALLE_ALUMNO</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ESTADO_ALUMNO)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ESTADO_ALUMNO)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ALUMNO.COD_ALUMNO)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ALUMNO.COD_ALUMNO)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PROGRAMA_ESTUDIO.NOMBRE_PROGRAMA)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PROGRAMA_ESTUDIO.NOMBRE_PROGRAMA)
-        </dd>
-
-    </dl>
-</div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.COD_DETALUMNO }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Create New", "Create")
 </p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ESTADO_ALUMNO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ALUMNO.COD_ALUMNO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PROGRAMA_ESTUDIO.NOMBRE_PROGRAMA)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ESTADO_ALUMNO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ALUMNO.COD_ALUMNO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PROGRAMA_ESTUDIO.NOMBRE_PROGRAMA)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.COD_DETALUMNO }) |
+            @Html.ActionLink("Details", "Details", new { id=item.COD_DETALUMNO }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.COD_DETALUMNO })
+        </td>
+    </tr>
+}
+
+</table>

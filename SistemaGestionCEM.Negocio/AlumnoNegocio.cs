@@ -133,18 +133,31 @@ namespace SistemaGestionCEM.Negocio
             }
         }
 
-        public IQueryable<POSTULACION_ALUMNO> GenerarCertificadoAprobacion(ALUMNO alum)
+        public List<DETALLE_ALUMNO> GenerarCertificadoAprobacion(ALUMNO alum)
         {
+            DETALLE_ALUMNO alumno = db.DETALLE_ALUMNO.Where(a => a.ALUMNO.COD_ALUMNO == alum.COD_ALUMNO).FirstOrDefault();
+            if (alumno != null)
+            {
+                if (CursoAprobado((int)alum.COD_ALUMNO))
+                {
+                     List<DETALLE_ALUMNO> listaAlumno = new List<DETALLE_ALUMNO>();
+                     listaAlumno.Add(alumno);
+                    return listaAlumno;
+                }
+                else
+                {
+                    return null;
+                }
+            }         
             return null;
-           
         }
 
         //No se si esto va.
         public bool CursoAprobado(int codigoAlumno)
         {
-            int estado = (int)db.DETALLE_ALUMNO.Find(codigoAlumno)
-                .ESTADO_ALUMNO.Last();
-            if (estado == APROBADO)
+            var alumno = db.ALUMNO.Find(codigoAlumno);
+            var estado = db.DETALLE_ALUMNO.Where(e => e.ALUMNO.COD_ALUMNO == alumno.COD_ALUMNO).FirstOrDefault();
+            if (estado.ESTADO_ALUMNO.Equals("A"))
                 return true;
             else
                 return false;
