@@ -43,7 +43,7 @@ namespace SistemaGestionCEM.Negocio
                 postulacion.COD_POSTULACIONPROGRAMA = new PostulacionProgramaNegocio().nuevoCodigo();
                 postulacion.FK_COD_ENCARGADOCEM = programaEstudio.FK_COD_ENCARGADOCEM;
                 postulacion.FK_COD_PROGRAMA = programaEstudio.COD_PROGRAMA;
-                postulacion.FK_COD_ESTADO = 4; // No Publicado
+                postulacion.FK_COD_ESTADO = NO_PUBLICADO;
 
                 db.PROGRAMA_ESTUDIO.Add(programaEstudio);
                 db.POSTULACION_PROGRAMA.Add(postulacion);

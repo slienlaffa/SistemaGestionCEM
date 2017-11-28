@@ -25,7 +25,7 @@ namespace SistemaGestionCEM.Presentacion.Controllers
             return View(alumno.FamiliasDisponibles());
         }
 
-        public ActionResult VerDetalleFamilia(decimal id)
+        public ActionResult VerDetalleFamilia(decimal? id)
         {
             if (id == null || id <= 0)
             {
