@@ -37,7 +37,10 @@ namespace SistemaGestionCEM.Presentacion.Controllers
             if (ModelState.IsValid)
             {
                 string usuario = Session["Nombre"].ToString();
-                cem.CrearProgramaEstudio(programaEstudio, usuario);
+                if (cem.CrearProgramaEstudio(programaEstudio, usuario))
+                    TempData["success"] = "Programa creado correctamente.";
+                else
+                    TempData["error"] = "Error al crear el programa.";
                 return RedirectToAction("Index");
             }
 
