@@ -94,7 +94,10 @@ namespace SistemaGestionCEM.Presentacion.Controllers
             return RedirectToAction("DenegarAcceso");
         }
 
-        // No funcionando
+        // No funcionando, me alta generar el pdf tambien.
+        // probar con nombre de usuario: Fer.DiazM pass: 123
+        // ya que es el unico usuario alumno que esta ingresado en "DetalleAlumno"
+        // en mi base de datos actualicé la "v" por una "A".
         public ActionResult GenerarCertificadoAprobacion()
         {
             if (ValidarSesion())
@@ -103,11 +106,11 @@ namespace SistemaGestionCEM.Presentacion.Controllers
                 var persona = db.PERSONA.Where(a => a.USUARIO.NOMBRE_USUARIO == nombreUsuario).FirstOrDefault();
                 if (persona != null)
                 {
-                    var obtenerAlumno = db.ALUMNO.Where(alum => alum.PERSONA.COD_PERSONA == persona.COD_PERSONA).FirstOrDefault();
-                    DETALLE_ALUMNO detalle = db.DETALLE_ALUMNO.Find(obtenerAlumno.COD_ALUMNO);
-                    if (alumno.CursoAprobado((int)obtenerAlumno.COD_ALUMNO))
+                    ALUMNO obtenerAlumno = db.ALUMNO.Where(alum => alum.PERSONA.COD_PERSONA == persona.COD_PERSONA).FirstOrDefault();
+                    var result = alumno.GenerarCertificadoAprobacion(obtenerAlumno);
+                    if (result != null)
                     {
-                        return View(detalle);
+                        return View(result);
                     }
                     TempData["error"] = "Usted no ha aprobado ningun curso";
                     return View("Index");
