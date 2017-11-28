@@ -99,13 +99,11 @@
 
     </header>
     <div align="center" class="contenidoCentral">
-        @RenderBody()
-        @RenderSection("ContenidoCentral", false)
        
+        @RenderSection("ContenidoCentral", false)
+        @RenderBody()
     </div>
-
     <footer class="text-center">
-        <div class="row">
             <div  style="width:330px; margin:auto;">
                 <br />
                 <p><b>DIRIGETE A LA OFICINA MÁS CERCANA</b></p>
@@ -119,12 +117,10 @@
                 <p>Escribenos a: contacto@cem.com</p>
 
             </div>
-
             <hr>
             <div style="width:330px; margin:auto;">
                 <p><i>Copyright © Centro de Estudios Montreal - @DateTime.Now.Year</i></p>
             </div>
-        </div>
     </footer>
     @RenderSection("scripts", required: false)
 </body>

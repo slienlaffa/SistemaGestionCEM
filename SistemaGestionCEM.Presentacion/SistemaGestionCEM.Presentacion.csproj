@@ -50,6 +50,10 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="itextsharp, Version=5.0.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.0.5\lib\itextsharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -61,6 +65,10 @@
     </Reference>
     <Reference Include="Oracle.ManagedDataAccess.EntityFramework, Version=6.122.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
       <HintPath>..\packages\Oracle.ManagedDataAccess.EntityFramework.12.2.1100\lib\net45\Oracle.ManagedDataAccess.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RazorPDF, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RazorPDF.1.0.0\lib\net45\RazorPDF.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
@@ -207,13 +215,14 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="imagenes\Alumnos-paises.jpg" />
+    <Content Include="imagenes\Alumnitos.jpg" />
     <Content Include="imagenes\Alumnos.jpg" />
-    <Content Include="imagenes\Aula.jpg" />
+    <Content Include="imagenes\chica.jpg" />
+    <Content Include="imagenes\Estudiantes.jpg" />
     <Content Include="imagenes\favicon.ico" />
     <Content Include="imagenes\logo-cem.png" />
+    <Content Include="imagenes\Montreal-2.jpg" />
     <Content Include="imagenes\Montreal.jpg" />
-    <Content Include="imagenes\Simbolo-Academico.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -324,13 +333,19 @@
     <Content Include="Views\Alumno\VerAntecedentesFamilia.cshtml" />
     <Content Include="Views\Familia\SubirAntecedentes.cshtml" />
     <Content Include="Views\EncargadoCEM\GenerarResumenProgramas.cshtml" />
+    <Content Include="Views\EncargadoCEM\VerCalificacionesAlumnos.cshtml" />
+    <Content Include="Views\EncargadoCEM\SeleccionarPrograma.cshtml" />
+    <Content Include="Views\Alumno\ConsultarPostulacion.cshtml" />
+    <Content Include="Views\Alumno\GenerarCertificadoAprobacion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AntecedentesFamilia\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>

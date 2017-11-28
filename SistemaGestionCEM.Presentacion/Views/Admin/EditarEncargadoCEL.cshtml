@@ -17,12 +17,14 @@
     });
 }
 
+@section ContenidoCentral
+{
 <h2>Actualizar datos</h2>
 
 @using (Html.BeginForm("EditarEncargadoCEL", "Admin", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>De Encargado CEL</h4>
         <hr />
@@ -137,3 +139,6 @@
 <div>
     @Html.ActionLink("Volver a Inicio", "Index")
 </div>
+
+}
+

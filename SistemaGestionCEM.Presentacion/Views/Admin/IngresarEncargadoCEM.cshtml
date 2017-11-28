@@ -17,17 +17,19 @@
     });
 }
 
+@section ContenidoCentral
+{
 <h2>Ingreso de nuevo encargado CEM</h2>
 
-@using (Html.BeginForm("IngresarEncargadoCEM", "Admin", FormMethod.Post)) 
+@using (Html.BeginForm("IngresarEncargadoCEM", "Admin", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>por favor llene los datos en el formulario</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-       
+
         <div class="form-group">
             @Html.LabelFor(model => model.PERSONA.NOMBRE, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -123,3 +125,6 @@
 <div>
     @Html.ActionLink("Volver a inicio", "Index")
 </div>
+
+}
+

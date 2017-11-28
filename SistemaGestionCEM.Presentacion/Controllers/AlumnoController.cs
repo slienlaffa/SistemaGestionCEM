@@ -70,7 +70,7 @@ namespace SistemaGestionCEM.Presentacion.Controllers
             }
         }
 
-        // no funcionan2
+        // funcionan3
         public ActionResult ConsultarPostulacion()
         {
             if (ValidarSesion())
@@ -81,21 +81,39 @@ namespace SistemaGestionCEM.Presentacion.Controllers
                 if (persona != null)
                 {
                     var obtenerAlumno = db.ALUMNO.Where(alum => alum.PERSONA.COD_PERSONA == persona.COD_PERSONA).FirstOrDefault();
-
-                    var result = alumno.alumnoTieneOtrasPostulaciones((int)obtenerAlumno.COD_ALUMNO);
-                    if (!result)
+                    POSTULACION_ALUMNO estado = db.POSTULACION_ALUMNO.Where(e => e.ALUMNO.COD_ALUMNO == obtenerAlumno.COD_ALUMNO).FirstOrDefault();
+                    if (estado != null)
                     {
-                       //aaaaa
+                        return View(estado);
                     }
-                    else
-                    {
-                       
-                    }
-                    return View("FamiliasDisponibles");
+                    TempData["error"] = "Usted no posee postulaciones actualmente.";
+                    return View("Index");
                 }
                 return View();
             }
             return RedirectToAction("DenegarAcceso");
+        }
+
+        // No funcionando
+        public ActionResult GenerarCertificadoAprobacion()
+        {
+            if (ValidarSesion())
+            {
+                var nombreUsuario = Session["Nombre"].ToString();
+                var persona = db.PERSONA.Where(a => a.USUARIO.NOMBRE_USUARIO == nombreUsuario).FirstOrDefault();
+                if (persona != null)
+                {
+                    var obtenerAlumno = db.ALUMNO.Where(alum => alum.PERSONA.COD_PERSONA == persona.COD_PERSONA).FirstOrDefault();
+                    DETALLE_ALUMNO detalle = db.DETALLE_ALUMNO.Find(obtenerAlumno.COD_ALUMNO);
+                    if (alumno.CursoAprobado((int)obtenerAlumno.COD_ALUMNO))
+                    {
+                        return View(detalle);
+                    }
+                    TempData["error"] = "Usted no ha aprobado ningun curso";
+                    return View("Index");
+                }
+            }
+            return View();
         }
 
         public ActionResult VerAntecedentesFamilia(decimal? id)

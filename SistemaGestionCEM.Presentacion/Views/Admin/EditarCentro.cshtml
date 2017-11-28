@@ -5,12 +5,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Aqui puede modificar los datos de un centro de estudio local</h2>
+@section ContenidoCentral
+{
+    <h2>Aqui puede modificar los datos de un centro de estudio local</h2>
 
 @using (Html.BeginForm("EditarCentro", "Admin", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Actualice los datos en el formulario más abajo</h4>
         <hr />
@@ -92,3 +94,5 @@
 <div>
     @Html.ActionLink("Volver a Centros", "MostrarCentros")
 </div>
+
+}

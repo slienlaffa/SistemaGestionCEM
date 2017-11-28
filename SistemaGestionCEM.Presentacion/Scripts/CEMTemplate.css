@@ -5,34 +5,32 @@
     margin:auto;
 }
 body {
+     margin:auto;
     margin-top:0;
-    padding-top:0;
-    font-family: Arial, Helvetica, sans-serif;
-    margin:auto;
-
+    font-family: Helvetica, sans-serif;
 }
 .logoTitulo {
 
     background:#333;
     color:white;
     padding:5px;
-    margin-top:0px;
+    margin-top:2px;
     text-align:center;
     height:100px;
+    margin-bottom:0;
 }
 
-.btn btn-lg btn-default:hover {
-    color:white;
-    background: -webkit-linear-gradient(#3939ac, #5353c6, #3939ac); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(#3939ac, #5353c6, #3939ac); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(#3939ac, #5353c6, #3939ac); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(#3939ac, #5353c6, #3939ac); /* Standard syntax */
+#registros 
+{
+    background-color: #1b1b1b;
+    color: white;
+    border-radius: 5px 6px;
 }
 
 .menu {
+    margin-top:0px;
     margin:auto;
-    background-color: #1abc9c;
-    font-family: sans-serif;
+    font-family: Helvetica;
     background: -webkit-linear-gradient(#3939ac, #5353c6, #3939ac); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(#3939ac, #5353c6, #3939ac); /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(#3939ac, #5353c6, #3939ac); /* For Firefox 3.6 to 15 */
@@ -53,7 +51,6 @@ body {
     width:70%;
     max-height:1000px;
     /*background: rgba(2,3,3,.1);*/
- 
 }
 
 .fixed 
@@ -82,7 +79,7 @@ footer {
     background: linear-gradient(#3939ac, #5353c6, #3939ac); /* Standard syntax */
     font-family: 'Times New Roman', 'Times New Roman';
     color: white;
-    margin-top:10%;
+    margin-top:900px;
     padding:1px;
 }
 

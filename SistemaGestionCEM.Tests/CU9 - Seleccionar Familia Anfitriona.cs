@@ -25,6 +25,7 @@ namespace SistemaGestionCEM.Tests
             Assert.IsFalse(resultado);
         }
 
+        /*
         [TestMethod]
         public void ListarFamiliasDisponibles()
         {
@@ -36,7 +37,7 @@ namespace SistemaGestionCEM.Tests
             }
             Assert.IsNotNull(familias);
         }
-
+        */
         [TestMethod]
         public void RecuperarFamilia()
         {

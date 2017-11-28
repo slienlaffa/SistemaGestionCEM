@@ -5,6 +5,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@section ContenidoCentral
+{
 <h2>Lista de Centros de Estudio Local</h2>
 
 
@@ -34,36 +36,40 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NOMBRE_CENTRO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NOM_DIRECTOR)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AREA_ESPECIALIZACION)
-        </td>
-       
-        <td>
-            @Html.DisplayFor(modelItem => item.CORREO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TELEFONO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DESCRIPCION)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CIUDAD.DESCRIPCION)
-        </td>
-        <td>
-            @Html.ActionLink("Modificar datos", "EditarCentro", new { id=item.COD_CEL }) |
-            @Html.ActionLink("Ver Detalle", "DetalleCentro", new { id=item.COD_CEL }) |
-            @Html.ActionLink("Eliminar", "EliminarCentros", new { id=item.COD_CEL })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NOMBRE_CENTRO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NOM_DIRECTOR)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AREA_ESPECIALIZACION)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.CORREO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TELEFONO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DESCRIPCION)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CIUDAD.DESCRIPCION)
+            </td>
+            <td>
+                @Html.ActionLink("Modificar datos", "EditarCentro", new { id = item.COD_CEL }) |
+                @Html.ActionLink("Ver Detalle", "DetalleCentro", new { id = item.COD_CEL }) |
+                @Html.ActionLink("Eliminar", "EliminarCentros", new { id = item.COD_CEL })
+            </td>
+        </tr>
+    }
 
 </table>
+
+}
+

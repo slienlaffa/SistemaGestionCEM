@@ -31,6 +31,7 @@ namespace SistemaGestionCEM.Negocio
             }
         }
 
+
         public POSTULACION_ALUMNO PostularPrograma(int codigoPrograma, string usuario)
         {
 
@@ -130,6 +131,23 @@ namespace SistemaGestionCEM.Negocio
             {
                 return false;
             }
+        }
+
+        public IQueryable<POSTULACION_ALUMNO> GenerarCertificadoAprobacion(ALUMNO alum)
+        {
+            return null;
+           
+        }
+
+        //No se si esto va.
+        public bool CursoAprobado(int codigoAlumno)
+        {
+            int estado = (int)db.DETALLE_ALUMNO.Find(codigoAlumno)
+                .ESTADO_ALUMNO.Last();
+            if (estado == APROBADO)
+                return true;
+            else
+                return false;
         }
 
         public bool EsAlumnoAprobado(int codigoAlumno)

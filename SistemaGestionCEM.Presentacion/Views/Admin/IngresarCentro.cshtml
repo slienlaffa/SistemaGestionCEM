@@ -5,12 +5,15 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
+@section ContenidoCentral
+{
 <h2>Panel de ingreso centros de estudio local</h2>
 
-@using (Html.BeginForm("IngresarCentro", "Admin", FormMethod.Post)) 
+@using (Html.BeginForm("IngresarCentro", "Admin", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Complete los datos del centro en el formulario más abajo</h4>
         <hr />
@@ -92,3 +95,6 @@
 <div>
     @Html.ActionLink("Volver a Centros", "Index")
 </div>
+
+}
+

@@ -1,0 +1,28 @@
+﻿@model SistemaGestionCEM.Datos.PROGRAMA_ESTUDIO
+@{
+    ViewBag.Title = "SeleccionarPrograma";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section ContenidoCentral
+{
+    @using (Html.BeginForm("SeleccionarPrograma", "EncargadoCEM", FormMethod.Post))
+    {
+        <h2>Seleccione el programa para ver calificaciones de alumnos</h2>
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+       
+        <tr>
+            <td>
+                @Html.DropDownListFor(modelItem => modelItem.COD_PROGRAMA, (SelectList)ViewBag.ProgramasDisponibles ,"Seleccione", htmlAttributes: new { @class = "form-control" })
+            </td>
+            <td>
+                <input  type="submit" name="BtnSeleccionar" value="Buscar Calificaciones" class="btn btn-success"/>
+            </td>
+            <td>
+                @Html.HiddenFor(model => model.COD_PROGRAMA)
+            </td>
+        </tr>
+    }
+}
+

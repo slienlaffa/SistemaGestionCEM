@@ -5,85 +5,91 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Eliminar un usuario</h2>
+@section ContenidoCentral
+{
 
-<h3>¿Está seguro que desea eliminar el siguiente usuario?</h3>
-<div>
-    <h4>Detalles</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.NOMBRE)
-        </dt>
+    <h2>Eliminar un usuario</h2>
 
-        <dd>
-            @Html.DisplayFor(model => model.NOMBRE)
-        </dd>
+    <h3>¿Está seguro que desea eliminar el siguiente usuario?</h3>
+    <div>
+        <h4>Detalles</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.NOMBRE)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.APELLIDO)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.NOMBRE)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.APELLIDO)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.APELLIDO)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CORREO)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.APELLIDO)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.CORREO)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.CORREO)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TELEFONO)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.CORREO)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.TELEFONO)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.TELEFONO)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NACIONALIDAD)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.TELEFONO)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.NACIONALIDAD)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.NACIONALIDAD)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CIUDAD.FK_COD_PAIS)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.NACIONALIDAD)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.CIUDAD.DESCRIPCION)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.CIUDAD.FK_COD_PAIS)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.GENERO.COD_GENERO)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.CIUDAD.DESCRIPCION)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.GENERO.DESCRIPCION)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.GENERO.COD_GENERO)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.USUARIO.NOMBRE_USUARIO)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.GENERO.DESCRIPCION)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.USUARIO.NOMBRE_USUARIO)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.USUARIO.NOMBRE_USUARIO)
+            </dt>
 
-    </dl>
+            <dd>
+                @Html.DisplayFor(model => model.USUARIO.NOMBRE_USUARIO)
+            </dd>
 
-    @using (Html.BeginForm("Delete", "Admin", FormMethod.Post)) {
-        @Html.AntiForgeryToken()
+        </dl>
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Confirmar" class="btn btn-default" /> |
-            @Html.ActionLink("Volver a inicio", "Index")
-        </div>
-    }
-</div>
+        @using (Html.BeginForm("Delete", "Admin", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Confirmar" class="btn btn-default" /> |
+                @Html.ActionLink("Volver a inicio", "Index")
+            </div>
+        }
+    </div>
+
+}

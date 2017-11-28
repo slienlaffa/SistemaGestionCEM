@@ -104,6 +104,44 @@ namespace SistemaGestionCEM.Presentacion.Controllers
             return View(db.POSTULACION_PROGRAMA.ToList());
         }
 
+         // Para listar las notas de los alumnos
+        public ActionResult SeleccionarPrograma()
+        {
+            if (ValidarSesion()) {
+                ViewBag.ProgramasDisponibles = new SelectList(db.PROGRAMA_ESTUDIO, "COD_PROGRAMA", "NOMBRE_PROGRAMA");
+                return View();
+            }
+            return RedirectToAction("DenegarAcceso");
+        }
+        [HttpPost]
+        public ActionResult SeleccionarPrograma(PROGRAMA_ESTUDIO programa)
+        {
+            if (ValidarSesion())
+            {     
+                int codigo = (int)programa.COD_PROGRAMA;
+                if (codigo <= 0)
+                {
+                    TempData["error"] = "No se ha encontrado el programa.";
+                }
+                var notas = cem.BuscarNotas((int)programa.COD_PROGRAMA);
+                if (notas != null)
+                {
+                    return View("VerCalificacionesAlumnos", notas);
+                }
+                TempData["error"] = "No hay calificaciones en el programa seleccionado.";
+                return View("SeleccionarPrograma");
+            } 
+            else
+            {
+                return RedirectToAction("DenegarAcceso");
+            }    
+        }
+
+        public ActionResult VerCalificacionesAlumnos()
+        {
+            return View();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

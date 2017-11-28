@@ -19,12 +19,12 @@
             <img class="img-responsive" src="~/imagenes/Montreal.jpg"  alt="Aula">
             <div class="carousel-caption">
                 <h1><b>Amplía tus horizontes</b></h1>
-                <p>Amplía tus conocimientos</p>
+                <h2>Amplía tus conocimientos</h2>
             </div>
         </div>
 
         <div class="item">
-            <img class="img-responsive" src="~/imagenes/Aula.jpg"  alt="Image">
+            <img class="img-responsive" src="~/imagenes/Estudiantes.jpg" alt="Image">
             <div class="carousel-caption">
                 <h1>Más de 50 cursos con diferentes destinos</h1>
                 <h2>Solo selecciona el país y tu familia anfitriona.</h2>
@@ -32,7 +32,7 @@
         </div>
 
         <div class="item">
-            <img class="img-responsive" src="~/imagenes/Alumnos.jpg"  alt="Image">
+            <img class="img-responsive" src="~/imagenes/Alumnos.jpg" alt="Image">
             <div class="carousel-caption">
                 <h1>Oportunidad de conocer nuevos lugares</h1>
                 <h2>¡No dejes escapar esta oportunidad de vivir una experiencia que te cambiará la vida!</h2>
@@ -50,31 +50,79 @@
         <span class="sr-only">Siguiente</span>
     </a>
     </div>
-
-    <div class="container text-center">
+    <br />
+  
+    <div class="text-center">
         <h1>Ofrecemos extraordinarias oportunidades de aprendizaje intercultural</h1>
-        <h2>Muchos paises para elegir !</h2>
         <br>
         <div class="row">
-            <div class="col-sm-3">
-                <img  src="~/imagenes/Simbolo-Academico.jpg" class="img-responsive" style="width:100%" alt="Image">
-                <p>blablabla</p>
+            <div class="col-sm-4">
+                <img  src="~/imagenes/chica.jpg" class="img-responsive img-circle" style="width:70%" alt="Imagen">
+               <h2><u>En Centro de Estudios Montreal</u></h2>
+                <h3>
+                    <i>
+                        Contamos con muchos centros de estudio asociados
+                        a lo largo de todo el mundo desde el año 1999.
+                    </i>
+                </h3>
             </div >
-            <div class="col-sm-3">
-                <img src="~/imagenes/Alumnos-paises.jpg" class="img-responsive" style="width:100%" alt="Image">
-                <p>Project 2</p>
+            <div class="col-sm-4">
+                <img src="~/imagenes/Alumnitos.jpg" class="img-responsive img-circle" style="width:70%" alt="Alumnos">
+               <h2><u>Excelencia Académica</u></h2>
+                <h3>
+                    <i>
+                        Porque nos preocupamos de brindar
+                        la mejor calidad en educacion en los mejores centros
+                        de estudio, con los mejores cursos de diferentes áreas.
+                    </i>
+                </h3>
             </div>
-            <div class="col-sm-3">
-                <img src="~/imagenes/Alumnos-paises.jpg" class="img-responsive" style="width:100%" alt="Image">
-                <p>Project 2</p>
+            <div class="col-sm-4">
+                <img src="~/imagenes/Alumnos-paises.jpg" class="img-responsive img-circle"  style="width:70%" alt="Image">
+                <h2><u>Excelencia Académica</u></h2>
+                <h3>
+                    <i>
+                        Porque nos preocupamos de brindar
+                        la mejor calidad en educacion en los mejores centros
+                        de estudio, con los mejores cursos de diferentes áreas.
+                    </i>
+                </h3>
             </div>
         </div>
+        <br />
 
-       
-        <div class="container">
-            <h1>Conviértete en Familia Anfitriona</h1>
-            <h2>Acoge a un alumno en tu hogar</h2>
-            <h1>@Html.ActionLink("Registrarme como Familia!", "AutoRegistroFamilia", "Home", new { @class = "btn btn-success" })</h1>
+        <div class="row" id="registros">
+            <div class="col-sm-6">
+                <h1>Conviértete en Familia Anfitriona</h1>
+                <h2>Acoge a un alumno en tu hogar</h2>
+                <h1>@Html.ActionLink("Registrarme como Familia", "AutoRegistroFamilia", "Home", new { @class = "btn btn-success" })</h1>
+            </div>
+            <div class="col-sm-6">
+                <h1>Postula a nuestros diferentes cursos</h1>
+                <h2>Una experiencia inolvidable</h2>
+                <h1>@Html.ActionLink("Registrarme como Alumno", "AutoRegistroAlumno", "Home", new { @class = "btn btn-success" })</h1>
+            </div>
         </div>
+        <br />
+
+        <div class="container">
+            
+            <div class="row">
+                <div >
+                    <h1>¿Quiénes Somos?</h1>
+                    <h2>
+                        El Centro de Estudios Montreal, ubicado en Montreal, Canada,
+                        es una organización de educación superior que forma profesionales
+                        en diversas áreas tecnológicas, dentro de sus actividades se encuentra la formación de estudiantes en el
+                        extranjero, en centros de estudios de determinados países, que actúan como organizaciones locales (CEL).
+                    </h2>
+                </div>
+                <div >
+                    <img src="~/imagenes/Montreal-2.jpg" alt="Montreal" class="img-responsive" />
+                </div>
+            </div>
+            <h2> <!-- aqui quedeeee--></h2>
+        </div>
+       
     </div>
 }

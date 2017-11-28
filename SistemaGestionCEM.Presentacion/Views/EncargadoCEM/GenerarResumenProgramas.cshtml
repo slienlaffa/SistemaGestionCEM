@@ -5,7 +5,9 @@
     var resumen = ViewData["resumen"] as Dictionary<string, int>;
 }
 
-<h2>Resumen de Programas</h2>
+@section contenidoCentral
+{
+    <h2>Resumen de Programas</h2>
 
 @foreach (var element in resumen)
 {
@@ -28,21 +30,24 @@
         </th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FECHA)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CENTRO_ESTUDIO_LOCAL.NOMBRE_CENTRO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ESTADO_POSTULACION.DESCRIPCION)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PROGRAMA_ESTUDIO.NOMBRE_PROGRAMA)
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FECHA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CENTRO_ESTUDIO_LOCAL.NOMBRE_CENTRO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ESTADO_POSTULACION.DESCRIPCION)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PROGRAMA_ESTUDIO.NOMBRE_PROGRAMA)
+            </td>
+        </tr>
+    }
 
 </table>
+
+}

@@ -16,13 +16,15 @@
         Value = "Otra"
     });
 }
+@section ContenidoCentral
+{
 
 <h2>Modificar datos </h2>
 
 @using (Html.BeginForm("EditarEncargadoCEM", "Admin", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>de encargado CEM</h4>
         <hr />
@@ -127,3 +129,5 @@
 <div>
     @Html.ActionLink("Volver a inicio", "Index")
 </div>
+
+}
