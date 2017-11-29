@@ -21,6 +21,16 @@ namespace SistemaGestionCEM.Negocio
             return programasPublicados;
         }
 
+        public IQueryable<POSTULACION_PROGRAMA> PostulacionProgramasPorCEL(string usuario)
+        {
+            int codCEL = (int)ObtenerCELPorUsuario(usuario).FK_COD_CEL;
+
+            var programas = db.POSTULACION_PROGRAMA
+                .Where(e => e.FK_COD_CEL == codCEL);
+
+            return programas;
+        }
+
         public bool RegistrarNotas(List<DETALLE_NOTAS> notas)
         {
             try

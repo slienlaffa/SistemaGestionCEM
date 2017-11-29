@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using SistemaGestionCEM.Negocio;
 using SistemaGestionCEM.Datos;
@@ -14,8 +12,11 @@ namespace SistemaGestionCEM.Presentacion.Controllers
         // GET: EncargadoCEL
         public ActionResult Index()
         {
-            if(ValidarSesion())
-                return View();
+            if (ValidarSesion())
+            {
+                string usuario = Session["Nombre"].ToString();
+                return View(cel.PostulacionProgramasPorCEL(usuario));
+            }
             return RedirectToAction("DenegarAcceso");
         }
 

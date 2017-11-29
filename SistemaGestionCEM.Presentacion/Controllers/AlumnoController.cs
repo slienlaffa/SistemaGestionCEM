@@ -58,10 +58,10 @@ namespace SistemaGestionCEM.Presentacion.Controllers
                         TempData["error"] = "Lo sentimos, tu postulacion a un programa pendiente aun no ha sido aprobada, o no has postulado.";
                     }
                     else {
-                        TempData["success"] = "Familia seleccionada con exito!";
+                        TempData["success"] = "Familia seleccionada con exito.";
                         
                     }
-                    return View("FamiliasDisponibles");
+                    return RedirectToAction("FamiliasDisponibles");
                 }
                 return View();
             }

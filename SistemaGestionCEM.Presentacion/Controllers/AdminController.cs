@@ -589,7 +589,7 @@ namespace SistemaGestionCEM.Presentacion.Controllers
         }
 
         // muestra informacion detallada de un centro en especifico.
-        public ActionResult DetalleCentro(decimal id)
+        public ActionResult DetalleCentro(decimal? id)
         {
             if (id == null)
             {
@@ -604,7 +604,7 @@ namespace SistemaGestionCEM.Presentacion.Controllers
             return View(centro);
         }
 
-        public ActionResult EliminarCentros(decimal id)
+        public ActionResult EliminarCentros(decimal? id)
         {
             if (ValidarSesionAdministrador())
             {
@@ -697,7 +697,7 @@ namespace SistemaGestionCEM.Presentacion.Controllers
         #endregion
 
         // GET: Admin/Details/5
-        public ActionResult Details(decimal id)
+        public ActionResult Details(decimal? id)
         {
             if (id == null)
             {
@@ -752,7 +752,7 @@ namespace SistemaGestionCEM.Presentacion.Controllers
   
         #region Eliminar
 
-        public ActionResult Delete(decimal id)
+        public ActionResult Delete(decimal? id)
         {
             if (id == null)
             {
