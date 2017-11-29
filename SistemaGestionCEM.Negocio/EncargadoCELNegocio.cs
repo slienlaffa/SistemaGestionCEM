@@ -49,13 +49,18 @@ namespace SistemaGestionCEM.Negocio
             return postulaciones;
         }
 
-        public void PostularPrograma(int codPostulacionPrograma, string usuario)
+        public bool PostularPrograma(int codPostulacionPrograma, string usuario)
         {
-            var programa = db.POSTULACION_PROGRAMA.Find(codPostulacionPrograma);
-            var cel = ObtenerCELPorUsuario(usuario);
-            if (cel != null)
-                programa.FK_COD_CEL = cel.FK_COD_CEL;
-            db.SaveChanges();
+            try
+            {
+                var programa = db.POSTULACION_PROGRAMA.Find(codPostulacionPrograma);
+                var cel = ObtenerCELPorUsuario(usuario);
+                if (cel != null)
+                    programa.FK_COD_CEL = cel.FK_COD_CEL;
+                db.SaveChanges();
+                return true;
+            }
+            catch { return false; }
         }
 
         private ENCARGADO_CEL ObtenerCELPorUsuario(string usuario)

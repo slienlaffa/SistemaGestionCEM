@@ -65,19 +65,35 @@ namespace SistemaGestionCEM.Negocio
             return postulaciones;            
         }
 
-        public void PublicarPrograma(int codPostulacionPrograma)
+        public bool PublicarPrograma(int codPostulacionPrograma)
         {
-            var programa = db.POSTULACION_PROGRAMA.Find(codPostulacionPrograma);
-            programa.FK_COD_ESTADO = PUBLICADO;
-            programa.FECHA = DateTime.Now;
-            db.SaveChanges();
+            try
+            {
+                var programa = db.POSTULACION_PROGRAMA.Find(codPostulacionPrograma);
+                programa.FK_COD_ESTADO = PUBLICADO;
+                programa.FECHA = DateTime.Now;
+                db.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
-        public void CancelarPrograma(int codPostulacionPrograma)
+        public bool CancelarPrograma(int codPostulacionPrograma)
         {
-            var programa = db.POSTULACION_PROGRAMA.Find(codPostulacionPrograma);
-            programa.FK_COD_ESTADO = CANCELADO;
-            db.SaveChanges();
+            try
+            {
+                var programa = db.POSTULACION_PROGRAMA.Find(codPostulacionPrograma);
+                programa.FK_COD_ESTADO = CANCELADO;
+                db.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         public IQueryable<POSTULACION_ALUMNO> PostulacionesPendientes()

@@ -96,6 +96,13 @@
                 @Html.Encode(TempData["error"])
             </div>
         }
+        @if (TempData["info"] != null)
+        {
+            <div class="alert info" align="center">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                @Html.Encode(TempData["info"])
+            </div>
+        }
 
     </header>
     <div align="center" class="contenidoCentral">

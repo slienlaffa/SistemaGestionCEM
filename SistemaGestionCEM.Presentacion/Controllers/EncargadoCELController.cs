@@ -62,7 +62,10 @@ namespace SistemaGestionCEM.Presentacion.Controllers
         public ActionResult Asignarse(int id)
         {
             string usuario = Session["Nombre"].ToString();
-            cel.PostularPrograma(id, usuario);
+            if (cel.PostularPrograma(id, usuario))
+                TempData["success"] = "Se ha asignado correctamente.";
+            else
+                TempData["error"] = "Ha ocurrido un error.";
             return RedirectToAction("AsignarsePrograma");
         }
 

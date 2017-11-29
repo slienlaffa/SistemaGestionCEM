@@ -57,13 +57,19 @@ namespace SistemaGestionCEM.Presentacion.Controllers
 
         public ActionResult Publicar(int id)
         {
-            cem.PublicarPrograma(id);
+            if(cem.PublicarPrograma(id))
+                TempData["success"] = "Se ha publicado correctamente el programa de estudio.";
+            else
+                TempData["error"] = "Ha habido un error.";
             return RedirectToAction("PublicarPrograma");
         }
 
         public ActionResult Cancelar(int id)
         {
-            cem.CancelarPrograma(id);
+            if (cem.CancelarPrograma(id))
+                TempData["success"] = "Se ha cancelado correctamente el programa de estudio.";
+            else
+                TempData["error"] = "Ha habido un error.";
             return RedirectToAction("PublicarPrograma");
         }
 
