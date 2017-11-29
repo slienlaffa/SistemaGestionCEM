@@ -117,6 +117,7 @@
     <Compile Include="CU12 - Selección de Postulante.cs" />
     <Compile Include="CU11 - Registrar Notas de Alumnos.cs" />
     <Compile Include="CU8 - Postulación a Programa de Estudio.cs" />
+    <Compile Include="EmailTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CU1 - Autenticación de Usuarios.cs" />
     <Compile Include="CU9 - Seleccionar Familia Anfitriona.cs" />

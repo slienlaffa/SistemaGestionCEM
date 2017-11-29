@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace SistemaGestionCEM.Negocio
 {
@@ -16,9 +15,9 @@ namespace SistemaGestionCEM.Negocio
             client.BaseUrl = new Uri("https://api.mailgun.net/v3");
             client.Authenticator =
             new HttpBasicAuthenticator("api",
-                                      "key-a9b5613a0fd5517306f676e1df16dc8d");
+                                      "key-bf6538e45b46f9eb5c7672db4491ed33");
             RestRequest request = new RestRequest();
-            request.AddParameter("domain", "sandbox5367e4a26b134714a84f093f668279ad.mailgun.org", ParameterType.UrlSegment);
+            request.AddParameter("domain", "sandbox9a827558ef0943dba832f79f2bfb6f15.mailgun.org", ParameterType.UrlSegment);
             request.Resource = "{domain}/messages";
             request.AddParameter("from", "Centro de Estudios Montreal <auto-respuesta@bot.cem.org>");
             request.AddParameter("to", nombre + " <" + correo + ">");
@@ -34,9 +33,9 @@ namespace SistemaGestionCEM.Negocio
             client.BaseUrl = new Uri("https://api.mailgun.net/v3");
             client.Authenticator =
             new HttpBasicAuthenticator("api",
-                                      "key-a9b5613a0fd5517306f676e1df16dc8d");
+                                      "key-bf6538e45b46f9eb5c7672db4491ed33");
             RestRequest request = new RestRequest();
-            request.AddParameter("domain", "sandbox5367e4a26b134714a84f093f668279ad.mailgun.org", ParameterType.UrlSegment);
+            request.AddParameter("domain", "sandbox9a827558ef0943dba832f79f2bfb6f15.mailgun.org", ParameterType.UrlSegment);
             request.Resource = "{domain}/messages";
             request.AddParameter("from", "Centro de Estudios Montreal <auto-respuesta@bot.cem.org>");
             request.AddParameter("to", nombre + " <" + correo + ">");
@@ -46,10 +45,12 @@ namespace SistemaGestionCEM.Negocio
             return client.Execute(request);
         }
 
+
+
         private static string MensajeRegistroExitoso(string nombreUsuario)
         {
-            string message = "Su nueva cuenta ha sido creada! '"+
-                    "Su nombre de usuario es: "+ nombreUsuario + "' ";
+            string message = "Su nueva cuenta ha sido creada! "+
+                    "Su nombre de usuario es: '"+ nombreUsuario + "'";
            
             return message;
 
