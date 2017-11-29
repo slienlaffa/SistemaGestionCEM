@@ -42,10 +42,10 @@ namespace SistemaGestionCEM.Negocio
 
         public bool Eliminar(int codUsuario)
         {
-            usuario = new Usuario(codUsuario, "", "", 1);
+          
             try
             {
-                Conector.Entidades.EliminarUsuario(usuario.Cod_usuario);
+                Conector.Entidades.EliminarUsuario(codUsuario);
                 return true;
             }
             catch

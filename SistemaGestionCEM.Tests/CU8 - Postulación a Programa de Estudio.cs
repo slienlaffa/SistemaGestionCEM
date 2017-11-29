@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SistemaGestionCEM.Negocio;
 using SistemaGestionCEM.Datos;
+using System.Linq;
 
 namespace SistemaGestionCEM.Tests
 {
@@ -14,11 +15,7 @@ namespace SistemaGestionCEM.Tests
         public void ListarProgramasPublicados()
         {
             AlumnoNegocio a = new AlumnoNegocio();
-            List<PROGRAMA_ESTUDIO> programas = a.ProgramasPublicados();
-            foreach(PROGRAMA_ESTUDIO p in programas)
-            {
-                Console.WriteLine(p.NOMBRE_PROGRAMA);
-            }
+            var programas = a.ProgramasPublicados().ToList();
             Assert.IsNotNull(programas);
         }
 
@@ -43,7 +40,7 @@ namespace SistemaGestionCEM.Tests
         public void PostulaProgramaCorrectamente()
         {
             AlumnoNegocio a = new AlumnoNegocio();
-            POSTULACION_ALUMNO resultado = a.PostularPrograma(2, 2);
+            POSTULACION_ALUMNO resultado = a.PostularPrograma(2, "Fer.DiazM");
             Assert.IsNotNull(resultado);
         }
 
@@ -51,7 +48,7 @@ namespace SistemaGestionCEM.Tests
         public void PostulaConPostulacionPrevia()
         {
             AlumnoNegocio a = new AlumnoNegocio();
-            POSTULACION_ALUMNO resultado = a.PostularPrograma(2, 1);
+            POSTULACION_ALUMNO resultado = a.PostularPrograma(2, "Fer.DiazM");
             Assert.IsNull(resultado);
         }
     }

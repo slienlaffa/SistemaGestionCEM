@@ -55,6 +55,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Oracle.ManagedDataAccess, Version=4.122.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
       <HintPath>..\packages\Oracle.ManagedDataAccess.12.2.1100\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
       <Private>True</Private>
@@ -65,6 +69,10 @@
     </Reference>
     <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RestSharp.105.2.3\lib\net452\RestSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Rotativa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rotativa.1.6.0\lib\net40\Rotativa.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -132,9 +140,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -207,12 +212,21 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="imagenes\Alumnos-paises.jpg" />
+    <Content Include="imagenes\Alumnitos.jpg" />
     <Content Include="imagenes\Alumnos.jpg" />
-    <Content Include="imagenes\Aula.jpg" />
-    <Content Include="imagenes\Logo-CEM.png" />
+    <Content Include="imagenes\chica.jpg" />
+    <Content Include="imagenes\Estudiantes.jpg" />
+    <Content Include="imagenes\favicon.ico" />
+    <Content Include="imagenes\logo-cem.png" />
+    <Content Include="imagenes\Montreal-2.jpg" />
     <Content Include="imagenes\Montreal.jpg" />
-    <Content Include="imagenes\Simbolo-Academico.jpg" />
+    <Content Include="NuGet.exe" />
+    <Content Include="Rotativa\libeay32.dll" />
+    <Content Include="Rotativa\libgcc_s_dw2-1.dll" />
+    <Content Include="Rotativa\mingwm10.dll" />
+    <Content Include="Rotativa\README.txt" />
+    <Content Include="Rotativa\ssleay32.dll" />
+    <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -223,6 +237,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="App_Browsers\qt.browser" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\CEMTemplate.css" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
@@ -240,7 +255,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -285,12 +302,58 @@
     <Content Include="Views\EncargadoCEM\Index.cshtml" />
     <Content Include="Views\Familia\Index.cshtml" />
     <Content Include="Views\EncargadoCEL\Index.cshtml" />
+    <Content Include="Views\Shared\Partials\_admin.cshtml" />
+    <Content Include="Views\Shared\Partials\_alumno.cshtml" />
+    <Content Include="Views\Shared\Partials\_familia.cshtml" />
+    <Content Include="Views\Shared\Partials\_encargadocem.cshtml" />
+    <Content Include="Views\Shared\Partials\_encargadocel.cshtml" />
+    <Content Include="Views\Admin\SeleccionarUsuario.cshtml" />
+    <Content Include="Views\Admin\DenegarAcceso.cshtml" />
+    <Content Include="Views\Admin\IngresarAlumno.cshtml" />
+    <Content Include="Views\EncargadoCEL\AsignarsePrograma.cshtml" />
+    <Content Include="Views\Alumno\DenegarAcceso.cshtml" />
+    <Content Include="Views\EncargadoCEL\DenegarAcceso.cshtml" />
+    <Content Include="Views\EncargadoCEM\DenegarAcceso.cshtml" />
+    <Content Include="Views\Alumno\VerProgramas.cshtml" />
+    <Content Include="Views\Alumno\DetallesPrograma.cshtml" />
+    <Content Include="Views\EncargadoCEL\RegistrarNotas.cshtml" />
+    <Content Include="Views\EncargadoCEL\EditarNotas.cshtml" />
+    <Content Include="Views\EncargadoCEM\CrearPrograma.cshtml" />
+    <Content Include="Views\EncargadoCEM\PublicarPrograma.cshtml" />
+    <Content Include="Views\EncargadoCEM\PostulacionesPendientes.cshtml" />
+    <Content Include="Views\EncargadoCEM\MostrarEstado.cshtml" />
+    <Content Include="Views\Admin\Delete.cshtml" />
+    <Content Include="Views\Admin\IngresarEncargadoCEL.cshtml" />
+    <Content Include="Views\Admin\IngresarEncargadoCEM.cshtml" />
+    <Content Include="Views\Admin\EditarFamilia.cshtml" />
+    <Content Include="Views\Admin\IngresarFamilia.cshtml" />
+    <Content Include="Views\Admin\EditarAlumno.cshtml" />
+    <Content Include="Views\Admin\EditarEncargadoCEL.cshtml" />
+    <Content Include="Views\Admin\EditarEncargadoCEM.cshtml" />
+    <Content Include="Views\Admin\MostrarCentros.cshtml" />
+    <Content Include="Views\Admin\IngresarCentro.cshtml" />
+    <Content Include="Views\Admin\DetalleCentro.cshtml" />
+    <Content Include="Views\Admin\EditarCentro.cshtml" />
+    <Content Include="Views\Admin\EliminarCentros.cshtml" />
+    <Content Include="Views\Alumno\FamiliasDisponibles.cshtml" />
+    <Content Include="Views\Alumno\VerDetalleFamilia.cshtml" />
+    <Content Include="Views\Alumno\VerAntecedentesFamilia.cshtml" />
+    <Content Include="Views\Familia\SubirAntecedentes.cshtml" />
+    <Content Include="Views\EncargadoCEM\GenerarResumenProgramas.cshtml" />
+    <Content Include="Views\EncargadoCEM\VerCalificacionesAlumnos.cshtml" />
+    <Content Include="Views\EncargadoCEM\SeleccionarPrograma.cshtml" />
+    <Content Include="Views\Alumno\ConsultarPostulacion.cshtml" />
+    <Content Include="Views\Alumno\GenerarCertificadoAprobacion.cshtml" />
+    <Content Include="Views\Alumno\ObtenerCertificado.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="AntecedentesFamilia\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>

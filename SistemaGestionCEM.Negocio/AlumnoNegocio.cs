@@ -8,25 +8,13 @@ using System.Data.Entity.Validation;
 
 namespace SistemaGestionCEM.Negocio
 {
-    public class AlumnoNegocio
+    public class AlumnoNegocio : Negocio
     {
-        const int APROBADO = 2;
-        const int RECHAZADO = 3;
-        const int FINALIZADO = 6;
-        const int CANCELADO = 7;
-
-        public List<PROGRAMA_ESTUDIO> ProgramasPublicados()
+        public IQueryable<POSTULACION_PROGRAMA> ProgramasPublicados()
         {
-            String estado = "Publicado";
-            List<PROGRAMA_ESTUDIO> programasPublicados;
-            using (Entities db = new Entities())
-            {
-                programasPublicados = db.PROGRAMA_ESTUDIO
-                    .Where(r => r.POSTULACION_PROGRAMA
-                    .Any(e => e.ESTADO_POSTULACION.DESCRIPCION == estado))
-                    .ToList();
-            }
-            return programasPublicados;
+            var programas = db.POSTULACION_PROGRAMA.Where(e => e.FK_COD_ESTADO == PUBLICADO
+                    && e.FK_COD_CEL != null);
+            return programas;
         }
 
         public PROGRAMA_ESTUDIO BuscarProgramaEstudio(int codigoPrograma)
@@ -34,10 +22,7 @@ namespace SistemaGestionCEM.Negocio
             try
             {
                 PROGRAMA_ESTUDIO programa;
-                using (Entities db = new Entities())
-                {
-                    programa = db.PROGRAMA_ESTUDIO.Find(codigoPrograma);
-                }
+                programa = db.PROGRAMA_ESTUDIO.Find(codigoPrograma);
                 return programa;
             }
             catch
@@ -46,11 +31,16 @@ namespace SistemaGestionCEM.Negocio
             }
         }
 
-        public POSTULACION_ALUMNO PostularPrograma(int codigoPrograma, int codigoAlumno)
+
+        public POSTULACION_ALUMNO PostularPrograma(int codigoPrograma, string usuario)
         {
 
             try
-            {                
+            {
+                decimal persona = db.USUARIO.Where(u => u.NOMBRE_USUARIO == usuario).FirstOrDefault().PERSONA.FirstOrDefault().COD_PERSONA;
+                var alumno = db.ALUMNO.Where(e => e.FK_COD_PERSONA == persona).FirstOrDefault();
+                int codigoAlumno = (int)alumno.COD_ALUMNO;
+
                 if (alumnoTieneOtrasPostulaciones(codigoAlumno))
                 {
                     POSTULACION_ALUMNO postulacion = new POSTULACION_ALUMNO();
@@ -59,12 +49,10 @@ namespace SistemaGestionCEM.Negocio
                     postulacion.FK_COD_ESTADO = 1;
                     postulacion.FECHA = DateTime.Now;
                     postulacion.SEGURO = null;
-                    using (Entities db = new Entities())
-                    {
-                        postulacion.COD_POSTULACION = GetNextSequenceValuePostulacionAlumno();
-                        db.POSTULACION_ALUMNO.Add(postulacion);
-                        db.SaveChanges();
-                    }
+                    postulacion.COD_POSTULACION = GetNextSequenceValuePostulacionAlumno();
+
+                    db.POSTULACION_ALUMNO.Add(postulacion);
+                    db.SaveChanges();
                     return postulacion;
                }
                 else
@@ -80,17 +68,15 @@ namespace SistemaGestionCEM.Negocio
 
         public bool alumnoTieneOtrasPostulaciones(int codigoAlumno)
         {
-            using (Entities db = new Entities())
-            {
-                ALUMNO alumno = db.ALUMNO.Find(codigoAlumno);
-                // Si el alumno no tiene todas sus postulaciones rechazadas, finalizadas o canceladas 
-                // significa que tiene una activa en algun estado
-                if (alumno.POSTULACION_ALUMNO
-                    .Any(p => p.FK_COD_ESTADO != RECHAZADO
-                    && p.FK_COD_ESTADO != FINALIZADO
-                    && p.FK_COD_ESTADO != CANCELADO))
-                    return false;
-            }
+            ALUMNO alumno = db.ALUMNO.Find(codigoAlumno);
+            // Si el alumno no tiene todas sus postulaciones rechazadas, finalizadas o canceladas 
+            // significa que tiene una activa en algun estado
+            if (alumno.POSTULACION_ALUMNO
+                .Any(p => p.FK_COD_ESTADO != RECHAZADO
+                && p.FK_COD_ESTADO != FINALIZADO
+                && p.FK_COD_ESTADO != CANCELADO))
+                return false;
+
             return true;          
         }
 
@@ -105,28 +91,21 @@ namespace SistemaGestionCEM.Negocio
             }
         }
 
-        public List<FAMILIA_ANFITRIONA> FamiliasDisponibles()
+        public IQueryable<FAMILIA_ANFITRIONA> FamiliasDisponibles()
         {
-            List<FAMILIA_ANFITRIONA> familiasDisponibles;
-            using (Entities db = new Entities())
-            {
-                familiasDisponibles = db.FAMILIA_ANFITRIONA
+            var familiasDisponibles = db.FAMILIA_ANFITRIONA
                     .Where(f => f.POSTULACION_ALUMNO
                     .Any(p => p.FK_COD_ESTADO != RECHAZADO
                     && p.FK_COD_ESTADO != FINALIZADO
-                    && p.FK_COD_ESTADO != CANCELADO))
-                    .ToList();
-            }
+                    && p.FK_COD_ESTADO != CANCELADO));
+         
             return familiasDisponibles;
         }
 
         public FAMILIA_ANFITRIONA RecuperarFamilia(int codigoFamilia)
         {
             FAMILIA_ANFITRIONA familiaDetalle;
-            using (Entities db = new Entities())
-            {
-                familiaDetalle = db.FAMILIA_ANFITRIONA.Find(codigoFamilia);
-            }
+            familiaDetalle = db.FAMILIA_ANFITRIONA.Find(codigoFamilia);
             return familiaDetalle;
         }
 
@@ -154,17 +133,44 @@ namespace SistemaGestionCEM.Negocio
             }
         }
 
+        public List<DETALLE_ALUMNO> GenerarCertificadoAprobacion(ALUMNO alum)
+        {
+            DETALLE_ALUMNO alumno = db.DETALLE_ALUMNO.Where(a => a.ALUMNO.COD_ALUMNO == alum.COD_ALUMNO).FirstOrDefault();
+            if (alumno != null)
+            {
+                if (CursoAprobado((int)alum.COD_ALUMNO))
+                {
+                     List<DETALLE_ALUMNO> listaAlumno = new List<DETALLE_ALUMNO>();
+                     listaAlumno.Add(alumno);
+                    return listaAlumno;
+                }
+                else
+                {
+                    return null;
+                }
+            }         
+            return null;
+        }
+
+        //No se si esto va.
+        public bool CursoAprobado(int codigoAlumno)
+        {
+            var alumno = db.ALUMNO.Find(codigoAlumno);
+            var estado = db.DETALLE_ALUMNO.Where(e => e.ALUMNO.COD_ALUMNO == alumno.COD_ALUMNO).FirstOrDefault();
+            if (estado.ESTADO_ALUMNO.Equals("A"))
+                return true;
+            else
+                return false;
+        }
+
         public bool EsAlumnoAprobado(int codigoAlumno)
         {
-            using (Entities db = new Entities())
-            {
-                int estado = (int)db.ALUMNO.Find(codigoAlumno)
-                    .POSTULACION_ALUMNO.Last().FK_COD_ESTADO;
-                if (estado == APROBADO)
-                    return true;
-                else
-                    return false;                
-            }
+            int estado = (int)db.ALUMNO.Find(codigoAlumno)
+                .POSTULACION_ALUMNO.Last().FK_COD_ESTADO;
+            if (estado == APROBADO)
+                return true;
+            else
+                return false; 
         }
 
         public bool Crear(int codPersona, DateTime fechaNacimiento)

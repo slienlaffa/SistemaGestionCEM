@@ -1,0 +1,41 @@
+﻿@model IEnumerable<SistemaGestionCEM.Datos.PROGRAMA_ESTUDIO>
+
+@{
+    ViewBag.Title = "Registrar Notas";
+}
+
+<h2>Registrar Notas</h2>
+
+<table class="table table-responsive">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.COD_PROGRAMA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NOMBRE_PROGRAMA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TIPO_PROGRAMA.DESCRIPCION)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.COD_PROGRAMA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NOMBRE_PROGRAMA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TIPO_PROGRAMA.DESCRIPCION)
+        </td>
+        <td>
+            @Html.ActionLink("Registrar Notas", "EditarNotas", new { id=item.COD_PROGRAMA })
+        </td>
+    </tr>
+}
+
+</table>

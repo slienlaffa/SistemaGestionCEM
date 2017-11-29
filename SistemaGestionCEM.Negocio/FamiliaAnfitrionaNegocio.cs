@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Web;
 
 namespace SistemaGestionCEM.Negocio
 {
-    public class FamiliaAnfitrionaNegocio
+    public class FamiliaAnfitrionaNegocio : Negocio
     {
         public bool Crear(int numBanos, int codAntecedentes, int anioInscripcion, int numHabitaciones,
-             string tipoVivienda, int numIntegrantes, int codPersona, string estacionamiento,
-             string mascotaDescripcion)
+             string tipoVivienda, int numIntegrantes,int codPersona, string estacionamiento, string mascotaDescripcion)
         {
             try
             {
-                Conector.Entidades.CrearFamilia(numBanos, codAntecedentes, nuevoCodigo(), anioInscripcion,
-                    numHabitaciones, tipoVivienda, numIntegrantes, codPersona, estacionamiento,
-                    mascotaDescripcion);
+                Conector.Entidades.CrearFamilia(numBanos, codAntecedentes, nuevoCodigo(), anioInscripcion, numHabitaciones,
+                    tipoVivienda, numIntegrantes, codPersona, estacionamiento, mascotaDescripcion);
+                    
                 return true;
             }
             catch
@@ -23,6 +24,7 @@ namespace SistemaGestionCEM.Negocio
                 return false;
             }
         }
+  
 
         public bool Actualizar(int numBanos, int codAntecedentes, int codFamilia, int anioInscripcion,
             int numHabitaciones, string tipoVivienda, int numIntegrantes, int codPersona,
@@ -43,6 +45,7 @@ namespace SistemaGestionCEM.Negocio
 
         public bool Eliminar(int codFamilia)
         {
+         
             try
             {
                 Conector.Entidades.EliminarFamilia(codFamilia);

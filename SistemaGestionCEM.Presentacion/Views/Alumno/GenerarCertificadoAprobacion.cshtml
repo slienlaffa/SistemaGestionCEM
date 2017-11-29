@@ -1,0 +1,44 @@
+﻿@model IEnumerable<SistemaGestionCEM.Datos.DETALLE_ALUMNO>
+
+@{
+    ViewBag.Title = "GenerarCertificadoAprobacion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>GenerarCertificadoAprobacion</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ESTADO_ALUMNO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ALUMNO.COD_ALUMNO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PROGRAMA_ESTUDIO.NOMBRE_PROGRAMA)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ESTADO_ALUMNO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ALUMNO.COD_ALUMNO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PROGRAMA_ESTUDIO.NOMBRE_PROGRAMA)
+        </td>
+        <td>
+            @Html.ActionLink("Obtener Certificado", "ObtenerCertificado", new { id=item.COD_DETALUMNO })
+        </td>
+    </tr>
+}
+
+</table>

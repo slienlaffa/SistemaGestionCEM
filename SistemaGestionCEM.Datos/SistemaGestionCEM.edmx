@@ -153,10 +153,10 @@
           </Key>
           <Property Name="COD_POSTULACIONPROGRAMA" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="FECHA" Type="date" Nullable="false" />
-          <Property Name="FK_COD_CEL" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FK_COD_CEL" Type="number" Precision="38" Scale="0" />
           <Property Name="FK_COD_PROGRAMA" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="FK_COD_ESTADO" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="FK_COD_ENCARGADOCEM" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FK_COD_ENCARGADOCEM" Type="number" Precision="38" Scale="0" />
         </EntityType>
         <EntityType Name="PROGRAMA_ESTUDIO">
           <Key>
@@ -414,7 +414,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="POSTPROGRAMA_CEL_FK">
-          <End Role="CENTRO_ESTUDIO_LOCAL" Type="Self.CENTRO_ESTUDIO_LOCAL" Multiplicity="1" />
+          <End Role="CENTRO_ESTUDIO_LOCAL" Type="Self.CENTRO_ESTUDIO_LOCAL" Multiplicity="0..1" />
           <End Role="POSTULACION_PROGRAMA" Type="Self.POSTULACION_PROGRAMA" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CENTRO_ESTUDIO_LOCAL">
@@ -426,7 +426,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="POSTPROGRAMA_ENCEM_FK">
-          <End Role="ENCARGADO_CEM" Type="Self.ENCARGADO_CEM" Multiplicity="1" />
+          <End Role="ENCARGADO_CEM" Type="Self.ENCARGADO_CEM" Multiplicity="0..1" />
           <End Role="POSTULACION_PROGRAMA" Type="Self.POSTULACION_PROGRAMA" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ENCARGADO_CEM">
@@ -1101,7 +1101,7 @@
           <Property Name="MASCOTA_DESCRIPCION" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ANIO_INSCRIPCION" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="FK_COD_PERSONA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="FK_COD_ANTECEDENTES" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FK_COD_ANTECEDENTES" Type="Decimal" Precision="38" Scale="0" Nullable="true" />
           <NavigationProperty Name="ANTECEDENTES" Relationship="Self.FAMILIA__ANTECEDENTES_FK" FromRole="FAMILIA_ANFITRIONA" ToRole="ANTECEDENTES" />
           <NavigationProperty Name="PERSONA" Relationship="Self.FAMILIA_PERSONA_FK" FromRole="FAMILIA_ANFITRIONA" ToRole="PERSONA" />
           <NavigationProperty Name="POSTULACION_ALUMNO" Relationship="Self.POSTUALUMNO_FAMILIA_FK" FromRole="FAMILIA_ANFITRIONA" ToRole="POSTULACION_ALUMNO" />
@@ -1169,10 +1169,10 @@
           </Key>
           <Property Name="COD_POSTULACIONPROGRAMA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="FECHA" Type="DateTime" Nullable="false" />
-          <Property Name="FK_COD_CEL" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FK_COD_CEL" Type="Decimal" Precision="38" Scale="0" Nullable="true" />
           <Property Name="FK_COD_PROGRAMA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="FK_COD_ESTADO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="FK_COD_ENCARGADOCEM" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FK_COD_ENCARGADOCEM" Type="Decimal" Precision="38" Scale="0" Nullable="true" />
           <NavigationProperty Name="CENTRO_ESTUDIO_LOCAL" Relationship="Self.POSTPROGRAMA_CEL_FK" FromRole="POSTULACION_PROGRAMA" ToRole="CENTRO_ESTUDIO_LOCAL" />
           <NavigationProperty Name="ENCARGADO_CEM" Relationship="Self.POSTPROGRAMA_ENCEM_FK" FromRole="POSTULACION_PROGRAMA" ToRole="ENCARGADO_CEM" />
           <NavigationProperty Name="ESTADO_POSTULACION" Relationship="Self.POSTPROGRAMA_ESTADO_FK" FromRole="POSTULACION_PROGRAMA" ToRole="ESTADO_POSTULACION" />
@@ -1264,7 +1264,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FAMILIA__ANTECEDENTES_FK">
-          <End Role="ANTECEDENTES" Type="Self.ANTECEDENTES" Multiplicity="1" />
+          <End Role="ANTECEDENTES" Type="Self.ANTECEDENTES" Multiplicity="0..1" />
           <End Role="FAMILIA_ANFITRIONA" Type="Self.FAMILIA_ANFITRIONA" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ANTECEDENTES">
@@ -1300,7 +1300,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="POSTPROGRAMA_CEL_FK">
-          <End Role="CENTRO_ESTUDIO_LOCAL" Type="Self.CENTRO_ESTUDIO_LOCAL" Multiplicity="1" />
+          <End Role="CENTRO_ESTUDIO_LOCAL" Type="Self.CENTRO_ESTUDIO_LOCAL" Multiplicity="0..1" />
           <End Role="POSTULACION_PROGRAMA" Type="Self.POSTULACION_PROGRAMA" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CENTRO_ESTUDIO_LOCAL">
@@ -1384,7 +1384,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="POSTPROGRAMA_ENCEM_FK">
-          <End Role="ENCARGADO_CEM" Type="Self.ENCARGADO_CEM" Multiplicity="1" />
+          <End Role="ENCARGADO_CEM" Type="Self.ENCARGADO_CEM" Multiplicity="0..1" />
           <End Role="POSTULACION_PROGRAMA" Type="Self.POSTULACION_PROGRAMA" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ENCARGADO_CEM">
@@ -1676,7 +1676,7 @@
             <Parameter Name="P_FK_COD_TIPO" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="EliminarUsuario">
-            <Parameter Name="P_COD_USUARIO" Mode="In" Type="Decimal" />
+          <Parameter Name="P_COD_USUARIO" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="CrearAlumno">
             <Parameter Name="P_COD_ALUMNO" Mode="In" Type="Decimal" />
@@ -1689,7 +1689,7 @@
             <Parameter Name="P_FECHA_NACIMIENTO" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="EliminarAlumno">
-            <Parameter Name="P_COD_ALUMNO" Mode="In" Type="Decimal" />
+          <Parameter Name="P_COD_ALUMNO" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="CrearPersona">
             <Parameter Name="P_APELLIDO" Mode="In" Type="String" />
@@ -1714,7 +1714,7 @@
             <Parameter Name="P_FK_COD_GENERO" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="EliminarPersona">
-            <Parameter Name="P_COD_PERSONA" Mode="In" Type="Decimal" />
+          <Parameter Name="P_COD_PERSONA" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="CrearFamilia">
             <Parameter Name="P_NUM_BANOS" Mode="In" Type="Decimal" />
@@ -1741,7 +1741,7 @@
             <Parameter Name="P_MASCOTA_DESCRIPCION" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="EliminarFamilia">
-            <Parameter Name="P_COD_FAMILIA" Mode="In" Type="Decimal" />
+          <Parameter Name="P_COD_FAMILIA" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="CrearAntecedentes">
             <Parameter Name="P_FOTO3" Mode="In" Type="String" />
@@ -1762,7 +1762,7 @@
             <Parameter Name="P_CERT_ANTECEDENTES" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="EliminarAntecedentes">
-            <Parameter Name="P_COD_ALUMNO" Mode="In" Type="Decimal" />
+          <Parameter Name="P_COD_ALUMNO" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="CrearEncargadoCEL">
             <Parameter Name="P_FK_COD_CEL" Mode="In" Type="Decimal" />
@@ -1775,7 +1775,7 @@
             <Parameter Name="P_COD_ENCARGADOCEL" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="EliminarEncargadoCEL">
-            <Parameter Name="P_COD_ENCARGADOCEL" Mode="In" Type="Decimal" />
+          <Parameter Name="P_COD_ENCARGADOCEL" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="CrearEncargadoCEM">
             <Parameter Name="P_FK_COD_PERSONA" Mode="In" Type="Decimal" />
@@ -1786,7 +1786,7 @@
             <Parameter Name="P_COD_ENCARGADOCEM" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="EliminarEncargadoCEM">
-            <Parameter Name="P_COD_ENCARGADOCEM" Mode="In" Type="Decimal" />
+          <Parameter Name="P_COD_ENCARGADOCEM" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="CrearCEL">
             <Parameter Name="P_DIRECCION" Mode="In" Type="String" />
@@ -1811,7 +1811,7 @@
             <Parameter Name="P_NOM_DIRECTOR" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="EliminarCEL">
-            <Parameter Name="P_COD_CEL" Mode="In" Type="Decimal" />
+          <Parameter Name="P_COD_CEL" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="CrearProgramaEstudio">
             <Parameter Name="P_FECHA_LIMITE_POSTULACION" Mode="In" Type="DateTime" />
@@ -1840,7 +1840,7 @@
             <Parameter Name="P_NOMBRE_PROGRAMA" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="EliminarProgramaEstudio">
-            <Parameter Name="P_COD_PROGRAMA" Mode="In" Type="Decimal" />
+          <Parameter Name="P_COD_PROGRAMA" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="CrearPostulacionPrograma">
             <Parameter Name="P_FK_COD_CEL" Mode="In" Type="Decimal" />
@@ -1859,7 +1859,7 @@
             <Parameter Name="P_FK_COD_ESTADO" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="EliminarPostulacionPrograma">
-            <Parameter Name="P_COD_POSTULACIONPROGRAMA" Mode="In" Type="Decimal" />
+          <Parameter Name="P_COD_POSTULACIONPROGRAMA" Mode="In" Type="Decimal" />
           </FunctionImport>
           <AssociationSet Name="POSTALUMNO_ENCEM_FK" Association="Modelos.POSTALUMNO_ENCEM_FK">
             <End Role="ENCARGADO_CEM" EntitySet="ENCARGADO_CEM" />
@@ -2119,6 +2119,29 @@
                 <ScalarProperty Name="FK_COD_ESTADO" ColumnName="FK_COD_ESTADO" />
                 <ScalarProperty Name="FK_COD_ENCARGADOCEM" ColumnName="FK_COD_ENCARGADOCEM" />
               </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="Modelos.POSTULACION_PROGRAMA">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="Modelos.Store.POSTULACION_PROGRAMA_CRUD_CREAR" >
+                  <ScalarProperty Name="FK_COD_ESTADO" ParameterName="P_FK_COD_ESTADO" />
+                  <ScalarProperty Name="COD_POSTULACIONPROGRAMA" ParameterName="P_COD_POSTULACIONPROGRAMA" />
+                  <ScalarProperty Name="FECHA" ParameterName="P_FECHA" />
+                  <ScalarProperty Name="FK_COD_ENCARGADOCEM" ParameterName="P_FK_COD_ENCARGADOCEM" />
+                  <ScalarProperty Name="FK_COD_PROGRAMA" ParameterName="P_FK_COD_PROGRAMA" />
+                  <ScalarProperty Name="FK_COD_CEL" ParameterName="P_FK_COD_CEL" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="Modelos.Store.POSTULACION_PROGRAMA_CRUD_ACTUALIZAR" >
+                  <ScalarProperty Name="FK_COD_ESTADO" ParameterName="P_FK_COD_ESTADO" Version="Current" />
+                  <ScalarProperty Name="COD_POSTULACIONPROGRAMA" ParameterName="P_COD_POSTULACIONPROGRAMA" Version="Current" />
+                  <ScalarProperty Name="FECHA" ParameterName="P_FECHA" Version="Current" />
+                  <ScalarProperty Name="FK_COD_ENCARGADOCEM" ParameterName="P_FK_COD_ENCARGADOCEM" Version="Current" />
+                  <ScalarProperty Name="FK_COD_PROGRAMA" ParameterName="P_FK_COD_PROGRAMA" Version="Current" />
+                  <ScalarProperty Name="FK_COD_CEL" ParameterName="P_FK_COD_CEL" Version="Current" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="Modelos.Store.POSTULACION_PROGRAMA_CRUD_ELIMINAR" >
+                  <ScalarProperty Name="COD_POSTULACIONPROGRAMA" ParameterName="P_COD_POSTULACIONPROGRAMA" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PROGRAMA_ESTUDIO">

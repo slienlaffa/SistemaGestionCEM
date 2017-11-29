@@ -2,49 +2,65 @@
 * {
    
     box-sizing:border-box;
-    padding-top:0;
+    margin:auto;
 }
 body {
-  
-    font-family: sans-serif;
-    padding-bottom:100em;
+     margin:auto;
+    margin-top:0;
+    font-family: Helvetica, sans-serif;
 }
 .logoTitulo {
-    
+
     background:#333;
     color:white;
-    padding:20px;
+    padding:5px;
+    margin-top:2px;
     text-align:center;
+    height:100px;
+    margin-bottom:0;
 }
 
+#registros 
+{
+    background-color: #1b1b1b;
+    color: white;
+    border-radius: 5px 6px;
+}
 
 .menu {
-    margin:0;
-    margin-top:0;
-    background-color: #1abc9c;
+    margin-top:0px;
+    margin:auto;
     font-family: Helvetica;
     background: -webkit-linear-gradient(#3939ac, #5353c6, #3939ac); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(#3939ac, #5353c6, #3939ac); /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(#3939ac, #5353c6, #3939ac); /* For Firefox 3.6 to 15 */
     background: linear-gradient(#3939ac, #5353c6, #3939ac); /* Standard syntax */
-    transition:all 3s;
+    width: 70%;
+}
+.dropdown-menu
+{
+    background: -webkit-linear-gradient(#3939ac, #5353c6, #3939ac); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#3939ac, #5353c6, #3939ac); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#3939ac, #5353c6, #3939ac); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#3939ac, #5353c6, #3939ac); /* Standard syntax */
+}
+.contenidoCentral {
+    margin-top:0;
+    margin:auto;
+    height:70%;
+    width:70%;
+    max-height:1000px;
+    /*background: rgba(2,3,3,.1);*/
 }
 
 .fixed 
 {
     position:fixed;
     z-index:1000;
-    box-shadow: 0px, 4px, 3px, rgba(0,0,0,.5);
+    box-shadow: 1px 4px 3px rgba(0,0,0,.5);
     top:0;
     left:0;
     width:100%;
-}
-
-
-.inner {
-    height:80%;
-    margin:auto;
-    image-resolution:inherit;
 }
 
 #myNavbar a {
@@ -63,6 +79,8 @@ footer {
     background: linear-gradient(#3939ac, #5353c6, #3939ac); /* Standard syntax */
     font-family: 'Times New Roman', 'Times New Roman';
     color: white;
+    margin-top:900px;
+    padding:1px;
 }
 
 .carousel-inner img {

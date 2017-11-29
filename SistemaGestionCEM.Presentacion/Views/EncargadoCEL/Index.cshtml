@@ -1,7 +1,36 @@
-﻿
+﻿@model IEnumerable<SistemaGestionCEM.Datos.POSTULACION_PROGRAMA>
+
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Encargado CEL</h2>
+<h2>Programas de estudios de este CEL</h2>
 
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CENTRO_ESTUDIO_LOCAL.NOMBRE_CENTRO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ESTADO_POSTULACION.DESCRIPCION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PROGRAMA_ESTUDIO.NOMBRE_PROGRAMA)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CENTRO_ESTUDIO_LOCAL.NOMBRE_CENTRO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ESTADO_POSTULACION.DESCRIPCION)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PROGRAMA_ESTUDIO.NOMBRE_PROGRAMA)
+        </td>
+    </tr>
+}
+
+</table>

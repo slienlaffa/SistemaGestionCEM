@@ -11,8 +11,6 @@ namespace SistemaGestionCEM.Datos
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class FAMILIA_ANFITRIONA
     {
@@ -23,37 +21,17 @@ namespace SistemaGestionCEM.Datos
         }
     
         public decimal COD_FAMILIA { get; set; }
-        [Required]
-        [DisplayName("Cantidad de Integrantes")]
         public decimal NUM_INTEGRANTES { get; set; }
-
-        [Required]
-        [DisplayName("Cantidad de Habitaciones")]
         public decimal NUM_HABITACIONES { get; set; }
-
-        [Required]
-        [DisplayName("Cantidad de Baños")]
         public decimal NUM_BANOS { get; set; }
-
-        [Required]
-        [DisplayName("Tipo de Vivienda")] //Select
         public string TIPO_VIVIENDA { get; set; }
-
-        [Required]
-        [DisplayName("¿Posee estacionamiento?")]
         public string ESTACIONAMIENTO { get; set; }
-
-        [Required]
-        [DisplayName("Posee Mascotas? si la respuesta es si, especifique.")]
         public string MASCOTA_DESCRIPCION { get; set; }
-
         public decimal ANIO_INSCRIPCION { get; set; }
-
         public decimal FK_COD_PERSONA { get; set; }
-        public decimal FK_COD_ANTECEDENTES { get; set; }
+        public Nullable<decimal> FK_COD_ANTECEDENTES { get; set; }
     
         public virtual ANTECEDENTES ANTECEDENTES { get; set; }
-        [Required]
         public virtual PERSONA PERSONA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<POSTULACION_ALUMNO> POSTULACION_ALUMNO { get; set; }

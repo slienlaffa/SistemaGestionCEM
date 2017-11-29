@@ -12,7 +12,7 @@ namespace SistemaGestionCEM.Negocio
             try
             {
                 //agregar validacion de requisitos (cuales son?)
-                Conector.Entidades.CrearPostulacionPrograma(codCEL,codPrograma,codEncargadoCEM,fecha,nuevoCodigo(),codEstado);
+                Conector.Entidades.CrearPostulacionPrograma(codCEL, codPrograma, codEncargadoCEM, fecha, nuevoCodigo(), codEstado);
                 return true;
             }
             catch

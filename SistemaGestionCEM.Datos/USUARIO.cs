@@ -11,9 +11,7 @@ namespace SistemaGestionCEM.Datos
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class USUARIO
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,19 +21,8 @@ namespace SistemaGestionCEM.Datos
         }
     
         public decimal COD_USUARIO { get; set; }
-
-        [Required(ErrorMessage = "Ingrese su nombre de usuario", AllowEmptyStrings = false)]
-        [DisplayName("Nombre de usuario")]
-        [MaxLength(20, ErrorMessage = "No exceda los 20 caracteres"),]
         public string NOMBRE_USUARIO { get; set; }
-
-        [Required(ErrorMessage = "Ingrese su contraseña", AllowEmptyStrings = false)]
-        [DisplayName("Contraseña")]
-        [DataType(DataType.Password)]
-        [MaxLength(20, ErrorMessage = "No exceda los 20 caracteres"),]
         public string CONTRASENNA { get; set; }
-
-
         public decimal FK_COD_TIPO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using SistemaGestionCEM.Negocio;
 using SistemaGestionCEM.Datos;
@@ -11,6 +9,11 @@ namespace SistemaGestionCEM.Presentacion.Controllers
     public class HomeController : Controller
     {
         private Entities db = new Entities();
+        FamiliaAnfitrionaNegocio familiaNegocio = new FamiliaAnfitrionaNegocio();
+        PersonaNegocio pn = new PersonaNegocio();
+        UsuarioNegocio unegocio = new UsuarioNegocio();
+        AlumnoNegocio alumnoNegocio = new AlumnoNegocio();
+
 
         public ActionResult Index()
         {
@@ -51,16 +54,18 @@ namespace SistemaGestionCEM.Presentacion.Controllers
 
                     if (user2.valida(user, pass))
                     {
+                        TempData["info"] = "Bienvenido.";
                         return CrearSesion(user);
                     }
                     else
                     {
-                        ViewBag.Message = "Nombre de Usuario o Contraseña incorrectos";
+                        ViewBag.Message = "Usuario o contraseña incorrectos.";
                         return View();
                     }
 
                 }   
             }
+            
             return View();
         }
 
@@ -120,7 +125,7 @@ namespace SistemaGestionCEM.Presentacion.Controllers
         {
             CargarDropDownList();
 
-            if (!ModelState.IsValid)
+            if (! ModelState.IsValid)
             {
                 return View();
             }
@@ -138,7 +143,7 @@ namespace SistemaGestionCEM.Presentacion.Controllers
                     return View();
                 }
 
-                PersonaNegocio pn = new PersonaNegocio();
+               
                 PERSONA nuevaPersona = db.PERSONA.Create();
 
                 nuevaPersona.COD_PERSONA = pn.nuevoCodigo();
@@ -150,7 +155,7 @@ namespace SistemaGestionCEM.Presentacion.Controllers
                 nuevaPersona.FK_COD_GENERO = nuevaFamilia.PERSONA.FK_COD_GENERO;
                 nuevaPersona.FK_COD_CIUDAD = nuevaFamilia.PERSONA.FK_COD_CIUDAD;
 
-                UsuarioNegocio unegocio = new UsuarioNegocio();
+              
                 USUARIO usuario = db.USUARIO.Create();
                 usuario.COD_USUARIO = unegocio.nuevoCodigo();
                 usuario.NOMBRE_USUARIO = nuevaFamilia.PERSONA.USUARIO.NOMBRE_USUARIO;
@@ -164,10 +169,10 @@ namespace SistemaGestionCEM.Presentacion.Controllers
                 db.USUARIO.Add(usuario);
                 db.SaveChanges();
 
-                FamiliaAnfitrionaNegocio anegocio = new FamiliaAnfitrionaNegocio();
-                anegocio.Crear((int)nuevaFamilia.NUM_BANOS, 0, DateTime.Now.Year, (int)nuevaFamilia.NUM_HABITACIONES, nuevaFamilia.TIPO_VIVIENDA, (int)nuevaFamilia.NUM_INTEGRANTES, 
+              
+                familiaNegocio.Crear((int)nuevaFamilia.NUM_BANOS, 1, DateTime.Now.Year, (int)nuevaFamilia.NUM_HABITACIONES, nuevaFamilia.TIPO_VIVIENDA, (int)nuevaFamilia.NUM_INTEGRANTES, 
                     (int)nuevaPersona.COD_PERSONA, nuevaFamilia.ESTACIONAMIENTO, nuevaFamilia.MASCOTA_DESCRIPCION);
-
+                TempData["info"] = "Bienvenido.";
                 return CrearSesion(usuario.NOMBRE_USUARIO);
             }
         }
@@ -195,10 +200,9 @@ namespace SistemaGestionCEM.Presentacion.Controllers
             {
                 ViewBag.Message = "El nombre de usuario '" + nuevoAlumno.PERSONA.USUARIO.NOMBRE_USUARIO +
                     "' ya existe, por favor ingrese otro distinto!";
-                return View("Index");
+                return View();
             }
 
-            // Cambiar por pn.Crear();
             PersonaNegocio pn = new PersonaNegocio();
             PERSONA nuevaPersona = db.PERSONA.Create();
         
@@ -211,7 +215,7 @@ namespace SistemaGestionCEM.Presentacion.Controllers
             nuevaPersona.FK_COD_GENERO = nuevoAlumno.PERSONA.FK_COD_GENERO;
             nuevaPersona.FK_COD_CIUDAD = nuevoAlumno.PERSONA.FK_COD_CIUDAD;
 
-            UsuarioNegocio unegocio = new UsuarioNegocio();
+          
             USUARIO usuario = db.USUARIO.Create();
             usuario.COD_USUARIO = unegocio.nuevoCodigo();
             usuario.NOMBRE_USUARIO = nuevoAlumno.PERSONA.USUARIO.NOMBRE_USUARIO;
@@ -225,10 +229,13 @@ namespace SistemaGestionCEM.Presentacion.Controllers
             db.USUARIO.Add(usuario);     
             db.SaveChanges();
 
-            AlumnoNegocio anegocio = new AlumnoNegocio();
-            anegocio.Crear((int)nuevaPersona.COD_PERSONA, nuevoAlumno.FECHA_NACIMIENTO);
-
+           
+            alumnoNegocio.Crear((int)nuevaPersona.COD_PERSONA, nuevoAlumno.FECHA_NACIMIENTO);
+            //api
+            Negocio.Email.RegistroExitoso(nuevaPersona.NOMBRE,nuevaPersona.CORREO,nuevaPersona.USUARIO.NOMBRE_USUARIO);
+            TempData["info"] = "Bienvenido.";
             return CrearSesion(usuario.NOMBRE_USUARIO);
+
         }
         public void CargarDropDownList()
         {

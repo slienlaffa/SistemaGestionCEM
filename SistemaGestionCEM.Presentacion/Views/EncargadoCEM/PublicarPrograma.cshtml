@@ -1,0 +1,35 @@
+﻿@model IEnumerable<SistemaGestionCEM.Datos.POSTULACION_PROGRAMA>
+
+@{
+    ViewBag.Title = "Publicar Programa";
+}
+
+<h2>Publicar Programa</h2>
+
+<table class="table table-responsive">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PROGRAMA_ESTUDIO.NOMBRE_PROGRAMA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ESTADO_POSTULACION.DESCRIPCION)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PROGRAMA_ESTUDIO.NOMBRE_PROGRAMA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ESTADO_POSTULACION.DESCRIPCION)
+        </td>
+        <td>
+            @Html.ActionLink("Publicar", "Publicar", new { id=item.COD_POSTULACIONPROGRAMA }) |
+            @Html.ActionLink("Cancelar Programa", "Cancelar", new { id=item.COD_POSTULACIONPROGRAMA })
+        </td>
+    </tr>
+}
+
+</table>

@@ -28,7 +28,7 @@
                     @Html.LabelFor(model => model.NOMBRE_USUARIO, new { @class = "control-label" })
                 </td>
                 <td>
-                    @Html.EditorFor(model => model.NOMBRE_USUARIO, new { @class = "form-control" })
+                    @Html.EditorFor(model => model.NOMBRE_USUARIO, new { htmlAttributes = new { @class = "form-control" } })
                 </td>
                 <td>
                     <span style="color:red;">@Html.ValidationMessageFor(model => model.NOMBRE_USUARIO)</span>
@@ -40,7 +40,7 @@
 
                 </td>
                 <td>
-                    @Html.EditorFor(model => model.CONTRASENNA)
+                    @Html.EditorFor(model => model.CONTRASENNA, new { htmlAttributes = new { @class = "form-control" } })
                 </td>
                 <td>
                     <span style="color:red;">@Html.ValidationMessageFor(model => model.CONTRASENNA)</span>
@@ -57,8 +57,8 @@
             </tr>
             <tr>
                 <td>
-                    <p><b>No tienes una cuenta? registrate como alumno, o familia!</b></p>
-                    <p>@Html.ActionLink("Registrarme como Alumno", "AutoRegistroAlumno", "Home") ó @Html.ActionLink("Registrarme como Familia", "AutoRegistroFamilia", "Home")</p>
+                    <p><b>¿No tienes una cuenta? ¡Registrate como alumno o como familia!</b></p>
+                    <p>@Html.ActionLink("Registrarme como Alumno", "AutoRegistroAlumno", "Home") o @Html.ActionLink("Registrarme como Familia", "AutoRegistroFamilia", "Home")</p>
                 </td>
             </tr>
         </table>

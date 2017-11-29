@@ -1,0 +1,36 @@
+﻿@model SistemaGestionCEM.Datos.POSTULACION_ALUMNO
+
+@{
+    ViewBag.Title = "ConsultarPostulacion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section ContenidoCentral
+{
+        <h2>Estado de mi postulacion</h2>
+
+    <div>
+        <h4>POSTULACION_ALUMNO</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.PROGRAMA_ESTUDIO.NOMBRE_PROGRAMA)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PROGRAMA_ESTUDIO.NOMBRE_PROGRAMA)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ESTADO_POSTULACION.DESCRIPCION)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ESTADO_POSTULACION.DESCRIPCION)
+            </dd>
+        </dl>
+    </div>
+    <p>
+      
+        @Html.ActionLink("Volver al inicio", "Index")
+    </p>
+}
+

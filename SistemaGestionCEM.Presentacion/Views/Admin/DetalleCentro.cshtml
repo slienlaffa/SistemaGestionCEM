@@ -1,0 +1,88 @@
+﻿@model SistemaGestionCEM.Datos.CENTRO_ESTUDIO_LOCAL
+
+@{
+    ViewBag.Title = "Datos de Centros";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@section ContenidoCentral
+{
+
+    <h2>Datos de Centro de Estudio Local</h2>
+
+    <div>
+        <h4></h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.NOMBRE_CENTRO)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NOMBRE_CENTRO)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.NOM_DIRECTOR)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NOM_DIRECTOR)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AREA_ESPECIALIZACION)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AREA_ESPECIALIZACION)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DIRECCION)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DIRECCION)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CORREO)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CORREO)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TELEFONO)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TELEFONO)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DESCRIPCION)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DESCRIPCION)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CIUDAD.DESCRIPCION)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CIUDAD.DESCRIPCION)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Modificar Datos", "EditarCentro", new { id = Model.COD_CEL }) |
+        @Html.ActionLink("Volver a Centros", "MostrarCentros")
+    </p>
+
+}

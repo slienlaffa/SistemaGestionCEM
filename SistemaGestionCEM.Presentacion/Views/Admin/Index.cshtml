@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<SistemaGestionCEM.Datos.PERSONA>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -15,36 +15,91 @@
     {
         nombre = Session["Nombre"].ToString();
     }
+
+    var tipos = new List<SelectListItem>();
+    tipos.Add(new SelectListItem
+    {
+        Text = "Alumno",
+        Value = "2"
+    });
+    tipos.Add(new SelectListItem
+    {
+        Text = "Familia",
+        Value = "3"
+    });
+    tipos.Add(new SelectListItem
+    {
+        Text = "Encargado CEM",
+        Value = "4"
+    });
+    tipos.Add(new SelectListItem
+    {
+        Text = "Encargado CEL",
+        Value = "5"
+    });
+
 }
 
 @section ContenidoCentral
 {
 
     <h2>Bienvenido a su panel administrativo, @nombre</h2>
-    <h3>Seleccione una opcion </h3>
-        
+    <h3>Esta es una lista de todos los usuarios disponibles en el sistema.</h3>
 
-    <div id="usuariosAdmin" class="col-lg-1">
-        <h1>Administracion de Usuarios</h1>
-        @Html.ActionLink("Ingresar usuario", "IngresarUsuario", "Admin")
-        @Html.ActionLink("Mostrar usuarios", "MostrarUsuarios", "Admin")
-        @Html.ActionLink("Modificar usuarios", "ModificarUsuarios", "Admin")
-        @Html.ActionLink("Eliminar usuarios", "EliminarUsuarios", "Admin")
-    </div>
+ 
+        <table class="table table-responsive">
+            @using (Html.BeginForm("Index", "Admin", FormMethod.Post))
+            {
+            
+                <tr>
+                    <td>
+                        <h4 class="success">Aplicar filtro</h4>
+                    </td>
+                    <td>@Html.DropDownList("listaTipos", tipos, "Todos los usuarios", htmlAttributes: new { @class = "form-control", @id = "lista" })</td>
+                    <td>
+                        <input class="btn btn-success" type="submit" value="Aplicar Filtro"/>
+                       
+                    </td>
+                </tr>
+            }
+          
+            <tr>  
+                <th>
+                    @Html.DisplayNameFor(model => model.NOMBRE)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.USUARIO.NOMBRE_USUARIO)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.USUARIO.TIPO_USUARIO.DESCRIPCION)
+                </th>
+                <th>
+                    Acción
+                </th>
+            </tr>
 
-    <div id="centrosAdmin">
-        <h1>Administracion de Centros</h1>
-        @Html.ActionLink("Ingresar un Centro", "IngresarCentro", "Admin")
-        @Html.ActionLink("Mostrar Centros", "MostrarCentros", "Admin")
-        @Html.ActionLink("Modificar Centros", "ModificarCentros", "Admin")
-        @Html.ActionLink("Eliminar Centros", "EliminarCentros", "Admin")
-    </div>
-
-    <div id="programasAdmin">
-        <h1>Administracion de Programas</h1>
-        @Html.ActionLink("Crear un Programa de Estudio", "CrearPrograma", "Admin")
-        @Html.ActionLink("Publicar un Programa", "PublicarPrograma", "Admin") 
-    </div>
+            @foreach (var item in Model)
+            {
+                    <tr> 
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NOMBRE)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.USUARIO.NOMBRE_USUARIO)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.USUARIO.TIPO_USUARIO.DESCRIPCION)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Modificar datos", "Edit", new { id = item.COD_PERSONA }) |
+                            @Html.ActionLink("Ver Detalle", "Detalle", new { id = item.COD_PERSONA }) |
+                            @Html.ActionLink("Eliminar", "Delete", new { id = item.COD_PERSONA})
+                        </td>
+                    </tr>
+                }
+        </table>
+    
+   
 }
 
 

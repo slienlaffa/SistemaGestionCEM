@@ -1,0 +1,61 @@
+﻿@model IEnumerable<SistemaGestionCEM.Datos.DETALLE_NOTAS>
+
+@{
+    ViewBag.Title = "Calificaciones";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section ContenidoCentral
+{
+    <h2>Ver Calificaciones de Alumnos por Programa</h2>
+
+<table class="table table-responsive">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DETALLE_ALUMNO.ALUMNO.PERSONA.NOMBRE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NOTA1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NOTA2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NOTA3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NOTA4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PROMEDIO)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DETALLE_ALUMNO.ALUMNO.PERSONA.NOMBRE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NOTA1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NOTA2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NOTA3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NOTA4)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PROMEDIO)
+            </td>
+        </tr>
+
+        @Html.ActionLink("Volver a Inicio", "Index")
+    }
+
+</table>
+    
+}

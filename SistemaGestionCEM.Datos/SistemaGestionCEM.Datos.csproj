@@ -92,9 +92,11 @@
     <Compile Include="GENERO.cs">
       <DependentUpon>SistemaGestionCEM.tt</DependentUpon>
     </Compile>
+    <Compile Include="Metadata.cs" />
     <Compile Include="PAIS.cs">
       <DependentUpon>SistemaGestionCEM.tt</DependentUpon>
     </Compile>
+    <Compile Include="PartialClasses.cs" />
     <Compile Include="PERSONA.cs">
       <DependentUpon>SistemaGestionCEM.tt</DependentUpon>
     </Compile>

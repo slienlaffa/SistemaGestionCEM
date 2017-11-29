@@ -1,0 +1,53 @@
+﻿@model IEnumerable<SistemaGestionCEM.Datos.POSTULACION_PROGRAMA>
+
+@{
+    ViewBag.Title = "Resumen de Programas";
+    var resumen = ViewData["resumen"] as Dictionary<string, int>;
+}
+
+@section contenidoCentral
+{
+    <h2>Resumen de Programas</h2>
+
+@foreach (var element in resumen)
+{
+    <span> [@element.Key = @element.Value] </span>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FECHA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CENTRO_ESTUDIO_LOCAL.NOMBRE_CENTRO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ESTADO_POSTULACION.DESCRIPCION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PROGRAMA_ESTUDIO.NOMBRE_PROGRAMA)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FECHA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CENTRO_ESTUDIO_LOCAL.NOMBRE_CENTRO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ESTADO_POSTULACION.DESCRIPCION)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PROGRAMA_ESTUDIO.NOMBRE_PROGRAMA)
+            </td>
+        </tr>
+    }
+
+</table>
+
+}
