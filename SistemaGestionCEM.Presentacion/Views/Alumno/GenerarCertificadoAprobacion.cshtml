@@ -36,9 +36,7 @@
             @Html.DisplayFor(modelItem => item.PROGRAMA_ESTUDIO.NOMBRE_PROGRAMA)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.COD_DETALUMNO }) |
-            @Html.ActionLink("Details", "Details", new { id=item.COD_DETALUMNO }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.COD_DETALUMNO })
+            @Html.ActionLink("Obtener Certificado", "ObtenerCertificado", new { id=item.COD_DETALUMNO })
         </td>
     </tr>
 }

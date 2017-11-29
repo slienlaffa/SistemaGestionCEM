@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0710a7f19c5a4315b474c8e764f8bab2" Name="Diagram1" ZoomLevel="111">
+      <Diagram DiagramId="0710a7f19c5a4315b474c8e764f8bab2" Name="Diagram1" ZoomLevel="67">
         <EntityTypeShape EntityType="Modelos.ALUMNO" Width="1.5" PointX="10.5" PointY="7.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Modelos.ANTECEDENTES" Width="1.5" PointX="13.25" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Modelos.CENTRO_ESTUDIO_LOCAL" Width="1.5" PointX="5.25" PointY="12.375" IsExpanded="true" />
@@ -51,12 +51,14 @@
         <AssociationConnector Association="Modelos.PROGRAMA_TIPO_FK" ManuallyRouted="false" />
         <AssociationConnector Association="Modelos.USUARIO_TIPO_FK" ManuallyRouted="false" />
         <AssociationConnector Association="Modelos.POSTALUMNO_ENCEM_FK" ManuallyRouted="true" >
-          <ConnectorPoint PointX="12" PointY="16.43730669230769" />
+          <ConnectorPoint PointX="12" PointY="17.457934121700678" />
           <ConnectorPoint PointX="12.46354166666667" PointY="15.99980669230769" />
-          <ConnectorPoint PointX="12.46354166666667" PointY="13.766426153645828" />
-          <ConnectorPoint PointX="12.947916666666666" PointY="13.766426153645828" />
-          <ConnectorPoint PointX="13.114583333333334" PointY="13.766426153645828" />
-          <ConnectorPoint PointX="13.375" PointY="13.766426153645828" />
+          <ConnectorPoint PointX="12.65197603955599" PointY="15.99980669230769" />
+          <ConnectorPoint PointX="12.65197603955599" PointY="21.558859042428892" />
+          <ConnectorPoint PointX="12.46354166666667" PointY="21.558859042428892" />
+          <ConnectorPoint PointX="12.640981237007104" PointY="20.225741293296839" />
+          <ConnectorPoint PointX="12.662970842104876" PointY="20.060531623345526" />
+          <ConnectorPoint PointX="13.375" PointY="14.710999348958334" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>

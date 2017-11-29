@@ -7,6 +7,7 @@ using SistemaGestionCEM.Negocio;
 using System.Net;
 using SistemaGestionCEM.Datos;
 
+
 namespace SistemaGestionCEM.Presentacion.Controllers
 {
     public class AlumnoController : Controller
@@ -117,6 +118,14 @@ namespace SistemaGestionCEM.Presentacion.Controllers
                 }
             }
             return View();
+        }
+
+        public ActionResult ObtenerCertificado(decimal id)
+        {
+            var model = db.ALUMNO.Find(id);
+            //Code to get content
+            return new Rotativa.ViewAsPdf("ObtenerCertificado", model);// { FileName = "TestViewAsPdf.pdf" };  
+            // Si se le pone nombre se descarga el pdf
         }
 
         public ActionResult VerAntecedentesFamilia(decimal? id)
