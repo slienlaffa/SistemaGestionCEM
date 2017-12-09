@@ -59,3 +59,7 @@ textarea {
       height: 60%;
       margin: auto;
   }
+
+td{    
+    font-size: 115%;
+}

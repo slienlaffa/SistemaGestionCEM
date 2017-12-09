@@ -10,16 +10,40 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Obtener Certificado</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <style type="text/css">
         body {
+        }
+        p{
+
         }
     </style>
 </head>
 <body>
-    <div> 
-        <center><h1>Certificado</h1></center>
-        <hr />
-        El alumno @Model.PERSONA.NOMBRE aprobo la wea
+    <div class="container"> 
+        <center>
+            <h2><img alt="Logo CEM" src="~/imagenes/logo-cem.png" height="100" width="100" /> 
+            Centro de Estudios Montreal</h2>
+            <br />
+            <br />
+            <h1>Certificado de aprobación</h1>
+            <br />
+            <hr />
+            <br />
+            <p>
+                Este documento certifica quel el alumno <strong>@Model.PERSONA.NOMBRE @Model.PERSONA.APELLIDO</strong>
+                 aprobó el curso <strong> @ViewBag.NombrePrograma </strong>.
+            </p>
+            <br />
+            <br />
+            <br />
+            <hr />
+            <div class="col-md-offset-10 col-md-2">
+                <img alt="Firma" src="~/imagenes/firma.jpg" height="120" width="200" />
+                <hr width="20%" />
+                Coordinador CEL
+            </div>
+        </center>
     </div>
 </body>
 </html>

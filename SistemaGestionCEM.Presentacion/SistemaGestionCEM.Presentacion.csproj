@@ -217,6 +217,7 @@
     <Content Include="imagenes\chica.jpg" />
     <Content Include="imagenes\Estudiantes.jpg" />
     <Content Include="imagenes\favicon.ico" />
+    <Content Include="imagenes\firma.jpg" />
     <Content Include="imagenes\logo-cem.png" />
     <Content Include="imagenes\Montreal-2.jpg" />
     <Content Include="imagenes\Montreal.jpg" />

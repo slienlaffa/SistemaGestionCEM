@@ -120,9 +120,10 @@ namespace SistemaGestionCEM.Presentacion.Controllers
             return View();
         }
 
-        public ActionResult ObtenerCertificado(decimal id)
+        public ActionResult ObtenerCertificado(decimal id, decimal id_programa)
         {
             var model = db.ALUMNO.Find(id);
+            ViewBag.NombrePrograma = db.PROGRAMA_ESTUDIO.Find(id_programa).NOMBRE_PROGRAMA;
             //Code to get content
             return new Rotativa.ViewAsPdf("ObtenerCertificado", model);// { FileName = "TestViewAsPdf.pdf" };  
             // Si se le pone nombre se descarga el pdf

@@ -37,6 +37,7 @@
 
 </head>
 <body>
+   
     <header>
         <a href="/">
             <h1 class="logoTitulo"><img alt="Logo CEM" src="~/imagenes/logo-cem.png" height="60" width="60" /> Centro de Estudios Montreal</h1>
@@ -82,33 +83,36 @@
                 </div>
             </div>
         </nav>
-        @if (TempData["success"] != null)
-        {
-            <div class="alert success" align="center">
-                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                @Html.Encode(TempData["success"])
-            </div>
-        }
-        @if (TempData["error"] != null)
-        {
-            <div class="alert" align="center">
-                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                @Html.Encode(TempData["error"])
-            </div>
-        }
-        @if (TempData["info"] != null)
-        {
-            <div class="alert info" align="center">
-                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                @Html.Encode(TempData["info"])
-            </div>
-        }
+       
 
     </header>
     <div align="center" class="contenidoCentral">
        
-        @RenderSection("ContenidoCentral", false)
-        @RenderBody()
+            @if (TempData["success"] != null)
+            {
+                <div class="alert success" align="center">
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                    @Html.Encode(TempData["success"])
+                </div>
+            }
+            @if (TempData["error"] != null)
+            {
+                <div class="alert" align="center">
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                    @Html.Encode(TempData["error"])
+                </div>
+            }
+            @if (TempData["info"] != null)
+            {
+                <div class="alert info" align="center">
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                    @Html.Encode(TempData["info"])
+                </div>
+            }
+
+            @RenderSection("ContenidoCentral", false)
+            @RenderBody()
+     
     </div>
     <footer class="text-center">
             <div  style="width:330px; margin:auto;">
