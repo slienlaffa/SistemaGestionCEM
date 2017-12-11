@@ -71,7 +71,7 @@
                     @if (!nombre.IsEmpty())
                     {
                         <ul class="nav navbar-nav navbar-right ">
-                            <li style="color:orangered"><b> Bienvenido, @nombre</b><span class="glyphicon glyphicon-log-out"></span> @Html.ActionLink("Cerrar sesion", "LogOut", "Home")
+                            <li style="color:orangered"><b> @nombre</b> @Html.ActionLink("Cerrar sesion", "LogOut", "Home")
                         </ul>
                     }
                     else
@@ -118,17 +118,17 @@
             <div  style="width:330px; margin:auto;">
                 <br />
                 <p><b>DIRIGETE A LA OFICINA MÁS CERCANA</b></p>
-                <p>Antonio Varas 666, Quebec</p>
-                <p>1 819 821-7000</p>
+                <p>Antonio Varas 666, Quebec
+                -
+                1 819 821-7000</p>
             </div>
 
-            <div style="width:330px; margin:auto;">
+            <div style="width:600px; margin:auto;">
                 <br />
-                <p><b>¿Tienes dudas, sugerencias o reclamos?</b></p>
-                <p>Escribenos a: contacto@cem.com</p>
+                <p><b>¿Tienes dudas, sugerencias o reclamos?</b>
+               Escribenos a: contacto@cem.com</p>
 
             </div>
-            <hr>
             <div style="width:330px; margin:auto;">
                 <p><i>Copyright © Centro de Estudios Montreal - @DateTime.Now.Year</i></p>
             </div>

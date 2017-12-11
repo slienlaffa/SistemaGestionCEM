@@ -210,6 +210,7 @@ namespace SistemaGestionCEM.Presentacion.Controllers
             if (disposing)
             {
                 alumno.Dispose();
+                familiaNegocio.Dispose();
                 db.Dispose();
             }
             base.Dispose(disposing);

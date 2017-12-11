@@ -714,10 +714,10 @@ namespace SistemaGestionCEM.Presentacion.Controllers
         // GET: Admin/Edit/5
         public ActionResult Edit(decimal id)
         {
-            if (id == null)
+          /*  if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            }*/
             PERSONA persona = db.PERSONA.Find(id);
             USUARIO usuario = db.USUARIO.Find(persona.FK_COD_USUARIO);
 
@@ -810,16 +810,6 @@ namespace SistemaGestionCEM.Presentacion.Controllers
 
         #endregion
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-
         public bool ValidarSesionAdministrador()
         {
             if (Session["SesionActual"] != null)
@@ -844,6 +834,19 @@ namespace SistemaGestionCEM.Presentacion.Controllers
         public ActionResult DenegarAcceso()
         {
             return View();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                familiaNegocio.Dispose();
+                alumnoNegocio.Dispose();
+                cemNegocio.Dispose();
+                celNegocio.Dispose();
+                db.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }
